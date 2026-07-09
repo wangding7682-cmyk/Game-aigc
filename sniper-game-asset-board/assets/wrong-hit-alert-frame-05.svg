@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="shock" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(48)">
+      <stop stop-color="#FFF1F3" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#FF5F6F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="128" r="22" fill="url(#shock)"/>
+  <path d="M128 100L134 120H122L128 100Z" fill="#FFF1F3"/>
+  <circle cx="128" cy="140" r="5" fill="#FFF1F3"/>
+  <circle cx="128" cy="128" r="28" stroke="#FF5F6F" stroke-width="4" stroke-opacity="0.26"/>
+</svg>

@@ -1,0 +1,42 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-intact-title wall-intact-desc">
+  <title id="wall-intact-title">完整掩体墙</title>
+  <desc id="wall-intact-desc">更高更厚的软 3D 卡通掩体墙，适合在 PVP 场景中遮住成年人高度附近的目标主体。</desc>
+  <defs>
+    <linearGradient id="wallFrontGrad" x1="28" y1="42" x2="194" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6D8A2"/>
+      <stop offset="0.5" stop-color="#DDA56C"/>
+      <stop offset="1" stop-color="#925E39"/>
+    </linearGradient>
+    <linearGradient id="wallTopGrad" x1="44" y1="34" x2="178" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4D2"/>
+      <stop offset="1" stop-color="#E8B57B"/>
+    </linearGradient>
+    <linearGradient id="wallEdgeGrad" x1="158" y1="58" x2="194" y2="146" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B97B49"/>
+      <stop offset="1" stop-color="#714425"/>
+    </linearGradient>
+    <linearGradient id="baseGrad" x1="30" y1="126" x2="190" y2="156" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#905B34"/>
+      <stop offset="1" stop-color="#62381E"/>
+    </linearGradient>
+    <filter id="shadow" x="10" y="18" width="200" height="144" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#3A250F" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="154" rx="74" ry="12" fill="#39220D" opacity="0.13"/>
+  <g filter="url(#shadow)">
+    <path d="M28 66C28 50 41 38 57 38H163C179 38 192 50 192 66V122C192 138 179 150 163 150H57C41 150 28 138 28 122V66Z" fill="url(#wallFrontGrad)"/>
+    <path d="M161 42H165C180 42 192 54 192 69V124C192 138 181 150 167 150H161V42Z" fill="url(#wallEdgeGrad)" opacity="0.72"/>
+    <path d="M42 50C42 42 48 35 56 35H164C172 35 178 42 178 50V66H42V50Z" fill="url(#wallTopGrad)"/>
+    <path d="M47 59H173" stroke="#FFF6DA" stroke-width="9" stroke-linecap="round" opacity="0.74"/>
+    <path d="M50 80H170" stroke="#F9D9AE" stroke-width="8" stroke-linecap="round" opacity="0.48"/>
+    <path d="M48 103H164" stroke="#B17748" stroke-width="9" stroke-linecap="round" opacity="0.58"/>
+    <path d="M53 124H157" stroke="#85512D" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+    <path d="M58 89L76 101L95 88L115 102L136 89L156 101" stroke="#9D643B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35 132C54 124 72 123 91 128C106 132 122 133 138 129C155 124 173 124 185 130V150H28V132H35Z" fill="url(#baseGrad)" opacity="0.84"/>
+    <path d="M43 138C58 133 73 132 88 136" stroke="#B47A4F" stroke-width="6" stroke-linecap="round" opacity="0.48"/>
+    <circle cx="66" cy="66" r="4" fill="#FFF6DD" opacity="0.76"/>
+    <circle cx="152" cy="95" r="4" fill="#FCE2BA" opacity="0.58"/>
+  </g>
+</svg>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关卡拼装预览 - 多地形对比版</title>
+    <style id="theme-vars">
+:root {
+  --hunt-background: #0f1620;
+  --hunt-foreground: #edf3ff;
+  --hunt-card: #16202c;
+  --hunt-card-foreground: #f7f9ff;
+  --hunt-muted: #1c2633;
+  --hunt-muted-foreground: #98a6bd;
+  --hunt-primary: #71a8ff;
+  --hunt-primary-foreground: #0d1521;
+  --hunt-secondary: #1a2330;
+  --hunt-secondary-foreground: #c8d4e6;
+  --hunt-border: rgba(255, 255, 255, 0.08);
+  --hunt-radius-small: 4px;
+  --hunt-radius-medium: 8px;
+  --hunt-radius-large: 12px;
+  --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--hunt-background);
+  color: var(--hunt-foreground);
+  font-family: var(--hunt-font-primary);
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--hunt-background);
+    --color-foreground: var(--hunt-foreground);
+    --color-card: var(--hunt-card);
+    --color-card-foreground: var(--hunt-card-foreground);
+    --color-primary: var(--hunt-primary);
+    --color-primary-foreground: var(--hunt-primary-foreground);
+    --color-secondary: var(--hunt-secondary);
+    --color-secondary-foreground: var(--hunt-secondary-foreground);
+    --color-muted: var(--hunt-muted);
+    --color-muted-foreground: var(--hunt-muted-foreground);
+    --color-border: var(--hunt-border);
+    --radius-sm: var(--hunt-radius-small);
+    --radius-md: var(--hunt-radius-medium);
+    --radius-lg: var(--hunt-radius-large);
+  }
+  @layer base {
+    body { background: var(--hunt-background); color: var(--hunt-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+  <main id="page-level-preview-biomes" class="comparison-page">
+    <div class="page-shell">
+      <section class="panel intro-panel">
+        <div class="intro-copy">
+          <span class="chip">多关卡方案对比稿</span>
+          <div class="section-heading">
+            <h1>关卡拼装预览 - 多地形对比版</h1>
+            <p>这页用于横向比较森林、荒漠、废墟三种地形的 2.5D 关卡方案，重点让策划、美术、关卡设计直接看懂不同环境下的遮挡节奏与输出窗口差异。</p>
+            <p>每种地形都固定展示“未击中 / 击穿 / 弱点暴露”三个阶段，方便横向比较同阶段表现，也方便纵向判断单一地形的推进逻辑。</p>
+          </div>
+        </div>
+        <div class="stats-grid" aria-label="多地形关卡方案统计">
+          <article class="stat-card">
+            <div class="stat-value">3</div>
+            <div class="stat-label">地形方案</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">3</div>
+            <div class="stat-label">阶段对比</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">3</div>
+            <div class="stat-label">前景遮挡</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">4</div>
+            <div class="stat-label">中景掩体</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">5</div>
+            <div class="stat-label">穿透贴花</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">3</div>
+            <div class="stat-label">目标状态</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel section-block">
+        <div class="section-heading section-heading--split">
+          <div>
+            <h2>三地形总览区</h2>
+            <p>同一屏里保持一致的三阶段结构，让用户直接对比森林、荒漠、废墟在前景误导、中景掩体、后景露点上的玩法差异。</p>
+          </div>
+          <div class="legend-card" aria-label="场景图例">
+            <div class="legend-item"><span class="legend-dot legend-dot--front"></span><span>前景层</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--mid"></span><span>中景掩体</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--back"></span><span>后景外星人</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--window"></span><span>贴花 / 弱点窗口</span></div>
+          </div>
+        </div>
+
+        <div class="biome-grid">
+          <article class="biome-card biome-card--forest">
+            <header class="biome-card__header">
+              <div>
+                <span class="biome-tag">森林关卡</span>
+                <h3>前景误导更强</h3>
+              </div>
+              <p>利用树冠、灌木和草丛切断轮廓，让玩家先识别，再确认目标窗口。</p>
+            </header>
+            <div class="phase-stack">
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>未击中</h4>
+                    <p>树体与灌木先打断识别，后方巡逻目标只露少量轮廓。</p>
+                  </div>
+                  <span class="phase-index">01</span>
+                </div>
+                <div class="scene-frame scene-frame--forest">
+                  <img class="scene-asset is-back" src="../assets/patrol-soft-1.svg" alt="森林未击中阶段的巡逻外星人" style="--w: 24%; --r: 9%; --b: 25%;">
+                  <img class="scene-asset is-mid" src="../assets/tree-bouncy.svg" alt="森林中景树体掩体" style="--w: 29%; --r: 16%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="森林中景岩石掩体" style="--w: 22%; --l: 14%; --b: 17%;">
+                  <img class="scene-asset is-front" src="../assets/shrub-layered-soft.svg" alt="森林前景层叠灌木" style="--w: 30%; --l: 0%; --b: 3%;">
+                  <img class="scene-asset is-front" src="../assets/grass-clump-soft.svg" alt="森林前景草丛" style="--w: 20%; --l: 39%; --b: 3%;">
+                  <img class="scene-asset is-front" src="../assets/bush-rounded.svg" alt="森林前景圆灌木" style="--w: 19%; --r: 4%; --b: 4%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>击穿</h4>
+                    <p>岩石与临时掩体被打出破口，扫描状态目标开始局部可见。</p>
+                  </div>
+                  <span class="phase-index">02</span>
+                </div>
+                <div class="scene-frame scene-frame--forest">
+                  <img class="scene-asset is-back" src="../assets/scan-soft-2.svg" alt="森林击穿阶段的扫描外星人" style="--w: 21%; --r: 13%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="森林中景岩石掩体" style="--w: 27%; --l: 11%; --b: 16%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-breached.svg" alt="森林中的破口掩体" style="--w: 42%; --r: 3%; --b: 10%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-bullet-hole-cluster-soft.svg" alt="森林击穿贴花" style="--w: 13%; --r: 18%; --b: 34%;">
+                  <img class="scene-asset is-front" src="../assets/tree-bouncy.svg" alt="森林前景树体" style="--w: 20%; --l: -1%; --b: 10%;">
+                  <img class="scene-asset is-front" src="../assets/shrub-layered-soft.svg" alt="森林前景灌木" style="--w: 28%; --l: 2%; --b: 1%;">
+                  <img class="scene-asset is-front" src="../assets/grass-clump-soft.svg" alt="森林前景草丛" style="--w: 20%; --l: 39%; --b: 2%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>弱点暴露</h4>
+                    <p>自然遮挡仍在，但后方弱点帧形成短时可打窗口。</p>
+                  </div>
+                  <span class="phase-index">03</span>
+                </div>
+                <div class="scene-frame scene-frame--forest">
+                  <img class="scene-asset is-back" src="../assets/weakpoint-soft-1.svg" alt="森林弱点暴露阶段的外星人" style="--w: 25%; --r: 10%; --b: 23%;">
+                  <img class="scene-asset is-mid" src="../assets/tree-bouncy.svg" alt="森林中景树体掩体" style="--w: 24%; --l: 12%; --b: 14%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="森林中景岩石掩体" style="--w: 24%; --r: 13%; --b: 15%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-crack-radial-soft.svg" alt="森林弱点窗口贴花" style="--w: 14%; --r: 25%; --b: 38%;">
+                  <img class="scene-asset is-front" src="../assets/shrub-layered-soft.svg" alt="森林前景灌木" style="--w: 30%; --l: 0%; --b: 1%;">
+                  <img class="scene-asset is-front" src="../assets/bush-rounded.svg" alt="森林前景圆灌木" style="--w: 18%; --r: 3%; --b: 3%;">
+                  <img class="scene-asset is-front" src="../assets/grass-clump-soft.svg" alt="森林前景草丛" style="--w: 18%; --l: 41%; --b: 2%;">
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="biome-card biome-card--desert">
+            <header class="biome-card__header">
+              <div>
+                <span class="biome-tag">荒漠关卡</span>
+                <h3>击穿后暴露更快</h3>
+              </div>
+              <p>轮廓相对清晰，前景干扰更少，适合验证掩体稀疏时的射击节奏。</p>
+            </header>
+            <div class="phase-stack">
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>未击中</h4>
+                    <p>仙人掌只做轻遮挡，完整墙体让目标主要依赖中景掩护。</p>
+                  </div>
+                  <span class="phase-index">01</span>
+                </div>
+                <div class="scene-frame scene-frame--desert">
+                  <img class="scene-asset is-back" src="../assets/alien-side.svg" alt="荒漠未击中阶段的外星人" style="--w: 18%; --l: 22%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-intact.svg" alt="荒漠中景完整墙体" style="--w: 43%; --l: 4%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="荒漠中景岩石掩体" style="--w: 19%; --r: 7%; --b: 14%;">
+                  <img class="scene-asset is-front" src="../assets/cactus-twin-soft.svg" alt="荒漠前景仙人掌" style="--w: 17%; --l: 2%; --b: 4%;">
+                  <img class="scene-asset is-front" src="../assets/rock-stack-soft.svg" alt="荒漠前景低矮岩石" style="--w: 18%; --l: 40%; --b: 4%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>击穿</h4>
+                    <p>破口形成得更直接，扫描帧在稀疏掩体后很快进入可读状态。</p>
+                  </div>
+                  <span class="phase-index">02</span>
+                </div>
+                <div class="scene-frame scene-frame--desert">
+                  <img class="scene-asset is-back" src="../assets/scan-soft-1.svg" alt="荒漠击穿阶段的扫描外星人" style="--w: 18%; --l: 23%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-breached.svg" alt="荒漠中景破口墙体" style="--w: 44%; --l: 4%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="荒漠中景岩石掩体" style="--w: 19%; --r: 6%; --b: 14%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-bullet-hole-soft.svg" alt="荒漠击穿贴花" style="--w: 12%; --l: 26%; --b: 33%;">
+                  <img class="scene-asset is-front" src="../assets/cactus-twin-soft.svg" alt="荒漠前景仙人掌" style="--w: 18%; --l: 1%; --b: 4%;">
+                  <img class="scene-asset is-front" src="../assets/rock-stack-soft.svg" alt="荒漠前景岩石" style="--w: 16%; --r: 1%; --b: 4%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>弱点暴露</h4>
+                    <p>坍塌后遮挡快速收缩，输出窗口更短更直接。</p>
+                  </div>
+                  <span class="phase-index">03</span>
+                </div>
+                <div class="scene-frame scene-frame--desert">
+                  <img class="scene-asset is-back" src="../assets/weakpoint-soft-2.svg" alt="荒漠弱点暴露阶段的外星人" style="--w: 18%; --l: 24%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-collapsed.svg" alt="荒漠中景坍塌墙体" style="--w: 43%; --l: 4%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="荒漠中景岩石掩体" style="--w: 20%; --r: 7%; --b: 14%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-crack-corner-soft.svg" alt="荒漠弱点窗口裂损贴花" style="--w: 11%; --l: 28%; --b: 34%;">
+                  <img class="scene-asset is-front" src="../assets/cactus-twin-soft.svg" alt="荒漠前景仙人掌" style="--w: 17%; --l: 2%; --b: 4%;">
+                  <img class="scene-asset is-front" src="../assets/rock-stack-soft.svg" alt="荒漠前景低矮岩石" style="--w: 16%; --l: 44%; --b: 3%;">
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="biome-card biome-card--ruins">
+            <header class="biome-card__header">
+              <div>
+                <span class="biome-tag">废墟关卡</span>
+                <h3>弱点窗口更复杂</h3>
+              </div>
+              <p>多掩体、多破口、多层遮挡并存，适合做中后期遭遇点的复杂读图。</p>
+            </header>
+            <div class="phase-stack">
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>未击中</h4>
+                    <p>残墙和木箱形成复合遮挡，玩家需要从多段轮廓里识别目标。</p>
+                  </div>
+                  <span class="phase-index">01</span>
+                </div>
+                <div class="scene-frame scene-frame--ruins">
+                  <img class="scene-asset is-back" src="../assets/patrol-soft-3.svg" alt="废墟未击中阶段的巡逻外星人" style="--w: 18%; --l: 18%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-collapsed.svg" alt="废墟中景坍塌墙体" style="--w: 39%; --l: 4%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/crate-wood-soft.svg" alt="废墟中景木箱掩体" style="--w: 18%; --l: 40%; --b: 13%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="废墟中景岩石掩体" style="--w: 19%; --r: 6%; --b: 13%;">
+                  <img class="scene-asset is-front" src="../assets/wall-debris-scatter-soft.svg" alt="废墟前景碎片散落" style="--w: 30%; --l: 1%; --b: 3%;">
+                  <img class="scene-asset is-front" src="../assets/crate-wood-soft.svg" alt="废墟前景低位木箱" style="--w: 16%; --r: 3%; --b: 3%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>击穿</h4>
+                    <p>破口与碎片同时工作，后方扫描目标通过多个小窗口被逐步揭露。</p>
+                  </div>
+                  <span class="phase-index">02</span>
+                </div>
+                <div class="scene-frame scene-frame--ruins">
+                  <img class="scene-asset is-back" src="../assets/scan-soft-3.svg" alt="废墟击穿阶段的扫描外星人" style="--w: 18%; --l: 19%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-breached.svg" alt="废墟中景破口墙体" style="--w: 41%; --l: 4%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/crate-wood-soft.svg" alt="废墟中景木箱掩体" style="--w: 18%; --l: 41%; --b: 13%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="废墟中景岩石掩体" style="--w: 19%; --r: 6%; --b: 13%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-bullet-hole-cluster-soft.svg" alt="废墟击穿贴花" style="--w: 13%; --l: 20%; --b: 33%;">
+                  <img class="scene-asset is-front" src="../assets/wall-debris-scatter-soft.svg" alt="废墟前景碎片散落" style="--w: 30%; --l: 0%; --b: 2%;">
+                  <img class="scene-asset is-front" src="../assets/crate-wood-soft.svg" alt="废墟前景低位木箱" style="--w: 15%; --r: 2%; --b: 3%;">
+                </div>
+              </article>
+
+              <article class="phase-card">
+                <div class="phase-card__header">
+                  <div>
+                    <h4>弱点暴露</h4>
+                    <p>多破口叠加复杂掩体，弱点虽可见，但瞄准路径更考验判断。</p>
+                  </div>
+                  <span class="phase-index">03</span>
+                </div>
+                <div class="scene-frame scene-frame--ruins">
+                  <img class="scene-asset is-back" src="../assets/weakpoint-soft-3.svg" alt="废墟弱点暴露阶段的外星人" style="--w: 18%; --l: 20%; --b: 18%;">
+                  <img class="scene-asset is-mid" src="../assets/wall-cover-collapsed.svg" alt="废墟中景坍塌墙体" style="--w: 40%; --l: 5%; --b: 10%;">
+                  <img class="scene-asset is-mid" src="../assets/crate-wood-soft.svg" alt="废墟中景木箱掩体" style="--w: 17%; --l: 41%; --b: 13%;">
+                  <img class="scene-asset is-mid" src="../assets/rock-stack-soft.svg" alt="废墟中景岩石掩体" style="--w: 18%; --r: 7%; --b: 13%;">
+                  <img class="scene-asset is-overlay" src="../assets/wall-crack-radial-soft.svg" alt="废墟弱点窗口裂损贴花" style="--w: 12%; --l: 23%; --b: 34%;">
+                  <img class="scene-asset is-front" src="../assets/wall-debris-scatter-soft.svg" alt="废墟前景碎片散落" style="--w: 30%; --l: 0%; --b: 2%;">
+                  <img class="scene-asset is-front" src="../assets/crate-wood-soft.svg" alt="废墟前景低位木箱" style="--w: 15%; --r: 3%; --b: 3%;">
+                </div>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>地形设计差异说明区</h2>
+          <p>三种地形都沿用同一套素材语义，但在轮廓切断、掩体密度和弱点窗口复杂度上各有侧重点。</p>
+        </div>
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="info-card__tag">森林</div>
+            <h3>前景误导、轮廓切断、隐蔽观察</h3>
+            <p>森林更依赖柔性前景来削弱第一眼识别，适合把“看见了吗”放在先，把“能打吗”放在后。</p>
+          </article>
+          <article class="info-card">
+            <div class="info-card__tag">荒漠</div>
+            <h3>轮廓清晰、掩体稀疏、击穿后暴露更快</h3>
+            <p>荒漠的视线更直，墙体一旦被击穿，目标会更快进入有效射击窗口，节奏偏短促。</p>
+          </article>
+          <article class="info-card">
+            <div class="info-card__tag">废墟</div>
+            <h3>多掩体、多破口、弱点窗口更复杂</h3>
+            <p>废墟适合把多个小破口串成复杂遭遇点，让玩家在有限可见区域里做更细的判断。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>关卡阶段说明区</h2>
+          <p>三个阶段保持统一命名，便于对照策划说明、视觉评审和关卡验证节点。</p>
+        </div>
+        <div class="phase-explain-grid">
+          <article class="explain-card">
+            <span class="explain-card__tag">未击中</span>
+            <h3>主要看遮挡与伪装识别</h3>
+            <p>确认玩家第一眼是否会被前景和完整掩体误导，同时还能捕捉到后景目标的存在感。</p>
+          </article>
+          <article class="explain-card">
+            <span class="explain-card__tag">击穿</span>
+            <h3>主要看破口后局部可见</h3>
+            <p>验证击穿贴花与破口位置是否让目标局部露出，并形成明确的读图反馈。</p>
+          </article>
+          <article class="explain-card">
+            <span class="explain-card__tag">弱点暴露</span>
+            <h3>主要看短时间输出窗口</h3>
+            <p>判断弱点露出的面积、时机和掩体关系是否足够清晰，能否支撑有效输出。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>推荐应用建议区</h2>
+          <p>建议把同一套资产优先按下面三类场景投放，以降低评审时的理解偏差。</p>
+        </div>
+        <div class="recommend-grid">
+          <article class="recommend-card">
+            <h3>森林更适合教学和识别关</h3>
+            <p>先练轮廓观察，再引入击穿和弱点窗口，节奏更利于新手建立读图习惯。</p>
+          </article>
+          <article class="recommend-card">
+            <h3>荒漠更适合快节奏射击验证</h3>
+            <p>掩体更直接，击穿反馈更快，适合测试命中感与窗口判断是否顺畅。</p>
+          </article>
+          <article class="recommend-card">
+            <h3>废墟更适合中后期复杂遭遇点</h3>
+            <p>多层掩体与多破口组合更能承载连续决策，适合拉开中后期玩法深度。</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --hunt-background: #0f1620;
+      --hunt-foreground: #edf3ff;
+      --hunt-card: #16202c;
+      --hunt-card-foreground: #f7f9ff;
+      --hunt-muted: #1c2633;
+      --hunt-muted-foreground: #9aa9c1;
+      --hunt-primary: #71a8ff;
+      --hunt-primary-strong: #a4c7ff;
+      --hunt-primary-soft: color-mix(in srgb, var(--hunt-primary) 22%, transparent);
+      --hunt-secondary: #1a2330;
+      --hunt-secondary-foreground: #c8d4e6;
+      --hunt-border: rgba(255, 255, 255, 0.08);
+      --hunt-radius-small: 4px;
+      --hunt-radius-medium: 8px;
+      --hunt-radius-large: 12px;
+      --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--hunt-background);
+      color: var(--hunt-foreground);
+      font-family: var(--hunt-font-primary);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .comparison-page {
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+      background:
+        radial-gradient(circle at top, color-mix(in srgb, var(--hunt-primary) 16%, transparent), transparent 30%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-background) 88%, var(--hunt-secondary) 12%), var(--hunt-background));
+    }
+
+    .page-shell {
+      width: min(1380px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .panel,
+    .info-card,
+    .explain-card,
+    .recommend-card,
+    .stat-card,
+    .legend-card,
+    .biome-card,
+    .phase-card {
+      background: var(--hunt-card);
+      border: 1px solid var(--hunt-border);
+      border-radius: var(--hunt-radius-large);
+      box-shadow: var(--hunt-shadow);
+    }
+
+    .intro-panel,
+    .section-block {
+      display: grid;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .intro-copy,
+    .section-heading,
+    .biome-card,
+    .phase-stack,
+    .phase-card,
+    .info-card,
+    .explain-card,
+    .recommend-card {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chip,
+    .biome-tag,
+    .phase-index,
+    .info-card__tag,
+    .explain-card__tag {
+      display: inline-flex;
+      align-items: center;
+      justify-self: start;
+      padding: 6px 12px;
+      border-radius: var(--hunt-radius-medium);
+      background: var(--hunt-muted);
+      border: 1px solid var(--hunt-border);
+      color: var(--hunt-primary-strong);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .section-heading h1,
+    .section-heading h2,
+    .biome-card__header h3,
+    .phase-card__header h4,
+    .info-card h3,
+    .explain-card h3,
+    .recommend-card h3 {
+      margin: 0;
+      color: var(--hunt-card-foreground);
+    }
+
+    .section-heading h1 {
+      font-size: clamp(2rem, 2.7vw, 2.9rem);
+      line-height: 1.1;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      line-height: 1.18;
+    }
+
+    .section-heading p,
+    .biome-card__header p,
+    .phase-card__header p,
+    .info-card p,
+    .explain-card p,
+    .recommend-card p,
+    .stat-label,
+    .legend-item {
+      margin: 0;
+      color: var(--hunt-muted-foreground);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .stats-grid,
+    .biome-grid,
+    .info-grid,
+    .phase-explain-grid,
+    .recommend-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-card {
+      padding: 16px;
+      background: var(--hunt-muted);
+    }
+
+    .stat-value {
+      margin-bottom: 6px;
+      font-size: clamp(1.75rem, 2vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--hunt-card-foreground);
+    }
+
+    .section-heading--split {
+      align-items: start;
+    }
+
+    .legend-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      background: var(--hunt-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .legend-dot--front {
+      background: var(--hunt-primary-strong);
+    }
+
+    .legend-dot--mid {
+      background: color-mix(in srgb, var(--hunt-primary) 65%, var(--hunt-secondary));
+    }
+
+    .legend-dot--back {
+      background: color-mix(in srgb, var(--hunt-secondary-foreground) 72%, var(--hunt-primary));
+    }
+
+    .legend-dot--window {
+      background: color-mix(in srgb, var(--hunt-primary) 88%, white);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--hunt-primary) 20%, transparent);
+    }
+
+    .biome-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      align-items: start;
+    }
+
+    .biome-card {
+      padding: 18px;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--hunt-card) 88%, var(--hunt-secondary) 12%), var(--hunt-card));
+    }
+
+    .biome-card__header {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 4px;
+    }
+
+    .phase-card {
+      padding: 14px;
+      background: var(--hunt-muted);
+      border-radius: var(--hunt-radius-medium);
+      box-shadow: none;
+    }
+
+    .phase-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .phase-index {
+      justify-self: auto;
+      white-space: nowrap;
+    }
+
+    .scene-frame {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      border-radius: var(--hunt-radius-medium);
+      border: 1px solid var(--hunt-border);
+      background:
+        radial-gradient(circle at 50% 10%, var(--scene-glow), transparent 42%),
+        linear-gradient(180deg, var(--scene-sky), color-mix(in srgb, var(--scene-ground) 72%, var(--hunt-background)) 68%, var(--scene-ground));
+      box-shadow: inset 0 1px 0 color-mix(in srgb, white 8%, transparent);
+    }
+
+    .scene-frame::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 30%;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-secondary) 42%, transparent), transparent),
+        linear-gradient(180deg, color-mix(in srgb, var(--scene-ground) 82%, var(--hunt-secondary)), var(--scene-ground));
+      border-top: 1px solid color-mix(in srgb, var(--hunt-border) 88%, var(--hunt-primary));
+    }
+
+    .scene-frame--forest {
+      --scene-sky: color-mix(in srgb, var(--hunt-primary) 16%, var(--hunt-background));
+      --scene-ground: color-mix(in srgb, var(--hunt-secondary) 74%, var(--hunt-background));
+      --scene-glow: color-mix(in srgb, var(--hunt-primary) 24%, transparent);
+    }
+
+    .scene-frame--desert {
+      --scene-sky: color-mix(in srgb, var(--hunt-primary) 13%, var(--hunt-background));
+      --scene-ground: color-mix(in srgb, var(--hunt-secondary) 66%, var(--hunt-background));
+      --scene-glow: color-mix(in srgb, var(--hunt-primary) 18%, transparent);
+    }
+
+    .scene-frame--ruins {
+      --scene-sky: color-mix(in srgb, var(--hunt-primary) 11%, var(--hunt-background));
+      --scene-ground: color-mix(in srgb, var(--hunt-secondary) 80%, var(--hunt-background));
+      --scene-glow: color-mix(in srgb, var(--hunt-primary) 16%, transparent);
+    }
+
+    .scene-asset {
+      position: absolute;
+      left: var(--l, auto);
+      right: var(--r, auto);
+      bottom: var(--b, 0);
+      width: var(--w, auto);
+      max-width: none;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.2));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .is-back {
+      z-index: 1;
+    }
+
+    .is-mid {
+      z-index: 2;
+    }
+
+    .is-overlay {
+      z-index: 3;
+    }
+
+    .is-front {
+      z-index: 4;
+    }
+
+    .info-grid,
+    .phase-explain-grid,
+    .recommend-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .info-card,
+    .explain-card,
+    .recommend-card {
+      padding: 20px;
+      background: var(--hunt-card);
+    }
+
+    @media (min-width: 768px) {
+      .comparison-page {
+        padding: 24px 24px 56px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .section-heading--split {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .phase-card__header {
+        flex-direction: column;
+      }
+
+      .scene-frame {
+        min-height: 200px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .comparison-page {
+        padding-inline: 12px;
+      }
+
+      .intro-panel,
+      .section-block {
+        padding: 18px;
+      }
+    }
+  </style>
+</body>
+</html>

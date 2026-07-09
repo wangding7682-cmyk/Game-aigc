@@ -1,0 +1,116 @@
+{
+  "level_id": "pve_level_city_03",
+  "display_name": "城市观察 03",
+  "scene_id": "pve_battle_main",
+  "stage_theme": "city_day",
+  "order": 3,
+  "time_limit_sec": 150,
+  "max_wrong_hits": 3,
+  "target_goal": 8,
+  "reward": {
+    "base_coins": 150,
+    "time_bonus_formula": "floor(survive_time_sec * (1.0 + wrong_hit_count * -0.15))",
+    "time_bonus_floor_ratio": 0.3
+  },
+  "rating_rule": {
+    "3_star": "0误伤 + 剩余时间 > 30秒",
+    "2_star": "误伤≤1 + 剩余时间 > 10秒",
+    "1_star": "通关即可"
+  },
+  "available_items": [
+    "scan",
+    "time_extend"
+  ],
+  "tutorial_focus": "让玩家开始做目标优先级判断，并主动考虑使用道具",
+  "success_condition": {
+    "type": "eliminate_targets",
+    "required_target_count": 8
+  },
+  "failure_condition": {
+    "type": "timer_or_wrong_hits",
+    "wrong_hit_limit": 3
+  },
+  "target_groups": [
+    {
+      "behavior_type": "static_camouflage",
+      "count": 3,
+      "spawn_points": [
+        "alley_scaffold",
+        "pharmacy_sign_top",
+        "left_far_roof"
+      ],
+      "camouflage_intensity": 0.65,
+      "weakpoint_window_sec": 0
+    },
+    {
+      "behavior_type": "slow_patrol",
+      "count": 3,
+      "spawn_points": [
+        "left_patrol_lane",
+        "right_patrol_lane",
+        "upper_patrol_lane"
+      ],
+      "camouflage_intensity": 0.75,
+      "move_speed_ratio": 0.5,
+      "patrol_distance_m": 0.7
+    },
+    {
+      "behavior_type": "weakpoint_reveal",
+      "count": 2,
+      "spawn_points": [
+        "center_window_shutter",
+        "right_weakpoint_balcony"
+      ],
+      "camouflage_intensity": 0.82,
+      "weakpoint_window_sec": 1.65,
+      "reveal_interval_sec": 6.75
+    }
+  ],
+  "civilian_groups": [
+    {
+      "count": 6,
+      "spawn_points": [
+        "street_corner_left",
+        "bus_stop_queue",
+        "vendor_stall",
+        "sidewalk_near_tree",
+        "right_far_sidewalk",
+        "left_far_sidewalk"
+      ]
+    }
+  ],
+  "playtest_focus": [
+    "扫描使用率是否明显高于前两关",
+    "弱点显露窗口是否可观测可决策",
+    "最后20秒失败占比是否过高",
+    "玩家是否会因为压力开始主动使用time_extend"
+  ],
+  "analytics_plan": {
+    "core_question": "玩家在三类目标混合时，是否会开始做优先级判断并主动使用道具",
+    "watch_events": [
+      "level_entered",
+      "first_hit_recorded",
+      "item_used",
+      "level_checkpoint",
+      "battle_finished",
+      "first_failure_recorded"
+    ],
+    "watch_metrics": [
+      "scan_usage_rate",
+      "time_extend_usage_rate",
+      "endgame_reached_rate",
+      "endgame_fail_rate",
+      "star_distribution"
+    ],
+    "success_signals": [
+      "玩家开始主动使用 scan 和 time_extend",
+      "能打到 endgame 的玩家占比不低",
+      "失败原因主要可解释，不会大量出现纯玄学失败"
+    ],
+    "review_questions": [
+      "如果 scan 使用率低，是按钮露出问题还是收益感不够",
+      "如果大量玩家止步于 endgame，是弱点窗口太短还是时间压力过大",
+      "如果 time_extend 多发生在最后几秒，是否需要更早给出时间压力提示"
+    ]
+  }
+}

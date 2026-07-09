@@ -1,0 +1,16 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="hitGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80 80) rotate(90) scale(52 52)">
+      <stop stop-color="#B2FFD0" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#6BF2A9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="46" stroke="#5EE49E" stroke-width="4" opacity="0.5"/>
+  <circle cx="80" cy="80" r="22" stroke="#D8FFF0" stroke-width="3" opacity="0.7"/>
+  <path d="M47 83L67 103L112 58" stroke="#7AF4B0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M38 80H16" stroke="#65EDAA" stroke-width="4.5" stroke-linecap="round" opacity="0.44"/>
+  <path d="M144 80H122" stroke="#65EDAA" stroke-width="4.5" stroke-linecap="round" opacity="0.44"/>
+  <path d="M80 38V16" stroke="#65EDAA" stroke-width="4.5" stroke-linecap="round" opacity="0.44"/>
+  <path d="M80 144V122" stroke="#65EDAA" stroke-width="4.5" stroke-linecap="round" opacity="0.44"/>
+  <circle cx="80" cy="80" r="52" fill="url(#hitGlow)"/>
+</svg>

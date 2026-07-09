@@ -1,0 +1,27 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">瞄准镜准星图标</title>
+  <desc id="desc">红色高亮瞄准镜准星图标，适用于 HUD 和技能按钮。</desc>
+  <defs>
+    <radialGradient id="ringGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(48 48) scale(29)">
+      <stop stop-color="#34121C"/>
+      <stop offset="1" stop-color="#0A131D"/>
+    </radialGradient>
+    <radialGradient id="glowGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(48 48) scale(31)">
+      <stop stop-color="#FFB4BF" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#FF556D" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="10" y="10" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#12070C" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="48" cy="48" r="24" fill="url(#ringGrad)" stroke="#FF5E75" stroke-width="4"/>
+    <circle cx="48" cy="48" r="15" stroke="#FF8E9E" stroke-width="3" opacity="0.9"/>
+    <path d="M48 18V32" stroke="#FF5A72" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M48 64V78" stroke="#FF5A72" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M18 48H32" stroke="#FF5A72" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M64 48H78" stroke="#FF5A72" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="48" cy="48" r="5" fill="#FFF0F3"/>
+    <circle cx="48" cy="48" r="32" fill="url(#glowGrad)" opacity="0.8"/>
+  </g>
+</svg>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整合画布</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="relative isolate overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute inset-x-0 top-0 h-80 bg-[var(--surface-panel-soft)] blur-3xl opacity-60"></div>
+            <div class="absolute inset-0 game-grid-line opacity-60"></div>
+            <div class="absolute inset-x-0 top-24 h-px bg-[var(--surface-border)]"></div>
+        </div>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+                <div class="grid gap-6 lg:gap-8">
+                    <div class="grid gap-4 lg:grid-cols-[minmax(0,1.2fr),minmax(300px,0.8fr)] lg:items-end">
+                        <div class="min-w-0">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-secondary)]">
+                                    整合评审
+                                </span>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold tracking-[0.08em] text-[var(--state-error)]">
+                                    27项核心资产
+                                </span>
+                            </div>
+                            <h1 class="mt-4 max-w-[10ch] text-[clamp(30px,5vw,48px)] font-semibold tracking-[-0.03em] text-[var(--text-primary)]" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                                整合画布
+                            </h1>
+                            <p class="mt-4 max-w-[70ch] text-base leading-7 text-[var(--text-secondary)] lg:text-lg">
+                                狙击识别外星人游戏资产整合评审。把前两批武器、角色、环境、特效与 HUD 组件收拢到同一张战斗指挥台，方便统一评审、命名对照与 Godot 接入分工。
+                            </p>
+                        </div>
+                        <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-3">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <p class="truncate text-xs tracking-[0.08em] text-[var(--text-muted)]">首批资产</p>
+                                <p class="mt-2 font-number text-3xl font-semibold text-[var(--text-primary)] whitespace-nowrap">12</p>
+                                <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">武器、角色、功能图标</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <p class="truncate text-xs tracking-[0.08em] text-[var(--text-muted)]">第二批</p>
+                                <p class="mt-2 font-number text-3xl font-semibold text-[var(--text-primary)] whitespace-nowrap">15</p>
+                                <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">环境、特效、HUD 板件</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <p class="truncate text-xs tracking-[0.08em] text-[var(--text-muted)]">模块范围</p>
+                                <p class="mt-2 font-number text-3xl font-semibold text-[var(--text-primary)] whitespace-nowrap">5</p>
+                                <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">从枪械到界面统一对照</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-6 lg:grid-cols-12 lg:items-stretch">
+                        <div class="grid gap-4 lg:col-span-3">
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <div class="flex items-center justify-between gap-3">
+                                    <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">评审焦点</h2>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-info)]">
+                                        对照中
+                                    </span>
+                                </div>
+                                <ul class="mt-4 grid gap-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                    <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">确认命中、误伤、扫描、慢镜 4 组反馈语义。</li>
+                                    <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">统一软 3D 资产在暗色展示底上的观看方式。</li>
+                                    <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">为 Godot 目录、命名与节点挂载准备统一参照。</li>
+                                </ul>
+                            </article>
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">批次覆盖</h2>
+                                <div class="mt-4 grid gap-3">
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <span class="truncate text-sm text-[var(--text-secondary)]">武器系统</span>
+                                            <span class="font-number whitespace-nowrap text-sm font-semibold text-[var(--text-primary)]">4</span>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <span class="truncate text-sm text-[var(--text-secondary)]">识别角色</span>
+                                            <span class="font-number whitespace-nowrap text-sm font-semibold text-[var(--text-primary)]">2</span>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <span class="truncate text-sm text-[var(--text-secondary)]">环境障碍</span>
+                                            <span class="font-number whitespace-nowrap text-sm font-semibold text-[var(--text-primary)]">4</span>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <span class="truncate text-sm text-[var(--text-secondary)]">战斗反馈</span>
+                                            <span class="font-number whitespace-nowrap text-sm font-semibold text-[var(--text-primary)]">6</span>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <span class="truncate text-sm text-[var(--text-secondary)]">HUD 组件</span>
+                                            <span class="font-number whitespace-nowrap text-sm font-semibold text-[var(--text-primary)]">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <article class="relative overflow-hidden rounded-xl border border-[var(--surface-border-strong)] bg-[var(--surface-panel-strong)] p-4 backdrop-blur-sm sm:p-5 lg:col-span-6 lg:p-6">
+                            <div class="flex items-center justify-between gap-3">
+                                <div class="min-w-0">
+                                    <h2 class="truncate text-xl font-semibold text-[var(--text-primary)]">统一视域</h2>
+                                    <p class="mt-2 line-clamp-2 max-w-[48ch] text-sm leading-6 text-[var(--text-secondary)]">
+                                        用瞄准镜语义把枪械、目标识别与辅助图标压进同一中心视口，强调“评审即接入”的整体关系。
+                                    </p>
+                                </div>
+                                <img class="h-10 w-10 shrink-0 object-contain" src="../assets/image_0_2y5idn.svg" alt="瞄准镜图标">
+                            </div>
+
+                            <div class="relative mt-5 overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4 sm:p-5">
+                                <img class="pointer-events-none absolute inset-4 h-[calc(100%-2rem)] w-[calc(100%-2rem)] object-contain opacity-55" src="../assets/image_1_fpfs8t.svg" alt="镜框组件">
+                                <img class="pointer-events-none absolute inset-10 h-[calc(100%-5rem)] w-[calc(100%-5rem)] object-contain opacity-65" src="../assets/image_2_wiakdm.svg" alt="锁定框组件">
+
+                                <div class="relative grid gap-4">
+                                    <div class="grid gap-3 sm:grid-cols-4">
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                            <img class="mx-auto h-20 w-full object-contain" src="../assets/image_3_6cqwza.svg" alt="标准狙击枪">
+                                            <p class="mt-3 truncate text-center text-sm font-semibold text-[var(--text-primary)]">基础狙</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                            <img class="mx-auto h-20 w-full object-contain" src="../assets/image_4_3jyavo.svg" alt="精确狙击枪">
+                                            <p class="mt-3 truncate text-center text-sm font-semibold text-[var(--text-primary)]">精确狙</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                            <img class="mx-auto h-20 w-full object-contain" src="../assets/image_5_eurbdp.svg" alt="连发狙击枪">
+                                            <p class="mt-3 truncate text-center text-sm font-semibold text-[var(--text-primary)]">连发狙</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                            <img class="mx-auto h-20 w-full object-contain" src="../assets/image_6_k3lt89.svg" alt="等离狙击枪">
+                                            <p class="mt-3 truncate text-center text-sm font-semibold text-[var(--text-primary)]">等离狙</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid items-center gap-4 lg:grid-cols-[minmax(0,1fr),auto,minmax(0,1fr)]">
+                                        <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                                            <img class="mx-auto h-40 w-full object-contain sm:h-48" src="../assets/image_7_tpci9v.svg" alt="外星目标角色卡">
+                                            <div class="mt-4 flex items-center justify-between gap-3">
+                                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">外星目标</h3>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">
+                                                    高优先
+                                                </span>
+                                            </div>
+                                            <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">
+                                                作为主命中对象，需与锁定框、命中确认和奖励图标形成正向闭环。
+                                            </p>
+                                        </div>
+
+                                        <div class="flex flex-col items-center gap-3 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] px-4 py-5 text-center">
+                                            <img class="h-14 w-14 object-contain" src="../assets/image_8_iloq33.svg" alt="扫描雷达图标">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">识别中枢</p>
+                                            <p class="max-w-[16ch] text-xs leading-5 text-[var(--text-secondary)]">扫描、定位、奖励与控时围绕中心 HUD 收束。</p>
+                                            <img class="h-12 w-12 object-contain" src="../assets/image_9_62j2r1.svg" alt="定位图标">
+                                        </div>
+
+                                        <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                                            <img class="mx-auto h-40 w-full object-contain sm:h-48" src="../assets/image_10_77kouy.svg" alt="平民诱饵角色卡">
+                                            <div class="mt-4 flex items-center justify-between gap-3">
+                                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">平民诱饵</h3>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-error)]">
+                                                    高风险
+                                                </span>
+                                            </div>
+                                            <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">
+                                                作为误伤参照角色，需要与误伤警报和判别提示一并检视。
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid gap-3 sm:grid-cols-4">
+                                        <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 py-3">
+                                            <img class="h-9 w-9 shrink-0 object-contain" src="../assets/image_11_h1jo68.svg" alt="奖励图标">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">奖励反馈</p>
+                                                <p class="truncate text-xs text-[var(--text-secondary)]">命中后立刻兑现</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 py-3">
+                                            <img class="h-9 w-9 shrink-0 object-contain" src="../assets/image_12_nac4to.svg" alt="冻结子弹图标">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">冻结弹</p>
+                                                <p class="truncate text-xs text-[var(--text-secondary)]">减速与控场挂钩</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 py-3">
+                                            <img class="h-9 w-9 shrink-0 object-contain" src="../assets/image_13_aita7.svg" alt="延时图标">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">时间增益</p>
+                                                <p class="truncate text-xs text-[var(--text-secondary)]">和 HUD 时间条联动</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 py-3">
+                                            <img class="h-9 w-9 shrink-0 object-contain" src="../assets/image_0_2y5idn.svg" alt="瞄准图标">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">瞄准语义</p>
+                                                <p class="truncate text-xs text-[var(--text-secondary)]">统领整页视觉焦点</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <div class="grid gap-4 lg:col-span-3">
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">模块顺序</h2>
+                                <div class="mt-4 grid gap-3">
+                                    <div class="flex items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <span class="truncate text-sm text-[var(--text-primary)]">武器系统</span>
+                                        <span class="font-number whitespace-nowrap text-sm text-[var(--text-secondary)]">01</span>
+                                    </div>
+                                    <div class="flex items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <span class="truncate text-sm text-[var(--text-primary)]">识别角色</span>
+                                        <span class="font-number whitespace-nowrap text-sm text-[var(--text-secondary)]">02</span>
+                                    </div>
+                                    <div class="flex items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <span class="truncate text-sm text-[var(--text-primary)]">环境障碍</span>
+                                        <span class="font-number whitespace-nowrap text-sm text-[var(--text-secondary)]">03</span>
+                                    </div>
+                                    <div class="flex items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <span class="truncate text-sm text-[var(--text-primary)]">战斗反馈</span>
+                                        <span class="font-number whitespace-nowrap text-sm text-[var(--text-secondary)]">04</span>
+                                    </div>
+                                    <div class="flex items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <span class="truncate text-sm text-[var(--text-primary)]">HUD 组件</span>
+                                        <span class="font-number whitespace-nowrap text-sm text-[var(--text-secondary)]">05</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 backdrop-blur-sm">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">接入视角</h2>
+                                <div class="mt-4 grid gap-3">
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">统一命名</p>
+                                        <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">按 weapons / characters / environment / effects / hud 五组目录固化。</p>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">语义先行</p>
+                                        <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">误伤、命中、扫描、慢镜等状态直接映射到逻辑枚举。</p>
+                                    </div>
+                                    <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">评审复核</p>
+                                        <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">所有透明底 SVG 都放入同一暗板语境下检查边缘与对比。</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">武器系统</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            四把狙击枪覆盖基线、精度、连发与能量化差异。统一放在同一展示底上，便于比较体量、枪身轮廓与战斗定位。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        4 把枪
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color,background-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-40 w-full object-contain" src="../assets/image_3_6cqwza.svg" alt="基础狙击枪">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">基础狙</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">基线</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">单发基线武器，适合承载默认瞄准、后坐与伤害节奏。</p>
+                        <div class="mt-4 h-1 rounded-full bg-[var(--surface-card-soft)]">
+                            <div class="h-1 w-1/2 rounded-full bg-[var(--state-info)] transition-[width] duration-200 group-hover:w-2/3"></div>
+                        </div>
+                    </article>
+
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color,background-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-40 w-full object-contain" src="../assets/image_4_3jyavo.svg" alt="精确狙击枪">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">精确狙</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">稳定</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">更强调高精度与远距命中，适合配合锁定框与慢镜效果。</p>
+                        <div class="mt-4 h-1 rounded-full bg-[var(--surface-card-soft)]">
+                            <div class="h-1 w-3/4 rounded-full bg-[var(--state-success)] transition-[width] duration-200 group-hover:w-full"></div>
+                        </div>
+                    </article>
+
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color,background-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-40 w-full object-contain" src="../assets/image_5_eurbdp.svg" alt="连发狙击枪">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">连发狙</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">压制</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">自动连发更偏向压制火力，适合衔接枪口闪焰与掩体撞击反馈。</p>
+                        <div class="mt-4 h-1 rounded-full bg-[var(--surface-card-soft)]">
+                            <div class="h-1 w-4/5 rounded-full bg-[var(--state-warning)] transition-[width] duration-200 group-hover:w-full"></div>
+                        </div>
+                    </article>
+
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color,background-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-40 w-full object-contain" src="../assets/image_6_k3lt89.svg" alt="等离狙击枪">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">等离狙</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">能量</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">未来感枪型，适合和扫描、慢镜等带电感反馈一起使用。</p>
+                        <div class="mt-4 h-1 rounded-full bg-[var(--surface-card-soft)]">
+                            <div class="h-1 w-3/5 rounded-full bg-[var(--state-info)] transition-[width] duration-200 group-hover:w-4/5"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">识别角色</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            角色模块不是单独展示立绘，而是为了验证“外星目标 / 平民诱饵”的判别逻辑是否能在同一视角下快速成立。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        2 角 1 对照
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 lg:grid-cols-3">
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-52 w-full object-contain" src="../assets/image_7_tpci9v.svg" alt="外星目标角色">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">外星目标</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">命中</span>
+                        </div>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">作为主命中角色，配合锁定框、命中确认与奖励反馈，重点观察识别清晰度。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">识别对照</h3>
+                            <img class="h-9 w-9 shrink-0 object-contain" src="../assets/image_8_iloq33.svg" alt="扫描雷达">
+                        </div>
+                        <div class="mt-4 grid gap-3">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">目标特征</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">外星目标需与命中确认、奖励和锁定框形成正反馈链路。</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">误伤特征</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">平民诱饵应和误伤提示、红色警报、撤销奖励逻辑明确绑定。</p>
+                            </div>
+                            <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 py-3">
+                                <img class="h-10 w-10 shrink-0 object-contain" src="../assets/image_9_62j2r1.svg" alt="定位图标">
+                                <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">扫描与定位图标可作为角色判别的辅助手段，而不是单独奖励物。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="group rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4 transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-[var(--surface-border-strong)]">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-52 w-full object-contain" src="../assets/image_10_77kouy.svg" alt="平民诱饵角色">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">平民诱饵</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-error)]">避射</span>
+                        </div>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">作为误伤风险角色，必须在第一时间和目标角色形成明显识别差异。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">环境障碍</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            第二批环境件用于搭建城市夜战掩体逻辑，既要服务遮挡判断，也要帮助镜头快速读取场景层次。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        4 类障碍
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-36 w-full object-contain" src="../assets/image_14_mvtnlu.svg" alt="街角墙体障碍">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">街角墙体</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">掩体</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">用来承接贴边、探头和掩体撞击特效，是近景遮挡的基础模块。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-36 w-full object-contain" src="../assets/image_15_2i8gg7.svg" alt="街灯障碍">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">街灯</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">竖向</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">细长障碍强调竖向遮挡，适合和扫描脉冲及定位提示共同出现。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-36 w-full object-contain" src="../assets/image_16_d66qhq.svg" alt="停泊货车障碍">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">停泊货车</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">大遮挡</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">负责中景大面积遮挡，让角色识别与命中判定更有战场节奏。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-36 w-full object-contain" src="../assets/image_17_dte3hr.svg" alt="广告牌障碍">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">广告牌</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">远景</span>
+                        </div>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">可作为远景识别锚点，帮助 HUD 信息与环境层次统一落位。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">战斗反馈</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            特效模块用颜色语义来串起武器命中、误伤提醒、扫描搜寻与慢镜强化，不把它们做成孤立特效清单。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        6 组反馈
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">枪口闪焰</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-warning)]">发射</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_18_xt9v6r.svg" alt="枪口闪焰特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">与连发狙、基础狙的开火感直接绑定，负责打出第一下节奏。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">扫描脉冲</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-info)]">扫描</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_19_nvtiit.svg" alt="扫描脉冲特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">青蓝语义服务搜索与识别，和雷达、定位图标保持同一节拍。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">命中确认</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">命中</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_20_6q369b.svg" alt="命中确认特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">绿色确认用来告诉玩家“击中正确目标”，和奖励反馈形成闭环。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">误伤警报</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-error)]">误伤</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_21_itqhfc.svg" alt="误伤警报特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">红色高亮只用于误伤与关键警示，避免和普通信息争夺视觉等级。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">掩体撞击</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-warning)]">碰撞</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_22_y5v6r5.svg" alt="掩体撞击特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">当子弹命中环境件时承担失败反馈，帮助玩家理解遮挡关系。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="flex items-center justify-between gap-3">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">慢镜圈</h3>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-primary)]">慢镜</span>
+                        </div>
+                        <div class="mt-4 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_23_rxda0b.svg" alt="慢镜圈特效">
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">白蓝环形语义更适合承接高光时刻，和精确狙、镜框组件呼应。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative">
+            <div class="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">HUD 组件</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            HUD 区以组件板方式展示，而不是平铺截图，便于程序、美术和策划在同一视图下讨论挂载点与状态映射。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        5 组件
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_1_fpfs8t.svg" alt="瞄准镜框 HUD">
+                        </div>
+                        <h3 class="mt-4 truncate text-lg font-semibold text-[var(--text-primary)]">镜框</h3>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">负责整页 HUD 语法的外圈边界，是中心展示区的主结构。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_24_ekhvzr.svg" alt="生命条 HUD">
+                        </div>
+                        <h3 class="mt-4 truncate text-lg font-semibold text-[var(--text-primary)]">血量条</h3>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">战斗生存信息建议固定挂在视野边缘，避免压住中心识别区。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_25_843y1v.svg" alt="时间条 HUD">
+                        </div>
+                        <h3 class="mt-4 truncate text-lg font-semibold text-[var(--text-primary)]">时间条</h3>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">建议与延时奖励、慢镜状态共享同一逻辑入口，减少重复 UI。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_2_wiakdm.svg" alt="目标锁定框 HUD">
+                        </div>
+                        <h3 class="mt-4 truncate text-lg font-semibold text-[var(--text-primary)]">锁定框</h3>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">锁定框连接角色识别与武器开火，是“先识别再击发”的关键提示。</p>
+                    </article>
+
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img class="mx-auto h-28 w-full object-contain" src="../assets/image_26_2lhdjt.svg" alt="反馈面板 HUD">
+                        </div>
+                        <h3 class="mt-4 truncate text-lg font-semibold text-[var(--text-primary)]">反馈屏</h3>
+                        <p class="mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">用于承接命中、误伤和奖励文字，是策划反馈节奏的主要出口。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="relative border-t border-[var(--surface-border)] bg-[var(--surface-panel-soft)]">
+            <div class="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+                <div class="flex items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">接入建议</h2>
+                        <p class="mt-3 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            下面 4 条建议可直接作为 Godot 资源接入与评审清单的起点，确保美术、策划、程序对齐同一份资产语义。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        Godot
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">目录分层</h3>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">按 weapons、characters、environment、effects、hud 五组建立资源目录，并与本画布顺序保持一致。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">统一锚点</h3>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">为 HUD 组件预先约定锚点和层级，镜框、锁定框、反馈屏优先使用同一套挂载基准。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">状态映射</h3>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">把命中、误伤、扫描、慢镜写成明确状态枚举，让特效和 HUD 共享同一逻辑入口。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">评审回路</h3>
+                        <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">保持透明底 SVG 在深色场景底板中复核，确认边缘、对比度与命中语义都能直接落地。</p>
+                    </article>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

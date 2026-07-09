@@ -1,0 +1,25 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafGrad" x1="48" y1="28" x2="152" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4FF90"/>
+      <stop offset="0.55" stop-color="#67C55A"/>
+      <stop offset="1" stop-color="#397C43"/>
+    </linearGradient>
+    <linearGradient id="trunkGrad" x1="95" y1="118" x2="121" y2="189" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D19B64"/>
+      <stop offset="1" stop-color="#895830"/>
+    </linearGradient>
+    <filter id="shadow" x="18" y="18" width="184" height="190" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1A301F" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="193" rx="48" ry="10" fill="#193523" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <path d="M104 120C93 102 67 99 54 116C42 101 18 108 18 130C18 145 31 157 47 157H171C189 157 202 143 202 127C202 104 177 97 164 112C155 89 128 82 113 97L104 120Z" fill="url(#leafGrad)"/>
+    <path d="M68 111C76 73 112 50 146 68C157 74 166 83 171 94C188 90 202 103 202 120C202 136 189 149 173 149H54C35 149 21 134 21 116C21 101 33 88 48 88C53 88 57 89 61 91C64 84 70 76 76 71C92 59 114 57 129 64" fill="url(#leafGrad)"/>
+    <path d="M63 93C85 66 119 58 152 74" stroke="#EBFFD1" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+    <path d="M95 130C95 118 104 108 116 108C128 108 137 118 137 130V191H95V130Z" fill="url(#trunkGrad)"/>
+    <path d="M101 130C110 133 122 133 131 130" stroke="#F7D2A7" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  </g>
+</svg>

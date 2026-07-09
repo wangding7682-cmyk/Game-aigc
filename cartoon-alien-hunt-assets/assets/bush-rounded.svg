@@ -1,0 +1,21 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bushGrad" x1="46" y1="38" x2="161" y2="136" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9FF8B"/>
+      <stop offset="0.5" stop-color="#69CC58"/>
+      <stop offset="1" stop-color="#3B8743"/>
+    </linearGradient>
+    <filter id="shadow" x="16" y="24" width="188" height="132" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#16321D" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="145" rx="58" ry="10" fill="#183624" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <path d="M55 117C38 117 25 104 25 88C25 73 37 61 51 59C54 42 69 30 86 30C98 30 108 36 114 45C121 36 133 30 146 30C166 30 183 45 185 65C196 69 204 80 204 92C204 106 193 117 179 117H55Z" fill="url(#bushGrad)"/>
+    <path d="M61 79C78 57 115 46 155 58" stroke="#E7FFC9" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+    <path d="M79 119C83 102 95 90 110 90C125 90 137 102 141 119" stroke="#4A8E47" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="77" cy="83" rx="12" ry="9" fill="#D8FFAF" opacity="0.55"/>
+    <ellipse cx="148" cy="76" rx="10" ry="8" fill="#D8FFAF" opacity="0.45"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rockGrad" x1="57" y1="43" x2="156" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B7C7D8"/>
+      <stop offset="0.5" stop-color="#8B9FB1"/>
+      <stop offset="1" stop-color="#5B6E84"/>
+    </linearGradient>
+    <filter id="shadow" x="26" y="22" width="168" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#223042" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="111" cy="145" rx="52" ry="10" fill="#1C2836" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <path d="M94 49C106 37 126 37 138 49L152 63C157 67 160 74 160 81C160 95 148 106 134 106H99C84 106 72 94 72 80C72 73 75 66 80 62L94 49Z" fill="url(#rockGrad)"/>
+    <path d="M64 90C76 79 94 76 108 83L119 88C126 91 135 92 143 91L156 89C175 86 191 101 191 120C191 133 181 144 168 144H61C45 144 32 131 32 115C32 103 39 93 50 89L55 87C58 86 61 87 64 90Z" fill="url(#rockGrad)"/>
+    <path d="M88 63C105 53 126 54 143 64" stroke="#E9F3FB" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M60 106C83 96 114 95 154 107" stroke="#D4E2EE" stroke-width="7" stroke-linecap="round" opacity="0.45"/>
+    <path d="M90 125L110 116L130 124" stroke="#6C7F91" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>界面接入版</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="relative isolate overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute inset-x-0 top-0 h-80 bg-[var(--surface-panel-soft)] blur-3xl opacity-70"></div>
+            <div class="absolute inset-0 board-grid opacity-60"></div>
+            <div class="absolute inset-x-0 top-32 h-px bg-[var(--surface-border)]"></div>
+        </div>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+                <div class="grid gap-6 xl:grid-cols-[minmax(0,1.08fr),minmax(360px,0.92fr)] xl:items-start">
+                    <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold tracking-[0.08em] text-[var(--text-secondary)]">
+                                接入总控台
+                            </span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold tracking-[0.08em] text-[var(--state-info)]">
+                                桌面端画布
+                            </span>
+                        </div>
+                        <h1 class="mt-4 max-w-[12ch] text-[clamp(32px,5vw,52px)] font-semibold tracking-[-0.04em] text-[var(--text-primary)]" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                            狙击游戏界面接入画布
+                        </h1>
+                        <p class="mt-4 max-w-[72ch] text-base leading-7 text-[var(--text-secondary)] lg:text-lg">
+                            把原有资产总览推进到真实界面接入语境：主菜单负责入口组织，PVE 战斗负责 HUD 与反馈层，结算与关卡负责关卡拼装、成长奖励和教程讲解，让策划、程序与美术能直接对齐素材落位。
+                        </p>
+                        <div class="mt-6 surface-panel rounded-xl p-5">
+                            <div class="flex flex-wrap items-start justify-between gap-4">
+                                <div class="min-w-0">
+                                    <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">接入目标</h2>
+                                    <p class="mt-2 max-w-[60ch] text-sm leading-6 text-[var(--text-secondary)]">
+                                        统一入口语义、战斗层级和结算说明，不再把素材孤立陈列，而是让每张卡图、每个 HUD 件、每个特效都进入真实 UI 流程。
+                                    </p>
+                                </div>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                                    3个场景板块
+                                </span>
+                            </div>
+                            <div class="mt-5 grid gap-4 md:grid-cols-3">
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">目标一</p>
+                                    <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">入口成型</h3>
+                                    <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">主菜单把 PVE、PVP、武器库、商店与金币入口集中组织，武器卡图直接进入菜单运营位。</p>
+                                </article>
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">目标二</p>
+                                    <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">HUD 落层</h3>
+                                    <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">瞄准镜、锁定框、血量条、时间条、能力图标与命中反馈进入同一战斗 HUD 关系图。</p>
+                                </article>
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">目标三</p>
+                                    <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">关卡闭环</h3>
+                                    <p class="mt-2 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">环境障碍、反馈特效、结算奖励与教程提示共用一张板，方便程序定义同一套状态枚举。</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="surface-panel rounded-xl p-5">
+                        <div class="flex items-center justify-between gap-3">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">场景概览</h2>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-2.5 text-xs text-[var(--state-info)]">
+                                程序对齐
+                            </span>
+                        </div>
+                        <div class="mt-5 grid gap-3">
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4 transition-transform duration-200 hover:-translate-y-0.5">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div class="min-w-0">
+                                        <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">场景 01</p>
+                                        <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">主菜单接入</h3>
+                                    </div>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">入口</span>
+                                </div>
+                                <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">关键主视觉承接大厅氛围，入口按钮、武器库卡位和金币信息一起进入首屏。</p>
+                            </article>
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4 transition-transform duration-200 hover:-translate-y-0.5">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div class="min-w-0">
+                                        <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">场景 02</p>
+                                        <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">PVE 战斗接入</h3>
+                                    </div>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">HUD</span>
+                                </div>
+                                <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">以瞄准镜战斗画面为基底，明确基础图层、准星层、能力层和结果反馈层的叠加顺序。</p>
+                            </article>
+                            <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4 transition-transform duration-200 hover:-translate-y-0.5">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div class="min-w-0">
+                                        <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">场景 03</p>
+                                        <h3 class="mt-2 truncate text-base font-semibold text-[var(--text-primary)]">结算与关卡接入</h3>
+                                    </div>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-warning)]">闭环</span>
+                                </div>
+                                <p class="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">把环境拼装、命中反馈、教程指引与结算成长放在同一张作战板上统一解释。</p>
+                            </article>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">主菜单接入</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            主菜单不再只是展示主视觉，而是承接模式入口、武器库导流、货币信息和运营位。武器卡图与金币图标在此进入真实入口层级。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            移动端菜单框
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                            大厅入口语义
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-6 xl:grid-cols-12">
+                    <article class="integration-scene xl:col-span-8">
+                        <img src="../assets/menu-key-art.jpg" alt="都市夜战狙击主菜单接入主视觉" class="scene-backdrop">
+                        <div class="scene-mask"></div>
+                        <div class="relative z-10 grid h-full gap-5 p-5 lg:p-6 xl:grid-cols-[minmax(0,0.86fr),minmax(0,1.14fr)] xl:items-end">
+                            <div class="phone-shell">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="min-w-0">
+                                        <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">移动端入口</p>
+                                        <h3 class="mt-2 truncate text-lg font-semibold text-[var(--text-primary)]">夜战大厅</h3>
+                                    </div>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                        在线
+                                    </span>
+                                </div>
+                                <div class="mt-4 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">核心入口</p>
+                                    <div class="mt-3 grid gap-3">
+                                        <button type="button" class="menu-cta menu-cta-primary">开始 PVE</button>
+                                        <button type="button" class="menu-cta">进入 PVP</button>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <button type="button" class="menu-cta">商店</button>
+                                            <button type="button" class="menu-cta">武器库</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div class="flex min-w-0 items-center gap-2">
+                                            <img src="../assets/icon-coin.svg" alt="金币资源图标" class="h-8 w-8 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1.5">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm text-[var(--text-secondary)]">赛季资金</p>
+                                                <p class="font-number text-lg font-semibold text-[var(--text-primary)] whitespace-nowrap">12,480</p>
+                                            </div>
+                                        </div>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">
+                                            可升级
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <div class="surface-panel rounded-xl p-4 lg:p-5">
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                            场景覆盖
+                                        </span>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-2.5 text-xs text-[var(--state-info)]">
+                                            menu-key-art.jpg
+                                        </span>
+                                    </div>
+                                    <h3 class="mt-4 truncate text-xl font-semibold text-[var(--text-primary)]">入口层</h3>
+                                    <p class="mt-2 max-w-[54ch] text-sm leading-6 text-[var(--text-secondary)]">
+                                        背景主视觉负责建立都市夜战氛围，入口按钮贴近下沿，右侧补充武器卡位和商店导流，让大厅、武器库与运营位保持同一视觉重心。
+                                    </p>
+                                </div>
+
+                                <div class="grid gap-4 md:grid-cols-4">
+                                    <div class="weapon-slot md:col-span-2">
+                                        <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">武器库主卡</p>
+                                        <div class="mt-3 flex items-center gap-3">
+                                            <img src="../assets/weapon-default-sniper.svg" alt="基础狙击枪武器卡图" class="h-16 w-16 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">基础狙</p>
+                                                <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">默认推荐枪械，适合新手入口展示与开局装备预设。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="weapon-slot">
+                                        <img src="../assets/weapon-precision-sniper.svg" alt="精确狙击枪武器卡图" class="mx-auto h-14 w-14 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2">
+                                        <p class="mt-3 truncate text-center text-sm text-[var(--text-secondary)]">精确狙</p>
+                                    </div>
+                                    <div class="weapon-slot">
+                                        <img src="../assets/weapon-plasma-sniper.svg" alt="等离子狙击枪武器卡图" class="mx-auto h-14 w-14 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2">
+                                        <p class="mt-3 truncate text-center text-sm text-[var(--text-secondary)]">等离狙</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="grid gap-4 xl:col-span-4">
+                        <article class="surface-panel rounded-xl p-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">落位说明</h3>
+                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">入口层级</span>
+                            </div>
+                            <div class="mt-4 grid gap-3">
+                                <div class="mapping-row">
+                                    <img src="../assets/weapon-auto-sniper.svg" alt="连发狙击枪武器卡图" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">武器卡图 → 武器库 / 商店</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">枪械 SVG 进入卡池、推荐位和新手礼包，不再单独浮在素材列表中。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/icon-coin.svg" alt="金币入口资源图标" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">金币图标 → 顶部货币栏</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">作为商店和升级入口的状态触发点，位于顶部状态栏或角标区。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/alien-target-card.svg" alt="外星目标识别卡图" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">角色卡图 → 模式预告 / 活动面板</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">用于大厅内的任务预告、模式说明和限时活动入口。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="surface-panel rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">菜单层</h3>
+                            <div class="mt-4 grid gap-3">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">主视觉层</p>
+                                    <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">街景、狙击手与外星目标建立世界观氛围，承接游戏风格。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">操作层</p>
+                                    <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">开始 PVE、进入 PVP、商店、武器库组成完整入口组，保持左对齐节奏。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">补充层</p>
+                                    <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">金币、推荐枪械和活动角色卡补充运营与成长语义。</p>
+                                </div>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">PVE 战斗接入</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            以瞄准镜主视觉作为战斗基底，把 HUD 组件和反馈素材直接叠到战斗画面中，明确背景层、镜框层、能力层和结果层的程序挂载顺序。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            战斗 HUD
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                            实机落层
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-6 xl:grid-cols-12">
+                    <article class="integration-scene xl:col-span-8">
+                        <img src="../assets/loading-scope-art.jpg" alt="瞄准镜战斗主视觉接入示意" class="scene-backdrop">
+                        <div class="scene-mask"></div>
+                        <div class="relative z-10 h-full p-4 sm:p-5 lg:p-6">
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                        战斗视角
+                                    </span>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">
+                                        loading-scope-art.jpg
+                                    </span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <img src="../assets/hud-health-bar.svg" alt="血量条 HUD 组件" class="h-8 w-28 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1.5">
+                                    <img src="../assets/hud-time-bar.svg" alt="时间条 HUD 组件" class="h-8 w-28 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1.5">
+                                </div>
+                            </div>
+
+                            <div class="battle-shell mt-5">
+                                <img src="../assets/hud-scope-frame.svg" alt="瞄准镜框 HUD 组件" class="scope-frame">
+                                <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框 HUD 组件" class="target-lock">
+                                <img src="../assets/fx-scan-pulse.svg" alt="扫描脉冲战斗特效" class="scan-pulse">
+                                <img src="../assets/fx-hit-confirm.svg" alt="命中确认战斗特效" class="hit-confirm">
+                                <img src="../assets/fx-muzzle-flash.svg" alt="枪口闪焰战斗特效" class="muzzle-flash">
+
+                                <div class="hud-strip hud-strip-left">
+                                    <img src="../assets/hud-health-bar.svg" alt="战斗血量条" class="h-10 w-full">
+                                    <p class="mt-2 text-xs text-[var(--text-secondary)]">角色血量 / 护盾</p>
+                                </div>
+
+                                <div class="hud-strip hud-strip-right">
+                                    <img src="../assets/hud-time-bar.svg" alt="战斗时间条" class="h-10 w-full">
+                                    <p class="mt-2 text-xs text-[var(--text-secondary)]">波次计时 / 关卡倒计时</p>
+                                </div>
+
+                                <div class="hud-feedback">
+                                    <div class="flex items-start gap-3">
+                                        <img src="../assets/hud-feedback-panel.svg" alt="战斗反馈面板组件" class="h-12 w-12 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2">
+                                        <div class="min-w-0">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">战斗反馈屏</p>
+                                            <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">命中确认、误伤预警和目标识别结果在这里切换。</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ability-row">
+                                    <div class="ability-chip">
+                                        <img src="../assets/icon-scan-radar.svg" alt="扫描能力图标" class="ability-icon">
+                                        <span class="truncate">扫描</span>
+                                    </div>
+                                    <div class="ability-chip">
+                                        <img src="../assets/icon-locator.svg" alt="定位能力图标" class="ability-icon">
+                                        <span class="truncate">定位</span>
+                                    </div>
+                                    <div class="ability-chip">
+                                        <img src="../assets/icon-freeze-round.svg" alt="冰冻子弹能力图标" class="ability-icon">
+                                        <span class="truncate">冻结</span>
+                                    </div>
+                                    <div class="ability-chip">
+                                        <img src="../assets/icon-time-extend.svg" alt="延时能力图标" class="ability-icon">
+                                        <span class="truncate">延时</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="grid gap-4 xl:col-span-4">
+                        <article class="surface-panel rounded-xl p-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">分层关系</h3>
+                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--text-secondary)]">4层</span>
+                            </div>
+                            <div class="mt-4 grid gap-3">
+                                <div class="layer-row">
+                                    <span class="layer-index">01</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">背景层</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">loading-scope-art.jpg 承接真实战斗视角和目标空间。</p>
+                                    </div>
+                                </div>
+                                <div class="layer-row">
+                                    <span class="layer-index">02</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">准星层</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">镜框、锁定框、扫描脉冲挂在镜头级 HUD 容器，随视角统一缩放。</p>
+                                    </div>
+                                </div>
+                                <div class="layer-row">
+                                    <span class="layer-index">03</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">状态层</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">血量条、时间条和能力槽固定在屏幕边缘，不跟随世界空间位移。</p>
+                                    </div>
+                                </div>
+                                <div class="layer-row">
+                                    <span class="layer-index">04</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">结果层</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">命中确认、误伤预警和反馈面板负责结果提示，最后叠在最上层。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="surface-panel rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">HUD 映射</h3>
+                            <div class="mt-4 grid gap-3">
+                                <div class="mapping-row">
+                                    <img src="../assets/icon-scope-reticle.svg" alt="瞄准镜准星图标" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">准星图标 → 中央瞄准提示</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">进入 HUD 中央准心或开镜前提示层，帮助玩家聚焦射击节奏。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/fx-wrong-hit-alert.svg" alt="误伤警告特效" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">误伤特效 → 结果提示</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">仅在错误命中状态触发，使用状态错误色而不参与常规品牌着色。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/fx-cover-impact.svg" alt="掩体撞击特效" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">掩体特效 → 命中失败反馈</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">用于提示子弹命中掩体而非目标，帮助玩家理解关卡遮挡。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">结算与关卡接入</h2>
+                        <p class="mt-3 max-w-[74ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            把环境资产、命中反馈、成长奖励与教程语言合到同一块作战板，方便定义哪些素材用于关卡拼装，哪些进入战斗结果，哪些进入结算与新手说明。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            关卡拼装
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-warning)]">
+                            教程说明
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-6 xl:grid-cols-12">
+                    <article class="surface-panel rounded-xl p-5 xl:col-span-7">
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="min-w-0">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">关卡拼装板</h3>
+                                <p class="mt-2 max-w-[56ch] text-sm leading-6 text-[var(--text-secondary)]">环境件不单独陈列，而是按掩体路线、街景识别和穿透反馈一起进入地图预览板。</p>
+                            </div>
+                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                关卡预览
+                            </span>
+                        </div>
+                        <div class="mt-5 stage-board">
+                            <div class="stage-lane">
+                                <span class="stage-tag">掩体</span>
+                                <img src="../assets/env-wall-corner.svg" alt="街角墙体环境资产" class="stage-asset h-28 w-full object-contain">
+                                <p class="text-sm text-[var(--text-secondary)]">街角墙体用于主路径遮挡，配合掩体撞击和慢镜判断。</p>
+                            </div>
+                            <div class="stage-lane">
+                                <span class="stage-tag">识别</span>
+                                <img src="../assets/env-street-lamp.svg" alt="街灯环境资产" class="stage-asset h-28 w-full object-contain">
+                                <p class="text-sm text-[var(--text-secondary)]">街灯、广告牌帮助玩家完成地标记忆，便于教程说明目标刷新点。</p>
+                            </div>
+                            <div class="stage-lane">
+                                <span class="stage-tag">遮挡</span>
+                                <img src="../assets/env-parked-van.svg" alt="停泊货车环境资产" class="stage-asset h-28 w-full object-contain">
+                                <p class="text-sm text-[var(--text-secondary)]">停泊货车作为大型掩体，适合演示穿透判定与视线阻挡。</p>
+                            </div>
+                            <div class="stage-lane">
+                                <span class="stage-tag">导视</span>
+                                <img src="../assets/env-billboard.svg" alt="广告牌环境资产" class="stage-asset h-28 w-full object-contain">
+                                <p class="text-sm text-[var(--text-secondary)]">广告牌负责关卡导视、任务指向和高位敌人藏身提示。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="grid gap-6 xl:col-span-5">
+                        <article class="surface-panel rounded-xl p-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">反馈与教程</h3>
+                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-info)]">讲解层</span>
+                            </div>
+                            <div class="mt-4 grid gap-3">
+                                <div class="mapping-row">
+                                    <img src="../assets/fx-hit-confirm.svg" alt="命中确认战斗特效" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">命中特效 → 结果提示</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">成功命中时进入反馈层，也可在教程中标记“正确击杀”。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/fx-wrong-hit-alert.svg" alt="误伤警告战斗特效" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">误伤警告 → 教程警示</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">作为教程中的错误反馈卡，提醒平民诱饵不可攻击。</p>
+                                    </div>
+                                </div>
+                                <div class="mapping-row">
+                                    <img src="../assets/fx-slowmo-ring.svg" alt="慢动作环战斗特效" class="mapping-icon">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">慢镜特效 → 高光回放</p>
+                                        <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">用于关键击杀、高分结算和教程示范，形成高光瞬间。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">教程流程</p>
+                                <div class="mt-3 grid gap-2">
+                                    <div class="tutorial-step"><span class="step-index">1</span><span class="truncate">扫描外星目标，先辨认平民诱饵。</span></div>
+                                    <div class="tutorial-step"><span class="step-index">2</span><span class="truncate">锁定目标后再开镜，确认血量与时间条状态。</span></div>
+                                    <div class="tutorial-step"><span class="step-index">3</span><span class="truncate">命中后弹出反馈屏，失败则显示误伤与掩体提示。</span></div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="surface-panel rounded-xl p-5">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">结算成长</h3>
+                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] px-2.5 text-xs text-[var(--state-success)]">奖励层</span>
+                            </div>
+                            <div class="mt-4 grid gap-4 lg:grid-cols-[minmax(0,0.9fr),minmax(0,1.1fr)]">
+                                <div class="phone-shell">
+                                    <p class="text-xs tracking-[0.08em] text-[var(--text-muted)]">结算卡面</p>
+                                    <div class="mt-3 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <div class="min-w-0">
+                                                <p class="truncate text-sm text-[var(--text-secondary)]">任务评级</p>
+                                                <p class="mt-1 text-2xl font-semibold text-[var(--text-primary)]">S 级清场</p>
+                                            </div>
+                                            <img src="../assets/icon-coin.svg" alt="金币奖励图标" class="h-10 w-10 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2">
+                                        </div>
+                                        <div class="mt-4 grid gap-2">
+                                            <div class="reward-row"><span class="truncate text-[var(--text-secondary)]">金币奖励</span><span class="font-number whitespace-nowrap text-[var(--text-primary)]">+980</span></div>
+                                            <div class="reward-row"><span class="truncate text-[var(--text-secondary)]">冻结弹补给</span><span class="font-number whitespace-nowrap text-[var(--text-primary)]">+2</span></div>
+                                            <div class="reward-row"><span class="truncate text-[var(--text-secondary)]">延时充能</span><span class="font-number whitespace-nowrap text-[var(--text-primary)]">+1</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid gap-3">
+                                    <div class="mapping-row">
+                                        <img src="../assets/weapon-precision-sniper.svg" alt="精确狙击枪解锁卡图" class="mapping-icon">
+                                        <div class="min-w-0">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">武器卡图 → 解锁奖励</p>
+                                            <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">高阶枪械在结算页作为解锁或升级目标展示，衔接武器库成长。</p>
+                                        </div>
+                                    </div>
+                                    <div class="mapping-row">
+                                        <img src="../assets/icon-freeze-round.svg" alt="冻结子弹奖励图标" class="mapping-icon">
+                                        <div class="min-w-0">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">道具图标 → 能力结算</p>
+                                            <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">冻结弹、定位器、延时器在结算页回顾本局使用与补充数量。</p>
+                                        </div>
+                                    </div>
+                                    <div class="mapping-row">
+                                        <img src="../assets/civilian-decoy-card.svg" alt="平民诱饵识别卡图" class="mapping-icon">
+                                        <div class="min-w-0">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">识别卡图 → 教程复盘</p>
+                                            <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">平民诱饵与外星目标卡图可进入复盘卡片，解释判定差异和误伤来源。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate text-2xl font-semibold text-[var(--text-primary)]">映射总表</h2>
+                        <p class="mt-3 max-w-[74ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            这一行把“素材 → 界面层”的核心关系压缩成程序可读的总览，方便继续拆成 Prefab、节点挂载与状态枚举。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        素材 → 界面层
+                    </span>
+                </div>
+
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <article class="surface-panel rounded-xl p-5">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器系统</h3>
+                        <div class="mt-4 grid gap-3">
+                            <div class="mapping-row">
+                                <img src="../assets/weapon-default-sniper.svg" alt="基础狙击枪素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">基础狙 → 新手武器库</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">主菜单、结算奖励和教程示例都可复用同一张卡图。</p>
+                                </div>
+                            </div>
+                            <div class="mapping-row">
+                                <img src="../assets/weapon-plasma-sniper.svg" alt="等离子狙击枪素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">等离狙 → 高阶解锁</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">适合商店主推卡或高分结算的解锁预告。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="surface-panel rounded-xl p-5">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">战斗语义</h3>
+                        <div class="mt-4 grid gap-3">
+                            <div class="mapping-row">
+                                <img src="../assets/icon-scan-radar.svg" alt="扫描图标素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">扫描图标 → HUD 能力槽</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">常驻在底部能力槽，与定位、冻结、延时构成技能序列。</p>
+                                </div>
+                            </div>
+                            <div class="mapping-row">
+                                <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">锁定框 → 世界目标叠层</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">跟随敌人位置而变化，属于世界空间 HUD 容器。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="surface-panel rounded-xl p-5">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">关卡闭环</h3>
+                        <div class="mt-4 grid gap-3">
+                            <div class="mapping-row">
+                                <img src="../assets/env-billboard.svg" alt="广告牌环境素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">环境物件 → 关卡预览</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">进入关卡拼装板和加载页预览，帮助玩家提前识别路线。</p>
+                                </div>
+                            </div>
+                            <div class="mapping-row">
+                                <img src="../assets/fx-hit-confirm.svg" alt="命中确认特效素材" class="mapping-icon">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">反馈特效 → 战斗结果提示</p>
+                                    <p class="line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">进入反馈屏、结算回放与教程复盘，不再孤立存在。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <style>
+      .board-grid {
+        background-image:
+          linear-gradient(color-mix(in srgb, var(--surface-border) 30%, transparent) 1px, transparent 1px),
+          linear-gradient(90deg, color-mix(in srgb, var(--surface-border) 30%, transparent) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      .surface-panel {
+        background:
+          linear-gradient(180deg, var(--surface-panel) 0%, var(--surface-panel-soft) 100%);
+        border: 1px solid var(--surface-border);
+        backdrop-filter: blur(14px);
+      }
+
+      .integration-scene {
+        position: relative;
+        overflow: hidden;
+        min-height: 640px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background:
+          linear-gradient(180deg, var(--surface-panel) 0%, var(--surface-card-soft) 100%);
+      }
+
+      .scene-backdrop {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .scene-mask {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, transparent 0%, var(--overlay-scrim) 100%);
+      }
+
+      .phone-shell {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border-strong);
+        background:
+          linear-gradient(180deg, var(--surface-panel) 0%, var(--surface-panel-soft) 100%);
+        padding: 18px;
+      }
+
+      .menu-cta {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel);
+        color: var(--text-primary);
+        font-size: 14px;
+        font-weight: 700;
+        transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+      }
+
+      .menu-cta:hover,
+      .menu-cta:focus-visible {
+        transform: translateY(-1px);
+        border-color: var(--surface-border-strong);
+      }
+
+      .menu-cta-primary {
+        background: var(--brand-primary);
+        color: var(--text-inverse);
+        border-color: var(--brand-primary);
+      }
+
+      .weapon-slot,
+      .mapping-row,
+      .layer-row,
+      .reward-row,
+      .tutorial-step {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background: var(--surface-card-soft);
+      }
+
+      .weapon-slot {
+        padding: 14px;
+      }
+
+      .mapping-row {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        padding: 12px;
+      }
+
+      .mapping-icon {
+        width: 52px;
+        height: 52px;
+        padding: 10px;
+        border-radius: 14px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel);
+      }
+
+      .battle-shell {
+        position: relative;
+        min-height: 470px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background:
+          linear-gradient(180deg, transparent 0%, var(--overlay-scrim) 100%);
+      }
+
+      .scope-frame,
+      .target-lock,
+      .scan-pulse,
+      .hit-confirm,
+      .muzzle-flash {
+        position: absolute;
+        object-fit: contain;
+      }
+
+      .scope-frame {
+        inset: 6% 11%;
+        width: 78%;
+        height: 78%;
+        opacity: 0.88;
+      }
+
+      .target-lock {
+        top: 34%;
+        left: 56%;
+        width: 16%;
+        height: 16%;
+      }
+
+      .scan-pulse {
+        top: 36%;
+        left: 52%;
+        width: 24%;
+        height: 24%;
+        opacity: 0.72;
+      }
+
+      .hit-confirm {
+        right: 8%;
+        bottom: 18%;
+        width: 22%;
+        height: 16%;
+      }
+
+      .muzzle-flash {
+        left: 18%;
+        bottom: 19%;
+        width: 12%;
+        height: 12%;
+      }
+
+      .hud-strip,
+      .hud-feedback,
+      .ability-row {
+        position: absolute;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel-soft);
+        backdrop-filter: blur(10px);
+      }
+
+      .hud-strip {
+        top: 18px;
+        width: min(240px, calc(50% - 32px));
+        padding: 12px;
+      }
+
+      .hud-strip-left {
+        left: 18px;
+      }
+
+      .hud-strip-right {
+        right: 18px;
+      }
+
+      .hud-feedback {
+        right: 18px;
+        bottom: 90px;
+        width: min(280px, calc(100% - 36px));
+        padding: 12px;
+      }
+
+      .ability-row {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .ability-chip {
+        display: inline-flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel);
+        padding: 10px 12px;
+        color: var(--text-primary);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .ability-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      .layer-row {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        padding: 12px;
+      }
+
+      .layer-index,
+      .step-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel);
+        color: var(--text-primary);
+        font-family: var(--font-number);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .layer-index {
+        width: 44px;
+        height: 44px;
+      }
+
+      .stage-board {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stage-lane {
+        display: grid;
+        gap: 12px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background: var(--surface-card-soft);
+        padding: 14px;
+      }
+
+      .stage-tag {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        border-radius: 10px;
+        border: 1px solid var(--surface-border);
+        background: var(--surface-panel);
+        color: var(--text-secondary);
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+
+      .stage-asset {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--surface-border);
+        background:
+          linear-gradient(180deg, var(--surface-panel) 0%, var(--surface-panel-soft) 100%);
+        padding: 12px;
+      }
+
+      .tutorial-step {
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+        padding: 12px;
+        color: var(--text-secondary);
+        font-size: 13px;
+      }
+
+      .step-index {
+        width: 32px;
+        height: 32px;
+      }
+
+      .reward-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+      }
+
+      @media (max-width: 1023px) {
+        .integration-scene {
+          min-height: 720px;
+        }
+
+        .battle-shell {
+          min-height: 520px;
+        }
+
+        .hud-strip {
+          width: min(220px, calc(50% - 28px));
+        }
+      }
+
+      @media (max-width: 767px) {
+        .integration-scene {
+          min-height: 820px;
+        }
+
+        .phone-shell {
+          border-radius: var(--radius-lg);
+        }
+
+        .battle-shell {
+          min-height: 560px;
+        }
+
+        .hud-strip {
+          position: static;
+          width: auto;
+          margin-bottom: 12px;
+        }
+
+        .hud-feedback {
+          left: 18px;
+          right: 18px;
+          bottom: 112px;
+          width: auto;
+        }
+
+        .ability-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stage-board {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .menu-cta,
+        .transition-transform {
+          transition-duration: 1ms !important;
+        }
+
+        .menu-cta:hover,
+        .menu-cta:focus-visible,
+        .hover\:-translate-y-0\.5:hover {
+          transform: none !important;
+        }
+      }
+    </style>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

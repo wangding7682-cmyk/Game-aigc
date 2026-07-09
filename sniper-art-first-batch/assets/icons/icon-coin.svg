@@ -1,0 +1,25 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">金币图标</title>
+  <desc id="desc">软3D发光金币图标，适用于商店和奖励 HUD。</desc>
+  <defs>
+    <radialGradient id="coinGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(39 28) rotate(49) scale(42 42)">
+      <stop stop-color="#FFF8C8"/>
+      <stop offset="0.52" stop-color="#FFD95C"/>
+      <stop offset="1" stop-color="#DB8F17"/>
+    </radialGradient>
+    <linearGradient id="edgeGrad" x1="24" y1="48" x2="72" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A85E0F"/>
+      <stop offset="1" stop-color="#FFD97D"/>
+    </linearGradient>
+    <filter id="shadow" x="10" y="12" width="76" height="76" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#110C05" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="48" cy="48" r="24" fill="url(#coinGrad)"/>
+    <circle cx="48" cy="48" r="24" stroke="url(#edgeGrad)" stroke-width="6"/>
+    <circle cx="48" cy="48" r="12" fill="#F7B62A" opacity="0.9"/>
+    <path d="M39 48H57" stroke="#FFF4C4" stroke-width="5" stroke-linecap="round"/>
+    <path d="M33 37C38 31 44 28 52 28" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.58"/>
+  </g>
+</svg>

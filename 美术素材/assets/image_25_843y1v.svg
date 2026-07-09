@@ -1,0 +1,19 @@
+<svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="timeFill" x1="32" y1="36" x2="258" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#75DFFF"/>
+      <stop offset="1" stop-color="#4B8CFF"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="18" y1="14" x2="302" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7B8EA8"/>
+      <stop offset="1" stop-color="#263246"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="14" width="296" height="44" rx="18" fill="#07101A" opacity="0.94" stroke="url(#frame)" stroke-width="2"/>
+  <rect x="24" y="26" width="272" height="20" rx="10" fill="#152333"/>
+  <rect x="24" y="26" width="236" height="20" rx="10" fill="url(#timeFill)"/>
+  <path d="M46 36H238" stroke="#E2F7FF" stroke-width="6" stroke-linecap="round" opacity="0.22"/>
+  <path d="M30 36H48" stroke="#E7F9FF" stroke-width="4" stroke-linecap="round" opacity="0.56"/>
+  <path d="M272 36H290" stroke="#A4B5CB" stroke-width="4" stroke-linecap="round" opacity="0.38"/>
+  <path d="M286 21L294 14" stroke="#97AECA" stroke-width="4" stroke-linecap="round" opacity="0.36"/>
+</svg>

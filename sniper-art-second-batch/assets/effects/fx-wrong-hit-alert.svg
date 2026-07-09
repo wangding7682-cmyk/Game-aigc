@@ -1,0 +1,17 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="warnGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80 80) rotate(90) scale(56 56)">
+      <stop stop-color="#FFB1BE" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FF5B72" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="52" stroke="#FF7288" stroke-width="4" opacity="0.42"/>
+  <circle cx="80" cy="80" r="36" stroke="#FF98A8" stroke-width="3.5" opacity="0.58"/>
+  <path d="M56 56L104 104" stroke="#FF5F74" stroke-width="10" stroke-linecap="round"/>
+  <path d="M104 56L56 104" stroke="#FF5F74" stroke-width="10" stroke-linecap="round"/>
+  <path d="M80 22V36" stroke="#FF8194" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <path d="M80 124V138" stroke="#FF8194" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <path d="M22 80H36" stroke="#FF8194" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <path d="M124 80H138" stroke="#FF8194" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="80" cy="80" r="56" fill="url(#warnGlow)"/>
+</svg>

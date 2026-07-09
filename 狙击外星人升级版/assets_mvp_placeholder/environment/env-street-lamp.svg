@@ -1,0 +1,44 @@
+<svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pole" x1="142" y1="42" x2="175" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#546071"/>
+      <stop offset="1" stop-color="#1B2330"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="145" y1="72" x2="235" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6A7688"/>
+      <stop offset="1" stop-color="#283140"/>
+    </linearGradient>
+    <linearGradient id="lampBody" x1="216" y1="90" x2="246" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9AA8BC"/>
+      <stop offset="1" stop-color="#4F5A6C"/>
+    </linearGradient>
+    <radialGradient id="warmGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(231 128) rotate(90) scale(56 44)">
+      <stop stop-color="#FFE8A5" stop-opacity="0.82"/>
+      <stop offset="0.46" stop-color="#FFCF72" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#FFCF72" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kiosk" x1="88" y1="152" x2="236" y2="222" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#234B69"/>
+      <stop offset="1" stop-color="#172536"/>
+    </linearGradient>
+    <filter id="shadow" x="52" y="24" width="228" height="196" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#02050C" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+  <ellipse cx="166" cy="208" rx="90" ry="16" fill="#02060D" opacity="0.32"/>
+  <g filter="url(#shadow)">
+    <rect x="145" y="46" width="20" height="150" rx="10" fill="url(#pole)"/>
+    <rect x="122" y="190" width="66" height="18" rx="9" fill="#212A39"/>
+    <path d="M155 78C155 66 165 56 177 56H220C231 56 240 65 240 76V82H155V78Z" fill="url(#arm)"/>
+    <path d="M210 78C225 78 239 90 239 106V114C239 128 228 139 214 139H206C196 139 188 131 188 121V98C188 87 197 78 210 78Z" fill="url(#lampBody)"/>
+    <path d="M199 89H233" stroke="#EAF0FB" stroke-width="6" stroke-linecap="round" opacity="0.42"/>
+    <path d="M202 119H228" stroke="#FFDFA2" stroke-width="8" stroke-linecap="round" opacity="0.88"/>
+    <path d="M91 154C91 145 98 138 107 138H210C219 138 226 145 226 154V190H91V154Z" fill="url(#kiosk)" opacity="0.84"/>
+    <path d="M105 152H211" stroke="#82D5F8" stroke-width="7" stroke-linecap="round" opacity="0.26"/>
+    <path d="M109 168H204" stroke="#0E1824" stroke-width="10" stroke-linecap="round" opacity="0.38"/>
+    <path d="M108 183H195" stroke="#68B7E8" stroke-width="7" stroke-linecap="round" opacity="0.22"/>
+    <path d="M230 92C238 100 244 111 246 125" stroke="#FFD17D" stroke-width="6" stroke-linecap="round" opacity="0.42"/>
+    <ellipse cx="231" cy="128" rx="56" ry="54" fill="url(#warmGlow)"/>
+    <path d="M151 50C154 45 159 42 164 42C168 42 172 44 175 48" stroke="#C8D2E3" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+  </g>
+</svg>

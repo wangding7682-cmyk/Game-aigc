@@ -1,0 +1,49 @@
+<svg width="320" height="420" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="head" x1="112" y1="63" x2="206" y2="171" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8AA4B7"/>
+      <stop offset="1" stop-color="#526571"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="109" y1="162" x2="207" y2="346" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#748995"/>
+      <stop offset="0.6" stop-color="#556876"/>
+      <stop offset="1" stop-color="#394752"/>
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(182 188) rotate(90) scale(38 26)">
+      <stop stop-color="#FFD38B"/>
+      <stop offset="1" stop-color="#FFB957" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eyeFalse" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(176 133) rotate(90) scale(12 22)">
+      <stop stop-color="#FFD591"/>
+      <stop offset="1" stop-color="#FFBD60" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="61" y="48" width="198" height="333" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="160" cy="372" rx="62" ry="16" fill="#08111A" fill-opacity="0.38"/>
+    <path d="M121 121C121 87 139 63 160 63C182 63 199 87 199 121C199 137 194 151 186 160C179 168 170 172 160 172C149 172 141 168 134 160C126 151 121 137 121 121Z" fill="url(#head)"/>
+    <path d="M132 122C132 100 144 86 160 86C176 86 188 100 188 122C188 132 184 141 178 147C173 152 167 154 160 154C152 154 147 151 142 147C136 141 132 132 132 122Z" fill="#CAD9E1"/>
+    <path d="M123 160L110 207L116 330C117 342 126 350 137 350H184C195 350 204 342 205 330L210 205L196 161C186 168 175 173 160 173C145 173 134 168 123 160Z" fill="url(#coat)"/>
+    <path d="M121 170L98 212C94 219 96 228 102 233L118 246L128 233L119 217L132 191L121 170Z" fill="#6B7F8D"/>
+    <path d="M198 170L222 211C226 218 225 227 219 233L204 245L193 232L202 216L188 190L198 170Z" fill="#5B6D7A"/>
+    <path d="M141 177L156 239L173 177C168 181 164 183 160 183C155 183 149 181 141 177Z" fill="#AFC1CC" fill-opacity="0.74"/>
+    <path d="M141 252L137 341H113L109 261L141 252Z" fill="#4B5B67"/>
+    <path d="M179 252L183 341H207L211 261L179 252Z" fill="#42515D"/>
+    <path d="M141 337L141 361C141 370 134 377 126 377H116C109 377 102 372 102 364V341L141 337Z" fill="#182128"/>
+    <path d="M179 337L179 361C179 370 186 377 194 377H204C211 377 218 372 218 364V341L179 337Z" fill="#1B242B"/>
+    <path d="M131 122C140 118 150 116 160 116C170 116 180 118 189 122" stroke="#E6EEF3" stroke-width="8" stroke-linecap="round" stroke-opacity="0.64"/>
+    <path d="M120 190C129 184 136 180 144 178" stroke="#A8BAC4" stroke-width="8" stroke-linecap="round"/>
+    <path d="M199 190C191 184 184 180 176 178" stroke="#A8BAC4" stroke-width="8" stroke-linecap="round"/>
+    <path d="M147 128C151 125 156 124 160 124C165 124 170 125 174 128" stroke="#718895" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="145" cy="133" r="3.5" fill="#607A89"/>
+    <circle cx="175" cy="133" r="3.5" fill="#607A89"/>
+    <circle cx="176" cy="133" r="5" fill="url(#eyeFalse)"/>
+    <path d="M182 174L206 184L184 196L160 185L182 174Z" fill="url(#amberGlow)"/>
+    <path d="M188 166L194 174L186 179L180 171L188 166Z" fill="#FFD28B"/>
+    <path d="M122 240L136 246" stroke="#FFBF66" stroke-width="5" stroke-linecap="round" stroke-opacity="0.78"/>
+    <path d="M117 251L129 256" stroke="#FFDCA2" stroke-width="3" stroke-linecap="round" stroke-opacity="0.66"/>
+  </g>
+</svg>

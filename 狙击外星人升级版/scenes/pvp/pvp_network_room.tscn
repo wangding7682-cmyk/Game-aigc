@@ -1,0 +1,204 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/pvp/pvp_network_room_controller.gd" id="1"]
+
+[node name="PvpNetworkRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="SafeArea" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="MainLayout" type="VBoxContainer" parent="SafeArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="HeaderPanel" type="PanelContainer" parent="SafeArea/MainLayout"]
+layout_mode = 2
+
+[node name="HeaderMargin" type="MarginContainer" parent="SafeArea/MainLayout/HeaderPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="HeaderVBox" type="VBoxContainer" parent="SafeArea/MainLayout/HeaderPanel/HeaderMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="SafeArea/MainLayout/HeaderPanel/HeaderMargin/HeaderVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "PVP 局域网对战房间"
+
+[node name="RoundLabel" type="Label" parent="SafeArea/MainLayout/HeaderPanel/HeaderMargin/HeaderVBox"]
+layout_mode = 2
+text = "当前回合：1 / 3"
+
+[node name="TurnLabel" type="Label" parent="SafeArea/MainLayout/HeaderPanel/HeaderMargin/HeaderVBox"]
+layout_mode = 2
+text = "当前操作方：我方"
+
+[node name="ServerLabel" type="Label" parent="SafeArea/MainLayout/HeaderPanel/HeaderMargin/HeaderVBox"]
+layout_mode = 2
+text = "等待房间建立..."
+autowrap_mode = 3
+
+[node name="ContentHBox" type="HBoxContainer" parent="SafeArea/MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="LeftPanel" type="PanelContainer" parent="SafeArea/MainLayout/ContentHBox"]
+custom_minimum_size = Vector2(280, 420)
+layout_mode = 2
+
+[node name="LeftMargin" type="MarginContainer" parent="SafeArea/MainLayout/ContentHBox/LeftPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LeftVBox" type="VBoxContainer" parent="SafeArea/MainLayout/ContentHBox/LeftPanel/LeftMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayerStateLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/LeftPanel/LeftMargin/LeftVBox"]
+layout_mode = 2
+text = "我方状态"
+autowrap_mode = 3
+
+[node name="OpponentStateLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/LeftPanel/LeftMargin/LeftVBox"]
+layout_mode = 2
+text = "对手状态"
+autowrap_mode = 3
+
+[node name="LogLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/LeftPanel/LeftMargin/LeftVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "最近事件"
+autowrap_mode = 3
+
+[node name="BattlePanel" type="PanelContainer" parent="SafeArea/MainLayout/ContentHBox"]
+custom_minimum_size = Vector2(460, 420)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BattleMargin" type="MarginContainer" parent="SafeArea/MainLayout/ContentHBox/BattlePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BattleVBox" type="VBoxContainer" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BattleTipLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin/BattleVBox"]
+layout_mode = 2
+text = "靶板代表弹孔贴花区域。先点击选点，再提交射击。"
+autowrap_mode = 3
+
+[node name="BattlefieldRect" type="ColorRect" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin/BattleVBox"]
+custom_minimum_size = Vector2(420, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.15, 0.17, 0.22, 1)
+mouse_default_cursor_shape = 2
+
+[node name="DecalRoot" type="Control" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin/BattleVBox/BattlefieldRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AimMarker" type="ColorRect" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin/BattleVBox/BattlefieldRect"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.95, 0.95, 0.2, 1)
+mouse_filter = 2
+
+[node name="SelectionLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/BattlePanel/BattleMargin/BattleVBox"]
+layout_mode = 2
+text = "先在靶板上点击一个落点，再提交射击"
+autowrap_mode = 3
+
+[node name="RightPanel" type="PanelContainer" parent="SafeArea/MainLayout/ContentHBox"]
+custom_minimum_size = Vector2(300, 420)
+layout_mode = 2
+
+[node name="RightMargin" type="MarginContainer" parent="SafeArea/MainLayout/ContentHBox/RightPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="RightVBox" type="VBoxContainer" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ActionTipLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+layout_mode = 2
+text = "动作键：`Tab` 切姿势，点击靶板后按 `F` 也可提交，`X` 可模拟断线。"
+autowrap_mode = 3
+
+[node name="SwitchPostureButton" type="Button" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+layout_mode = 2
+text = "切换姿势"
+
+[node name="SubmitShotButton" type="Button" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+layout_mode = 2
+text = "提交射击"
+
+[node name="DisconnectButton" type="Button" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+layout_mode = 2
+text = "模拟断线并返回菜单"
+
+[node name="ReturnMenuButton" type="Button" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+layout_mode = 2
+text = "放弃并返回主菜单"
+
+[node name="SummaryLabel" type="Label" parent="SafeArea/MainLayout/ContentHBox/RightPanel/RightMargin/RightVBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "本地对局总结"
+autowrap_mode = 3
+
+[node name="FloatingSubtitleLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

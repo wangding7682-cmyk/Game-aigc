@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="flash" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(68)">
+      <stop stop-color="#F3FFF8"/>
+      <stop offset="0.45" stop-color="#66F1A8"/>
+      <stop offset="1" stop-color="#66F1A8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="128" r="34" fill="url(#flash)"/>
+  <path d="M128 86L139 117H170L145 135L154 166L128 147L102 166L111 135L86 117H117L128 86Z" fill="#CFFFF0"/>
+  <circle cx="128" cy="128" r="56" stroke="#66F1A8" stroke-width="8" stroke-opacity="0.86"/>
+</svg>

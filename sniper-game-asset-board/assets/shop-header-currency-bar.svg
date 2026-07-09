@@ -1,0 +1,30 @@
+<svg width="512" height="128" viewBox="0 0 512 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bar" x1="32" y1="18" x2="468" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172738"/>
+      <stop offset="1" stop-color="#0A121B"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="88" y1="44" x2="114" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE49C"/>
+      <stop offset="1" stop-color="#F0A63A"/>
+    </linearGradient>
+    <filter id="shadow" x="10" y="8" width="492" height="112" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <rect x="20" y="18" width="472" height="92" rx="28" fill="url(#bar)" stroke="#294762" stroke-width="2"/>
+    <rect x="30" y="28" width="452" height="72" rx="22" fill="url(#bar)" fill-opacity="0.4" stroke="#6AD4FF" stroke-opacity="0.18"/>
+    <rect x="42" y="40" width="94" height="48" rx="18" fill="#112231" stroke="#3D5F7A" stroke-width="2"/>
+    <circle cx="88" cy="64" r="20" fill="url(#coin)"/>
+    <circle cx="88" cy="64" r="12" fill="#FFD872" fill-opacity="0.55"/>
+    <path d="M81 64H95" stroke="#8E5B11" stroke-width="4" stroke-linecap="round"/>
+    <path d="M88 57V71" stroke="#8E5B11" stroke-width="4" stroke-linecap="round"/>
+    <path d="M156 52H240" stroke="#93E8FF" stroke-width="8" stroke-linecap="round" stroke-opacity="0.92"/>
+    <path d="M156 74H208" stroke="#4C6985" stroke-width="6" stroke-linecap="round"/>
+    <rect x="334" y="40" width="134" height="48" rx="18" fill="#0F1D2A" stroke="#FF5E70" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="364" cy="64" r="10" fill="#FF5E70"/>
+    <path d="M388 64H437" stroke="#FFD7DC" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-bullet-hole-cluster-soft-title wall-bullet-hole-cluster-soft-desc">
+  <title id="wall-bullet-hole-cluster-soft-title">软3D卡通墙体连发穿透贴花</title>
+  <desc id="wall-bullet-hole-cluster-soft-desc">透明背景的连发穿透贴花，多个真实透明洞口配合碎边和裂纹，可让后方对象在破损区被看见。</desc>
+  <defs>
+    <linearGradient id="cluster-rim-grad" x1="57" y1="49" x2="163" y2="133" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7DEB2"/>
+      <stop offset="0.55" stop-color="#D79B62"/>
+      <stop offset="1" stop-color="#8C5732"/>
+    </linearGradient>
+    <linearGradient id="cluster-inner-grad" x1="86" y1="72" x2="135" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFDDB8"/>
+      <stop offset="0.54" stop-color="#B87A48"/>
+      <stop offset="1" stop-color="#533018"/>
+    </linearGradient>
+    <radialGradient id="cluster-sheen-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(92 67) rotate(28) scale(58 25)">
+      <stop stop-color="white" stop-opacity="0.66"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cluster-soft-shadow" x="34" y="28" width="162" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#4B2B13" flood-opacity="0.21"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cluster-soft-shadow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M101 48L119 52L136 50L150 60L159 75L160 91L167 105L157 118L143 122L129 133L111 131L94 137L79 131L66 120L59 105L55 90L60 74L72 61L85 56L91 49L101 48ZM90 69L98 73L104 80L105 89L101 97L92 102L82 100L76 92L76 82L81 74L90 69ZM131 68L140 72L146 80L146 88L142 96L134 100L124 98L119 90L119 81L123 73L131 68ZM110 97L120 101L127 110L127 120L121 127L111 129L101 126L95 117L96 108L101 101L110 97Z" fill="url(#cluster-rim-grad)"/>
+    <path d="M101 48L119 52L136 50L150 60L159 75L160 91L167 105L157 118L143 122L129 133L111 131L94 137L79 131L66 120L59 105L55 90L60 74L72 61L85 56L91 49L101 48Z" fill="url(#cluster-sheen-grad)" opacity="0.8"/>
+    <path d="M79 76C83 70 92 68 99 72C105 76 107 85 104 92C101 99 93 103 85 101C78 99 74 93 74 86C74 83 76 79 79 76Z" stroke="url(#cluster-inner-grad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M123 75C127 69 136 67 142 72C147 76 149 84 146 91C143 98 135 102 128 100C121 98 117 92 117 85C117 81 119 78 123 75Z" stroke="url(#cluster-inner-grad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M100 105C105 99 116 98 123 103C129 108 130 118 125 125C121 131 111 134 103 130C95 126 91 117 95 109C96 108 98 106 100 105Z" stroke="url(#cluster-inner-grad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M108 61L111 51" stroke="#B17446" stroke-width="5" stroke-linecap="round"/>
+    <path d="M72 87L61 88" stroke="#9E633A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M149 88L160 89" stroke="#9E633A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M109 132L109 144" stroke="#885330" stroke-width="5" stroke-linecap="round"/>
+    <path d="M97 96L104 103" stroke="#B87A49" stroke-width="4" stroke-linecap="round"/>
+    <path d="M123 96L116 103" stroke="#B87A49" stroke-width="4" stroke-linecap="round"/>
+    <path d="M123 114L133 120" stroke="#A96C40" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="78" cy="111" r="4" fill="#D4935E"/>
+    <circle cx="146" cy="112" r="5" fill="#E0AD7D"/>
+    <circle cx="101" cy="142" r="4" fill="#B77745"/>
+    <circle cx="119" cy="55" r="4" fill="#EFC69A"/>
+  </g>
+</svg>

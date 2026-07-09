@@ -1,0 +1,72 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="alien-side-title alien-side-desc">
+  <title id="alien-side-title">升级版外星人侧面</title>
+  <desc id="alien-side-desc">侧面视角的软3D卡通外星人，身体直接表现为生物躯干，背包位于后侧并保留肩带关系。</desc>
+  <defs>
+    <linearGradient id="headGrad" x1="74" y1="42" x2="176" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9FF98"/>
+      <stop offset="0.5" stop-color="#7FDC5D"/>
+      <stop offset="1" stop-color="#479C4B"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="112" y1="146" x2="166" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#79E2E4"/>
+      <stop offset="1" stop-color="#2A8693"/>
+    </linearGradient>
+    <linearGradient id="packFrontGrad" x1="96" y1="120" x2="140" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#71D4DE"/>
+      <stop offset="1" stop-color="#2A7080"/>
+    </linearGradient>
+    <linearGradient id="packSideGrad" x1="92" y1="124" x2="111" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22515C"/>
+      <stop offset="1" stop-color="#173B44"/>
+    </linearGradient>
+    <radialGradient id="torsoGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(140 156) rotate(90) scale(46 32)">
+      <stop stop-color="white" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="22" y="18" width="214" height="224" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17361F" flood-opacity="0.2"/>
+    </filter>
+    <radialGradient id="faceShine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(116 78) rotate(28) scale(58 35)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="134" cy="228" rx="42" ry="11" fill="#1E3D2C" opacity="0.14"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M111 46C120 31 141 31 150 46L160 63C164 69 170 73 177 76L181 78C187 81 189 88 186 94C182 100 174 102 168 99L160 95" stroke="#63B95A" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="181" cy="79" r="7" fill="#EE635D"/>
+    <circle cx="158" cy="66" r="6" fill="#EE635D"/>
+
+    <path d="M94 136C94 128 100 122 108 122H117C124 122 130 128 130 136V183C130 191 124 197 117 197H108C100 197 94 191 94 183V136Z" fill="url(#packSideGrad)"/>
+    <path d="M104 129C104 120 111 113 120 113H130C140 113 148 121 148 131V177C148 188 139 197 128 197H120C111 197 104 190 104 181V129Z" fill="url(#packFrontGrad)"/>
+    <path d="M112 124H136" stroke="#C6F7FB" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <rect x="118" y="150" width="16" height="18" rx="8" fill="#1F6571" opacity="0.55"/>
+    <path d="M126 119C118 133 117 154 122 175" stroke="#214C56" stroke-width="8" stroke-linecap="round"/>
+
+    <path d="M101 55C122 33 159 36 178 63C194 86 188 120 166 145C154 158 149 169 147 185C145 194 140 200 133 200C125 200 121 193 120 184C118 170 111 158 98 148C74 130 68 94 84 70C88 64 94 59 101 55Z" fill="url(#headGrad)"/>
+    <path d="M95 89C108 72 132 61 157 63" stroke="#E8FFC9" stroke-width="8" stroke-linecap="round" opacity="0.56"/>
+    <path d="M101 55C122 33 159 36 178 63C194 86 188 120 166 145C154 158 149 169 147 185C145 194 140 200 133 200C125 200 121 193 120 184C118 170 111 158 98 148C74 130 68 94 84 70C88 64 94 59 101 55Z" fill="url(#faceShine)"/>
+
+    <ellipse cx="146" cy="109" rx="16" ry="24" fill="#151515"/>
+    <ellipse cx="151" cy="100" rx="5" ry="7" fill="white" opacity="0.9"/>
+    <path d="M132 140C138 143 143 143 148 140" stroke="#2F6638" stroke-width="5" stroke-linecap="round" opacity="0.66"/>
+    <path d="M116 120C117 132 123 143 134 150" stroke="#4A9448" stroke-width="6" stroke-linecap="round" opacity="0.52"/>
+
+    <path d="M114 150C114 140 122 132 132 132H145C156 132 164 140 164 151V178C164 192 153 204 139 204H132C122 204 114 196 114 186V150Z" fill="url(#bodyGrad)"/>
+    <path d="M120 150C123 141 131 136 141 136C151 136 158 141 160 150V178C160 188 152 197 142 198H134C123 197 118 190 118 180V150Z" fill="url(#torsoGlow)"/>
+    <path d="M126 145C131 141 138 140 145 143" stroke="#E3FEFF" stroke-width="3.5" stroke-linecap="round" opacity="0.88"/>
+    <path d="M127 157C132 154 137 153 142 154" stroke="#C6F6F8" stroke-width="3.2" stroke-linecap="round" opacity="0.62"/>
+    <path d="M128 169C132 166 136 166 140 168" stroke="#AFE9EF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+    <path d="M118 156C108 163 102 175 100 191" stroke="#68BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M162 158C172 166 176 178 178 192" stroke="#68BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M133 204C129 214 128 225 129 235" stroke="#68BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M149 204C154 214 158 225 162 234" stroke="#68BC62" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="96" cy="195" rx="10" ry="6" fill="#68BC62"/>
+    <ellipse cx="182" cy="195" rx="10" ry="6" fill="#68BC62"/>
+    <ellipse cx="127" cy="237" rx="11" ry="7" fill="#68BC62"/>
+    <ellipse cx="164" cy="236" rx="12" ry="7" fill="#68BC62"/>
+  </g>
+</svg>

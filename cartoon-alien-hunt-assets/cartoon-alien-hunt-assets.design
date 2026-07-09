@@ -1,0 +1,984 @@
+{
+  "data": [
+    {
+      "id": "page-index-upgraded-soft-penetration",
+      "title": "素材预览 - 穿透贴花版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782365000000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/index-upgraded-soft-penetration.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-game-art-overview-preview",
+      "title": "游戏内美术素材总览预览",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782569000000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/game-art-overview-preview.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-level-preview-2-5d",
+      "title": "关卡拼装预览 - 2.5D",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782366000000,
+      "canvasData": {
+        "x": 1240,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/level-preview-2-5d.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-level-preview-biomes",
+      "title": "关卡拼装预览 - 多地形对比版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782367000000,
+      "canvasData": {
+        "x": 1860,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/level-preview-biomes.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "image-026",
+      "title": "升级外星人正面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000001,
+      "canvasData": {
+        "x": 0,
+        "y": 1380
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-front.svg"
+      }
+    },
+    {
+      "id": "image-027",
+      "title": "升级外星人侧面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000002,
+      "canvasData": {
+        "x": 620,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-side.svg"
+      }
+    },
+    {
+      "id": "image-028",
+      "title": "升级外星人背面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000003,
+      "canvasData": {
+        "x": 1240,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-back.svg"
+      }
+    },
+    {
+      "id": "image-029",
+      "title": "升级轻型手枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000004,
+      "canvasData": {
+        "x": 1860,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/pistol-soft.svg"
+      }
+    },
+    {
+      "id": "image-030",
+      "title": "升级巡逻步枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000005,
+      "canvasData": {
+        "x": 2480,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/rifle-soft.svg"
+      }
+    },
+    {
+      "id": "image-031",
+      "title": "升级能量枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000006,
+      "canvasData": {
+        "x": 3100,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/energy-gun-soft.svg"
+      }
+    },
+    {
+      "id": "image-032",
+      "title": "升级圆灌木",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000007,
+      "canvasData": {
+        "x": 3720,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/bush-rounded.svg"
+      }
+    },
+    {
+      "id": "image-033",
+      "title": "升级岩石堆",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000008,
+      "canvasData": {
+        "x": 4340,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/rock-stack-soft.svg"
+      }
+    },
+    {
+      "id": "image-034",
+      "title": "升级弹性树",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000009,
+      "canvasData": {
+        "x": 4960,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/tree-bouncy.svg"
+      }
+    },
+    {
+      "id": "image-035",
+      "title": "升级双臂仙人掌",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000010,
+      "canvasData": {
+        "x": 5580,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/cactus-twin-soft.svg"
+      }
+    },
+    {
+      "id": "image-036",
+      "title": "升级木箱",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000011,
+      "canvasData": {
+        "x": 6200,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/crate-wood-soft.svg"
+      }
+    },
+    {
+      "id": "image-037",
+      "title": "升级木路牌",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000012,
+      "canvasData": {
+        "x": 6820,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/sign-post-soft.svg"
+      }
+    },
+    {
+      "id": "image-038",
+      "title": "升级蘑菇",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000013,
+      "canvasData": {
+        "x": 7440,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/mushroom-soft.svg"
+      }
+    },
+    {
+      "id": "image-039",
+      "title": "升级草丛",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000014,
+      "canvasData": {
+        "x": 8060,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/grass-clump-soft.svg"
+      }
+    },
+    {
+      "id": "image-040",
+      "title": "升级分层灌木",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000015,
+      "canvasData": {
+        "x": 8680,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shrub-layered-soft.svg"
+      }
+    },
+    {
+      "id": "image-041",
+      "title": "升级巡逻帧一",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000016,
+      "canvasData": {
+        "x": 9300,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/patrol-soft-1.svg"
+      }
+    },
+    {
+      "id": "image-042",
+      "title": "升级巡逻帧二",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000017,
+      "canvasData": {
+        "x": 9920,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/patrol-soft-2.svg"
+      }
+    },
+    {
+      "id": "image-043",
+      "title": "升级巡逻帧三",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000018,
+      "canvasData": {
+        "x": 10540,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/patrol-soft-3.svg"
+      }
+    },
+    {
+      "id": "image-044",
+      "title": "升级观察帧一",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000019,
+      "canvasData": {
+        "x": 11160,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-soft-1.svg"
+      }
+    },
+    {
+      "id": "image-045",
+      "title": "升级观察帧二",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000020,
+      "canvasData": {
+        "x": 11780,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-soft-2.svg"
+      }
+    },
+    {
+      "id": "image-046",
+      "title": "升级观察帧三",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000021,
+      "canvasData": {
+        "x": 12400,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-soft-3.svg"
+      }
+    },
+    {
+      "id": "image-047",
+      "title": "升级惊慌帧一",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000022,
+      "canvasData": {
+        "x": 13020,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/panic-soft-1.svg"
+      }
+    },
+    {
+      "id": "image-048",
+      "title": "升级惊慌帧二",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000023,
+      "canvasData": {
+        "x": 13640,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/panic-soft-2.svg"
+      }
+    },
+    {
+      "id": "image-049",
+      "title": "升级惊慌帧三",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782362000024,
+      "canvasData": {
+        "x": 14260,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/panic-soft-3.svg"
+      }
+    },
+    {
+      "id": "image-050",
+      "title": "完整掩体墙",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782363000001,
+      "canvasData": {
+        "x": 14880,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-cover-intact.svg"
+      }
+    },
+    {
+      "id": "image-051",
+      "title": "缺口掩体墙",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782363000002,
+      "canvasData": {
+        "x": 15500,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-cover-breached.svg"
+      }
+    },
+    {
+      "id": "image-052",
+      "title": "塌陷掩体墙",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782363000003,
+      "canvasData": {
+        "x": 16120,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-cover-collapsed.svg"
+      }
+    },
+    {
+      "id": "image-053",
+      "title": "单点弹孔贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000001,
+      "canvasData": {
+        "x": 16740,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-bullet-hole-soft.svg"
+      }
+    },
+    {
+      "id": "image-054",
+      "title": "连发弹孔簇贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000002,
+      "canvasData": {
+        "x": 17360,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-bullet-hole-cluster-soft.svg"
+      }
+    },
+    {
+      "id": "image-055",
+      "title": "放射裂纹贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000003,
+      "canvasData": {
+        "x": 17980,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-crack-radial-soft.svg"
+      }
+    },
+    {
+      "id": "image-056",
+      "title": "角部裂纹贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000004,
+      "canvasData": {
+        "x": 18600,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-crack-corner-soft.svg"
+      }
+    },
+    {
+      "id": "image-057",
+      "title": "碎屑散落贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000005,
+      "canvasData": {
+        "x": 19220,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wall-debris-scatter-soft.svg"
+      }
+    },
+    {
+      "id": "image-058",
+      "title": "弱点显露帧一",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000006,
+      "canvasData": {
+        "x": 19840,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weakpoint-soft-1.svg"
+      }
+    },
+    {
+      "id": "image-059",
+      "title": "弱点显露帧二",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000007,
+      "canvasData": {
+        "x": 20460,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weakpoint-soft-2.svg"
+      }
+    },
+    {
+      "id": "image-060",
+      "title": "弱点显露帧三",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782364000008,
+      "canvasData": {
+        "x": 21080,
+        "y": 1375
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weakpoint-soft-3.svg"
+      }
+    },
+    {
+      "id": "image-061",
+      "title": "默认狙击预览",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000001,
+      "canvasData": {
+        "x": 0,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-weapon-preview-default.svg"
+      }
+    },
+    {
+      "id": "image-062",
+      "title": "精准狙击预览",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000002,
+      "canvasData": {
+        "x": 620,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-weapon-preview-precision.svg"
+      }
+    },
+    {
+      "id": "image-063",
+      "title": "连发狙击预览",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000003,
+      "canvasData": {
+        "x": 1240,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-weapon-preview-auto.svg"
+      }
+    },
+    {
+      "id": "image-064",
+      "title": "电磁狙击预览",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000004,
+      "canvasData": {
+        "x": 1860,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-weapon-preview-plasma.svg"
+      }
+    },
+    {
+      "id": "image-065",
+      "title": "外星人伪装待机",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000005,
+      "canvasData": {
+        "x": 2480,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-alien-disguised-idle.svg"
+      }
+    },
+    {
+      "id": "image-066",
+      "title": "外星人弱点开启",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000006,
+      "canvasData": {
+        "x": 3100,
+        "y": 2000
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-alien-weakpoint-open.svg"
+      }
+    },
+    {
+      "id": "image-067",
+      "title": "外星人扫描高亮",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000007,
+      "canvasData": {
+        "x": 0,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-alien-scan-highlight.svg"
+      }
+    },
+    {
+      "id": "image-068",
+      "title": "平民冷静待机",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000008,
+      "canvasData": {
+        "x": 620,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-civilian-calm-idle.svg"
+      }
+    },
+    {
+      "id": "image-069",
+      "title": "平民假线索闪点",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000009,
+      "canvasData": {
+        "x": 1240,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-civilian-false-clue-glint.svg"
+      }
+    },
+    {
+      "id": "image-070",
+      "title": "墙角掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000010,
+      "canvasData": {
+        "x": 1860,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-env-wall-corner.svg"
+      }
+    },
+    {
+      "id": "image-071",
+      "title": "路灯掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000011,
+      "canvasData": {
+        "x": 2480,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-env-street-lamp.svg"
+      }
+    },
+    {
+      "id": "image-072",
+      "title": "停放货车掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000012,
+      "canvasData": {
+        "x": 3100,
+        "y": 2320
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-env-parked-van.svg"
+      }
+    },
+    {
+      "id": "image-073",
+      "title": "广告牌掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000013,
+      "canvasData": {
+        "x": 0,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-env-billboard.svg"
+      }
+    },
+    {
+      "id": "image-074",
+      "title": "命中确认特效",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000014,
+      "canvasData": {
+        "x": 620,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-fx-hit-confirm.svg"
+      }
+    },
+    {
+      "id": "image-075",
+      "title": "误伤警告特效",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000015,
+      "canvasData": {
+        "x": 1240,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-fx-wrong-hit-alert.svg"
+      }
+    },
+    {
+      "id": "image-076",
+      "title": "扫描脉冲特效",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000016,
+      "canvasData": {
+        "x": 1860,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-fx-scan-pulse.svg"
+      }
+    },
+    {
+      "id": "image-077",
+      "title": "掩体受击特效",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000017,
+      "canvasData": {
+        "x": 2480,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-fx-cover-impact.svg"
+      }
+    },
+    {
+      "id": "image-078",
+      "title": "子弹孔贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000018,
+      "canvasData": {
+        "x": 3100,
+        "y": 2640
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-decal-bullet-hole-placeholder.svg"
+      }
+    },
+    {
+      "id": "image-079",
+      "title": "掩体命中贴花",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000019,
+      "canvasData": {
+        "x": 0,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-decal-cover-impact-mark-placeholder.svg"
+      }
+    },
+    {
+      "id": "image-080",
+      "title": "角色布料肌理叠加",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000020,
+      "canvasData": {
+        "x": 620,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-material-actor-fabric-breakup.svg"
+      }
+    },
+    {
+      "id": "image-081",
+      "title": "环境污渍叠加",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000021,
+      "canvasData": {
+        "x": 1240,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-material-environment-grime-overlay.svg"
+      }
+    },
+    {
+      "id": "image-082",
+      "title": "武器磨损叠加",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000022,
+      "canvasData": {
+        "x": 1860,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-material-weapon-edge-wear-overlay.svg"
+      }
+    },
+    {
+      "id": "image-083",
+      "title": "瞄准镜框",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000023,
+      "canvasData": {
+        "x": 2480,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-hud-scope-frame.svg"
+      }
+    },
+    {
+      "id": "image-084",
+      "title": "HUD生命条",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000024,
+      "canvasData": {
+        "x": 3100,
+        "y": 2960
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-hud-health-bar.svg"
+      }
+    },
+    {
+      "id": "image-085",
+      "title": "扫描雷达图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000025,
+      "canvasData": {
+        "x": 0,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-icon-scan-radar.svg"
+      }
+    },
+    {
+      "id": "image-086",
+      "title": "加时道具图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000026,
+      "canvasData": {
+        "x": 620,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-icon-time-extend.svg"
+      }
+    },
+    {
+      "id": "image-087",
+      "title": "商店武器已拥有卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000027,
+      "canvasData": {
+        "x": 1240,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-shop-weapon-card-owned.svg"
+      }
+    },
+    {
+      "id": "image-088",
+      "title": "商店购买按钮可用",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000028,
+      "canvasData": {
+        "x": 1860,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-shop-buy-button-enabled.svg"
+      }
+    },
+    {
+      "id": "image-089",
+      "title": "武器库武器已装备卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000029,
+      "canvasData": {
+        "x": 2480,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-armory-weapon-list-card-equipped.svg"
+      }
+    },
+    {
+      "id": "image-090",
+      "title": "武器库详情面板",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782569000030,
+      "canvasData": {
+        "x": 3100,
+        "y": 3280
+      },
+      "devMetadata": {
+        "imageSrc": "assets/game-armory-detail-panel.svg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "desktop",
+    "projectName": "外星人射击找茬素材预览",
+    "designLibrary": null
+  }
+}

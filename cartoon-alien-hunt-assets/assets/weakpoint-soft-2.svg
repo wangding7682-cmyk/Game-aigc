@@ -1,0 +1,74 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="weakpoint-soft-2-title weakpoint-soft-2-desc">
+  <title id="weakpoint-soft-2-title">弱点显露序列第二帧</title>
+  <desc id="weakpoint-soft-2-desc">升级版软3D卡通外星人，身体表层开始轻柔裂开，露出半显露的能量弱点。</desc>
+  <defs>
+    <linearGradient id="wp2HeadGrad" x1="72" y1="36" x2="185" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CBFF99"/>
+      <stop offset="0.48" stop-color="#84DE5E"/>
+      <stop offset="1" stop-color="#479C4C"/>
+    </linearGradient>
+    <linearGradient id="wp2BodyGrad" x1="98" y1="136" x2="164" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7BE4E6"/>
+      <stop offset="1" stop-color="#2A8592"/>
+    </linearGradient>
+    <linearGradient id="wp2SplitGrad" x1="108" y1="142" x2="148" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4BA5AF"/>
+      <stop offset="1" stop-color="#256D79"/>
+    </linearGradient>
+    <radialGradient id="wp2CoreGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 168) rotate(90) scale(20 18)">
+      <stop stop-color="#FFF6B8"/>
+      <stop offset="0.55" stop-color="#FFD86E"/>
+      <stop offset="1" stop-color="#F29F42"/>
+    </radialGradient>
+    <radialGradient id="wp2Glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 169) rotate(90) scale(34 28)">
+      <stop stop-color="#FFF8C8" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#FFF8C8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="wp2Shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(108 76) rotate(46) scale(62 42)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wp2Shadow" x="18" y="14" width="220" height="232" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#16351E" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="128" cy="228" rx="48" ry="12" fill="#1E3D2C" opacity="0.14"/>
+
+  <g filter="url(#wp2Shadow)">
+    <path d="M110 43C117 25 139 25 146 43L152 60C154 67 159 73 166 77L171 80C176 83 178 90 175 95C172 100 165 103 158 101L149 98" stroke="#62B95B" stroke-width="10" stroke-linecap="round"/>
+    <path d="M146 43C139 25 117 25 110 43L104 60C102 67 97 73 90 77L85 80C80 83 78 90 81 95C84 100 91 103 98 101L107 98" stroke="#62B95B" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="176" cy="84" r="7" fill="#EE635D"/>
+    <circle cx="80" cy="84" r="7" fill="#EE635D"/>
+
+    <path d="M128 34C170 34 198 69 191 109C186 138 163 151 149 168C141 177 135 194 128 194C121 194 115 177 107 168C93 151 70 138 65 109C58 69 86 34 128 34Z" fill="url(#wp2HeadGrad)"/>
+    <path d="M88 82C101 59 134 48 162 60" stroke="#E3FFC1" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+    <path d="M128 34C170 34 198 69 191 109C186 138 163 151 149 168C141 177 135 194 128 194C121 194 115 177 107 168C93 151 70 138 65 109C58 69 86 34 128 34Z" fill="url(#wp2Shine)"/>
+
+    <ellipse cx="103" cy="109" rx="18" ry="26" fill="#151515"/>
+    <ellipse cx="153" cy="109" rx="18" ry="26" fill="#151515"/>
+    <ellipse cx="109" cy="99" rx="5" ry="7" fill="white" opacity="0.9"/>
+    <ellipse cx="159" cy="99" rx="5" ry="7" fill="white" opacity="0.9"/>
+    <path d="M116 142C123 147 133 147 140 142" stroke="#2F6638" stroke-width="5" stroke-linecap="round" opacity="0.68"/>
+
+    <path d="M97 150C97 138 106 128 118 128H138C150 128 159 138 159 150V178C159 193 147 205 132 205H124C109 205 97 193 97 178V150Z" fill="url(#wp2BodyGrad)"/>
+    <path d="M114 143C118 139 122 138 128 138C134 138 138 139 142 143" stroke="#E7FEFF" stroke-width="3.5" stroke-linecap="round" opacity="0.82"/>
+    <path d="M111 150C116 154 120 160 121 167C120 172 117 176 113 180" stroke="url(#wp2SplitGrad)" stroke-width="6" stroke-linecap="round" opacity="0.92"/>
+    <path d="M145 150C140 154 136 160 135 167C136 172 139 176 143 180" stroke="url(#wp2SplitGrad)" stroke-width="6" stroke-linecap="round" opacity="0.92"/>
+    <path d="M122 159C122 154 125 151 128 151C131 151 134 154 134 159V178C134 182 131 185 128 185C125 185 122 182 122 178V159Z" fill="url(#wp2CoreGrad)"/>
+    <ellipse cx="128" cy="169" rx="24" ry="20" fill="url(#wp2Glow)" opacity="0.9"/>
+    <path d="M117 152C120 157 121 161 121 166" stroke="#8EDAE3" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M139 152C136 157 135 161 135 166" stroke="#8EDAE3" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M123 166L128 160L133 166" stroke="#FFF6C2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M123 174H133" stroke="#FFF6C2" stroke-width="4" stroke-linecap="round"/>
+
+    <path d="M97 154C86 161 82 173 80 192" stroke="#6ABF64" stroke-width="10" stroke-linecap="round"/>
+    <path d="M159 154C170 161 174 173 176 192" stroke="#6ABF64" stroke-width="10" stroke-linecap="round"/>
+    <path d="M119 205C114 214 112 225 111 235" stroke="#6ABF64" stroke-width="10" stroke-linecap="round"/>
+    <path d="M137 205C142 214 144 225 145 235" stroke="#6ABF64" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="77" cy="196" rx="10" ry="6" fill="#6ABF64"/>
+    <ellipse cx="179" cy="196" rx="10" ry="6" fill="#6ABF64"/>
+    <ellipse cx="108" cy="237" rx="12" ry="7" fill="#6ABF64"/>
+    <ellipse cx="148" cy="237" rx="12" ry="7" fill="#6ABF64"/>
+  </g>
+</svg>

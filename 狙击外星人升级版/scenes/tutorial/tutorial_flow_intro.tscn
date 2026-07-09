@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/tutorial/tutorial_flow_controller.gd" id="1"]
+
+[node name="TutorialFlowIntro" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="GuidePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -362.0
+offset_top = 108.0
+offset_right = -18.0
+offset_bottom = 312.0
+
+[node name="MarginRoot" type="MarginContainer" parent="GuidePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ContentColumn" type="VBoxContainer" parent="GuidePanel/MarginRoot"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderRow" type="HBoxContainer" parent="GuidePanel/MarginRoot/ContentColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderText" type="VBoxContainer" parent="GuidePanel/MarginRoot/ContentColumn/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="GuidePanel/MarginRoot/ContentColumn/HeaderRow/HeaderText"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "教程"
+
+[node name="ProgressLabel" type="Label" parent="GuidePanel/MarginRoot/ContentColumn/HeaderRow/HeaderText"]
+layout_mode = 2
+text = "教程进度"
+
+[node name="ToggleButton" type="Button" parent="GuidePanel/MarginRoot/ContentColumn/HeaderRow"]
+custom_minimum_size = Vector2(72, 36)
+layout_mode = 2
+text = "收起"
+
+[node name="BodyColumn" type="VBoxContainer" parent="GuidePanel/MarginRoot/ContentColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DescriptionLabel" type="Label" parent="GuidePanel/MarginRoot/ContentColumn/BodyColumn"]
+layout_mode = 2
+autowrap_mode = 3
+text = "步骤说明"
+
+[node name="StatusLabel" type="Label" parent="GuidePanel/MarginRoot/ContentColumn/BodyColumn"]
+layout_mode = 2
+autowrap_mode = 3
+text = "当前要求"

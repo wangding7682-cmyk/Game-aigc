@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "project": "狙击外星人升级版",
+  "description": "音频资产清单模板。业务层只使用 event_id，不直接硬编码资源路径。",
+  "bus_defaults": {
+    "master": "Master",
+    "bgm": "BGM",
+    "sfx": "SFX",
+    "ui": "UI",
+    "amb": "AMB"
+  },
+  "entries": [
+    {
+      "event_id": "sfx_shot_fire",
+      "display_name": "开枪",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -3.0,
+      "pitch_random_min": 0.98,
+      "pitch_random_max": 1.03,
+      "cooldown_ms": 40,
+      "max_instances": 4,
+      "status": "ready",
+      "notes": "已从用户提供的多段枪击声 wav 中拆出 10 个片段，作为开枪事件变体。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_01.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_02.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_03.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_04.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_05.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_06.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_07.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_08.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_09.wav",
+          "weight": 1
+        },
+        {
+          "asset_path": "res://audio/sfx/weapon/sfx_shot_fire_10.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_shot_hit_target",
+      "display_name": "命中目标",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -1.0,
+      "pitch_random_min": 0.99,
+      "pitch_random_max": 1.04,
+      "cooldown_ms": 50,
+      "max_instances": 3,
+      "status": "ready",
+      "notes": "已接入用户提供的正向确认 wav，服务于命中正确目标和击杀正确目标的确认反馈。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/impact/sfx_shot_hit_target_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_shot_hit_wall",
+      "display_name": "命中掩体/墙体",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "3d",
+      "loop": false,
+      "default_volume_db": -5.0,
+      "pitch_random_min": 0.96,
+      "pitch_random_max": 1.05,
+      "cooldown_ms": 30,
+      "max_instances": 6,
+      "status": "ready",
+      "notes": "已接入用户提供的掩体/墙体命中 wav，当前优先用于被遮挡和被格挡的阻挡反馈。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/impact/sfx_shot_hit_wall_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_shot_hit_wrong",
+      "display_name": "误伤平民",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": 0.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.0,
+      "cooldown_ms": 120,
+      "max_instances": 2,
+      "status": "ready",
+      "notes": "已接入用户提供的误伤平民警告 wav，用于误伤平民时的负反馈。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/impact/sfx_shot_hit_wrong_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_shot_miss",
+      "display_name": "未命中",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -8.0,
+      "pitch_random_min": 0.98,
+      "pitch_random_max": 1.02,
+      "cooldown_ms": 60,
+      "max_instances": 2,
+      "status": "planned",
+      "notes": "存在感弱于误伤音和命中音。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/impact/sfx_shot_miss_01.ogg",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_hit_explosion",
+      "display_name": "命中爆炸冲击音",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "3d",
+      "loop": false,
+      "default_volume_db": -9.0,
+      "pitch_random_min": 0.96,
+      "pitch_random_max": 1.02,
+      "cooldown_ms": 50,
+      "max_instances": 6,
+      "status": "ready",
+      "notes": "已接入用户提供的命中爆炸音，用于子弹轨迹结束后的命中特效阶段（爆闪/火花/冲击波）。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/impact/sfx_hit_explosion_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_scan_activate",
+      "display_name": "扫描施放",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -4.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.0,
+      "cooldown_ms": 100,
+      "max_instances": 1,
+      "status": "ready",
+      "notes": "已从用户提供的扫描技能 wav 截取前 2 秒作为施放音。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/ability/sfx_scan_activate_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_scan_reveal",
+      "display_name": "扫描显露",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -5.0,
+      "pitch_random_min": 0.99,
+      "pitch_random_max": 1.01,
+      "cooldown_ms": 100,
+      "max_instances": 2,
+      "status": "ready",
+      "notes": "已从用户提供的扫描结果显露 wav 截取前 0.4 秒作为显露确认音。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/ability/sfx_scan_reveal_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "sfx_time_extend",
+      "display_name": "加时道具",
+      "category": "sfx",
+      "bus": "SFX",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -4.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.02,
+      "cooldown_ms": 100,
+      "max_instances": 1,
+      "status": "planned",
+      "notes": "正向短提示即可，不要盖过战斗主音效。",
+      "variants": [
+        {
+          "asset_path": "res://audio/sfx/ability/sfx_time_extend_01.ogg",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "ui_button_click",
+      "display_name": "按钮点击",
+      "category": "ui",
+      "bus": "UI",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -8.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.02,
+      "cooldown_ms": 20,
+      "max_instances": 3,
+      "status": "ready",
+      "notes": "已从用户提供的点击 wav 截取前 0.12 秒，作为通用按钮点击音。",
+      "variants": [
+        {
+          "asset_path": "res://audio/ui/ui_button_click_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "ui_result_win",
+      "display_name": "胜利结算",
+      "category": "ui",
+      "bus": "UI",
+      "play_mode": "2d",
+      "loop": false,
+      "default_volume_db": -5.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.0,
+      "cooldown_ms": 300,
+      "max_instances": 1,
+      "status": "ready",
+      "notes": "已接入用户提供的胜利结算音 wav（截取前 1.8 秒），用于战斗胜利结算的正向结果音。",
+      "variants": [
+        {
+          "asset_path": "res://audio/ui/ui_result_win_01.wav",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "amb_city_day",
+      "display_name": "白天城市环境",
+      "category": "amb",
+      "bus": "AMB",
+      "play_mode": "2d",
+      "loop": true,
+      "default_volume_db": -14.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.0,
+      "cooldown_ms": 0,
+      "max_instances": 1,
+      "status": "planned",
+      "notes": "环境底噪，后续可根据关卡切换。",
+      "variants": [
+        {
+          "asset_path": "res://audio/amb/amb_city_day_loop_01.ogg",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "event_id": "bgm_main",
+      "display_name": "主背景音乐",
+      "category": "bgm",
+      "bus": "BGM",
+      "play_mode": "2d",
+      "loop": true,
+      "default_volume_db": -12.0,
+      "pitch_random_min": 1.0,
+      "pitch_random_max": 1.0,
+      "cooldown_ms": 0,
+      "max_instances": 1,
+      "status": "ready",
+      "notes": "用户提供的背景 BGM，已掐掉最后 1.5 秒。",
+      "variants": [
+        {
+          "asset_path": "res://audio/bgm/bgm_main_01.wav",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

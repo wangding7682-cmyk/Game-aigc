@@ -1,0 +1,196 @@
+{
+  "data": [
+    {
+      "id": "page-main-menu",
+      "title": "主菜单",
+      "type": "page",
+      "version": 2,
+      "createdAt": 1782721200000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/main-menu.html",
+        "interactions": [
+          {
+            "domId": "cta-start-pve",
+            "targetPageId": "page-level-loading",
+            "transitionLabel": "开始关卡"
+          },
+          {
+            "domId": "shortcut-pvp-room",
+            "targetPageId": "page-pvp-mock-room",
+            "hideEdge": true,
+            "transitionLabel": "进入联机对战"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-level-loading",
+      "title": "关卡加载",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 420,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/level-loading.html",
+        "interactions": [
+          {
+            "domId": "cta-enter-battle",
+            "targetPageId": "page-pve-battle",
+            "transitionLabel": "进入战斗"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-pve-battle",
+      "title": "PVE战斗",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 840,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/pve-battle.html",
+        "interactions": [
+          {
+            "domId": "cta-complete-mission",
+            "targetPageId": "page-result-growth",
+            "transitionLabel": "完成战斗"
+          },
+          {
+            "domId": "shortcut-open-tutorial",
+            "targetPageId": "page-pve-tutorial",
+            "hideEdge": true,
+            "transitionLabel": "查看教程"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-pve-tutorial",
+      "title": "教程引导",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 0,
+        "y": 590,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/pve-tutorial.html",
+        "interactions": [
+          {
+            "domId": "back-pve-battle",
+            "targetPageId": "page-pve-battle",
+            "hideEdge": true,
+            "transitionLabel": "关闭教程"
+          },
+          {
+            "domId": "cta-finish-tutorial",
+            "targetPageId": "page-pve-battle",
+            "hideEdge": true,
+            "transitionLabel": "完成教程"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-result-growth",
+      "title": "结算成长",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 1260,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/result-growth.html",
+        "interactions": [
+          {
+            "domId": "back-main-menu",
+            "targetPageId": "page-main-menu",
+            "hideEdge": true,
+            "transitionLabel": "返回主页"
+          },
+          {
+            "domId": "shortcut-retry-battle",
+            "targetPageId": "page-pve-battle",
+            "hideEdge": true,
+            "transitionLabel": "重试战斗"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-pvp-mock-room",
+      "title": "局域网联机对战房间",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 420,
+        "y": 590,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/pvp-mock-room.html",
+        "interactions": [
+          {
+            "domId": "back-main-menu",
+            "targetPageId": "page-main-menu",
+            "hideEdge": true,
+            "transitionLabel": "返回主页"
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-001",
+      "title": "主菜单主视觉",
+      "type": "image",
+      "version": 2,
+      "createdAt": 1782721200000,
+      "canvasData": {
+        "x": 0,
+        "y": 1180
+      },
+      "devMetadata": {
+        "imageSrc": "assets/menu-key-art(1).jpg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "加载狙击镜视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782462100000,
+      "canvasData": {
+        "x": 420,
+        "y": 1180
+      },
+      "devMetadata": {
+        "imageSrc": "assets/loading-scope-art.jpg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "mobile",
+    "projectName": "狙击大师移动端游戏界面"
+  }
+}

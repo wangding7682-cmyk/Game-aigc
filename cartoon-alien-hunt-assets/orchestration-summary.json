@@ -1,0 +1,289 @@
+{
+  "project": {
+    "name": "外星人射击找茬素材预览",
+    "path": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\cartoon-alien-hunt-assets",
+    "operation": "edit",
+    "deviceType": "desktop",
+    "language": "zh-CN",
+    "dashboardMode": false,
+    "styleDefinitionBrief": "深色卡通游戏素材预览板，强调模块化分组、清晰说明和可汇报的展示节奏。",
+    "designRead": "游戏素材预览 / 游戏策划与美术 / 轻松卡通 / 中低密度 / 避免过度写实",
+    "designDials": {
+      "layoutVariance": 2,
+      "motionIntensity": 2,
+      "visualDensity": 2
+    },
+    "styleContinuityAnchors": {
+      "colorSystem": {
+        "primaryColorRole": "冷蓝高亮用于标签、重点数字和说明焦点，深蓝黑保持整页基底。",
+        "brandHuePolicy": "维持深色卡通游戏预览气质，不引入新的主品牌色。",
+        "stateColors": "浅蓝用于引导信息，浅灰蓝用于说明文字。"
+      },
+      "shapeSystem": "卡片圆角克制，展示面板统一为厚实卡片容器，避免尖锐科技感。",
+      "typographySystem": "中文无衬线标题与说明并行，标题短促明确，正文偏说明牌语气。",
+      "spacingSystem": "首屏留白适中，模块之间保持稳定分段节奏，卡片内部信息简洁。",
+      "componentLanguage": "使用高对比暗卡片、素材展示底板、分组标题与说明标签。",
+      "surfaceAndDepth": "页面整体偏平面展示，面板通过描边和柔和阴影区分层级。",
+      "imageryAndIconography": "透明背景 SVG 素材统一放在暗色展示底上，突出软 3D 游戏道具观感。",
+      "interactionTone": "以静态汇报感为主，局部保留轻游戏化标签和模式标记。"
+    },
+    "generationTree": {
+      "root": {
+        "nodeId": "gen-page-index-upgraded-soft-penetration",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-index-upgraded-soft-penetration"
+        ],
+        "output": "pages/index-upgraded-soft-penetration.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "soft 3d penetration material preview board"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": [
+          {
+            "nodeId": "gen-page-game-art-overview-preview",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-game-art-overview-preview"
+            ],
+            "output": "pages/game-art-overview-preview.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "runtime game art overview preview board"
+            ],
+            "mutableSlots": [],
+            "status": "generated",
+            "children": [
+              {
+                "nodeId": "gen-page-level-preview-2-5d",
+                "kind": "page-leaf",
+                "pageIds": [
+                  "page-level-preview-2-5d"
+                ],
+                "output": "pages/level-preview-2-5d.html",
+                "sharedRegions": [],
+                "privateRegions": [
+                  "2.5d level preview board"
+                ],
+                "mutableSlots": [],
+                "status": "generated",
+                "children": [
+                  {
+                    "nodeId": "gen-page-level-preview-biomes",
+                    "kind": "page-leaf",
+                    "pageIds": [
+                      "page-level-preview-biomes"
+                    ],
+                    "output": "pages/level-preview-biomes.html",
+                    "sharedRegions": [],
+                    "privateRegions": [
+                      "multi biome comparison board"
+                    ],
+                    "mutableSlots": [],
+                    "status": "generated",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "libraryIdentity": null,
+    "cssFilePath": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\cartoon-alien-hunt-assets\\colors_and_type.css",
+    "brandPrefix": "hunt",
+    "themeMode": "dark",
+    "designDecisionSummary": "沿用暗色卡通素材展示板语言，把当前游戏内素材按角色、武器、掩体、反馈、贴花、HUD 与界面套件重组为一页总览介绍。",
+    "componentContractKind": "compact-json",
+    "forbiddenInventedComponents": [],
+    "allowedComponents": [],
+    "styleConstraints": {
+      "radiusMax": 12,
+      "spacingBase": 4,
+      "fontSizeBody": 14,
+      "fontSizeMin": 12,
+      "controlHeightDefault": 40,
+      "controlHeightLarge": 48
+    },
+    "productContext": {
+      "kitType": "game-ui-overview",
+      "productType": "2.5D 3D 狙击识别外星人游戏"
+    },
+    "actualTokenNameReference": []
+  },
+  "pages": [
+    {
+      "nodeId": "page-index-upgraded-soft-penetration",
+      "slug": "index-upgraded-soft-penetration",
+      "title": "素材预览 - 穿透贴花版",
+      "htmlSrc": "pages/index-upgraded-soft-penetration.html",
+      "pageIndex": 1,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "showcase",
+      "businessScenario": "展示穿透洞口贴花与墙后目标透视关系的素材预览页。",
+      "visualNorthStar": "把受击贴花改成真正的穿透洞口，并在画布里静态演示墙后目标透出的遮挡关系。",
+      "compositionPattern": "storyboard showcase grid",
+      "continuityAnchors": [
+        "深色卡通预览背景",
+        "高对比卡片容器",
+        "轻休闲游戏展示语气"
+      ],
+      "componentPlan": [],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "信息一旦过多容易像素材仓库清单",
+        "需要保留参考页的模块化预览节奏"
+      ]
+    },
+    {
+      "nodeId": "page-game-art-overview-preview",
+      "slug": "game-art-overview-preview",
+      "title": "游戏内美术素材总览预览",
+      "htmlSrc": "pages/game-art-overview-preview.html",
+      "pageIndex": 2,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-index-upgraded-soft-penetration",
+      "sourceHtmlSrc": "pages/index-upgraded-soft-penetration.html",
+      "pageType": "showcase",
+      "businessScenario": "把当前游戏内已整理的角色、武器、掩体、反馈、贴花、HUD 和界面套件做成一页总结预览介绍。",
+      "visualNorthStar": "像一张给策划、美术和程序一起看的游戏内素材总览介绍板，既有卡通游戏感，也能一眼读清素材覆盖面。",
+      "compositionPattern": "modular command wall with hero focus",
+      "continuityAnchors": [
+        "沿用穿透贴花版的首屏统计与分组卡片结构",
+        "保持深色卡通预览背景和高对比面板",
+        "以总结介绍而不是技术文档口吻组织文案"
+      ],
+      "componentPlan": [],
+      "imagePlan": [
+        "game-weapon-preview-default.svg",
+        "game-weapon-preview-precision.svg",
+        "game-weapon-preview-auto.svg",
+        "game-weapon-preview-plasma.svg",
+        "game-alien-disguised-idle.svg",
+        "game-alien-weakpoint-open.svg",
+        "game-alien-scan-highlight.svg",
+        "game-civilian-calm-idle.svg",
+        "game-civilian-false-clue-glint.svg",
+        "game-env-wall-corner.svg",
+        "game-env-street-lamp.svg",
+        "game-env-parked-van.svg",
+        "game-env-billboard.svg",
+        "game-fx-hit-confirm.svg",
+        "game-fx-wrong-hit-alert.svg",
+        "game-fx-scan-pulse.svg",
+        "game-fx-cover-impact.svg",
+        "game-decal-bullet-hole-placeholder.svg",
+        "game-decal-cover-impact-mark-placeholder.svg",
+        "game-material-actor-fabric-breakup.svg",
+        "game-material-environment-grime-overlay.svg",
+        "game-material-weapon-edge-wear-overlay.svg",
+        "game-hud-scope-frame.svg",
+        "game-hud-health-bar.svg",
+        "game-icon-scan-radar.svg",
+        "game-icon-time-extend.svg",
+        "game-shop-weapon-card-owned.svg",
+        "game-shop-buy-button-enabled.svg",
+        "game-armory-weapon-list-card-equipped.svg",
+        "game-armory-detail-panel.svg"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "代表素材很多，容易缺少汇报重点",
+        "需要让角色、反馈和界面套件同时可读"
+      ]
+    },
+    {
+      "nodeId": "page-level-preview-2-5d",
+      "slug": "level-preview-2-5d",
+      "title": "关卡拼装预览 - 2.5D",
+      "htmlSrc": "pages/level-preview-2-5d.html",
+      "pageIndex": 3,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-index-upgraded-soft-penetration",
+      "sourceHtmlSrc": "pages/index-upgraded-soft-penetration.html",
+      "pageType": "showcase",
+      "businessScenario": "2.5D 轻休闲射击关卡拼装与玩法验证",
+      "visualNorthStar": "用前中后景分层与遮挡关系，把外星人伪装、穿透揭露和弱点窗口做成一眼能读懂的 2.5D 关卡样板。",
+      "compositionPattern": "layered level storyboard",
+      "continuityAnchors": [
+        "深色卡通预览背景",
+        "高对比卡片容器",
+        "轻休闲游戏展示语气"
+      ],
+      "componentPlan": [],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": []
+    },
+    {
+      "nodeId": "page-level-preview-biomes",
+      "slug": "level-preview-biomes",
+      "title": "关卡拼装预览 - 多地形对比版",
+      "htmlSrc": "pages/level-preview-biomes.html",
+      "pageIndex": 4,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-level-preview-2-5d",
+      "sourceHtmlSrc": "pages/level-preview-2-5d.html",
+      "pageType": "showcase",
+      "businessScenario": "2.5D 多地形关卡对比与命中前后阶段验证",
+      "visualNorthStar": "把森林、荒漠、废墟三种地形关卡放在同一页，对比未击中、击穿和弱点暴露三个阶段的读图与攻击窗口。",
+      "compositionPattern": "comparison lanes",
+      "continuityAnchors": [
+        "深色卡通预览背景",
+        "高对比卡片容器",
+        "轻休闲游戏展示语气"
+      ],
+      "componentPlan": [],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": []
+    }
+  ],
+  "assets": [
+    { "filename": "game-weapon-preview-default.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "默认狙击预览卡", "status": "reused" },
+    { "filename": "game-weapon-preview-precision.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "精准狙击预览卡", "status": "reused" },
+    { "filename": "game-weapon-preview-auto.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "连发狙击预览卡", "status": "reused" },
+    { "filename": "game-weapon-preview-plasma.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "电磁狙击预览卡", "status": "reused" },
+    { "filename": "game-alien-disguised-idle.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "外星人伪装待机素材", "status": "reused" },
+    { "filename": "game-alien-weakpoint-open.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "外星人弱点开启素材", "status": "reused" },
+    { "filename": "game-alien-scan-highlight.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "外星人扫描高亮素材", "status": "reused" },
+    { "filename": "game-civilian-calm-idle.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "平民待机素材", "status": "reused" },
+    { "filename": "game-civilian-false-clue-glint.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "平民假线索素材", "status": "reused" },
+    { "filename": "game-env-wall-corner.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "墙角掩体", "status": "reused" },
+    { "filename": "game-env-street-lamp.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "路灯掩体", "status": "reused" },
+    { "filename": "game-env-parked-van.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "停放货车掩体", "status": "reused" },
+    { "filename": "game-env-billboard.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "广告牌掩体", "status": "reused" },
+    { "filename": "game-fx-hit-confirm.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "命中确认特效", "status": "reused" },
+    { "filename": "game-fx-wrong-hit-alert.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "误伤警告特效", "status": "reused" },
+    { "filename": "game-fx-scan-pulse.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "扫描脉冲特效", "status": "reused" },
+    { "filename": "game-fx-cover-impact.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "掩体命中特效", "status": "reused" },
+    { "filename": "game-decal-bullet-hole-placeholder.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "子弹孔贴花", "status": "reused" },
+    { "filename": "game-decal-cover-impact-mark-placeholder.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "掩体命中贴花", "status": "reused" },
+    { "filename": "game-material-actor-fabric-breakup.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "角色布料肌理覆盖", "status": "reused" },
+    { "filename": "game-material-environment-grime-overlay.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "环境污渍覆盖", "status": "reused" },
+    { "filename": "game-material-weapon-edge-wear-overlay.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "武器磨损覆盖", "status": "reused" },
+    { "filename": "game-hud-scope-frame.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "瞄准镜框 HUD", "status": "reused" },
+    { "filename": "game-hud-health-bar.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "生命条 HUD", "status": "reused" },
+    { "filename": "game-icon-scan-radar.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "扫描雷达图标", "status": "reused" },
+    { "filename": "game-icon-time-extend.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "加时图标", "status": "reused" },
+    { "filename": "game-shop-weapon-card-owned.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "商店武器已拥有卡", "status": "reused" },
+    { "filename": "game-shop-buy-button-enabled.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "商店购买按钮可用态", "status": "reused" },
+    { "filename": "game-armory-weapon-list-card-equipped.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "武器库武器已装备卡", "status": "reused" },
+    { "filename": "game-armory-detail-panel.svg", "role": "supporting-content", "owningPage": "game-art-overview-preview", "semanticDescription": "武器库详情面板", "status": "reused" }
+  ],
+  "wiringPlan": [],
+  "hiddenInteractionPlan": []
+}

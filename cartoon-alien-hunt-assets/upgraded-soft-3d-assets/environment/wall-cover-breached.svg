@@ -1,0 +1,40 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-breached-title wall-breached-desc">
+  <title id="wall-breached-title">缺口掩体墙</title>
+  <desc id="wall-breached-desc">同一堵更高更厚的卡通掩体墙被击穿后，在中右区域形成集中破口，但大部分墙面仍可提供遮挡。</desc>
+  <defs>
+    <linearGradient id="wallFrontGrad" x1="28" y1="42" x2="194" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6D8A2"/>
+      <stop offset="0.5" stop-color="#DDA56C"/>
+      <stop offset="1" stop-color="#925E39"/>
+    </linearGradient>
+    <linearGradient id="wallTopGrad" x1="42" y1="34" x2="178" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4D2"/>
+      <stop offset="1" stop-color="#E8B57B"/>
+    </linearGradient>
+    <linearGradient id="baseGrad" x1="30" y1="126" x2="190" y2="156" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#905B34"/>
+      <stop offset="1" stop-color="#62381E"/>
+    </linearGradient>
+    <filter id="shadow" x="10" y="18" width="200" height="144" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#3A250F" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="154" rx="74" ry="12" fill="#39220D" opacity="0.13"/>
+  <g filter="url(#shadow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M28 66C28 50 41 38 57 38H163C179 38 192 50 192 66V122C192 138 179 150 163 150H57C41 150 28 138 28 122V66ZM112 70C119 61 130 56 142 58C154 60 162 70 161 82C160 92 153 100 151 110C149 121 139 128 127 127C116 126 105 120 101 110C96 100 96 87 100 78C102 74 107 72 112 70Z" fill="url(#wallFrontGrad)"/>
+    <path d="M160 44H165C180 44 192 56 192 71V124C192 138 181 150 167 150H160V44Z" fill="#7B4A28" opacity="0.4"/>
+    <path d="M42 50C42 42 48 35 56 35H110V66H42V50Z" fill="url(#wallTopGrad)"/>
+    <path d="M148 41H164C172 41 178 47 178 55V69H151L145 62L148 41Z" fill="url(#wallTopGrad)"/>
+    <path d="M46 59H106" stroke="#FFF6DA" stroke-width="9" stroke-linecap="round" opacity="0.74"/>
+    <path d="M49 81H103" stroke="#F9D9AE" stroke-width="8" stroke-linecap="round" opacity="0.48"/>
+    <path d="M47 104H98" stroke="#B17748" stroke-width="9" stroke-linecap="round" opacity="0.58"/>
+    <path d="M58 89L77 101L96 88" stroke="#9D643B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M107 69C114 61 127 56 140 58C151 60 159 68 158 79C157 90 149 96 146 107C143 117 135 121 128 121C120 121 112 117 107 109C102 100 101 89 104 80" stroke="#8F5933" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M119 65L129 72L124 84" stroke="#FCE4BF" stroke-width="5" stroke-linecap="round" opacity="0.86"/>
+    <path d="M145 92L153 99L149 111" stroke="#F2C88F" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M35 132C54 124 72 123 91 128C106 132 122 133 138 129C155 124 173 124 185 130V150H28V132H35Z" fill="url(#baseGrad)" opacity="0.84"/>
+    <path d="M128 145L138 137L149 145" stroke="#8B5631" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="66" cy="66" r="4" fill="#FFF6DD" opacity="0.76"/>
+  </g>
+</svg>

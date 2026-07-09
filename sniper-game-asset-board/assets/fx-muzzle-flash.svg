@@ -1,0 +1,32 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="core" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80 80) rotate(90) scale(26 26)">
+      <stop stop-color="#FFF9E6"/>
+      <stop offset="0.48" stop-color="#FFD98A"/>
+      <stop offset="1" stop-color="#FFB24A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="petal" x1="80" y1="28" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2C9"/>
+      <stop offset="1" stop-color="#FFB655" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="glow" x="12" y="12" width="136" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <g filter="url(#glow)" opacity="0.7">
+    <circle cx="80" cy="80" r="18" fill="#FFD784"/>
+    <path d="M80 24L94 64L80 72L66 64L80 24Z" fill="#FFBF61"/>
+    <path d="M136 80L96 94L88 80L96 66L136 80Z" fill="#FFBF61"/>
+    <path d="M80 136L66 96L80 88L94 96L80 136Z" fill="#FFBF61"/>
+    <path d="M24 80L64 66L72 80L64 94L24 80Z" fill="#FFBF61"/>
+  </g>
+  <circle cx="80" cy="80" r="20" fill="url(#core)"/>
+  <path d="M80 22L100 66L80 78L60 66L80 22Z" fill="url(#petal)"/>
+  <path d="M138 80L94 100L82 80L94 60L138 80Z" fill="url(#petal)"/>
+  <path d="M80 138L60 94L80 82L100 94L80 138Z" fill="url(#petal)"/>
+  <path d="M22 80L66 60L78 80L66 100L22 80Z" fill="url(#petal)"/>
+  <path d="M111 49L104 78L88 72L90 56L111 49Z" fill="#FFD387" opacity="0.8"/>
+  <path d="M49 49L70 56L72 72L56 78L49 49Z" fill="#FFD387" opacity="0.8"/>
+  <path d="M49 111L56 82L72 88L70 104L49 111Z" fill="#FFB962" opacity="0.74"/>
+  <path d="M111 111L90 104L88 88L104 82L111 111Z" fill="#FFB962" opacity="0.74"/>
+</svg>

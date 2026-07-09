@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WeaponConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/weapon_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_id = "precision_sniper"
+display_name = "精准狙击枪"
+description = "高精度枪管，屏息后准星极稳，适合远程精确射击"
+rarity = "uncommon"
+price_gold = 200
+price_diamond = 0
+is_default = false
+zoom_default = 1.1
+zoom_min = 0.9
+zoom_max = 2.8
+zoom_quick_aim = 1.6
+zoom_step = 0.12
+camera_pan_speed = 280.0
+edge_pan_speed_scale = 0.95
+hold_stabilize_sec = 0.85
+aim_recover_sec = 0.35
+spread_idle = 38.0
+spread_hold = 5.0
+hit_tolerance_radius = 22.0
+time_extend_sec = 15.0
+scan_highlight_sec = 3.5
+recoil_duration = 0.22
+post_shot_recover_duration = 0.28
+cover_blast_tier = "medium"
+default_skin_id = "skin_precision"
+geometry_type = "precision"
+primary_color = Color(0.2, 0.5, 0.8, 1.0)
+secondary_color = Color(0.1, 0.3, 0.5, 1.0)

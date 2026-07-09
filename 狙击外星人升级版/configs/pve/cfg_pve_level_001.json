@@ -1,0 +1,193 @@
+{
+  "level_id": "pve_level_city_01",
+  "display_name": "城市观察 01",
+  "scene_id": "pve_battle_main",
+  "stage_theme": "city_day",
+  "order": 1,
+  "time_limit_sec": 120,
+  "max_wrong_hits": 3,
+  "target_goal": 2,
+  "reward": {
+    "base_coins": 80,
+    "time_bonus_formula": "floor(survive_time_sec * (1.0 + wrong_hit_count * -0.15))",
+    "time_bonus_floor_ratio": 0.3
+  },
+  "rating_rule": {
+    "3_star": "0误伤 + 剩余时间 > 30秒",
+    "2_star": "误伤≤1 + 剩余时间 > 10秒",
+    "1_star": "通关即可"
+  },
+  "available_items": [
+    "scan"
+  ],
+  "tutorial_focus": "理解观察、识别、瞄准、射击的最小闭环",
+  "success_condition": {
+    "type": "eliminate_targets",
+    "required_target_count": 2
+  },
+  "failure_condition": {
+    "type": "timer_or_wrong_hits",
+    "wrong_hit_limit": 3
+  },
+  "target_groups": [
+    {
+      "behavior_type": "static_camouflage",
+      "count": 2,
+      "spawn_points": [
+        "bus_stop_sign",
+        "billboard_roof_edge"
+      ],
+      "camouflage_intensity": 0.55,
+      "weakpoint_window_sec": 0
+    }
+  ],
+  "civilian_groups": [
+    {
+      "count": 4,
+      "spawn_points": [
+        "street_corner_left",
+        "crosswalk_wait_zone",
+        "right_sidewalk",
+        "left_mid_balcony"
+      ]
+    }
+  ],
+  "tutorial_layout_plan": {
+    "summary": "第1关不是普通战斗关，而是教程锁步专用布局。核心目标是让玩家按“观察 -> 识别 -> 扫描 -> 放大 -> 屏息 -> 第一枪”的顺序完成第一次正确击杀，然后在一个很小的练习段里再完成第二次搜索。",
+    "actor_roles": {
+      "T1": {
+        "actor_kind": "target",
+        "position": [210, -140],
+        "role": "教程主目标",
+        "purpose": "服务前5步教程，是玩家建立“什么算可疑”的第一参照物。"
+      },
+      "T2": {
+        "actor_kind": "target",
+        "position": [-270, 40],
+        "role": "第二个真目标",
+        "purpose": "第一枪之后的收尾目标，要求玩家完成一次明确的横向搜索。"
+      },
+      "C1": {
+        "actor_kind": "civilian",
+        "position": [-60, -70],
+        "role": "第一阶段轻误导",
+        "purpose": "告诉玩家“有亮点不代表一定是目标”，但不能抢走T1的教学主线。"
+      },
+      "C2": {
+        "actor_kind": "civilian",
+        "position": [120, 250],
+        "role": "第二轮次级误导",
+        "purpose": "在第二次搜索里轻微拉偏玩家视线，但不应打断节奏。"
+      },
+      "C3": {
+        "actor_kind": "civilian",
+        "position": [440, -50],
+        "role": "远侧背景干扰",
+        "purpose": "放在远侧做环境级干扰，不应在刚打完第一枪时成为视觉中心。"
+      },
+      "C4": {
+        "actor_kind": "civilian",
+        "position": [-320, 180],
+        "role": "第二轮主要误导",
+        "purpose": "告诉玩家第二个可疑点可能是平民，是第一枪之后最重要的误导源。"
+      }
+    },
+    "tutorial_steps": [
+      {
+        "step": 1,
+        "name": "移动镜头",
+        "player_should_see": ["T1", "C1"],
+        "primary_focus": "T1",
+        "misdirection_source": "C1",
+        "layout_requirement": "开场应先隐约看到T1，同时边角允许扫到C1。T1必须在默认视野附近，玩家轻微拖镜头就能重新找到它。"
+      },
+      {
+        "step": 2,
+        "name": "识别可疑特征",
+        "player_should_see": ["T1", "C1"],
+        "primary_focus": "T1",
+        "misdirection_source": "C1",
+        "layout_requirement": "拖镜头后应把T1拉进观察区中心。T1的正向线索必须比C1更完整、更明确。"
+      },
+      {
+        "step": 3,
+        "name": "扫描确认",
+        "player_should_see": ["T1", "T2"],
+        "primary_focus": "T1",
+        "misdirection_source": "none",
+        "layout_requirement": "扫描后的定位线索必须把玩家明确指回T1。T2可以被高亮，但不能比T1更抢眼。"
+      },
+      {
+        "step": 4,
+        "name": "放大瞄准",
+        "player_should_see": ["T1"],
+        "primary_focus": "T1",
+        "misdirection_source": "none",
+        "layout_requirement": "放大后视野仍应以T1为主，不应在这一步再引入新的误导。"
+      },
+      {
+        "step": 5,
+        "name": "屏息稳枪",
+        "player_should_see": ["T1"],
+        "primary_focus": "T1",
+        "misdirection_source": "none",
+        "layout_requirement": "玩家屏息时应持续盯着T1，目标暴露面积要足够稳定，不能让第一枪依赖随机散布。"
+      },
+      {
+        "step": 6,
+        "name": "完成第一枪",
+        "player_should_see": ["T1", "T2", "C4"],
+        "primary_focus": "T1 -> T2",
+        "misdirection_source": "C4",
+        "layout_requirement": "击杀T1后，第二轮搜索应自然转向T2；此时误导主力从C1切换到C4。"
+      }
+    ],
+    "second_search_loop": {
+      "summary": "第一枪之后，第1关进入一个很小的自由练习段，让玩家再练一次“别被平民骗，再把第二个目标找出来”。",
+      "primary_target": "T2",
+      "primary_misdirection": "C4",
+      "secondary_misdirection": "C2",
+      "background_noise": "C3",
+      "rules": [
+        "T2必须成为玩家下一眼能找到的真目标，而不是让玩家重新大海捞针。",
+        "C4是第二轮最重要的误导源，应让玩家短暂怀疑但不至于卡死。",
+        "C2只负责轻微拉偏视线，不能比C4更强。",
+        "C3保留为远侧背景干扰，不参与第一枪后的主搜索链路。"
+      ]
+    }
+  },
+  "playtest_focus": [
+    "首枪平均用时是否低于20秒",
+    "首次玩家是否能理解不能乱打",
+    "误伤是否主要来自玩家操作失误而不是识别失败"
+  ],
+  "analytics_plan": {
+    "core_question": "玩家能不能在第1关快速建立正确识别模型，并完成第一枪正反馈",
+    "watch_events": [
+      "level_entered",
+      "tutorial_started",
+      "tutorial_completed",
+      "first_hit_recorded",
+      "shot_fired",
+      "battle_finished",
+      "first_exit_recorded"
+    ],
+    "watch_metrics": [
+      "tutorial_completion_rate",
+      "first_hit_elapsed_sec",
+      "wrong_hit_count",
+      "level_1_completion_rate",
+      "star_distribution"
+    ],
+    "success_signals": [
+      "多数首次玩家能完成教程并打出第一枪",
+      "首次命中耗时集中在前20秒内",
+      "误伤主要来自操作失误而不是识别失败"
+    ],
+    "review_questions": [
+      "如果教程完成率低，是锁步太硬还是提示不够直接",
+      "如果首次命中耗时长，是可疑特征太弱还是镜头观察成本太高",
+      "如果误伤过多，是干扰项过像目标还是玩家不知道不能乱打"
+    ]
+  }
+}

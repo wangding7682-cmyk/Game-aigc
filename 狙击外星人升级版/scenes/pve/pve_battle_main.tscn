@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/pve/pve_battle_controller_3d.gd" id="1"]
+
+[node name="BattleRoot" type="Node3D"]
+script = ExtResource("1")
+
+[node name="AimCamera" type="Camera3D" parent="."]
+fov = 60.0
+position = Vector3(0, 7.2, 16.0)
+
+[node name="WorldRoot" type="Node3D" parent="."]
+
+[node name="LevelRoot" type="Node3D" parent="WorldRoot"]
+
+[node name="ActorRoot" type="Node3D" parent="WorldRoot"]
+
+[node name="DecalRoot" type="Node3D" parent="WorldRoot"]
+
+[node name="FxRoot" type="Node3D" parent="WorldRoot"]
+
+[node name="UiRoot" type="CanvasLayer" parent="."]

@@ -1,0 +1,57 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="scan-soft-3-title scan-soft-3-desc" role="img">
+  <title id="scan-soft-3-title">升级版扫描动作 scan-soft-3</title>
+  <desc id="scan-soft-3-desc">扫描分镜第三帧，头部和触角向右侧回摆，准备结束扫描。</desc>
+  <defs>
+    <linearGradient id="headGrad" x1="72" y1="38" x2="182" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CCFF97"/>
+      <stop offset="0.48" stop-color="#84DE5F"/>
+      <stop offset="1" stop-color="#499A4B"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="100" y1="142" x2="162" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#77DEE2"/>
+      <stop offset="1" stop-color="#2A8290"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(111 76) rotate(54) scale(62 42)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="torsoGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(126 156) rotate(90) scale(54 39)">
+      <stop stop-color="white" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="18" y="14" width="220" height="234" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17361F" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="128" cy="230" rx="46" ry="12" fill="#1E3D2C" opacity="0.14"/>
+
+  <g filter="url(#shadow)" transform="translate(1 1) rotate(3 128 156)">
+    <g transform="rotate(6 128 112)">
+      <path d="M109 43C116 24 138 24 145 43L149 58" stroke="#64BC5B" stroke-width="10" stroke-linecap="round"/>
+      <path d="M146 43C154 29 171 31 178 48L183 66" stroke="#64BC5B" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="98" cy="90" r="6" fill="#EE6561"/>
+      <circle cx="158" cy="90" r="6" fill="#EE6561"/>
+      <path d="M128 36C170 36 197 69 190 109C185 138 162 151 148 168C141 177 135 194 128 194C121 194 115 177 108 168C94 151 71 138 66 109C59 69 86 36 128 36Z" fill="url(#headGrad)"/>
+      <path d="M88 84C99 60 132 49 160 61" stroke="#E6FFC5" stroke-width="8" stroke-linecap="round" opacity="0.56"/>
+      <path d="M128 36C170 36 197 69 190 109C185 138 162 151 148 168C141 177 135 194 128 194C121 194 115 177 108 168C94 151 71 138 66 109C59 69 86 36 128 36Z" fill="url(#shine)"/>
+      <ellipse cx="103" cy="110" rx="17" ry="25" fill="#151515"/>
+      <ellipse cx="154" cy="107" rx="16" ry="24" fill="#151515"/>
+      <ellipse cx="108" cy="100" rx="5" ry="7" fill="white" opacity="0.9"/>
+      <ellipse cx="160" cy="97" rx="5" ry="7" fill="white" opacity="0.9"/>
+      <path d="M117 141C124 147 132 147 140 141" stroke="#2F6638" stroke-width="5" stroke-linecap="round" opacity="0.66"/>
+    </g>
+
+    <path d="M97 150C97 138 106 128 118 128H138C150 128 159 138 159 150V178C159 193 147 205 132 205H124C109 205 97 193 97 178V150Z" fill="url(#bodyGrad)"/>
+    <path d="M102 151C106 142 116 136 128 136C140 136 150 142 154 151V176C154 188 145 198 132 199H124C111 198 102 188 102 176V151Z" fill="url(#torsoGlow)"/>
+    <path d="M114 142C118 138 122 136 128 136C134 136 138 138 142 142" stroke="#E9FEFF" stroke-width="3.5" stroke-linecap="round" opacity="0.88"/>
+    <path d="M116 154C120 151 123 150 128 150C133 150 136 151 140 154" stroke="#C9F8FA" stroke-width="3.2" stroke-linecap="round" opacity="0.62"/>
+    <path d="M118 167C121 164 124 163 128 163C132 163 135 164 138 167" stroke="#FFF0A5" stroke-width="3" stroke-linecap="round" opacity="0.38"/>
+    <path d="M97 154C85 160 80 171 78 189" stroke="#69BF63" stroke-width="10" stroke-linecap="round"/>
+    <path d="M159 154C175 160 184 168 191 178" stroke="#6DC464" stroke-width="10" stroke-linecap="round"/>
+    <path d="M118 205C112 214 108 223 104 233" stroke="#69BF63" stroke-width="10" stroke-linecap="round"/>
+    <path d="M139 205C146 213 152 222 158 231" stroke="#6DC464" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="103" cy="235" rx="12" ry="7" fill="#69BF63"/>
+    <ellipse cx="160" cy="233" rx="12" ry="7" fill="#6DC464"/>
+  </g>
+</svg>

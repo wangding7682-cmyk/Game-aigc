@@ -1,0 +1,21 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ring" x1="31" y1="40" x2="128" y2="121" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FDFF"/>
+      <stop offset="0.56" stop-color="#BDE3FF"/>
+      <stop offset="1" stop-color="#78BAFF"/>
+    </linearGradient>
+    <radialGradient id="fog" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80 80) rotate(90) scale(56 56)">
+      <stop stop-color="#E7F7FF" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#E7F7FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="54" stroke="url(#ring)" stroke-width="5"/>
+  <circle cx="80" cy="80" r="40" stroke="#E6F5FF" stroke-width="2.5" opacity="0.48"/>
+  <path d="M80 26C99 28 115 36 127 49" stroke="#E4F5FF" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <path d="M134 80C132 99 124 115 111 127" stroke="#D0EBFF" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M80 134C61 132 45 124 33 111" stroke="#C3E4FF" stroke-width="5" stroke-linecap="round" opacity="0.52"/>
+  <path d="M26 80C28 61 36 45 49 33" stroke="#CFEAFF" stroke-width="5" stroke-linecap="round" opacity="0.66"/>
+  <circle cx="80" cy="80" r="56" fill="url(#fog)"/>
+  <circle cx="80" cy="80" r="6" fill="#F8FDFF" opacity="0.88"/>
+</svg>

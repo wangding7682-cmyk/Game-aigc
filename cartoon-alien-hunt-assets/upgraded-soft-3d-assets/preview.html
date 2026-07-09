@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>升级版卡通游戏素材预览</title>
+  <style>
+    :root {
+      --bg: #0f1723;
+      --panel: rgba(19, 31, 48, 0.84);
+      --panel-strong: rgba(17, 28, 42, 0.92);
+      --border: rgba(165, 255, 184, 0.14);
+      --text: #edf7ff;
+      --subtle: #93a9c4;
+      --accent: #8cf272;
+      --accent-2: #70d8ff;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-2: rgba(255, 255, 255, 0.035);
+      --shadow: 0 20px 48px rgba(0, 0, 0, 0.24);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(112, 216, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 20% 20%, rgba(140, 242, 114, 0.16), transparent 24%),
+        linear-gradient(180deg, #142033 0%, #0e1621 100%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18));
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 56px;
+    }
+
+    .hero,
+    section {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, rgba(28, 44, 67, 0.9), rgba(16, 26, 40, 0.92));
+    }
+
+    h1, h2, h3, h4, p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 26px;
+    }
+
+    .hero p,
+    .section-desc,
+    .note,
+    .card p,
+    .storyboard-card p,
+    .behavior-card p {
+      color: var(--subtle);
+      line-height: 1.72;
+    }
+
+    .hero p {
+      max-width: 960px;
+    }
+
+    .hero-meta,
+    .stats-grid,
+    .grid,
+    .storyboard-grid,
+    .behavior-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-meta {
+      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .badge {
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .badge strong {
+      display: block;
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .badge span {
+      font-size: 13px;
+      color: var(--subtle);
+    }
+
+    section {
+      margin-top: 28px;
+      padding: 24px;
+    }
+
+    .section-heading,
+    .story-header {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .grid-three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .grid-four {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .grid-five {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .card,
+    .storyboard-card,
+    .frame-card,
+    .behavior-card {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--card);
+      backdrop-filter: blur(6px);
+    }
+
+    .card,
+    .behavior-card {
+      padding: 14px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 154px;
+      object-fit: contain;
+    }
+
+    .env img,
+    .decal-grid img {
+      height: 132px;
+    }
+
+    .decal-grid .card {
+      min-height: 196px;
+      background: var(--card-2);
+    }
+
+    .label {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(140, 242, 114, 0.12);
+      color: #d4ffe0;
+      font-size: 12px;
+    }
+
+    .storyboard-grid,
+    .behavior-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .storyboard-card,
+    .behavior-card {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .storyboard-card__top,
+    .behavior-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .storyboard-card__top .tag,
+    .behavior-card__top .tag {
+      background: rgba(112, 216, 255, 0.12);
+      color: #d5f6ff;
+    }
+
+    .frames {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .frame-card {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .frame-card img {
+      width: 100%;
+      height: 118px;
+      object-fit: contain;
+    }
+
+    .frame-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .rhythm {
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13px;
+      color: var(--subtle);
+    }
+
+    .behavior-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.035));
+    }
+
+    .behavior-card__media,
+    .behavior-card__strip {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--panel-strong);
+    }
+
+    .behavior-card__media {
+      min-height: 184px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .behavior-card__media img {
+      max-height: 150px;
+      width: auto;
+    }
+
+    .behavior-card__strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .behavior-card__strip .mini {
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 10px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .behavior-card__strip img {
+      width: 100%;
+      height: 96px;
+      object-fit: contain;
+    }
+
+    .mini span {
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    .penetration-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .penetration-demo-card {
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--card);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .penetration-demo-card p {
+      color: var(--subtle);
+      line-height: 1.72;
+    }
+
+    .penetration-mini-scene {
+      position: relative;
+      min-height: 220px;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at top, rgba(112, 216, 255, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(19, 31, 48, 0.96), rgba(17, 28, 42, 0.96));
+    }
+
+    .penetration-mini-scene .alien,
+    .penetration-mini-scene .wall,
+    .penetration-mini-scene .decal {
+      position: absolute;
+    }
+
+    .penetration-mini-scene .alien {
+      left: 52%;
+      bottom: 6px;
+      transform: translateX(-50%);
+      width: 152px;
+      z-index: 1;
+    }
+
+    .penetration-mini-scene .wall {
+      inset: 34px 20px 18px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f6d79f, #d49861 58%, #97613d);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.42),
+        inset 0 -14px 20px rgba(92, 55, 29, 0.34),
+        0 14px 22px rgba(0, 0, 0, 0.16);
+      z-index: 2;
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 11%, #000 13%);
+      mask-image: radial-gradient(circle at 50% 50%, transparent 0 11%, #000 13%);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+
+    .penetration-mini-scene .decal {
+      inset: 30px 12px 12px;
+      width: calc(100% - 24px);
+      height: calc(100% - 42px);
+      object-fit: contain;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 24px 14px 40px;
+      }
+
+      .frames,
+      .behavior-card__strip {
+        grid-template-columns: 1fr;
+      }
+
+      .storyboard-card__top,
+      .behavior-card__top {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1>升级版卡通游戏素材预览</h1>
+      <p>这套 v2 素材统一采用软 3D 卡通语言：更圆润的轮廓、更轻的高光、更明确的体积层次，以及适合轻休闲伪装玩法的可爱科幻气质。本轮补充重点是 PVP 墙体受击贴花，以及外星人“短暂显露弱点”的三帧状态素材。</p>
+      <div class="hero-meta">
+        <div class="badge"><strong>3</strong><span>静态视角</span></div>
+        <div class="badge"><strong>3</strong><span>枪支</span></div>
+        <div class="badge"><strong>9</strong><span>动作帧</span></div>
+        <div class="badge"><strong>12</strong><span>环境与掩体</span></div>
+        <div class="badge"><strong>5</strong><span>贴花</span></div>
+        <div class="badge"><strong>3</strong><span>弱点显露</span></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-heading">
+        <h2>Aliens</h2>
+        <p class="section-desc">同一角色的正面、侧面、背面视角，统一头型、眼睛、触角和细长肢体特征。</p>
+      </div>
+      <div class="grid grid-three">
+        <div class="card">
+          <img src="./aliens/alien-front.svg" alt="alien front">
+          <div><div class="label">alien-front.svg</div><div class="tag">正面</div></div>
+        </div>
+        <div class="card">
+          <img src="./aliens/alien-side.svg" alt="alien side">
+          <div><div class="label">alien-side.svg</div><div class="tag">侧面</div></div>
+        </div>
+        <div class="card">
+          <img src="./aliens/alien-back.svg" alt="alien back">
+          <div><div class="label">alien-back.svg</div><div class="tag">背面</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>Guns</h2>
+        <p class="section-desc">延续同一视觉系统，用圆角结构、渐变和能量节点表现软 3D 科幻武器。</p>
+      </div>
+      <div class="grid grid-three">
+        <div class="card"><img src="./guns/pistol-soft.svg" alt="pistol soft"><div><div class="label">pistol-soft.svg</div><div class="tag">手枪</div></div></div>
+        <div class="card"><img src="./guns/rifle-soft.svg" alt="rifle soft"><div><div class="label">rifle-soft.svg</div><div class="tag">步枪</div></div></div>
+        <div class="card"><img src="./guns/energy-gun-soft.svg" alt="energy gun soft"><div><div class="label">energy-gun-soft.svg</div><div class="tag">能量枪</div></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="story-header">
+        <h2>Animated Aliens</h2>
+        <p class="section-desc">升级版动作帧使用静态分镜展示，不依赖脚本播放。三组动作分别用于巡逻、扫描和惊慌逃离状态。</p>
+      </div>
+      <div class="storyboard-grid">
+        <article class="storyboard-card">
+          <div class="storyboard-card__top"><div><h3>Patrol</h3><p>常态巡逻、慢速位移、低警觉移动。</p></div><span class="tag">巡逻步态</span></div>
+          <div class="frames">
+            <div class="frame-card"><span class="frame-label">帧 1</span><img src="./aliens-animated/patrol-soft-1.svg" alt="patrol 1"></div>
+            <div class="frame-card"><span class="frame-label">帧 2</span><img src="./aliens-animated/patrol-soft-2.svg" alt="patrol 2"></div>
+            <div class="frame-card"><span class="frame-label">帧 3</span><img src="./aliens-animated/patrol-soft-3.svg" alt="patrol 3"></div>
+          </div>
+          <div class="rhythm">前探迈步 → 重心居中 → 收步续巡</div>
+        </article>
+        <article class="storyboard-card">
+          <div class="storyboard-card__top"><div><h3>Scan</h3><p>试探观察、扫描路口、发现异动前摇。</p></div><span class="tag">扫描观察</span></div>
+          <div class="frames">
+            <div class="frame-card"><span class="frame-label">帧 1</span><img src="./aliens-animated/scan-soft-1.svg" alt="scan 1"></div>
+            <div class="frame-card"><span class="frame-label">帧 2</span><img src="./aliens-animated/scan-soft-2.svg" alt="scan 2"></div>
+            <div class="frame-card"><span class="frame-label">帧 3</span><img src="./aliens-animated/scan-soft-3.svg" alt="scan 3"></div>
+          </div>
+          <div class="rhythm">抬手探查 → 正向停留 → 回摆收势</div>
+        </article>
+        <article class="storyboard-card">
+          <div class="storyboard-card__top"><div><h3>Panic</h3><p>应激失衡、受惊外张、快速逃离。</p></div><span class="tag">惊慌逃离</span></div>
+          <div class="frames">
+            <div class="frame-card"><span class="frame-label">帧 1</span><img src="./aliens-animated/panic-soft-1.svg" alt="panic 1"></div>
+            <div class="frame-card"><span class="frame-label">帧 2</span><img src="./aliens-animated/panic-soft-2.svg" alt="panic 2"></div>
+            <div class="frame-card"><span class="frame-label">帧 3</span><img src="./aliens-animated/panic-soft-3.svg" alt="panic 3"></div>
+          </div>
+          <div class="rhythm">受惊外张 → 抬臂失衡 → 俯身冲离</div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>目标行为区</h2>
+        <p class="section-desc">补充展示静止伪装、缓慢移动与短暂显露弱点三类目标行为，便于在不使用脚本的情况下做静态分镜说明。</p>
+      </div>
+      <div class="behavior-grid">
+        <article class="behavior-card">
+          <div class="behavior-card__top"><div><h3>静止伪装</h3><p>可通过现有静态视角配合换材质、换颜色或叠加外壳表达，重点是保持轮廓可读、表面状态伪装。</p></div><span class="tag">静态表达</span></div>
+          <div class="behavior-card__media"><img src="./aliens/alien-front.svg" alt="静止伪装参考图"></div>
+        </article>
+        <article class="behavior-card">
+          <div class="behavior-card__top"><div><h3>缓慢移动</h3><p>可直接通过 patrol 或 scan 分镜表达低速位移，适合巡逻推进、谨慎靠近和轻度试探。</p></div><span class="tag">已有动作</span></div>
+          <div class="behavior-card__strip">
+            <div class="mini"><img src="./aliens-animated/patrol-soft-1.svg" alt="缓慢移动帧1"><span>前探</span></div>
+            <div class="mini"><img src="./aliens-animated/patrol-soft-2.svg" alt="缓慢移动帧2"><span>居中</span></div>
+            <div class="mini"><img src="./aliens-animated/patrol-soft-3.svg" alt="缓慢移动帧3"><span>收步</span></div>
+          </div>
+        </article>
+        <article class="behavior-card">
+          <div class="behavior-card__top"><div><h3>短暂显露弱点</h3><p>胸前弱点从隐藏到半开，再到完全打开并发亮，适合作为短时间可攻击窗口。</p></div><span class="tag">新增序列</span></div>
+          <div class="behavior-card__strip">
+            <div class="mini"><img src="./aliens-behaviors/weakpoint-soft-1.svg" alt="弱点显露1"><span>隐藏</span></div>
+            <div class="mini"><img src="./aliens-behaviors/weakpoint-soft-2.svg" alt="弱点显露2"><span>半显露</span></div>
+            <div class="mini"><img src="./aliens-behaviors/weakpoint-soft-3.svg" alt="弱点显露3"><span>完全显露</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>Environment</h2>
+        <p class="section-desc">适合伪装玩法与 PVP 对抗的环境物件，增加层次和体积感，但仍保持透明背景和卡通可读性。</p>
+      </div>
+      <div class="grid grid-four env">
+        <div class="card"><img src="./environment/bush-rounded.svg" alt="bush"><div class="label">bush-rounded.svg</div></div>
+        <div class="card"><img src="./environment/rock-stack-soft.svg" alt="rock"><div class="label">rock-stack-soft.svg</div></div>
+        <div class="card"><img src="./environment/tree-bouncy.svg" alt="tree"><div class="label">tree-bouncy.svg</div></div>
+        <div class="card"><img src="./environment/cactus-twin-soft.svg" alt="cactus"><div class="label">cactus-twin-soft.svg</div></div>
+        <div class="card"><img src="./environment/crate-wood-soft.svg" alt="crate"><div class="label">crate-wood-soft.svg</div></div>
+        <div class="card"><img src="./environment/sign-post-soft.svg" alt="sign"><div class="label">sign-post-soft.svg</div></div>
+        <div class="card"><img src="./environment/mushroom-soft.svg" alt="mushroom"><div class="label">mushroom-soft.svg</div></div>
+        <div class="card"><img src="./environment/grass-clump-soft.svg" alt="grass"><div class="label">grass-clump-soft.svg</div></div>
+        <div class="card"><img src="./environment/shrub-layered-soft.svg" alt="shrub"><div class="label">shrub-layered-soft.svg</div></div>
+        <div class="card"><img src="./environment/wall-cover-intact.svg" alt="intact wall cover"><div class="label">wall-cover-intact.svg</div></div>
+        <div class="card"><img src="./environment/wall-cover-breached.svg" alt="breached wall cover"><div class="label">wall-cover-breached.svg</div></div>
+        <div class="card"><img src="./environment/wall-cover-collapsed.svg" alt="collapsed wall cover"><div class="label">wall-cover-collapsed.svg</div></div>
+      </div>
+      <p class="note">新增 PVP 掩体墙展示完整、缺口和塌陷三个阶段，便于在静态画布中对比遮挡变化与破坏反馈。</p>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>穿透型贴花演示</h2>
+        <p class="section-desc">本轮贴花已从“表面装饰裂纹”升级为“真实透明破口”。洞口位置不再遮挡，墙后角色会直接从受击区域透出。</p>
+      </div>
+      <div class="penetration-demo-grid">
+        <article class="penetration-demo-card">
+          <div><div class="label">透明洞口示例</div><div class="tag">穿透型贴花</div></div>
+          <div class="penetration-mini-scene">
+            <img class="alien" src="./aliens/alien-side.svg" alt="墙后外星人侧面">
+            <div class="wall" aria-hidden="true"></div>
+            <img class="decal" src="./decals/wall-bullet-hole-soft.svg" alt="单点穿透贴花">
+          </div>
+          <p>墙体仍在前层，但中心洞口是真实透明区域，所以可以直接看到墙后外星人的局部轮廓。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>贴花区</h2>
+        <p class="section-desc">新增透明背景贴花现在统一为穿透型表达。关键受击区保留真实透明洞口，碎裂边缘和碎屑继续负责补足厚度与体积感。</p>
+      </div>
+      <div class="grid grid-five decal-grid">
+        <div class="card"><img src="./decals/wall-bullet-hole-soft.svg" alt="单点弹孔贴花"><div class="label">wall-bullet-hole-soft.svg</div></div>
+        <div class="card"><img src="./decals/wall-bullet-hole-cluster-soft.svg" alt="连发弹孔贴花"><div class="label">wall-bullet-hole-cluster-soft.svg</div></div>
+        <div class="card"><img src="./decals/wall-crack-radial-soft.svg" alt="放射裂纹贴花"><div class="label">wall-crack-radial-soft.svg</div></div>
+        <div class="card"><img src="./decals/wall-crack-corner-soft.svg" alt="边角裂损贴花"><div class="label">wall-crack-corner-soft.svg</div></div>
+        <div class="card"><img src="./decals/wall-debris-scatter-soft.svg" alt="碎屑散落贴花"><div class="label">wall-debris-scatter-soft.svg</div></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

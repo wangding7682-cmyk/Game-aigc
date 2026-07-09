@@ -1,0 +1,28 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="24" y1="20" x2="488" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#132635"/>
+      <stop offset="1" stop-color="#0A121A"/>
+    </linearGradient>
+    <linearGradient id="owned" x1="358" y1="34" x2="482" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6AF0A8"/>
+      <stop offset="1" stop-color="#2ECF7F"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="18" width="484" height="184" rx="28" fill="url(#card)" stroke="#35546B" stroke-width="2"/>
+  <rect x="34" y="34" width="156" height="152" rx="22" fill="#0F1F2B" stroke="#77DFFF" stroke-opacity="0.22"/>
+  <path d="M58 117H150" stroke="#93D8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M142 117L176 97" stroke="#93D8FF" stroke-width="14" stroke-linecap="round"/>
+  <path d="M93 99L110 77" stroke="#C9F4FF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M83 136L99 158" stroke="#5F7F93" stroke-width="14" stroke-linecap="round"/>
+  <path d="M214 58H330" stroke="#EAF8FF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M214 86H302" stroke="#6991A9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 114H316" stroke="#456175" stroke-width="8" stroke-linecap="round"/>
+  <rect x="358" y="34" width="124" height="50" rx="18" fill="url(#owned)"/>
+  <path d="M381 57L394 69L416 46" stroke="#0E5731" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="425" y="64" fill="#0E5731" font-family="Segoe UI, Arial" font-size="20" font-weight="800" text-anchor="middle">OWNED</text>
+  <rect x="214" y="145" width="124" height="18" rx="9" fill="#1B2E3D"/>
+  <rect x="214" y="145" width="95" height="18" rx="9" fill="#63D8FF"/>
+  <rect x="350" y="145" width="96" height="18" rx="9" fill="#24394A"/>
+  <rect x="350" y="145" width="66" height="18" rx="9" fill="#6AF0A8"/>
+</svg>

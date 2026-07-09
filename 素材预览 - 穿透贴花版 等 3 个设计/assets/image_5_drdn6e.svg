@@ -1,0 +1,51 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="alien-back-title alien-back-desc">
+  <title id="alien-back-title">球衣版外星人背面</title>
+  <desc id="alien-back-desc">参考图风格的背面外星人，保持泪滴形头部、短触角、蓝色运动服轮廓与无背包设定。</desc>
+  <defs>
+    <linearGradient id="backHead" x1="86" y1="36" x2="172" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8FF8B"/>
+      <stop offset="0.54" stop-color="#86E55C"/>
+      <stop offset="1" stop-color="#459A3E"/>
+    </linearGradient>
+    <linearGradient id="backJersey" x1="97" y1="134" x2="159" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4EACFF"/>
+      <stop offset="1" stop-color="#1C62C2"/>
+    </linearGradient>
+    <linearGradient id="backShorts" x1="108" y1="181" x2="148" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCEAFF"/>
+    </linearGradient>
+    <radialGradient id="backShine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(102 76) rotate(42) scale(58 36)">
+      <stop stop-color="white" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="backShadow" x="26" y="18" width="204" height="224" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17371F" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <ellipse cx="128" cy="229" rx="46" ry="12" fill="#15351E" opacity="0.14"/>
+  <g filter="url(#backShadow)">
+    <path d="M108 45C113 31 128 28 128 28C128 28 143 31 148 45L154 60C156 67 162 73 168 77" stroke="#6BBE4D" stroke-width="9" stroke-linecap="round"/>
+    <path d="M148 45C143 31 128 28 128 28C128 28 113 31 108 45L102 60C100 67 94 73 88 77" stroke="#6BBE4D" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="174" cy="82" r="7" fill="#F15B5B"/>
+    <circle cx="82" cy="82" r="7" fill="#F15B5B"/>
+    <path d="M128 34C165 34 191 61 191 97C191 129 171 148 154 164C143 175 137 194 128 194C119 194 113 175 102 164C85 148 65 129 65 97C65 61 91 34 128 34Z" fill="url(#backHead)"/>
+    <path d="M128 34C165 34 191 61 191 97C191 129 171 148 154 164C143 175 137 194 128 194C119 194 113 175 102 164C85 148 65 129 65 97C65 61 91 34 128 34Z" fill="url(#backShine)"/>
+    <path d="M97 122C112 129 144 129 159 122" stroke="#56A34B" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <path d="M96 153C86 160 82 172 79 191" stroke="#68BC54" stroke-width="10" stroke-linecap="round"/>
+    <path d="M160 153C170 160 174 172 177 191" stroke="#68BC54" stroke-width="10" stroke-linecap="round"/>
+    <path d="M98 148C98 136 107 128 119 128H137C149 128 158 136 158 148V180C158 193 147 204 134 204H122C109 204 98 193 98 180V148Z" fill="url(#backJersey)"/>
+    <path d="M108 145C114 149 121 151 128 151C135 151 142 149 148 145" stroke="#D7ECFF" stroke-width="4.5" stroke-linecap="round" opacity="0.76"/>
+    <path d="M113 136H143" stroke="#F4FAFF" stroke-width="7" stroke-linecap="round"/>
+    <path d="M112 180H144V194C144 202 137 209 129 209H127C119 209 112 202 112 194V180Z" fill="url(#backShorts)"/>
+    <path d="M112 180H144" stroke="#C9DCF7" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M120 209C116 217 113 226 112 236" stroke="#69BF55" stroke-width="10" stroke-linecap="round"/>
+    <path d="M136 209C140 217 143 226 144 236" stroke="#69BF55" stroke-width="10" stroke-linecap="round"/>
+    <path d="M117 209L116 226" stroke="#2562C4" stroke-width="9" stroke-linecap="round"/>
+    <path d="M139 209L140 226" stroke="#2562C4" stroke-width="9" stroke-linecap="round"/>
+    <ellipse cx="112" cy="238" rx="12" ry="7" fill="#111111"/>
+    <ellipse cx="144" cy="238" rx="12" ry="7" fill="#111111"/>
+    <ellipse cx="77" cy="195" rx="10" ry="6" fill="#68BC54"/>
+    <ellipse cx="179" cy="195" rx="10" ry="6" fill="#68BC54"/>
+  </g>
+</svg>

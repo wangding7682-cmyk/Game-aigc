@@ -1,0 +1,153 @@
+{
+  "root": {
+    "nodeId": "gen-project-shell",
+    "kind": "project-shell",
+    "pageIds": [
+      "page-main-menu",
+      "page-level-loading",
+      "page-pve-battle",
+      "page-pve-tutorial",
+      "page-result-growth",
+      "page-pvp-mock-room"
+    ],
+    "output": "partials/project-shell.html",
+    "sharedRegions": [
+      "mobile-safe-shell",
+      "global-atmosphere",
+      "brand-glow-language"
+    ],
+    "privateRegions": [],
+    "mutableSlots": [
+      "pageTitle",
+      "pageMood",
+      "activeNavItem"
+    ],
+    "status": "planned",
+    "children": [
+      {
+        "nodeId": "gen-page-main-menu",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-main-menu"
+        ],
+        "output": "pages/main-menu.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "menu-hero",
+          "mode-entry-grid",
+          "player-overview"
+        ],
+        "mutableSlots": [],
+        "status": "planned",
+        "children": []
+      },
+      {
+        "nodeId": "gen-page-level-loading",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-level-loading"
+        ],
+        "output": "pages/level-loading.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "loading-art",
+          "objective-brief",
+          "progress-strip"
+        ],
+        "mutableSlots": [],
+        "status": "planned",
+        "children": []
+      },
+      {
+        "nodeId": "gen-battle-common",
+        "kind": "shared-branch",
+        "pageIds": [
+          "page-pve-battle",
+          "page-pve-tutorial"
+        ],
+        "output": "partials/battle-common.html",
+        "sharedRegions": [
+          "battle-top-hud",
+          "scope-stage",
+          "bottom-action-deck"
+        ],
+        "privateRegions": [],
+        "mutableSlots": [
+          "battleOverlay",
+          "battleTips",
+          "activeTool"
+        ],
+        "status": "planned",
+        "children": [
+          {
+            "nodeId": "gen-page-pve-battle",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-pve-battle"
+            ],
+            "output": "pages/pve-battle.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "battle-focus-content",
+              "target-list",
+              "mission-complete-cta"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          },
+          {
+            "nodeId": "gen-page-pve-tutorial",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-pve-tutorial"
+            ],
+            "output": "pages/pve-tutorial.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "tutorial-overlay",
+              "locked-step-panel"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          }
+        ]
+      },
+      {
+        "nodeId": "gen-page-result-growth",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-result-growth"
+        ],
+        "output": "pages/result-growth.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "result-summary",
+          "reward-growth",
+          "next-actions"
+        ],
+        "mutableSlots": [],
+        "status": "planned",
+        "children": []
+      },
+      {
+        "nodeId": "gen-page-pvp-mock-room",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-pvp-mock-room"
+        ],
+        "output": "pages/pvp-mock-room.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "round-status",
+          "battle-board",
+          "control-panel"
+        ],
+        "mutableSlots": [],
+        "status": "planned",
+        "children": []
+      }
+    ]
+  }
+}

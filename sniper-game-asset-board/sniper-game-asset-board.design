@@ -1,0 +1,1028 @@
+{
+  "data": [
+    {
+      "id": "page-asset-overview",
+      "title": "整合画布",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/asset-overview.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-asset-overview-integration",
+      "title": "界面接入版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782553600000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/asset-overview-integration.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-program-integration-board",
+      "title": "程序可接入总板",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 1240,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/program-integration-board.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-program-mount-spec-board",
+      "title": "程序挂载说明版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782560200000,
+      "canvasData": {
+        "x": 1860,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/program-mount-spec-board.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "page-alien-design-update",
+      "title": "外星人设计补充版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1782563600000,
+      "canvasData": {
+        "x": 2480,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/alien-design-update.html",
+        "interactions": []
+      }
+    },
+    {
+      "id": "image-001",
+      "title": "标准狙击枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 0,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weapon-default-sniper.svg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "精准狙击枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 620,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weapon-precision-sniper.svg"
+      }
+    },
+    {
+      "id": "image-003",
+      "title": "连发狙击枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 1240,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weapon-auto-sniper.svg"
+      }
+    },
+    {
+      "id": "image-004",
+      "title": "电磁狙击枪",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 1860,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/weapon-plasma-sniper.svg"
+      }
+    },
+    {
+      "id": "image-005",
+      "title": "外星人识别卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 2480,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-target-card.svg"
+      }
+    },
+    {
+      "id": "image-006",
+      "title": "平民识别卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 3100,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/civilian-decoy-card.svg"
+      }
+    },
+    {
+      "id": "image-007",
+      "title": "金币图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 3720,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-coin.svg"
+      }
+    },
+    {
+      "id": "image-008",
+      "title": "扫描雷达图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 4340,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-scan-radar.svg"
+      }
+    },
+    {
+      "id": "image-009",
+      "title": "冰冻弹图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 4960,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-freeze-round.svg"
+      }
+    },
+    {
+      "id": "image-010",
+      "title": "定位器图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 5580,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-locator.svg"
+      }
+    },
+    {
+      "id": "image-011",
+      "title": "加时图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 6200,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-time-extend.svg"
+      }
+    },
+    {
+      "id": "image-012",
+      "title": "准星图标",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 6820,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/icon-scope-reticle.svg"
+      }
+    },
+    {
+      "id": "image-013",
+      "title": "墙角掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 7440,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/env-wall-corner.svg"
+      }
+    },
+    {
+      "id": "image-014",
+      "title": "路灯掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 8060,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/env-street-lamp.svg"
+      }
+    },
+    {
+      "id": "image-015",
+      "title": "停放货车",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 8680,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/env-parked-van.svg"
+      }
+    },
+    {
+      "id": "image-016",
+      "title": "广告牌掩体",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 9300,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/env-billboard.svg"
+      }
+    },
+    {
+      "id": "image-017",
+      "title": "枪口火光",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 9920,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-muzzle-flash.svg"
+      }
+    },
+    {
+      "id": "image-018",
+      "title": "扫描脉冲",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 10540,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-scan-pulse.svg"
+      }
+    },
+    {
+      "id": "image-019",
+      "title": "命中确认",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 11160,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-hit-confirm.svg"
+      }
+    },
+    {
+      "id": "image-020",
+      "title": "误伤警告",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 11780,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-wrong-hit-alert.svg"
+      }
+    },
+    {
+      "id": "image-021",
+      "title": "掩体命中",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 12400,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-cover-impact.svg"
+      }
+    },
+    {
+      "id": "image-022",
+      "title": "慢动作环",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 13020,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/fx-slowmo-ring.svg"
+      }
+    },
+    {
+      "id": "image-023",
+      "title": "瞄准镜框",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 13640,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hud-scope-frame.svg"
+      }
+    },
+    {
+      "id": "image-024",
+      "title": "生命条组件",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 14260,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hud-health-bar.svg"
+      }
+    },
+    {
+      "id": "image-025",
+      "title": "时间条组件",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 14880,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hud-time-bar.svg"
+      }
+    },
+    {
+      "id": "image-026",
+      "title": "锁定框组件",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 15500,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hud-target-lock-frame.svg"
+      }
+    },
+    {
+      "id": "image-027",
+      "title": "反馈面板",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782550000000,
+      "canvasData": {
+        "x": 16120,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hud-feedback-panel.svg"
+      }
+    },
+    {
+      "id": "image-028",
+      "title": "主菜单主视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782553600000,
+      "canvasData": {
+        "x": 16740,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/menu-key-art.jpg"
+      }
+    },
+    {
+      "id": "image-029",
+      "title": "瞄准镜战斗主视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782553600000,
+      "canvasData": {
+        "x": 17360,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/loading-scope-art.jpg"
+      }
+    },
+    {
+      "id": "image-030",
+      "title": "外星人伪装待机",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 17980,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-disguised-idle.svg"
+      }
+    },
+    {
+      "id": "image-031",
+      "title": "外星人弱点开启",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 18600,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-weakpoint-open.svg"
+      }
+    },
+    {
+      "id": "image-032",
+      "title": "外星人移动侧身",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 19220,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-moving-profile.svg"
+      }
+    },
+    {
+      "id": "image-033",
+      "title": "外星人扫描高亮",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 19840,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-scan-highlight.svg"
+      }
+    },
+    {
+      "id": "image-034",
+      "title": "平民冷静待机",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 20460,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/civilian-calm-idle.svg"
+      }
+    },
+    {
+      "id": "image-035",
+      "title": "平民假线索闪点",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 21080,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/civilian-false-clue-glint.svg"
+      }
+    },
+    {
+      "id": "image-036",
+      "title": "平民移动路人",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 21700,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/civilian-moving-passerby.svg"
+      }
+    },
+    {
+      "id": "image-037",
+      "title": "商店货币顶栏",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 22320,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-header-currency-bar.svg"
+      }
+    },
+    {
+      "id": "image-038",
+      "title": "商店武器标签激活",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 22940,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-tab-weapon-active.svg"
+      }
+    },
+    {
+      "id": "image-039",
+      "title": "商店皮肤标签激活",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 23560,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-tab-skin-active.svg"
+      }
+    },
+    {
+      "id": "image-040",
+      "title": "商店道具标签激活",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 24180,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-tab-item-active.svg"
+      }
+    },
+    {
+      "id": "image-041",
+      "title": "商店武器已拥有卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 24800,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-weapon-card-owned.svg"
+      }
+    },
+    {
+      "id": "image-042",
+      "title": "商店皮肤锁定卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 25420,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-skin-card-locked.svg"
+      }
+    },
+    {
+      "id": "image-043",
+      "title": "商店道具可购买卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 26040,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-item-card-buyable.svg"
+      }
+    },
+    {
+      "id": "image-044",
+      "title": "商店购买按钮可用",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 26660,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-buy-button-enabled.svg"
+      }
+    },
+    {
+      "id": "image-045",
+      "title": "商店购买按钮禁用",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 27280,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/shop-buy-button-disabled.svg"
+      }
+    },
+    {
+      "id": "image-046",
+      "title": "武器库武器已装备卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 27900,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-weapon-list-card-equipped.svg"
+      }
+    },
+    {
+      "id": "image-047",
+      "title": "武器库武器已解锁卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 28520,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-weapon-list-card-unlocked.svg"
+      }
+    },
+    {
+      "id": "image-048",
+      "title": "武器库皮肤已装备卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 29140,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-skin-list-card-equipped.svg"
+      }
+    },
+    {
+      "id": "image-049",
+      "title": "武器库皮肤锁定卡",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 29760,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-skin-list-card-locked.svg"
+      }
+    },
+    {
+      "id": "image-050",
+      "title": "武器库详情面板",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 30380,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-detail-panel.svg"
+      }
+    },
+    {
+      "id": "image-051",
+      "title": "武器库装备按钮",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 31000,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/armory-equip-button.svg"
+      }
+    },
+    {
+      "id": "image-052",
+      "title": "扫描脉冲第1帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 31620,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-pulse-frame-01.svg"
+      }
+    },
+    {
+      "id": "image-053",
+      "title": "扫描脉冲第2帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 32240,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-pulse-frame-02.svg"
+      }
+    },
+    {
+      "id": "image-054",
+      "title": "扫描脉冲第3帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 32860,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-pulse-frame-03.svg"
+      }
+    },
+    {
+      "id": "image-055",
+      "title": "扫描脉冲第4帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 33480,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-pulse-frame-04.svg"
+      }
+    },
+    {
+      "id": "image-056",
+      "title": "扫描脉冲第5帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 34100,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/scan-pulse-frame-05.svg"
+      }
+    },
+    {
+      "id": "image-057",
+      "title": "命中确认第1帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 34720,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hit-confirm-frame-01.svg"
+      }
+    },
+    {
+      "id": "image-058",
+      "title": "命中确认第2帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 35340,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hit-confirm-frame-02.svg"
+      }
+    },
+    {
+      "id": "image-059",
+      "title": "命中确认第3帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 35960,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hit-confirm-frame-03.svg"
+      }
+    },
+    {
+      "id": "image-060",
+      "title": "命中确认第4帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 36580,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hit-confirm-frame-04.svg"
+      }
+    },
+    {
+      "id": "image-061",
+      "title": "命中确认第5帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 37200,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/hit-confirm-frame-05.svg"
+      }
+    },
+    {
+      "id": "image-062",
+      "title": "误伤警告第1帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 37820,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wrong-hit-alert-frame-01.svg"
+      }
+    },
+    {
+      "id": "image-063",
+      "title": "误伤警告第2帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 38440,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wrong-hit-alert-frame-02.svg"
+      }
+    },
+    {
+      "id": "image-064",
+      "title": "误伤警告第3帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 39060,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wrong-hit-alert-frame-03.svg"
+      }
+    },
+    {
+      "id": "image-065",
+      "title": "误伤警告第4帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 39680,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wrong-hit-alert-frame-04.svg"
+      }
+    },
+    {
+      "id": "image-066",
+      "title": "误伤警告第5帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782557200000,
+      "canvasData": {
+        "x": 40300,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/wrong-hit-alert-frame-05.svg"
+      }
+    },
+    {
+      "id": "image-067",
+      "title": "外星人服装参考图",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1782563600000,
+      "canvasData": {
+        "x": 40920,
+        "y": 3046
+      },
+      "devMetadata": {
+        "imageSrc": "assets/alien-costume-reference-board.png"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "desktop",
+    "projectName": "狙击游戏整合资产画布",
+    "designLibrary": null
+  }
+}

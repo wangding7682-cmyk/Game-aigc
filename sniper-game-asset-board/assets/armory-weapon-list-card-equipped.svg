@@ -1,0 +1,22 @@
+<svg width="520" height="150" viewBox="0 0 520 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="18" y1="16" x2="490" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#162B3C"/>
+      <stop offset="1" stop-color="#091219"/>
+    </linearGradient>
+    <linearGradient id="tag" x1="376" y1="32" x2="486" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#66F1A8"/>
+      <stop offset="1" stop-color="#48D7FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="488" height="118" rx="24" fill="url(#card)" stroke="#59D9FF" stroke-width="2"/>
+  <path d="M48 75H140" stroke="#A7E7FF" stroke-width="16" stroke-linecap="round"/>
+  <path d="M132 75L170 54" stroke="#A7E7FF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M84 58L96 41" stroke="#D5F6FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M76 92L88 107" stroke="#597288" stroke-width="10" stroke-linecap="round"/>
+  <path d="M202 54H320" stroke="#F0F8FF" stroke-width="11" stroke-linecap="round"/>
+  <path d="M202 80H300" stroke="#67879D" stroke-width="7" stroke-linecap="round"/>
+  <rect x="376" y="32" width="110" height="42" rx="16" fill="url(#tag)"/>
+  <path d="M396 54L406 64L424 44" stroke="#0C5E43" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="447" y="59" fill="#0C5E43" font-family="Segoe UI, Arial" font-size="18" font-weight="800" text-anchor="middle">EQUIPPED</text>
+</svg>

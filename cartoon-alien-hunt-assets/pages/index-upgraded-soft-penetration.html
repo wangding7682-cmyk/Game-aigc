@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>素材预览 - 穿透贴花版</title>
+    <style id="theme-vars">
+:root {
+  --hunt-background: #0f1620;
+  --hunt-foreground: #edf3ff;
+  --hunt-card: #16202c;
+  --hunt-card-foreground: #f7f9ff;
+  --hunt-muted: #1c2633;
+  --hunt-muted-foreground: #98a6bd;
+  --hunt-primary: #71a8ff;
+  --hunt-primary-foreground: #0d1521;
+  --hunt-secondary: #1a2330;
+  --hunt-secondary-foreground: #c8d4e6;
+  --hunt-border: rgba(255, 255, 255, 0.08);
+  --hunt-radius-small: 4px;
+  --hunt-radius-medium: 8px;
+  --hunt-radius-large: 12px;
+  --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--hunt-background);
+  color: var(--hunt-foreground);
+  font-family: var(--hunt-font-primary);
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--hunt-background);
+    --color-foreground: var(--hunt-foreground);
+    --color-card: var(--hunt-card);
+    --color-card-foreground: var(--hunt-card-foreground);
+    --color-primary: var(--hunt-primary);
+    --color-primary-foreground: var(--hunt-primary-foreground);
+    --color-secondary: var(--hunt-secondary);
+    --color-secondary-foreground: var(--hunt-secondary-foreground);
+    --color-muted: var(--hunt-muted);
+    --color-muted-foreground: var(--hunt-muted-foreground);
+    --color-border: var(--hunt-border);
+    --radius-sm: var(--hunt-radius-small);
+    --radius-md: var(--hunt-radius-medium);
+    --radius-lg: var(--hunt-radius-large);
+  }
+  @layer base {
+    body { background: var(--hunt-background); color: var(--hunt-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+  <main class="storyboard-page">
+    <div class="storyboard-shell">
+      <section class="hunt-panel section-intro">
+        <div class="section-intro__copy">
+          <span class="hunt-chip">升级版软 3D 素材对比页</span>
+          <div class="section-heading">
+            <h1>素材预览 - 穿透贴花版</h1>
+            <p>
+              这个版本保留原有分区和阅读顺序，但将墙体受击贴花全部升级为“真实透明洞口”表达。
+              命中核心区域不再只是表面裂纹，而是能够透出墙后目标，让静态画布也能直接读出遮挡失效。
+            </p>
+          </div>
+        </div>
+        <div class="stats-grid" aria-label="穿透贴花版素材统计">
+          <article class="hunt-stat"><div class="stat-value">3</div><div class="stat-label">枪支</div></article>
+          <article class="hunt-stat"><div class="stat-value">3</div><div class="stat-label">静态视角</div></article>
+          <article class="hunt-stat"><div class="stat-value">9</div><div class="stat-label">动作帧</div></article>
+          <article class="hunt-stat"><div class="stat-value">12</div><div class="stat-label">环境与掩体</div></article>
+          <article class="hunt-stat"><div class="stat-value">5</div><div class="stat-label">透明洞口贴花</div></article>
+          <article class="hunt-stat"><div class="stat-value">3</div><div class="stat-label">穿透演示</div></article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>枪支区</h2>
+          <p>继续保留软 3D 卡通武器语言，方便和受击反馈、遮挡破坏一起查看整体命中语义。</p>
+        </div>
+        <div class="asset-grid asset-grid--three">
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media">
+              <img src="../assets/pistol-soft.svg" alt="升级版轻型手枪">
+            </div>
+            <div class="asset-card__body">
+              <h3>轻型手枪</h3>
+              <p>适合单发命中演示，对应轻量化穿透弹孔反馈。</p>
+            </div>
+          </article>
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media">
+              <img src="../assets/rifle-soft.svg" alt="升级版巡逻步枪">
+            </div>
+            <div class="asset-card__body">
+              <h3>巡逻步枪</h3>
+              <p>适合连发压制，对应多点穿透和裂损扩散。</p>
+            </div>
+          </article>
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media">
+              <img src="../assets/energy-gun-soft.svg" alt="升级版能量枪">
+            </div>
+            <div class="asset-card__body">
+              <h3>能量枪</h3>
+              <p>适合重击展示，配合更明显的破口和放射裂纹。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>静态外星人区</h2>
+          <p>保留三视角参考，方便直接观察“墙前破口”和“墙后目标”之间的可见关系。</p>
+        </div>
+        <div class="asset-grid asset-grid--three">
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media asset-card__media--alien">
+              <img src="../assets/alien-front.svg" alt="升级版外星人正面">
+            </div>
+            <div class="asset-card__body">
+              <h3>正面视角</h3>
+              <p>适合从破口里看到脸部、胸口和弱点区域。</p>
+            </div>
+          </article>
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media asset-card__media--alien">
+              <img src="../assets/alien-side.svg" alt="升级版外星人侧面">
+            </div>
+            <div class="asset-card__body">
+              <h3>侧面视角</h3>
+              <p>适合单点弹孔或连续扫射后的侧向窥见效果。</p>
+            </div>
+          </article>
+          <article class="hunt-panel asset-card">
+            <div class="hunt-media asset-card__media asset-card__media--alien">
+              <img src="../assets/alien-back.svg" alt="升级版外星人背面">
+            </div>
+            <div class="asset-card__body">
+              <h3>背面视角</h3>
+              <p>适合大面积破损后，看见后撤目标或掩体后移动轨迹。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading section-heading--storyboard">
+          <div>
+            <h2>动画分镜区</h2>
+            <p>继续保留三组静态分镜，用于观察角色在墙后移动时，穿透破口能暴露出的身体区域。</p>
+          </div>
+          <p class="section-note">重点不是新增动作，而是让原有动作在掩体被击穿后更容易被读到。</p>
+        </div>
+        <div class="storyboard-grid">
+          <article class="hunt-panel storyboard-card">
+            <div class="storyboard-card__header">
+              <div>
+                <h3>巡逻步态</h3>
+                <p>适合从单孔或边角缺口中，看到目标平移经过的局部轮廓。</p>
+              </div>
+              <span class="mode-tag">Patrol</span>
+            </div>
+            <div class="storyboard-frames">
+              <div class="frame-card"><span class="frame-label">帧 1</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-1.svg" alt="升级版巡逻动作帧1"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 2</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-2.svg" alt="升级版巡逻动作帧2"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 3</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-3.svg" alt="升级版巡逻动作帧3"></div></div>
+            </div>
+            <p class="storyboard-rhythm">动作节奏：前探迈步 → 重心居中 → 收步续巡</p>
+          </article>
+          <article class="hunt-panel storyboard-card">
+            <div class="storyboard-card__header">
+              <div>
+                <h3>扫描观察</h3>
+                <p>适合从裂纹扩展后的破口里，看见抬手和头部朝向变化。</p>
+              </div>
+              <span class="mode-tag">Scan</span>
+            </div>
+            <div class="storyboard-frames">
+              <div class="frame-card"><span class="frame-label">帧 1</span><div class="hunt-media frame-media"><img src="../assets/scan-soft-1.svg" alt="升级版扫描动作帧1"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 2</span><div class="hunt-media frame-media"><img src="../assets/scan-soft-2.svg" alt="升级版扫描动作帧2"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 3</span><div class="hunt-media frame-media"><img src="../assets/scan-soft-3.svg" alt="升级版扫描动作帧3"></div></div>
+            </div>
+            <p class="storyboard-rhythm">动作节奏：抬手探查 → 正向停留 → 回摆收势</p>
+          </article>
+          <article class="hunt-panel storyboard-card">
+            <div class="storyboard-card__header">
+              <div>
+                <h3>惊慌逃离</h3>
+                <p>适合大面积破损后观察目标快速离开掩体的可见面积变化。</p>
+              </div>
+              <span class="mode-tag">Panic</span>
+            </div>
+            <div class="storyboard-frames">
+              <div class="frame-card"><span class="frame-label">帧 1</span><div class="hunt-media frame-media"><img src="../assets/panic-soft-1.svg" alt="升级版惊慌动作帧1"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 2</span><div class="hunt-media frame-media"><img src="../assets/panic-soft-2.svg" alt="升级版惊慌动作帧2"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 3</span><div class="hunt-media frame-media"><img src="../assets/panic-soft-3.svg" alt="升级版惊慌动作帧3"></div></div>
+            </div>
+            <p class="storyboard-rhythm">动作节奏：受惊外张 → 抬臂失衡 → 俯身冲离</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>目标行为区</h2>
+          <p>继续保留行为说明，但现在更强调这些状态会不会被“穿透贴花”暴露出来。</p>
+        </div>
+        <div class="behavior-grid">
+          <article class="hunt-panel behavior-card">
+            <div class="behavior-card__header">
+              <div>
+                <h3>静止伪装</h3>
+                <p>掩体完整时仍可隐藏；一旦关键区域被打穿，墙后的轮廓会被直接看见。</p>
+              </div>
+              <span class="mode-tag">静态表达</span>
+            </div>
+            <div class="hunt-media behavior-media behavior-media--single">
+              <img src="../assets/alien-front.svg" alt="静止伪装参考图">
+            </div>
+          </article>
+          <article class="hunt-panel behavior-card">
+            <div class="behavior-card__header">
+              <div>
+                <h3>缓慢移动</h3>
+                <p>穿透孔洞会让原本只在边缘可见的移动，变成可以从墙体中部直接读到。</p>
+              </div>
+              <span class="mode-tag">已有动作</span>
+            </div>
+            <div class="behavior-strip">
+              <div class="frame-card"><span class="frame-label">帧 1</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-1.svg" alt="缓慢移动帧1"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 2</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-2.svg" alt="缓慢移动帧2"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 3</span><div class="hunt-media frame-media"><img src="../assets/patrol-soft-3.svg" alt="缓慢移动帧3"></div></div>
+            </div>
+          </article>
+          <article class="hunt-panel behavior-card">
+            <div class="behavior-card__header">
+              <div>
+                <h3>短暂显露弱点</h3>
+                <p>弱点开启阶段若恰好处于墙后，穿透破口会让目标窗口更早暴露。</p>
+              </div>
+              <span class="mode-tag">新增序列</span>
+            </div>
+            <div class="behavior-strip">
+              <div class="frame-card"><span class="frame-label">帧 1</span><div class="hunt-media frame-media"><img src="../assets/weakpoint-soft-1.svg" alt="弱点显露帧1"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 2</span><div class="hunt-media frame-media"><img src="../assets/weakpoint-soft-2.svg" alt="弱点显露帧2"></div></div>
+              <div class="frame-card"><span class="frame-label">帧 3</span><div class="hunt-media frame-media"><img src="../assets/weakpoint-soft-3.svg" alt="弱点显露帧3"></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>环境区</h2>
+          <p>环境素材保持不变，重点是让完整墙体继续作为穿透贴花的承载表面。</p>
+        </div>
+        <div class="asset-grid asset-grid--environment">
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/bush-rounded.svg" alt="升级版圆灌木"></div><div class="environment-card__label">圆灌木</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/rock-stack-soft.svg" alt="升级版岩石堆"></div><div class="environment-card__label">岩石堆</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/tree-bouncy.svg" alt="升级版树"></div><div class="environment-card__label">弹性树</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/cactus-twin-soft.svg" alt="升级版双臂仙人掌"></div><div class="environment-card__label">双臂仙人掌</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/crate-wood-soft.svg" alt="升级版木箱"></div><div class="environment-card__label">木箱</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/sign-post-soft.svg" alt="升级版路牌"></div><div class="environment-card__label">路牌</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/mushroom-soft.svg" alt="升级版蘑菇"></div><div class="environment-card__label">蘑菇</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/grass-clump-soft.svg" alt="升级版草丛簇"></div><div class="environment-card__label">草丛簇</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/shrub-layered-soft.svg" alt="升级版层叠灌木"></div><div class="environment-card__label">层叠灌木</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/wall-cover-intact.svg" alt="升级版完整掩体墙"></div><div class="environment-card__label">PVP 掩体墙 - 完整</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/wall-cover-breached.svg" alt="升级版缺口掩体墙"></div><div class="environment-card__label">PVP 掩体墙 - 缺口</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media"><img src="../assets/wall-cover-collapsed.svg" alt="升级版塌陷掩体墙"></div><div class="environment-card__label">PVP 掩体墙 - 塌陷</div></article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>穿透演示区</h2>
+          <p>下方演示卡把墙体放在前层、外星人放在后层，再叠加透明洞口贴花。非洞口区域仍被墙挡住，洞口位置则能直接看到墙后目标。</p>
+        </div>
+        <div class="penetration-grid">
+          <article class="hunt-panel penetration-card">
+            <div class="penetration-card__header">
+              <div>
+                <h3>单点弹孔穿透</h3>
+                <p>适合手枪或精准点射，洞口小，但足够暴露后方侧身轮廓。</p>
+              </div>
+              <span class="mode-tag">单孔</span>
+            </div>
+            <div class="penetration-scene penetration-scene--single">
+              <img class="penetration-alien penetration-alien--side" src="../assets/alien-side.svg" alt="墙后外星人侧面">
+              <div class="penetration-wall penetration-wall--single"></div>
+              <img class="penetration-decal" src="../assets/wall-bullet-hole-soft.svg" alt="单点穿透贴花">
+            </div>
+          </article>
+          <article class="hunt-panel penetration-card">
+            <div class="penetration-card__header">
+              <div>
+                <h3>裂纹扩展后透视</h3>
+                <p>适合重击后中心破口带裂纹扩散，能看到后方正面头部与上身。</p>
+              </div>
+              <span class="mode-tag">扩裂</span>
+            </div>
+            <div class="penetration-scene penetration-scene--radial">
+              <img class="penetration-alien penetration-alien--front" src="../assets/alien-front.svg" alt="墙后外星人正面">
+              <div class="penetration-wall penetration-wall--radial"></div>
+              <img class="penetration-decal" src="../assets/wall-crack-radial-soft.svg" alt="放射穿透贴花">
+            </div>
+          </article>
+          <article class="hunt-panel penetration-card">
+            <div class="penetration-card__header">
+              <div>
+                <h3>连发 / 大面积破损后透视</h3>
+                <p>适合压制射击，破损区域更大，能从中部看到墙后目标的大块轮廓。</p>
+              </div>
+              <span class="mode-tag">大破口</span>
+            </div>
+            <div class="penetration-scene penetration-scene--cluster">
+              <img class="penetration-alien penetration-alien--back" src="../assets/alien-back.svg" alt="墙后外星人背面">
+              <div class="penetration-wall penetration-wall--cluster"></div>
+              <img class="penetration-decal" src="../assets/wall-bullet-hole-cluster-soft.svg" alt="连发穿透贴花">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>贴花区</h2>
+          <p>这 5 个贴花现在都强调“透明洞口”或“透明间隙”，用于表达真实击穿，而不是单纯表面装饰。</p>
+        </div>
+        <div class="asset-grid asset-grid--decals">
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media environment-card__media--decal"><img src="../assets/wall-bullet-hole-soft.svg" alt="墙体单点透明洞口贴花"></div><div class="environment-card__label">单点透明洞口</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media environment-card__media--decal"><img src="../assets/wall-bullet-hole-cluster-soft.svg" alt="墙体连发透明洞口贴花"></div><div class="environment-card__label">连发透明洞口簇</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media environment-card__media--decal"><img src="../assets/wall-crack-radial-soft.svg" alt="墙体放射穿透裂损贴花"></div><div class="environment-card__label">放射穿透裂损</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media environment-card__media--decal"><img src="../assets/wall-crack-corner-soft.svg" alt="墙体边角穿透裂损贴花"></div><div class="environment-card__label">边角穿透裂损</div></article>
+          <article class="hunt-panel environment-card"><div class="hunt-media environment-card__media environment-card__media--decal"><img src="../assets/wall-debris-scatter-soft.svg" alt="墙体碎屑透明间隙贴花"></div><div class="environment-card__label">碎屑透明间隙</div></article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --hunt-background: #0f1620;
+      --hunt-foreground: #edf3ff;
+      --hunt-card: #16202c;
+      --hunt-card-foreground: #f7f9ff;
+      --hunt-muted: #1c2633;
+      --hunt-muted-foreground: #98a6bd;
+      --hunt-primary: #71a8ff;
+      --hunt-primary-strong: #9bc0ff;
+      --hunt-primary-foreground: #0d1521;
+      --hunt-secondary: #1a2330;
+      --hunt-secondary-foreground: #c8d4e6;
+      --hunt-border: rgba(255, 255, 255, 0.08);
+      --hunt-radius-small: 4px;
+      --hunt-radius-medium: 8px;
+      --hunt-radius-large: 12px;
+      --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --hunt-wall-top: #f7d59b;
+      --hunt-wall-mid: #d59a64;
+      --hunt-wall-deep: #9a643e;
+      --hunt-hole-shadow: rgba(31, 41, 58, 0.72);
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--hunt-background);
+      color: var(--hunt-foreground);
+      font-family: var(--hunt-font-primary);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .storyboard-page {
+      min-height: 100vh;
+      padding: 24px 16px 40px;
+      background:
+        radial-gradient(circle at top, color-mix(in srgb, var(--hunt-primary) 18%, transparent), transparent 30%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-background) 86%, var(--hunt-secondary) 14%), var(--hunt-background));
+    }
+
+    .storyboard-shell {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .hunt-panel {
+      background: var(--hunt-card);
+      color: var(--hunt-card-foreground);
+      border: 1px solid var(--hunt-border);
+      border-radius: var(--hunt-radius-large);
+      box-shadow: var(--hunt-shadow);
+    }
+
+    .hunt-chip,
+    .hunt-stat,
+    .hunt-media,
+    .frame-card,
+    .mode-tag,
+    .penetration-scene {
+      background: var(--hunt-muted);
+      border: 1px solid var(--hunt-border);
+      border-radius: var(--hunt-radius-medium);
+    }
+
+    .hunt-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .section-intro,
+    .section-block {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-intro__copy,
+    .section-heading,
+    .asset-card__body {
+      display: grid;
+      gap: 10px;
+    }
+
+    .section-heading h1,
+    .section-heading h2,
+    .asset-card h3,
+    .storyboard-card h3,
+    .behavior-card h3,
+    .penetration-card h3 {
+      margin: 0;
+      color: var(--hunt-card-foreground);
+    }
+
+    .section-heading h1 {
+      font-size: clamp(2rem, 2.8vw, 2.9rem);
+      line-height: 1.12;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .section-heading p,
+    .asset-card p,
+    .storyboard-card p,
+    .behavior-card p,
+    .penetration-card p,
+    .environment-card__label,
+    .stat-label,
+    .section-note,
+    .storyboard-rhythm {
+      margin: 0;
+      color: var(--hunt-muted-foreground);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .stats-grid,
+    .asset-grid,
+    .storyboard-grid,
+    .behavior-grid,
+    .behavior-strip,
+    .penetration-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hunt-stat {
+      padding: 16px;
+    }
+
+    .stat-value {
+      font-size: clamp(1.75rem, 2vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .asset-grid--three {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .asset-grid--environment,
+    .asset-grid--decals {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .asset-card,
+    .environment-card,
+    .storyboard-card,
+    .behavior-card,
+    .penetration-card {
+      overflow: hidden;
+    }
+
+    .asset-card__media,
+    .environment-card__media,
+    .frame-media,
+    .behavior-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--hunt-muted) 86%, var(--hunt-secondary) 14%), var(--hunt-card));
+    }
+
+    .asset-card__media {
+      min-height: 224px;
+      padding: 24px;
+    }
+
+    .asset-card__media img {
+      max-height: 176px;
+      width: auto;
+    }
+
+    .asset-card__media--alien img {
+      max-height: 188px;
+    }
+
+    .asset-card__body {
+      padding: 20px;
+      gap: 8px;
+    }
+
+    .section-heading--storyboard {
+      gap: 10px;
+    }
+
+    .storyboard-grid,
+    .behavior-grid,
+    .penetration-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .storyboard-card,
+    .behavior-card,
+    .penetration-card {
+      display: grid;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .storyboard-card__header,
+    .behavior-card__header,
+    .penetration-card__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mode-tag {
+      padding: 6px 10px;
+      color: var(--hunt-primary-strong);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .storyboard-frames,
+    .behavior-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .frame-card {
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .frame-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .frame-media,
+    .behavior-media {
+      min-height: 168px;
+      padding: 16px;
+    }
+
+    .frame-media img,
+    .behavior-media img {
+      max-height: 124px;
+      width: auto;
+    }
+
+    .behavior-media--single {
+      min-height: 228px;
+      padding: 24px;
+    }
+
+    .behavior-media--single img {
+      max-height: 180px;
+    }
+
+    .storyboard-rhythm {
+      padding-top: 2px;
+      border-top: 1px solid var(--hunt-border);
+    }
+
+    .environment-card__media {
+      min-height: 208px;
+      padding: 20px;
+    }
+
+    .environment-card__media img {
+      max-height: 144px;
+      width: auto;
+    }
+
+    .environment-card__media--decal img {
+      max-height: 118px;
+    }
+
+    .environment-card__label {
+      padding: 16px;
+      color: var(--hunt-card-foreground);
+      font-weight: 600;
+    }
+
+    .penetration-scene {
+      position: relative;
+      min-height: 254px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 16%, color-mix(in srgb, var(--hunt-primary) 20%, transparent), transparent 32%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-secondary) 86%, var(--hunt-background) 14%), var(--hunt-muted));
+    }
+
+    .penetration-alien,
+    .penetration-wall,
+    .penetration-decal {
+      position: absolute;
+    }
+
+    .penetration-alien {
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      width: 156px;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22));
+    }
+
+    .penetration-alien--side {
+      left: 53%;
+      width: 168px;
+    }
+
+    .penetration-alien--front {
+      width: 146px;
+      left: 50%;
+    }
+
+    .penetration-alien--back {
+      width: 150px;
+      left: 50%;
+    }
+
+    .penetration-wall {
+      inset: 36px 22px 18px;
+      border-radius: var(--hunt-radius-medium);
+      border: 1px solid color-mix(in srgb, var(--hunt-wall-top) 24%, var(--hunt-border));
+      background:
+        linear-gradient(180deg, var(--hunt-wall-top), var(--hunt-wall-mid) 58%, var(--hunt-wall-deep)),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-wall-top) 20%, transparent), transparent);
+      box-shadow:
+        inset 0 1px 0 color-mix(in srgb, white 40%, transparent),
+        inset 0 -14px 24px color-mix(in srgb, var(--hunt-wall-deep) 46%, transparent),
+        0 16px 22px color-mix(in srgb, black 16%, transparent);
+      z-index: 2;
+    }
+
+    .penetration-wall::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: calc(var(--hunt-radius-medium) - 2px);
+      border-top: 6px solid color-mix(in srgb, white 40%, transparent);
+      border-bottom: 8px solid color-mix(in srgb, var(--hunt-wall-deep) 36%, transparent);
+      opacity: 0.42;
+    }
+
+    .penetration-wall--single {
+      -webkit-mask-image: radial-gradient(circle at 50% 49%, transparent 0 10%, black 12%);
+      mask-image: radial-gradient(circle at 50% 49%, transparent 0 10%, black 12%);
+    }
+
+    .penetration-wall--radial {
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 11%, black 13%);
+      mask-image: radial-gradient(circle at 50% 50%, transparent 0 11%, black 13%);
+    }
+
+    .penetration-wall--cluster {
+      -webkit-mask-image: radial-gradient(ellipse at 50% 54%, transparent 0 16%, black 19%);
+      mask-image: radial-gradient(ellipse at 50% 54%, transparent 0 16%, black 19%);
+    }
+
+    .penetration-wall--single,
+    .penetration-wall--radial,
+    .penetration-wall--cluster {
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+
+    .penetration-decal {
+      inset: 34px 18px 16px;
+      width: calc(100% - 36px);
+      height: calc(100% - 50px);
+      object-fit: contain;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .storyboard-page {
+        padding: 24px 24px 48px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .section-heading--storyboard {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+        align-items: end;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .storyboard-card__header,
+      .behavior-card__header,
+      .penetration-card__header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 639px) {
+      .storyboard-page {
+        padding-inline: 12px;
+      }
+
+      .storyboard-frames,
+      .behavior-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .penetration-scene {
+        min-height: 228px;
+      }
+
+      .penetration-wall {
+        inset: 38px 16px 16px;
+      }
+
+      .penetration-decal {
+        inset: 38px 12px 14px;
+        width: calc(100% - 24px);
+      }
+    }
+  </style>
+</body>
+</html>

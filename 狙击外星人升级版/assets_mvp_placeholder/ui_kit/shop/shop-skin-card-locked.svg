@@ -1,0 +1,28 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="24" y1="20" x2="488" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#162433"/>
+      <stop offset="1" stop-color="#0A1117"/>
+    </linearGradient>
+    <linearGradient id="lockTag" x1="354" y1="34" x2="484" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8A98"/>
+      <stop offset="1" stop-color="#D54558"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="18" width="484" height="184" rx="28" fill="url(#card)" stroke="#304656" stroke-width="2"/>
+  <rect x="34" y="34" width="156" height="152" rx="22" fill="#0D1A24" stroke="#7ADFFF" stroke-opacity="0.14"/>
+  <circle cx="112" cy="109" r="42" fill="#233645"/>
+  <path d="M112 84C124 84 134 94 134 106V114H90V106C90 94 100 84 112 84Z" fill="#7C8FA1"/>
+  <rect x="84" y="112" width="56" height="48" rx="14" fill="#56697A"/>
+  <circle cx="112" cy="135" r="8" fill="#324250"/>
+  <path d="M214 58H330" stroke="#EAF8FF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M214 87H320" stroke="#74899A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 114H293" stroke="#4A5D6C" stroke-width="8" stroke-linecap="round"/>
+  <rect x="354" y="34" width="130" height="50" rx="18" fill="url(#lockTag)"/>
+  <path d="M377 57L387 67L402 49" stroke="#6F1120" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="438" y="64" fill="#6F1120" font-family="Segoe UI, Arial" font-size="20" font-weight="800" text-anchor="middle">LOCKED</text>
+  <rect x="214" y="145" width="110" height="18" rx="9" fill="#243A4A"/>
+  <rect x="214" y="145" width="38" height="18" rx="9" fill="#A58DFF"/>
+  <rect x="340" y="145" width="120" height="18" rx="9" fill="#263A46"/>
+  <path d="M372 154H434" stroke="#FFB5C0" stroke-width="6" stroke-linecap="round" stroke-opacity="0.82"/>
+</svg>

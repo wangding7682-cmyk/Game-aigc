@@ -1,0 +1,65 @@
+{
+  "root": {
+    "nodeId": "gen-page-index-upgraded-soft-penetration",
+    "kind": "page-leaf",
+    "pageIds": [
+      "page-index-upgraded-soft-penetration"
+    ],
+    "output": "pages/index-upgraded-soft-penetration.html",
+    "sharedRegions": [],
+    "privateRegions": [
+      "soft 3d penetration material preview board"
+    ],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": [
+      {
+        "nodeId": "gen-page-game-art-overview-preview",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-game-art-overview-preview"
+        ],
+        "output": "pages/game-art-overview-preview.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "runtime game art overview preview board"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": [
+          {
+            "nodeId": "gen-page-level-preview-2-5d",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-level-preview-2-5d"
+            ],
+            "output": "pages/level-preview-2-5d.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "2.5d level preview board"
+            ],
+            "mutableSlots": [],
+            "status": "generated",
+            "children": [
+              {
+                "nodeId": "gen-page-level-preview-biomes",
+                "kind": "page-leaf",
+                "pageIds": [
+                  "page-level-preview-biomes"
+                ],
+                "output": "pages/level-preview-biomes.html",
+                "sharedRegions": [],
+                "privateRegions": [
+                  "multi biome comparison board"
+                ],
+                "mutableSlots": [],
+                "status": "generated",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="woodGrad" x1="48" y1="40" x2="161" y2="134" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3C278"/>
+      <stop offset="0.55" stop-color="#CB8B4C"/>
+      <stop offset="1" stop-color="#8B562D"/>
+    </linearGradient>
+    <filter id="shadow" x="28" y="28" width="164" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#39230F" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="144" rx="52" ry="10" fill="#3A250F" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <rect x="40" y="42" width="140" height="96" rx="18" fill="url(#woodGrad)"/>
+    <path d="M53 55H167" stroke="#FFD8A0" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+    <path d="M61 70L159 110" stroke="#8F572F" stroke-width="10" stroke-linecap="round"/>
+    <path d="M159 70L61 110" stroke="#8F572F" stroke-width="10" stroke-linecap="round"/>
+    <rect x="56" y="57" width="108" height="66" rx="12" stroke="#B9753C" stroke-width="8"/>
+    <circle cx="75" cy="78" r="5" fill="#FCE8C5" opacity="0.75"/>
+    <circle cx="145" cy="101" r="5" fill="#FCE8C5" opacity="0.6"/>
+  </g>
+</svg>

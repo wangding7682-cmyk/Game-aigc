@@ -1,0 +1,31 @@
+<svg width="256" height="160" viewBox="0 0 256 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gunBody" x1="34" y1="36" x2="196" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#71E0E3"/>
+      <stop offset="0.55" stop-color="#2EA0AA"/>
+      <stop offset="1" stop-color="#216977"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="112" y1="33" x2="156" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7FF8D"/>
+      <stop offset="1" stop-color="#72C65A"/>
+    </linearGradient>
+    <filter id="softShadow" x="14" y="18" width="228" height="124" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#153137" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="124" cy="131" rx="78" ry="10" fill="#11252C" opacity="0.12"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M36 62C36 47 48 35 63 35H142C150 35 157 38 162 44L177 60C180 63 185 64 189 63L203 61C213 59 221 67 221 77C221 87 213 95 203 93L192 91C187 90 183 91 179 95L164 109C159 114 152 117 144 117H102C90 117 78 124 71 134L65 141C60 147 50 149 42 145C33 141 29 131 32 122L37 107C39 101 40 95 40 89L36 62Z" fill="url(#gunBody)"/>
+    <path d="M71 37H139C149 37 156 39 162 45L173 57H70C61 57 53 51 53 42C53 39 56 37 59 37H71Z" fill="#9AF3F4" opacity="0.55"/>
+    <rect x="93" y="53" width="62" height="18" rx="9" fill="url(#accent)"/>
+    <circle cx="146" cy="84" r="13" fill="#F15A59"/>
+    <circle cx="146" cy="84" r="6" fill="#FFD6D3"/>
+    <path d="M194 72H214" stroke="#F8EB9B" stroke-width="10" stroke-linecap="round"/>
+    <path d="M83 104L74 136" stroke="#2B7583" stroke-width="18" stroke-linecap="round"/>
+    <path d="M73 136L90 136" stroke="#C9F7F8" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+    <circle cx="112" cy="87" r="7" fill="#1D5B67"/>
+    <circle cx="88" cy="86" r="5" fill="#D3FEFE" opacity="0.85"/>
+  </g>
+</svg>

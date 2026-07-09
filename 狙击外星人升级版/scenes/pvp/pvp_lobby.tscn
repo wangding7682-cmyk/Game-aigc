@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/pvp/pvp_lobby_controller.gd" id="1"]
+
+[node name="PvpLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="SafeArea" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="MainLayout" type="VBoxContainer" parent="SafeArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="SafeArea/MainLayout"]
+layout_mode = 2
+text = "PVP 局域网对战"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 36
+
+[node name="SubtitleLabel" type="Label" parent="SafeArea/MainLayout"]
+layout_mode = 2
+text = "同一局域网下，一台设备创建房间，另一台加入"
+horizontal_alignment = 1
+modulate = Color(0.76, 0.84, 0.95, 1)
+autowrap_mode = 3
+
+[node name="IpRow" type="HBoxContainer" parent="SafeArea/MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="IpLabel" type="Label" parent="SafeArea/MainLayout/IpRow"]
+layout_mode = 2
+text = "服务端 IP："
+custom_minimum_size = Vector2(100, 0)
+
+[node name="IpLineEdit" type="LineEdit" parent="SafeArea/MainLayout/IpRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 44)
+placeholder_text = "例如 192.168.1.100"
+
+[node name="PortRow" type="HBoxContainer" parent="SafeArea/MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PortLabel" type="Label" parent="SafeArea/MainLayout/PortRow"]
+layout_mode = 2
+text = "端口："
+custom_minimum_size = Vector2(100, 0)
+
+[node name="PortLineEdit" type="LineEdit" parent="SafeArea/MainLayout/PortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 44)
+placeholder_text = "默认 57890"
+
+[node name="ButtonVBox" type="VBoxContainer" parent="SafeArea/MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="CreateServerButton" type="Button" parent="SafeArea/MainLayout/ButtonVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 52)
+text = "创建房间（作为主机）"
+
+[node name="JoinServerButton" type="Button" parent="SafeArea/MainLayout/ButtonVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 52)
+text = "加入房间（作为客机）"
+
+[node name="StatusLabel" type="Label" parent="SafeArea/MainLayout"]
+layout_mode = 2
+text = "等待操作..."
+horizontal_alignment = 1
+modulate = Color(0.9, 0.82, 0.5, 1)
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="SafeArea/MainLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "返回主菜单"

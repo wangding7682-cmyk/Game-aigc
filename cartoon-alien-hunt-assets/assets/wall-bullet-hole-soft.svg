@@ -1,0 +1,41 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-bullet-hole-soft-title wall-bullet-hole-soft-desc">
+  <title id="wall-bullet-hole-soft-title">软3D卡通墙体单点穿透贴花</title>
+  <desc id="wall-bullet-hole-soft-desc">透明背景的单点穿透贴花，中间是真实透明洞口，可直接透出后方角色或场景对象。</desc>
+  <defs>
+    <linearGradient id="bullet-rim-grad" x1="67" y1="54" x2="154" y2="131" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9E0B4"/>
+      <stop offset="0.56" stop-color="#D89A60"/>
+      <stop offset="1" stop-color="#915B34"/>
+    </linearGradient>
+    <linearGradient id="bullet-inner-grad" x1="92" y1="68" x2="132" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFDDB6"/>
+      <stop offset="0.5" stop-color="#B97A47"/>
+      <stop offset="1" stop-color="#5B341A"/>
+    </linearGradient>
+    <radialGradient id="bullet-sheen-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(93 74) rotate(30) scale(48 21)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="bullet-soft-shadow" x="34" y="28" width="160" height="132" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#4E2F16" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#bullet-soft-shadow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M111 48L126 55L143 58L156 70L157 86L164 100L156 115L141 121L130 133L112 131L96 136L81 129L67 121L57 108L58 92L52 79L60 65L75 58L88 50L101 53L111 48ZM111 70L120 74L129 82L131 92L128 103L120 111L109 114L98 110L90 101L89 90L93 80L101 72L111 70Z" fill="url(#bullet-rim-grad)"/>
+    <path d="M111 48L126 55L143 58L156 70L157 86L164 100L156 115L141 121L130 133L112 131L96 136L81 129L67 121L57 108L58 92L52 79L60 65L75 58L88 50L101 53L111 48Z" fill="url(#bullet-sheen-grad)" opacity="0.82"/>
+    <path d="M95 80C101 72 115 69 124 75C132 80 136 91 132 101C128 111 116 117 106 115C97 113 89 105 89 95C89 89 91 84 95 80Z" stroke="url(#bullet-inner-grad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98 77C104 72 115 72 123 76" stroke="#FFF2D4" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+    <path d="M110 49L110 35" stroke="#A86B40" stroke-width="5" stroke-linecap="round"/>
+    <path d="M154 89L168 89" stroke="#986038" stroke-width="5" stroke-linecap="round"/>
+    <path d="M111 133L111 146" stroke="#8B5631" stroke-width="5" stroke-linecap="round"/>
+    <path d="M55 89L69 89" stroke="#8B5631" stroke-width="5" stroke-linecap="round"/>
+    <path d="M79 58L88 66" stroke="#C88958" stroke-width="4" stroke-linecap="round"/>
+    <path d="M139 61L132 69" stroke="#B97847" stroke-width="4" stroke-linecap="round"/>
+    <path d="M82 116L91 109" stroke="#A8693E" stroke-width="4" stroke-linecap="round"/>
+    <path d="M136 118L144 125" stroke="#B97847" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="72" cy="121" r="5" fill="#D89F67"/>
+    <circle cx="148" cy="69" r="4" fill="#EAC193"/>
+    <circle cx="93" cy="136" r="4" fill="#BC7D49"/>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pole" x1="102" y1="78" x2="128" y2="212" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#626D80"/>
+      <stop offset="1" stop-color="#202735"/>
+    </linearGradient>
+    <linearGradient id="panelFrame" x1="78" y1="50" x2="266" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0C36A"/>
+      <stop offset="1" stop-color="#8E632A"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="88" y1="68" x2="246" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6DE9FF"/>
+      <stop offset="0.52" stop-color="#2B6A93"/>
+      <stop offset="1" stop-color="#18314E"/>
+    </linearGradient>
+    <radialGradient id="screenGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(168 104) rotate(90) scale(60 102)">
+      <stop stop-color="#B9F6FF" stop-opacity="0.72"/>
+      <stop offset="0.52" stop-color="#59CFFF" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#59CFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="catwalk" x1="92" y1="158" x2="244" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A3446"/>
+      <stop offset="1" stop-color="#141B28"/>
+    </linearGradient>
+    <filter id="shadow" x="48" y="26" width="232" height="192" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#02050C" flood-opacity="0.36"/>
+    </filter>
+  </defs>
+  <ellipse cx="162" cy="208" rx="96" ry="16" fill="#02050A" opacity="0.34"/>
+  <g filter="url(#shadow)">
+    <rect x="101" y="87" width="18" height="111" rx="9" fill="url(#pole)"/>
+    <rect x="217" y="87" width="18" height="111" rx="9" fill="url(#pole)"/>
+    <rect x="80" y="52" width="176" height="92" rx="22" fill="url(#panelFrame)"/>
+    <rect x="91" y="64" width="154" height="68" rx="16" fill="url(#screen)"/>
+    <ellipse cx="168" cy="98" rx="102" ry="60" fill="url(#screenGlow)"/>
+    <path d="M114 83C127 76 144 72 162 72C180 72 197 76 212 84" stroke="#D7FDFF" stroke-width="7" stroke-linecap="round" opacity="0.48"/>
+    <path d="M112 99H223" stroke="#C9F9FF" stroke-width="9" stroke-linecap="round" opacity="0.22"/>
+    <path d="M108 117H199" stroke="#10304A" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+    <path d="M143 78L169 96L196 80" stroke="#F5E39E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.68"/>
+    <rect x="92" y="153" width="152" height="12" rx="6" fill="url(#catwalk)"/>
+    <rect x="117" y="164" width="14" height="26" rx="7" fill="#1E2634"/>
+    <rect x="203" y="164" width="14" height="26" rx="7" fill="#1E2634"/>
+    <path d="M129 184H205" stroke="#5B6B84" stroke-width="6" stroke-linecap="round" opacity="0.38"/>
+    <path d="M82 58C88 51 97 48 106 48H230C239 48 248 51 254 58" stroke="#FFE5A4" stroke-width="6" stroke-linecap="round" opacity="0.42"/>
+  </g>
+</svg>

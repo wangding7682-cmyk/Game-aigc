@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="PveLevelConfig" load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/pve/pve_level_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/pve/pve_spawn_entry.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/pve/pve_cover_entry_2d.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/pve/pve_cover_entry_3d.gd" id="4"]
+
+[sub_resource type="Resource" id="SpawnTarget01"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(210, -140)
+disguise_strength = 0.45
+clue_profile = PackedStringArray("头部外壳过紧", "肩袖连接偏硬")
+
+[sub_resource type="Resource" id="SpawnTarget02"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(-420, -280)
+disguise_strength = 0.62
+clue_profile = PackedStringArray("头部外壳过紧", "肩袖连接偏硬")
+
+[sub_resource type="Resource" id="SpawnCivilian01"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-60, -70)
+disguise_strength = 0.85
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="SpawnCivilian02"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(120, 250)
+disguise_strength = 0.82
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("围巾或衣领晃动")
+
+[sub_resource type="Resource" id="SpawnCivilian03"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(440, -50)
+disguise_strength = 0.80
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("胸针或拉链头反光")
+
+[sub_resource type="Resource" id="SpawnCivilian04"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-320, 180)
+disguise_strength = 0.84
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="Cover2D01"]
+script = ExtResource("3")
+position = Vector2(255, -240)
+size = Vector2(120, 260)
+
+[sub_resource type="Resource" id="Cover2D02"]
+script = ExtResource("3")
+position = Vector2(-260, 40)
+size = Vector2(150, 220)
+
+[sub_resource type="Resource" id="Cover2D03"]
+script = ExtResource("3")
+position = Vector2(330, 80)
+size = Vector2(140, 240)
+
+[sub_resource type="Resource" id="Cover3D01"]
+script = ExtResource("4")
+position = Vector3(-4.2, 0, -4)
+
+[sub_resource type="Resource" id="Cover3D02"]
+script = ExtResource("4")
+position = Vector3(-5.5, 0, -2.3)
+style_id = "street_lamp"
+
+[sub_resource type="Resource" id="Cover3D03"]
+script = ExtResource("4")
+position = Vector3(4.4, 0, -1.1)
+style_id = "parked_van"
+
+[sub_resource type="Resource" id="Cover3D04"]
+script = ExtResource("4")
+position = Vector3(-4.8, 0, 0.9)
+style_id = "parked_van"
+
+[sub_resource type="Resource" id="Cover3D05"]
+script = ExtResource("4")
+position = Vector3(5.2, 0, 0.7)
+style_id = "billboard"
+
+[sub_resource type="Resource" id="Cover3D06"]
+script = ExtResource("4")
+position = Vector3(4.7, 0, 3.1)
+style_id = "street_lamp"
+
+[resource]
+script = ExtResource("1")
+level_id = 1
+display_name = "城市试炼 01"
+flavor_text = "教学型关卡：先学会找可疑特征、拖镜头、屏息后再开枪。"
+time_limit_sec = 120.0
+required_targets = 2
+civilian_count = 4
+reward_gold = 80
+scan_count = 1
+time_extend_count = 0
+moving_targets = 0
+weakpoint_targets = 0
+world_size = Vector2(1800, 1000)
+target_radius = 22.0
+civilian_radius = 18.0
+spawn_entries = Array[Resource]([SubResource("SpawnTarget01"), SubResource("SpawnTarget02"), SubResource("SpawnCivilian01"), SubResource("SpawnCivilian02"), SubResource("SpawnCivilian03"), SubResource("SpawnCivilian04")])
+cover_entries_2d = Array[Resource]([SubResource("Cover2D01"), SubResource("Cover2D02"), SubResource("Cover2D03")])
+cover_entries_3d = Array[Resource]([SubResource("Cover3D01"), SubResource("Cover3D02"), SubResource("Cover3D03"), SubResource("Cover3D04"), SubResource("Cover3D05"), SubResource("Cover3D06")])
+cover_budget_2d = 3
+runtime_greenery_cover_budget = 0

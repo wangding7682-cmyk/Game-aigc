@@ -1,0 +1,18 @@
+<svg width="256" height="92" viewBox="0 0 256 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fill" x1="20" y1="12" x2="230" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183045"/>
+      <stop offset="1" stop-color="#0A1620"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="28" y1="58" x2="226" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58D2FF"/>
+      <stop offset="1" stop-color="#78E4FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="10" width="228" height="72" rx="24" fill="url(#fill)" stroke="#5AD4FF" stroke-width="2"/>
+  <rect x="28" y="56" width="200" height="10" rx="5" fill="url(#accent)"/>
+  <rect x="34" y="26" width="34" height="22" rx="8" fill="#132635" stroke="#7ADFFF" stroke-opacity="0.48"/>
+  <path d="M45 31L55 36L45 41V31Z" fill="#7ADFFF"/>
+  <path d="M55 31L65 36L55 41V31Z" fill="#7ADFFF" fill-opacity="0.66"/>
+  <text x="88" y="48" fill="#E8F8FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700" letter-spacing="1.8">WEAPON</text>
+</svg>

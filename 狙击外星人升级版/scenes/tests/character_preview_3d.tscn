@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets_mvp_3d/characters/alien_base_placeholder.glb" id="1_alien_base"]
+[ext_resource type="PackedScene" path="res://assets_mvp_3d/characters/alien_costume_placeholder.glb" id="2_alien_costume"]
+[ext_resource type="PackedScene" path="res://assets_mvp_3d/characters/allien-product-women2.glb" id="3_civilian"]
+[ext_resource type="PackedScene" path="res://assets_mvp_3d/characters/weakpoint_marker_placeholder.glb" id="4_weakpoint"]
+
+[sub_resource type="Environment" id="Environment_preview"]
+background_mode = 1
+background_color = Color(0.101961, 0.117647, 0.14902, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.54902, 0.596078, 0.701961, 1)
+ambient_light_energy = 1.1
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.08
+fog_enabled = true
+fog_light_color = Color(0.321569, 0.388235, 0.521569, 1)
+fog_density = 0.008
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(14, 0.2, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.160784, 0.176471, 0.215686, 1)
+metallic = 0.08
+roughness = 0.9
+
+[node name="CharacterPreview3D" type="Node3D"]
+
+[node name="PreviewEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_preview")
+
+[node name="SunKey" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.846634, -0.30815, 0.433884, 0, 0.815473, 0.578795, -0.532172, -0.489981, 0.690372, 0, 5.5, 0)
+light_color = Color(1, 0.956863, 0.890196, 1)
+light_energy = 2.2
+shadow_enabled = true
+
+[node name="SunFill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.642788, 0.219846, -0.733835, 0, 0.958058, 0.286582, 0.766044, -0.184727, 0.615661, 0, 4, 0)
+light_color = Color(0.572549, 0.682353, 0.956863, 1)
+light_energy = 0.7
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, -7.6, 4.2)
+fov = 30.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_floor")
+material_override = SubResource("StandardMaterial3D_floor")
+position = Vector3(0, 0, -0.1)
+
+[node name="AlienBase" parent="." instance=ExtResource("1_alien_base")]
+position = Vector3(-2.6, 0, 0)
+rotation_degrees = Vector3(0, 20, 0)
+
+[node name="AlienCostume" parent="." instance=ExtResource("2_alien_costume")]
+position = Vector3(0, 0, 0)
+
+[node name="CivilianBase" parent="." instance=ExtResource("3_civilian")]
+position = Vector3(2.6, 0, 0)
+rotation_degrees = Vector3(0, -20, 0)
+
+[node name="WeakpointMarker" parent="." instance=ExtResource("4_weakpoint")]
+position = Vector3(0, 0.25, 2.2)

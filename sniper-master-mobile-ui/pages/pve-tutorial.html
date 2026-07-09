@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教程引导</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 640px;
+  --page-frame-height: 1180px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="theme-dark bg-[var(--surface-bg)] text-[var(--text-primary)]">
+  <div class="tutorial-shell game-safe-shell">
+    <header class="relative z-10 space-y-2">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.34em] text-[var(--text-muted)]">教程引导</p>
+          <h1 class="font-title text-[22px] font-semibold">教程引导</h1>
+        </div>
+        <button data-dom-id="back-pve-battle" class="game-btn-secondary rounded-[8px] px-3 text-sm">返回战斗</button>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="game-chip px-3 py-2 text-[#cfe3ff]">步骤 02 / 04</div>
+        <div class="game-chip px-3 py-2">观察锁步中</div>
+      </div>
+    </header>
+
+    <main class="relative z-10 mt-3 space-y-3">
+      <section class="stage-frame">
+        <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(145,197,255,0.12),transparent)]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,transparent,rgba(12,17,25,0.88))]"></div>
+        <div class="soft-note absolute left-5 top-5 px-3 py-1 text-[11px] text-[#d9e8ff]">教学观察态</div>
+        <div class="soft-note absolute right-5 top-5 px-3 py-1 text-[11px] text-[#ffd1d6]">禁止开火：先学会对焦</div>
+        <div class="soft-note-box absolute left-5 top-14 px-2.5 py-1 text-[11px] text-[#d9e8ff]">观察高架护栏后方热影，拖动准星贴近边缘可让镜头自动跟随</div>
+
+        <div class="scan-circle"></div>
+        <div class="crosshair absolute inset-0"><span></span><div class="crosshair-dot"></div></div>
+        <div class="highlight-beam"></div>
+        <div class="highlight-ring"></div>
+
+        <div class="soft-cover left-2 h-24 w-14"></div>
+        <div class="soft-cover left-16 h-42 w-20"></div>
+        <div class="soft-cover left-[34%] h-30 w-14"></div>
+        <div class="soft-cover left-[47%] h-48 w-16"></div>
+        <div class="soft-cover right-[27%] h-38 w-20"></div>
+        <div class="soft-cover right-4 h-26 w-16"></div>
+
+        <div class="absolute left-[58%] top-[38%] h-4 w-4 rounded-full border border-[rgba(255,132,142,0.72)] bg-[rgba(255,114,127,0.32)] shadow-[0_0_0_8px_rgba(255,114,127,0.08)]"></div>
+        <div class="soft-note-box absolute left-[44%] top-[61%] px-2.5 py-1 text-[11px] text-[#dceaff]">把准星拖入高亮环中央</div>
+        <div class="soft-note-box absolute right-4 bottom-22 px-2.5 py-1 text-[11px] text-[#b9e6d8]">当前步骤：只允许观察与镜头跟随</div>
+      </section>
+
+      <div class="tutorial-strip px-3 py-2.5 text-[11px] leading-5 text-[var(--text-secondary)]">
+        <div class="flex items-start justify-between gap-2">
+          <div class="min-w-0 flex-[1.2]">
+            <span class="mr-2 rounded-full border border-[rgba(151,198,255,0.24)] px-2 py-0.5 text-[10px] uppercase tracking-[0.24em] text-[#a8cbff]">当前步骤</span>
+            将准星拖到高亮环中心，理解“观察态 → 放大瞄准”的切换逻辑。
+          </div>
+          <div class="min-w-0 flex-1">
+            <span class="mr-2 rounded-full border border-[rgba(143,173,214,0.18)] px-2 py-0.5 text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">要求</span>
+            双击放大，长按屏息；本步锁定开火，必须先对准热区。
+          </div>
+        </div>
+        <div class="mt-2 flex items-start justify-between gap-2 border-t border-[rgba(143,173,214,0.16)] pt-2">
+          <div class="min-w-0 flex-1">
+            <span class="mr-2 rounded-full border border-[rgba(143,173,214,0.18)] px-2 py-0.5 text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">PC</span>
+            左键拖动画面观察，双击左键进入瞄准；准星靠近边缘时会自动带镜头移动。
+          </div>
+          <div class="min-w-0 flex-1 text-right">
+            <span class="ml-2 mr-0 rounded-full border border-[rgba(151,198,255,0.24)] px-2 py-0.5 text-[10px] uppercase tracking-[0.24em] text-[#a8cbff]">移动端</span>
+            双击打开放大镜；长按就是屏息；长按时拖拽移动放大镜，滑走可取消本次放大镜阶段。
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[1fr_1.15fr] gap-2">
+        <button class="game-btn-secondary text-sm">保持观察</button>
+        <button data-dom-id="cta-finish-tutorial" class="game-btn-primary text-sm">完成本步并结束教程</button>
+      </div>
+    </main>
+  </div>
+
+    <style>
+      .tutorial-shell {
+        position: relative;
+        min-height: 100%;
+        height: 100%;
+        max-width: var(--page-frame-width);
+        margin: 0 auto;
+        padding: calc(12px + env(safe-area-inset-top)) 12px calc(18px + env(safe-area-inset-bottom));
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .tutorial-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(113, 168, 255, 0.14), transparent 22%),
+          linear-gradient(rgba(129, 161, 203, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(129, 161, 203, 0.05) 1px, transparent 1px);
+        background-size: auto, 32px 32px, 32px 32px;
+        pointer-events: none;
+      }
+      .stage-frame {
+        position: relative;
+        min-height: 470px;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid rgba(143, 173, 214, 0.18);
+        background:
+          linear-gradient(180deg, rgba(58, 87, 122, 0.2) 0%, rgba(24, 36, 49, 0) 18%),
+          linear-gradient(180deg, #223344 0%, #16202c 42%, #111923 100%);
+      }
+      .stage-frame::before {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(201, 224, 255, 0.08);
+        pointer-events: none;
+      }
+      .soft-cover {
+        position: absolute;
+        bottom: 0;
+        border-radius: 12px 12px 6px 6px;
+        border: 1px solid rgba(182, 209, 244, 0.12);
+        background:
+          linear-gradient(180deg, rgba(110, 138, 168, 0.28), rgba(70, 94, 119, 0.16) 30%, rgba(43, 58, 76, 0.95) 100%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 20px rgba(7, 12, 18, 0.22);
+      }
+      .scan-circle,
+      .scan-circle::before {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        border: 1px solid rgba(151, 198, 255, 0.26);
+      }
+      .scan-circle {
+        inset: 19% 16%;
+      }
+      .scan-circle::before {
+        inset: 12%;
+      }
+      .crosshair::before,
+      .crosshair::after,
+      .crosshair span::before,
+      .crosshair span::after {
+        content: "";
+        position: absolute;
+        background: rgba(231, 241, 255, 0.8);
+      }
+      .crosshair::before {
+        left: 50%;
+        top: calc(50% - 84px);
+        width: 1px;
+        height: 54px;
+        transform: translateX(-50%);
+      }
+      .crosshair::after {
+        left: 50%;
+        top: calc(50% + 30px);
+        width: 1px;
+        height: 54px;
+        transform: translateX(-50%);
+      }
+      .crosshair span::before {
+        top: 50%;
+        left: calc(50% - 84px);
+        width: 54px;
+        height: 1px;
+        transform: translateY(-50%);
+      }
+      .crosshair span::after {
+        top: 50%;
+        left: calc(50% + 30px);
+        width: 54px;
+        height: 1px;
+        transform: translateY(-50%);
+      }
+      .crosshair-dot {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22px;
+        height: 22px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        border: 1px solid rgba(236, 244, 255, 0.84);
+        box-shadow: 0 0 0 6px rgba(113, 168, 255, 0.07);
+      }
+      .highlight-beam {
+        position: absolute;
+        left: 52%;
+        top: 46%;
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(145, 200, 255, 0.16) 0, rgba(145, 200, 255, 0.08) 42%, transparent 72%);
+        filter: blur(6px);
+      }
+      .highlight-ring {
+        position: absolute;
+        left: 52%;
+        top: 46%;
+        width: 130px;
+        height: 130px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        border: 1px solid rgba(151, 198, 255, 0.76);
+        box-shadow: 0 0 0 8px rgba(113, 168, 255, 0.08);
+      }
+      .highlight-ring::before {
+        content: "";
+        position: absolute;
+        inset: 10px;
+        border-radius: inherit;
+        border: 1px dashed rgba(190, 223, 255, 0.42);
+      }
+      .soft-note {
+        border-radius: 999px;
+        border: 1px solid rgba(151, 198, 255, 0.18);
+        background: rgba(17, 26, 36, 0.72);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .soft-note-box {
+        border-radius: 10px;
+        border: 1px solid rgba(146, 175, 214, 0.16);
+        background: rgba(18, 27, 37, 0.74);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .tutorial-strip {
+        border-radius: 12px;
+        border: 1px solid rgba(143, 173, 214, 0.16);
+        background: linear-gradient(180deg, rgba(30, 42, 56, 0.94), rgba(20, 28, 39, 0.94));
+      }
+    </style>
+</body>
+</html>

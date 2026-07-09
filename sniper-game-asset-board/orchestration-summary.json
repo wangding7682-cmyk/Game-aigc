@@ -1,0 +1,359 @@
+{
+  "project": {
+    "name": "狙击游戏整合资产画布",
+    "path": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\sniper-game-asset-board",
+    "operation": "edit",
+    "deviceType": "desktop",
+    "language": "zh-CN",
+    "dashboardMode": false,
+    "replicationMode": null,
+    "sourceUrl": null,
+    "visualSpecExcerpt": null,
+    "styleDefinitionBrief": "都市夜战狙击主题的整合资产总览画布，统一使用深蓝黑背景、红色命中高亮、冷蓝辅助光与软 3D 卡通体块。",
+    "designRead": "游戏资产总览页 / 项目团队评审 / 都市夜战科幻 / 中高信息密度 / 避免变成普通素材表格",
+    "designDials": {
+      "layoutVariance": 3,
+      "motionIntensity": 2,
+      "visualDensity": 4
+    },
+    "styleContinuityAnchors": {
+      "colorSystem": {
+        "primaryColorRole": "红色用于命中、高亮、关键 HUD 焦点；深蓝黑作为全局背景；冷蓝用于辅助信息和面板描边。",
+        "brandHuePolicy": "保持夜战狙击主题，不引入新的品牌主色系。",
+        "stateColors": "绿色用于命中确认，红色用于误伤，青蓝用于扫描，白蓝用于慢动作与镜框。"
+      },
+      "shapeSystem": "卡片与面板圆角克制，HUD 组件偏锐利但保留轻微圆角，资产图像保持软 3D 圆润体块。",
+      "typographySystem": "中文无衬线标题与正文，标题简短有冲击力，说明文案克制，不做夸张装饰字。",
+      "spacingSystem": "采用分层留白：Hero 区大留白，分类资产区中等留白，卡片内部信息紧凑但不拥挤。",
+      "componentLanguage": "使用玻璃感暗面板、细描边、发光信息条、模块化分类卡片。",
+      "surfaceAndDepth": "静态卡片主要依靠边框和层次区分，少量阴影；重点 HUD 区允许轻微辉光。",
+      "imageryAndIconography": "素材展示以透明背景 SVG 为主，统一放在暗色展示底上，强调可直接接入游戏界面的观感。",
+      "interactionTone": "整体克制、利落，局部以扫描环、锁定框、准星语言增强战斗感。"
+    },
+    "specsConstraints": null,
+    "sharedProjectShellContract": null,
+    "generationTree": {
+      "root": {
+        "nodeId": "gen-page-asset-overview",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-asset-overview"
+        ],
+        "output": "pages/asset-overview.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "single-page integrated overview canvas"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": [
+          "gen-page-program-integration-board"
+        ]
+      },
+      "gen-page-program-integration-board": {
+        "nodeId": "gen-page-program-integration-board",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-program-integration-board"
+        ],
+        "output": "pages/program-integration-board.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "program-ready integration board"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": [
+          "gen-page-program-mount-spec-board"
+        ]
+      },
+      "gen-page-program-mount-spec-board": {
+        "nodeId": "gen-page-program-mount-spec-board",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-program-mount-spec-board"
+        ],
+        "output": "pages/program-mount-spec-board.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "program mount specification board"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": [
+          "gen-page-alien-design-update"
+        ]
+      },
+      "gen-page-alien-design-update": {
+        "nodeId": "gen-page-alien-design-update",
+        "kind": "page-leaf",
+        "pageIds": [
+          "page-alien-design-update"
+        ],
+        "output": "pages/alien-design-update.html",
+        "sharedRegions": [],
+        "privateRegions": [
+          "alien design refinement board"
+        ],
+        "mutableSlots": [],
+        "status": "generated",
+        "children": []
+      }
+    }
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "libraryIdentity": {
+      "name": null,
+      "id": null,
+      "version": null,
+      "scope": null,
+      "path": null,
+      "versionSource": null
+    },
+    "libraryPath": null,
+    "cssFilePath": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\sniper-game-asset-board\\colors_and_type.css",
+    "brandPrefix": "game",
+    "themeMode": "dark",
+    "designDecisionSummary": "整页以都市夜战狙击 UI 为底，统一承载第一批与第二批资产，兼顾评审展示和接入参考。",
+    "componentContractKind": "compact-json",
+    "forbiddenInventedComponents": [],
+    "allowedComponents": [],
+    "styleConstraints": {
+      "radiusMax": 16,
+      "spacingBase": 4,
+      "fontSizeBody": 14,
+      "fontSizeMin": 12,
+      "controlHeightDefault": 40,
+      "controlHeightLarge": 48
+    },
+    "productContext": {
+      "kitType": "game-ui-overview",
+      "productType": "狙击识别外星人游戏"
+    },
+    "actualTokenNameReference": []
+  },
+  "pages": [
+    {
+      "nodeId": "page-asset-overview",
+      "slug": "asset-overview",
+      "title": "整合画布",
+      "htmlSrc": "pages/asset-overview.html",
+      "pageIndex": 1,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "information-dense",
+      "businessScenario": "把前两批游戏素材整合到同一张评审画布中，便于统一查看武器、角色、环境、特效和 HUD 的整体关系。",
+      "visualNorthStar": "像一张可直接用于项目评审的大型战斗资产总览板，既有游戏气氛，也有明确的信息层级。",
+      "compositionPattern": "modular command wall with hero focus",
+      "continuityAnchors": [
+        "深蓝黑背景与红色战斗高亮",
+        "玻璃感暗面板与轻描边",
+        "软 3D 卡通资产统一陈列在暗色展示底上"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "资产种类多，容易像素材清单而不是设计画布",
+        "分区过多时需要保持第一屏吸引力"
+      ],
+      "generationNodeId": "gen-page-asset-overview",
+      "generationPath": [
+        "gen-page-asset-overview"
+      ],
+      "inheritedFragments": [],
+      "privateRegions": [
+        "single-page integrated overview canvas"
+      ],
+      "mutableSlots": []
+    },
+    {
+      "nodeId": "page-asset-overview-integration",
+      "slug": "asset-overview-integration",
+      "title": "界面接入版",
+      "htmlSrc": "pages/asset-overview-integration.html",
+      "pageIndex": 2,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-asset-overview",
+      "sourceHtmlSrc": "pages/asset-overview.html",
+      "pageType": "information-dense",
+      "businessScenario": "把总览评审画布细化为更贴近实际游戏界面接入的版本，整合主菜单、战斗 HUD、结算成长与关卡拼装接入示意。",
+      "visualNorthStar": "像一张游戏 UI 接入作战板，把素材、界面和落位关系同时讲清楚。",
+      "compositionPattern": "interface integration board with staged scenario blocks",
+      "continuityAnchors": [
+        "深蓝黑夜战背景与红色战斗高亮",
+        "玻璃感暗面板与移动端游戏 HUD 模块",
+        "素材展示必须进入真实界面语境而不是单独陈列"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [],
+      "imagePlan": [
+        "menu-key-art.jpg",
+        "loading-scope-art.jpg"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "如果只堆图片会失去接入逻辑",
+        "需要让新附件内容与已有资产形成界面级落位关系"
+      ]
+    },
+    {
+      "nodeId": "page-program-integration-board",
+      "slug": "program-integration-board",
+      "title": "程序可接入总板",
+      "htmlSrc": "pages/program-integration-board.html",
+      "pageIndex": 3,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-asset-overview-integration",
+      "sourceHtmlSrc": "pages/asset-overview-integration.html",
+      "pageType": "information-dense",
+      "businessScenario": "把第三批状态变体、商店与武器库套件、扫描与命中分帧并入界面接入版，形成程序更容易照着挂载的完整总板。",
+      "visualNorthStar": "像一张可以交给程序、策划和 UI 一起对照的接入总板，既说明挂载位置，也说明触发时机和状态差异。",
+      "compositionPattern": "program-ready integration board with mounting lanes",
+      "continuityAnchors": [
+        "沿用界面接入版的深蓝黑夜战基底与移动端 HUD 语义",
+        "把素材映射改成更明确的挂载位置与触发条件说明",
+        "新增状态变体、商店/武器库套件和动画分帧序列"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [],
+      "imagePlan": [
+        "menu-key-art.jpg",
+        "loading-scope-art.jpg",
+        "third-batch state/ui/anim assets"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "信息更偏工程接入，容易失去视觉可读性",
+        "需要同时讲清楚挂载位置、状态切换与动画顺序"
+      ]
+    },
+    {
+      "nodeId": "page-program-mount-spec-board",
+      "slug": "program-mount-spec-board",
+      "title": "程序挂载说明版",
+      "htmlSrc": "pages/program-mount-spec-board.html",
+      "pageIndex": 4,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-program-integration-board",
+      "sourceHtmlSrc": "pages/program-integration-board.html",
+      "pageType": "information-dense",
+      "businessScenario": "把程序可接入总板继续细化成更偏挂载说明的版本，直接补上推荐节点位置、触发枚举、替换顺序和接入注意点。",
+      "visualNorthStar": "像一张程序落地说明板，既保留游戏感，也能让开发照着节点层级和触发逻辑快速接入。",
+      "compositionPattern": "mount-spec command board with annotated lanes",
+      "continuityAnchors": [
+        "延续程序可接入总板的深色夜战基底和模块化控制板语义",
+        "信息更聚焦真实节点位置、触发枚举和资源替换顺序",
+        "仍保持可视化挂载地图和移动端面板示意"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [],
+      "imagePlan": [
+        "existing project assets only"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "如果说明过重会像技术文档而不是设计板",
+        "需要在可视化和程序说明之间保持平衡"
+      ]
+    },
+    {
+      "nodeId": "page-alien-design-update",
+      "slug": "alien-design-update",
+      "title": "外星人设计补充版",
+      "htmlSrc": "pages/alien-design-update.html",
+      "pageIndex": 5,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-program-integration-board",
+      "sourceHtmlSrc": "pages/program-integration-board.html",
+      "pageType": "information-dense",
+      "businessScenario": "把新上传的外星人服装参考图融入现有外星人设计方向，补强伪装服装层、头身比、眼部识别和第三行服装化外星人方案。",
+      "visualNorthStar": "像一张外星人角色设定深化板，能清楚说明参考图哪些部分被吸收，哪些被调整成适合本项目的可识别外星人。",
+      "compositionPattern": "character design refinement board with comparison lanes",
+      "continuityAnchors": [
+        "延续深蓝黑夜战基底与软3D科幻体块",
+        "重点突出服装化伪装外星人的设计吸收与改造逻辑",
+        "让角色设计图既能看气质，也能看识别特征"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [],
+      "imagePlan": [
+        "alien-costume-reference-board.png",
+        "existing alien state assets"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "如果直接照搬参考图会偏离当前项目的识别玩法",
+        "需要兼顾服装层设计与外星人可疑特征可读性"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "filename": "menu-key-art.jpg",
+      "role": "shared-brand",
+      "owningPage": "asset-overview-integration",
+      "semanticDescription": "主菜单与都市夜战主视觉参考",
+      "status": "reused"
+    },
+    {
+      "filename": "loading-scope-art.jpg",
+      "role": "shared-brand",
+      "owningPage": "asset-overview-integration",
+      "semanticDescription": "瞄准镜战斗与 HUD 接入参考主视觉",
+      "status": "reused"
+    },
+    {
+      "filename": "alien-costume-reference-board.png",
+      "role": "shared-brand",
+      "owningPage": "alien-design-update",
+      "semanticDescription": "外星人服装化伪装参考图，重点吸收第三行服装外星人的轮廓与层次",
+      "status": "reused"
+    }
+  ],
+  "wiringPlan": [],
+  "hiddenInteractionPlan": []
+}

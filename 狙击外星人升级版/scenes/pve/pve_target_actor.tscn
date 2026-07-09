@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c7jhj2l1k45sm"]
+
+[ext_resource type="Script" path="res://scripts/pve/pve_target_controller.gd" id="1_8s8fr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.38
+height = 1.25
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
+radius = 0.38
+height = 1.25
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_halo"]
+radius = 0.44
+height = 1.33
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_weakpoint"]
+radius = 0.18
+
+[sub_resource type="SphereMesh" id="SphereMesh_weakpoint"]
+radius = 0.18
+height = 0.36
+
+[node name="PveTargetActor" type="Node3D"]
+script = ExtResource("1_8s8fr")
+
+[node name="BodyArea" type="Area3D" parent="."]
+
+[node name="BodyCollision" type="CollisionShape3D" parent="BodyArea"]
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_body")
+position = Vector3(0, 0.95, 0)
+
+[node name="ScanHalo" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_halo")
+position = Vector3(0, 0.95, 0)
+
+[node name="WeakPointArea" type="Area3D" parent="."]
+position = Vector3(0, 1.38, 0.36)
+
+[node name="WeakPointCollision" type="CollisionShape3D" parent="WeakPointArea"]
+shape = SubResource("SphereShape3D_weakpoint")
+
+[node name="WeakPointMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_weakpoint")
+position = Vector3(0, 1.38, 0.36)

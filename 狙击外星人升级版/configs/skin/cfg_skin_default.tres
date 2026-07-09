@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkinConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/skin_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+skin_id = "skin_default"
+display_name = "标准涂装"
+description = "默认金属灰色涂装"
+weapon_id = "default_sniper"
+rarity = "common"
+price_gold = 0
+price_diamond = 0
+primary_color = Color(0.7, 0.7, 0.7, 1.0)
+secondary_color = Color(0.3, 0.3, 0.3, 1.0)
+accent_color = Color(0.5, 0.5, 0.5, 1.0)
+glow_color = Color(0.0, 0.0, 0.0, 1.0)
+barrel_length_scale = 1.0
+stock_width_scale = 1.0
+scope_size_scale = 1.0
+has_glow = false
+glow_intensity = 0.0

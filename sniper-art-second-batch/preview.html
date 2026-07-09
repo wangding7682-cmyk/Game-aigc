@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>狙击外星人第二批战斗资产预览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">第二批可交付资产 / 战斗内场景与 HUD 对齐</div>
+      <h1>狙击外星人第二批游戏美术资产预览</h1>
+      <p>
+        这批素材从“卡图与识别页”继续推进到“战斗内场景、瞄准镜 HUD、命中反馈与扫描特效”。视觉上延续首批的软 3D 卡通体块和暗色狙击 HUD 气质，但更贴近 PVE 关卡、掩体判定、扫描反馈、锁定提示与慢动作时刻的真实使用场景。
+      </p>
+
+      <div class="hero-layout">
+        <div class="battle-card">
+          <div class="scope-demo" aria-hidden="true">
+            <div class="scan-ring"></div>
+            <div class="scope-ring"></div>
+            <div class="crosshair-lines"><span></span></div>
+            <div class="center-dot"></div>
+          </div>
+          <div class="stage-tags">
+            <span>都市夜战掩体</span>
+            <span>扫描半透明提示</span>
+            <span>慢动作命中反馈</span>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="chip-row">
+            <span class="chip hot">战斗场景导向</span>
+            <span class="chip cool">HUD 组件导向</span>
+            <span class="chip safe">透明背景优先</span>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-item">
+              <strong>环境卡图</strong>
+              <p>对应代码里的四种掩体原型：墙角、路灯、货车、广告牌，可直接用于关卡预览、图鉴和关卡拼装页。</p>
+            </div>
+            <div class="summary-item">
+              <strong>特效贴图</strong>
+              <p>对应扫描、命中、误伤、掩体命中、慢动作与枪口火光，可作为 HUD 叠加、动效草图或图集切片参考。</p>
+            </div>
+            <div class="summary-item">
+              <strong>HUD 组件</strong>
+              <p>对应瞄准镜、血量、时间、锁定框和反馈底板，更适合直接挂到 Godot 的 TextureRect、Panel 或 Control 组合里。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <strong>4</strong>
+          <span>环境掩体卡图</span>
+        </div>
+        <div class="kpi-card">
+          <strong>6</strong>
+          <span>战斗反馈特效</span>
+        </div>
+        <div class="kpi-card">
+          <strong>5</strong>
+          <span>HUD 组件素材</span>
+        </div>
+        <div class="kpi-card">
+          <strong>15</strong>
+          <span>可直接接入的 SVG 资产</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>环境掩体卡图</h2>
+          <p>本组直接对齐 <code>pve_cover_obstacle_3d.gd</code> 的四种 style_id。整体强调“都市夜战、可作为掩体、扫描时轮廓仍可识别”的语义，同时保留轻微软高光和厚度感，方便进入关卡页、关卡编辑工具与商店/图鉴展示。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip">wall_corner</span>
+          <span class="chip">street_lamp</span>
+          <span class="chip">parked_van</span>
+          <span class="chip">billboard</span>
+        </div>
+      </div>
+
+      <div class="asset-grid environment">
+        <article class="asset-card">
+          <div class="asset-visual">
+            <img src="./assets/environment/env-wall-corner.svg" alt="墙角掩体卡图" />
+          </div>
+          <div class="asset-meta">
+            <h3>墙角掩体</h3>
+            <p>加厚 L 形结构，正面与侧面都有明显体块，适合表现“可挡子弹、可躲藏”的障碍语义，也方便扫描时做半透明轮廓显示。</p>
+            <div class="asset-tags"><span>关卡预览</span><span>掩体原型</span><span>厚度明确</span></div>
+            <div class="file-path">assets/environment/env-wall-corner.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual">
+            <img src="./assets/environment/env-street-lamp.svg" alt="路灯掩体卡图" />
+          </div>
+          <div class="asset-meta">
+            <h3>路灯掩体</h3>
+            <p>暗色灯杆搭配暖色灯头和小型城市底座，更接近夜战街景。适合在教程中说明“细长遮挡物也能影响视线与命中判定”。</p>
+            <div class="asset-tags"><span>夜战街景</span><span>暖光</span><span>扫描识别</span></div>
+            <div class="file-path">assets/environment/env-street-lamp.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual">
+            <img src="./assets/environment/env-parked-van.svg" alt="停放货车卡图" />
+          </div>
+          <div class="asset-meta">
+            <h3>停放货车</h3>
+            <p>保留车身、车窗与轮组的软 3D 表现，并加入城市街景轮廓线，适合关卡中的大型侧向掩体和商店/图鉴中的环境识别卡。</p>
+            <div class="asset-tags"><span>大型掩体</span><span>城市轮廓</span><span>夜色街景</span></div>
+            <div class="file-path">assets/environment/env-parked-van.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual">
+            <img src="./assets/environment/env-billboard.svg" alt="广告牌卡图" />
+          </div>
+          <div class="asset-meta">
+            <h3>广告牌</h3>
+            <p>双立柱与发光屏让轮廓更清晰，适合表现高处掩体和视觉遮挡点。轻微蓝光屏可呼应扫描与夜战 HUD 气质。</p>
+            <div class="asset-tags"><span>高处遮挡</span><span>轻发光屏</span><span>关卡拼装</span></div>
+            <div class="file-path">assets/environment/env-billboard.svg</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>特效贴图 / 图集参考</h2>
+          <p>本组对应 <code>ui_scope_overlay.gd</code>、<code>visual_feedback.gd</code> 与 PVE 战斗中的反馈节点。风格坚持图形化、软边缘、轻发光，不走写实火焰或军事写实质感，更适合作为 HUD 覆盖层、教程说明图、后续动效拆帧参考。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip cool">扫描偏青蓝</span>
+          <span class="chip safe">命中偏绿色</span>
+          <span class="chip hot">误伤偏红</span>
+          <span class="chip warn">掩体命中偏冷蓝</span>
+        </div>
+      </div>
+
+      <div class="asset-grid effects">
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-muzzle-flash.svg" alt="枪口火光" />
+          </div>
+          <div class="asset-meta">
+            <h3>枪口火光</h3>
+            <p>适合开火瞬间、教程说明和武器试射按钮态。</p>
+            <div class="file-path">assets/effects/fx-muzzle-flash.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-scan-pulse.svg" alt="扫描脉冲" />
+          </div>
+          <div class="asset-meta">
+            <h3>扫描脉冲</h3>
+            <p>适合扫描按钮触发、掩体透视和目标提示扩散圈。</p>
+            <div class="file-path">assets/effects/fx-scan-pulse.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-hit-confirm.svg" alt="命中确认" />
+          </div>
+          <div class="asset-meta">
+            <h3>命中确认</h3>
+            <p>适合命中成功、击杀确认和锁定成功后的正反馈闪现。</p>
+            <div class="file-path">assets/effects/fx-hit-confirm.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-wrong-hit-alert.svg" alt="误伤警告" />
+          </div>
+          <div class="asset-meta">
+            <h3>误伤警告</h3>
+            <p>适合平民误伤、错误目标击中和复盘警示提示。</p>
+            <div class="file-path">assets/effects/fx-wrong-hit-alert.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-cover-impact.svg" alt="掩体命中" />
+          </div>
+          <div class="asset-meta">
+            <h3>掩体命中</h3>
+            <p>适合 cover 反馈、子弹击中障碍物和教程中的命中差异说明。</p>
+            <div class="file-path">assets/effects/fx-cover-impact.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual small">
+            <img src="./assets/effects/fx-slowmo-ring.svg" alt="慢动作环" />
+          </div>
+          <div class="asset-meta">
+            <h3>慢动作环</h3>
+            <p>适合 slowmo、killcam 起始瞬间和镜头聚焦氛围叠加。</p>
+            <div class="file-path">assets/effects/fx-slowmo-ring.svg</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>HUD 组件</h2>
+          <p>本组直接对齐 <code>ui_scope_overlay.gd</code> 与 <code>ui_hud_pve.gd</code> 的圆形瞄准镜、状态条、锁定框和反馈面板需求。整体是暗色底、冷白线、轻蓝发光的狙击 HUD，而不是写实军规仪表盘。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip">圆形瞄准镜</span>
+          <span class="chip">状态槽 + 填充槽</span>
+          <span class="chip">锁定框</span>
+          <span class="chip">反馈底板</span>
+        </div>
+      </div>
+
+      <div class="asset-grid hud">
+        <article class="asset-card scope">
+          <div class="asset-visual scope-board">
+            <img src="./assets/hud/hud-scope-frame.svg" alt="瞄准镜外框" />
+          </div>
+          <div class="asset-meta">
+            <h3>瞄准镜外框</h3>
+            <p>直接呼应脚本里的圆形镜面、外圈、准星与内圈层级。适合做正式 HUD 外框，也可以拆解为教程示意图和后续动态组件参考。</p>
+            <div class="asset-tags"><span>scope overlay</span><span>圆形镜框</span><span>中心准星</span></div>
+            <div class="file-path">assets/hud/hud-scope-frame.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/hud/hud-health-bar.svg" alt="生命条" />
+          </div>
+          <div class="asset-meta">
+            <h3>生命条</h3>
+            <p>包含背景槽和填充槽，偏绿色，适合顶部状态区域或战斗 HUD 的生命信息。</p>
+            <div class="file-path">assets/hud/hud-health-bar.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/hud/hud-time-bar.svg" alt="时间条" />
+          </div>
+          <div class="asset-meta">
+            <h3>时间条</h3>
+            <p>同样带背景槽和填充槽，偏蓝色，更适合剩余时间、加时进度或任务倒计时条。</p>
+            <div class="file-path">assets/hud/hud-time-bar.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card">
+          <div class="asset-visual">
+            <img src="./assets/hud/hud-target-lock-frame.svg" alt="目标锁定框" />
+          </div>
+          <div class="asset-meta">
+            <h3>目标锁定框</h3>
+            <p>有明显锁定角标与扫描框感，适合目标提示、识别框和 locator hint 的 UI 叠层。</p>
+            <div class="file-path">assets/hud/hud-target-lock-frame.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card feedback">
+          <div class="asset-visual wide">
+            <img src="./assets/hud/hud-feedback-panel.svg" alt="反馈面板底板" />
+          </div>
+          <div class="asset-meta">
+            <h3>反馈面板底板</h3>
+            <p>适合作为顶部状态条、提示消息底板、命中/误伤/扫描结果的容器底座，也方便在 Godot 中叠加 Label 或 RichTextLabel。</p>
+            <div class="asset-tags"><span>顶部状态</span><span>消息反馈</span><span>Panel 底板</span></div>
+            <div class="file-path">assets/hud/hud-feedback-panel.svg</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>接入建议与快速测试</h2>
+          <p>建议先在真实业务路径里做“小范围接入 + 贴近玩法的快速验证”，不要先做纯展示。这样可以尽快确认掩体语义、反馈颜色和 HUD 可读性是否达标。</p>
+        </div>
+      </div>
+
+      <div class="notes">
+        <article class="note-card">
+          <h3>优先接入场景</h3>
+          <ul>
+            <li>PVE 关卡预览页、关卡拼装页、掩体图鉴页</li>
+            <li>战斗主 HUD：顶部状态、反馈文案、扫描按钮附近提示</li>
+            <li>瞄准镜 Overlay、锁定框、命中与误伤反馈层</li>
+          </ul>
+        </article>
+
+        <article class="note-card">
+          <h3>贴近业务的快速测试</h3>
+          <ul>
+            <li>在一关里混排四种掩体，确认玩家一眼能区分“厚墙角”和“高广告牌”</li>
+            <li>在扫描触发时叠加扫描脉冲和锁定框，确认不会抢掉准星可读性</li>
+            <li>在命中、误伤、打到掩体三种结果里快速切换，确认颜色反馈能直觉区分</li>
+          </ul>
+        </article>
+
+        <article class="note-card">
+          <h3>推荐接法</h3>
+          <ul>
+            <li>环境 SVG 挂到图鉴、关卡卡片和编辑器预览，不必先绑定真实 3D 模型</li>
+            <li>HUD 组件优先挂到 TextureRect / NinePatchRect / PanelContainer 做首版占位</li>
+            <li>特效 SVG 可先用于教程和原型动画，后续再拆分为动画序列或着色器效果</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">sniper-art-second-batch / 软 3D 战斗场景资产 × 暗色夜战狙击 HUD 预览页</div>
+  </main>
+</body>
+</html>

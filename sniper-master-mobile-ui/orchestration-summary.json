@@ -1,0 +1,711 @@
+{
+  "project": {
+    "name": "狙击大师移动端游戏界面",
+    "path": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\sniper-master-mobile-ui",
+    "operation": "create",
+    "deviceType": "mobile",
+    "language": "zh-CN",
+    "dashboardMode": false,
+    "replicationMode": null,
+    "sourceUrl": null,
+    "visualSpecExcerpt": null,
+    "styleDefinitionBrief": "移动端狙击游戏界面，深蓝黑战术底色搭配高亮红主强调，轻写实城市环境里混入卡通外星目标，强调扫描、锁定、命中与结算成长的爽感。",
+    "designRead": "移动端狙击玩法 / 新手与轻竞技用户 / 工业战术沉浸 / 中高密度 / 避免赛博霓虹和二次元跳脱",
+    "designDials": {
+      "layoutVariance": 2,
+      "motionIntensity": 2,
+      "visualDensity": 4
+    },
+    "styleContinuityAnchors": {
+      "colorSystem": {
+        "primaryColorRole": "高亮红只用于主按钮、关键锁定、命中与危险提示；大面积保持深蓝黑和钢蓝灰",
+        "brandHuePolicy": "统一深夜城市场景色温，不做跳脱的多彩渐变，不引入第二品牌色",
+        "stateColors": "成功绿用于结算奖励，信息蓝用于扫描与教程提示，警告橙用于倒计时与失败风险"
+      },
+      "shapeSystem": "圆角控制在 4/8/14px，保持战术面板的硬朗结构，按钮和芯片为紧凑胶囊态",
+      "typographySystem": "标题用中文无衬线加粗，正文保持清晰易读，数字和计时使用等宽字体增强 HUD 感",
+      "spacingSystem": "顶部 HUD 与底部操作区紧凑，中部主视区留出观察空间，卡片内边距以 12/16/20px 为主",
+      "componentLanguage": "玻璃化战术面板、细描边、准星元素、雷达环、任务芯片、双层按钮",
+      "surfaceAndDepth": "静态卡片以边框和半透明叠层为主，只有弹窗和浮层使用更深阴影",
+      "imageryAndIconography": "场景图围绕城市夜景、狙击镜、伪装外星目标；图标偏战术 HUD 线性风格",
+      "interactionTone": "反馈明确、短促、有战斗节奏感，避免花哨弹跳"
+    },
+    "specsConstraints": null,
+    "sharedProjectShellContract": {
+      "navigationShell": "所有页面保持单手操作友好的移动端安全区容器，顶部信息栏与底部主操作区语言统一",
+      "primaryColorSystem": "主强调色统一使用品牌红，扫描和信息提示使用状态蓝，整体仍以深蓝黑为底",
+      "typographySystem": "标题加粗，正文清晰，数字 HUD 使用等宽数字",
+      "radiusScale": "面板 14px，二级卡片 8px，细节芯片 9999px",
+      "surfaceDepthModel": "半透明暗色面板 + 细边框 + 微弱环境辉光，浮层可用更重遮罩",
+      "ctaStyle": "主按钮为高亮红渐变，次按钮为透明描边，均保持厚重的移动端点击尺寸",
+      "alignmentRules": "全局 24px 外边距基线，模块内部以 12-16px 节奏排列，HUD 信息左右对齐"
+    },
+    "generationTree": {
+      "root": {
+        "nodeId": "gen-project-shell",
+        "kind": "project-shell",
+        "pageIds": [
+          "page-main-menu",
+          "page-level-loading",
+          "page-pve-battle",
+          "page-pve-tutorial",
+          "page-result-growth",
+          "page-pvp-mock-room"
+        ],
+        "output": "partials/project-shell.html",
+        "sharedRegions": [
+          "mobile-safe-shell",
+          "global-atmosphere",
+          "brand-glow-language"
+        ],
+        "privateRegions": [],
+        "mutableSlots": [
+          "pageTitle",
+          "pageMood",
+          "activeNavItem"
+        ],
+        "status": "planned",
+        "children": [
+          {
+            "nodeId": "gen-page-main-menu",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-main-menu"
+            ],
+            "output": "pages/main-menu.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "menu-hero",
+              "mode-entry-grid",
+              "player-overview"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          },
+          {
+            "nodeId": "gen-page-level-loading",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-level-loading"
+            ],
+            "output": "pages/level-loading.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "loading-art",
+              "objective-brief",
+              "progress-strip"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          },
+          {
+            "nodeId": "gen-battle-common",
+            "kind": "shared-branch",
+            "pageIds": [
+              "page-pve-battle",
+              "page-pve-tutorial"
+            ],
+            "output": "partials/battle-common.html",
+            "sharedRegions": [
+              "battle-top-hud",
+              "scope-stage",
+              "bottom-action-deck"
+            ],
+            "privateRegions": [],
+            "mutableSlots": [
+              "battleOverlay",
+              "battleTips",
+              "activeTool"
+            ],
+            "status": "planned",
+            "children": [
+              {
+                "nodeId": "gen-page-pve-battle",
+                "kind": "page-leaf",
+                "pageIds": [
+                  "page-pve-battle"
+                ],
+                "output": "pages/pve-battle.html",
+                "sharedRegions": [],
+                "privateRegions": [
+                  "battle-focus-content",
+                  "target-list",
+                  "mission-complete-cta"
+                ],
+                "mutableSlots": [],
+                "status": "planned",
+                "children": []
+              },
+              {
+                "nodeId": "gen-page-pve-tutorial",
+                "kind": "page-leaf",
+                "pageIds": [
+                  "page-pve-tutorial"
+                ],
+                "output": "pages/pve-tutorial.html",
+                "sharedRegions": [],
+                "privateRegions": [
+                  "tutorial-overlay",
+                  "locked-step-panel"
+                ],
+                "mutableSlots": [],
+                "status": "planned",
+                "children": []
+              }
+            ]
+          },
+          {
+            "nodeId": "gen-page-result-growth",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-result-growth"
+            ],
+            "output": "pages/result-growth.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "result-summary",
+              "reward-growth",
+              "next-actions"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          },
+          {
+            "nodeId": "gen-page-pvp-mock-room",
+            "kind": "page-leaf",
+            "pageIds": [
+              "page-pvp-mock-room"
+            ],
+            "output": "pages/pvp-mock-room.html",
+            "sharedRegions": [],
+            "privateRegions": [
+              "round-status",
+              "battle-board",
+              "control-panel"
+            ],
+            "mutableSlots": [],
+            "status": "planned",
+            "children": []
+          }
+        ]
+      }
+    }
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "libraryIdentity": {
+      "name": null,
+      "id": null,
+      "version": null,
+      "scope": null,
+      "path": null,
+      "versionSource": null
+    },
+    "cssFilePath": "c:\\Users\\Admin\\Documents\\trae_projects\\游戏AIGC\\sniper-master-mobile-ui\\colors_and_type.css",
+    "brandPrefix": "game",
+    "themeMode": "dark",
+    "designDecisionSummary": "移动端暗色战术 UI，延续文档中的深蓝黑与红色强调关系，结合 2.5D 城市场景和卡通化外星目标，避免跳脱的炫彩科幻。",
+    "componentContractKind": "compact-json",
+    "forbiddenInventedComponents": [],
+    "allowedComponents": [
+      "header",
+      "hud",
+      "panel",
+      "button",
+      "chip",
+      "progress",
+      "overlay",
+      "bottom-nav"
+    ],
+    "styleConstraints": {
+      "radiusMax": 16,
+      "spacingBase": 4,
+      "fontSizeBody": 14,
+      "fontSizeMin": 11,
+      "controlHeightDefault": 46,
+      "controlHeightLarge": 54,
+      "staticShadowAlphaMax": 0.05
+    },
+    "productContext": {
+      "kitType": "mobile-game-interface",
+      "productType": "轻写实狙击找目标游戏"
+    },
+    "actualTokenNameReference": [
+      {
+        "semanticPurpose": "主强调色",
+        "tokenName": "--brand-primary"
+      },
+      {
+        "semanticPurpose": "主背景",
+        "tokenName": "--surface-bg"
+      },
+      {
+        "semanticPurpose": "战术面板背景",
+        "tokenName": "--surface-panel"
+      },
+      {
+        "semanticPurpose": "主文字",
+        "tokenName": "--text-primary"
+      },
+      {
+        "semanticPurpose": "信息提示色",
+        "tokenName": "--state-info"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "nodeId": "page-main-menu",
+      "slug": "main-menu",
+      "title": "主菜单",
+      "htmlSrc": "pages/main-menu.html",
+      "pageIndex": 1,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "showcase",
+      "businessScenario": "游戏启动后的首页与主模式入口",
+      "visualNorthStar": "像深夜城市狙击任务的作战台，既有主视觉压迫感，也能快速看懂当前进度与玩法入口。",
+      "compositionPattern": "immersive-hero-with-operational-cards",
+      "continuityAnchors": [
+        "深蓝黑主底",
+        "红色主按钮",
+        "战术玻璃面板"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "hero",
+        "mode-card",
+        "resource-bar",
+        "entry-button"
+      ],
+      "imagePlan": [
+        "menu-key-art(1).jpg"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "首屏信息过多",
+        "主视觉与按钮层级冲突"
+      ],
+      "generationNodeId": "gen-page-main-menu",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-page-main-menu"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html"
+      ],
+      "privateRegions": [
+        "menu-hero",
+        "mode-entry-grid",
+        "player-overview"
+      ],
+      "mutableSlots": [
+        "pageTitle",
+        "pageMood",
+        "activeNavItem"
+      ]
+    },
+    {
+      "nodeId": "page-level-loading",
+      "slug": "level-loading",
+      "title": "关卡加载",
+      "htmlSrc": "pages/level-loading.html",
+      "pageIndex": 2,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "showcase",
+      "businessScenario": "进入 PVE 前的任务简介与加载过程",
+      "visualNorthStar": "像战前瞄准镜锁定的瞬间，让等待时间本身带着侦察与紧张感。",
+      "compositionPattern": "centered-art-with-mission-brief",
+      "continuityAnchors": [
+        "深蓝黑主底",
+        "红色主按钮",
+        "准星图形语言"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "progress-bar",
+        "objective-card",
+        "loading-indicator"
+      ],
+      "imagePlan": [
+        "loading-scope-art.jpg"
+      ],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "加载页容易空洞"
+      ],
+      "generationNodeId": "gen-page-level-loading",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-page-level-loading"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html"
+      ],
+      "privateRegions": [
+        "loading-art",
+        "objective-brief",
+        "progress-strip"
+      ],
+      "mutableSlots": [
+        "pageTitle",
+        "pageMood",
+        "activeNavItem"
+      ]
+    },
+    {
+      "nodeId": "page-pve-battle",
+      "slug": "pve-battle",
+      "title": "PVE战斗",
+      "htmlSrc": "pages/pve-battle.html",
+      "pageIndex": 3,
+      "stateGroupId": "state-battle",
+      "stateRole": "base",
+      "baseStatePageId": null,
+      "sharedShellContract": [
+        "相同外层战斗舞台",
+        "相同顶部 HUD",
+        "相同底部道具与操作区"
+      ],
+      "mutableRegions": [
+        "战斗焦点内容",
+        "底部提示",
+        "当前激活道具"
+      ],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "information-dense",
+      "businessScenario": "核心观察、扫描、瞄准与开火的战斗页面",
+      "visualNorthStar": "玩家一眼就能进入观察与锁定状态，场景可视面积大，但 HUD 关键数据始终明确。",
+      "compositionPattern": "full-stage-hud-frame",
+      "continuityAnchors": [
+        "等宽数字 HUD",
+        "战术玻璃面板",
+        "红色锁定反馈"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "hud-bar",
+        "scope-overlay",
+        "tool-dock",
+        "mission-chip"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "HUD 过密",
+        "中部舞台不够聚焦"
+      ],
+      "generationNodeId": "gen-page-pve-battle",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-battle-common",
+        "gen-page-pve-battle"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html",
+        "partials/battle-common.html"
+      ],
+      "privateRegions": [
+        "battle-focus-content",
+        "target-list",
+        "mission-complete-cta"
+      ],
+      "mutableSlots": [
+        "battleOverlay",
+        "battleTips",
+        "activeTool"
+      ]
+    },
+    {
+      "nodeId": "page-pve-tutorial",
+      "slug": "pve-tutorial",
+      "title": "教程引导",
+      "htmlSrc": "pages/pve-tutorial.html",
+      "pageIndex": 4,
+      "stateGroupId": "state-battle",
+      "stateRole": "derived",
+      "baseStatePageId": "page-pve-battle",
+      "sharedShellContract": [
+        "相同外层战斗舞台",
+        "相同顶部 HUD",
+        "相同底部道具与操作区"
+      ],
+      "mutableRegions": [
+        "教程浮层",
+        "当前步骤高亮",
+        "锁步说明"
+      ],
+      "derivedFromHtmlSrc": "pages/pve-battle.html",
+      "derivationType": "original",
+      "sourcePageId": "page-pve-battle",
+      "sourceHtmlSrc": "pages/pve-battle.html",
+      "pageType": "information-dense",
+      "businessScenario": "覆盖在战斗页上的新手教程与步骤锁定态",
+      "visualNorthStar": "像作战教官在现场进行逐步指挥，遮罩克制但步骤引导非常清晰。",
+      "compositionPattern": "battle-overlay-guidance",
+      "continuityAnchors": [
+        "等宽数字 HUD",
+        "战术玻璃面板",
+        "信息蓝教程提示"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "overlay-panel",
+        "step-indicator",
+        "focus-highlight"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "教程层遮挡过多"
+      ],
+      "generationNodeId": "gen-page-pve-tutorial",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-battle-common",
+        "gen-page-pve-tutorial"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html",
+        "partials/battle-common.html"
+      ],
+      "privateRegions": [
+        "tutorial-overlay",
+        "locked-step-panel"
+      ],
+      "mutableSlots": [
+        "battleOverlay",
+        "battleTips",
+        "activeTool"
+      ]
+    },
+    {
+      "nodeId": "page-result-growth",
+      "slug": "result-growth",
+      "title": "结算成长",
+      "htmlSrc": "pages/result-growth.html",
+      "pageIndex": 5,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "information-dense",
+      "businessScenario": "展示命中率、奖励、广告翻倍和升级入口的结算页",
+      "visualNorthStar": "结算时要有像战报一样的爽感，奖励和成长反馈分区清楚，下一步决策非常明确。",
+      "compositionPattern": "stacked-battle-report",
+      "continuityAnchors": [
+        "等宽数字 HUD",
+        "红色主按钮",
+        "战术面板分区"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "result-header",
+        "stat-grid",
+        "reward-card",
+        "action-stack"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "数据块太散",
+        "CTA 主次不清"
+      ],
+      "generationNodeId": "gen-page-result-growth",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-page-result-growth"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html"
+      ],
+      "privateRegions": [
+        "result-summary",
+        "reward-growth",
+        "next-actions"
+      ],
+      "mutableSlots": [
+        "pageTitle",
+        "pageMood",
+        "activeNavItem"
+      ]
+    },
+    {
+      "nodeId": "page-pvp-mock-room",
+      "slug": "pvp-mock-room",
+      "title": "局域网联机对战房间",
+      "htmlSrc": "pages/pvp-mock-room.html",
+      "pageIndex": 6,
+      "stateGroupId": null,
+      "stateRole": null,
+      "baseStatePageId": null,
+      "sharedShellContract": [],
+      "mutableRegions": [],
+      "derivedFromHtmlSrc": null,
+      "derivationType": "original",
+      "sourcePageId": null,
+      "sourceHtmlSrc": null,
+      "pageType": "task-driven",
+      "businessScenario": "局域网联机对战房间，支持同网络内创建与加入房间后进行回合同步对抗",
+      "visualNorthStar": "像训练场和实战房间的混合体，让回合信息、姿势切换与弹孔策略一屏可感知。",
+      "compositionPattern": "duel-board-with-side-controls",
+      "continuityAnchors": [
+        "深蓝黑主底",
+        "双色阵营对比",
+        "战术玻璃面板"
+      ],
+      "libraryRestraintMode": false,
+      "uiKitPath": null,
+      "componentPlan": [
+        "round-header",
+        "battle-board",
+        "posture-switch",
+        "log-panel"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false,
+      "qualityRisks": [
+        "左右栏拥挤"
+      ],
+      "generationNodeId": "gen-page-pvp-mock-room",
+      "generationPath": [
+        "gen-project-shell",
+        "gen-page-pvp-mock-room"
+      ],
+      "inheritedFragments": [
+        "partials/project-shell.html"
+      ],
+      "privateRegions": [
+        "round-status",
+        "battle-board",
+        "control-panel"
+      ],
+      "mutableSlots": [
+        "pageTitle",
+        "pageMood",
+        "activeNavItem"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "filename": "menu-key-art(1).jpg",
+      "role": "critical-hero",
+      "owningPage": "main-menu",
+      "semanticDescription": "基于主菜单内容生成的旧港乐园区潜行主视觉：软 3D 码头、摩天轮、混入人群的伪装外星目标与观察位",
+      "status": "generated"
+    },
+    {
+      "filename": "loading-scope-art.jpg",
+      "role": "shared-brand",
+      "owningPage": "level-loading",
+      "semanticDescription": "狙击镜视角锁定伪装目标的任务加载视觉",
+      "status": "generated"
+    }
+  ],
+  "wiringPlan": [
+    {
+      "sourceNodeId": "page-main-menu",
+      "domId": "cta-start-pve",
+      "targetPageId": "page-level-loading"
+    },
+    {
+      "sourceNodeId": "page-level-loading",
+      "domId": "cta-enter-battle",
+      "targetPageId": "page-pve-battle"
+    },
+    {
+      "sourceNodeId": "page-pve-battle",
+      "domId": "cta-complete-mission",
+      "targetPageId": "page-result-growth"
+    }
+  ],
+  "hiddenInteractionPlan": [
+    {
+      "sourceNodeId": "page-main-menu",
+      "domId": "shortcut-pvp-room",
+      "targetPageId": "page-pvp-mock-room",
+      "hideEdge": true,
+      "reason": "secondary shortcut"
+    },
+    {
+      "sourceNodeId": "page-pve-battle",
+      "domId": "shortcut-open-tutorial",
+      "targetPageId": "page-pve-tutorial",
+      "hideEdge": true,
+      "reason": "same-screen state"
+    },
+    {
+      "sourceNodeId": "page-pve-tutorial",
+      "domId": "back-pve-battle",
+      "targetPageId": "page-pve-battle",
+      "hideEdge": true,
+      "reason": "close tutorial overlay"
+    },
+    {
+      "sourceNodeId": "page-pve-tutorial",
+      "domId": "cta-finish-tutorial",
+      "targetPageId": "page-pve-battle",
+      "hideEdge": true,
+      "reason": "complete tutorial overlay"
+    },
+    {
+      "sourceNodeId": "page-result-growth",
+      "domId": "back-main-menu",
+      "targetPageId": "page-main-menu",
+      "hideEdge": true,
+      "reason": "return"
+    },
+    {
+      "sourceNodeId": "page-result-growth",
+      "domId": "shortcut-retry-battle",
+      "targetPageId": "page-pve-battle",
+      "hideEdge": true,
+      "reason": "retry mission"
+    },
+    {
+      "sourceNodeId": "page-pvp-mock-room",
+      "domId": "back-main-menu",
+      "targetPageId": "page-main-menu",
+      "hideEdge": true,
+      "reason": "return"
+    }
+  ]
+}

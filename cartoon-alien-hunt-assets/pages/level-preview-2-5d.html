@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关卡拼装预览 - 2.5D</title>
+    <style id="theme-vars">
+:root {
+  --hunt-background: #0f1620;
+  --hunt-foreground: #edf3ff;
+  --hunt-card: #16202c;
+  --hunt-card-foreground: #f7f9ff;
+  --hunt-muted: #1c2633;
+  --hunt-muted-foreground: #98a6bd;
+  --hunt-primary: #71a8ff;
+  --hunt-primary-foreground: #0d1521;
+  --hunt-secondary: #1a2330;
+  --hunt-secondary-foreground: #c8d4e6;
+  --hunt-border: rgba(255, 255, 255, 0.08);
+  --hunt-radius-small: 4px;
+  --hunt-radius-medium: 8px;
+  --hunt-radius-large: 12px;
+  --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--hunt-background);
+  color: var(--hunt-foreground);
+  font-family: var(--hunt-font-primary);
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--hunt-background);
+    --color-foreground: var(--hunt-foreground);
+    --color-card: var(--hunt-card);
+    --color-card-foreground: var(--hunt-card-foreground);
+    --color-primary: var(--hunt-primary);
+    --color-primary-foreground: var(--hunt-primary-foreground);
+    --color-secondary: var(--hunt-secondary);
+    --color-secondary-foreground: var(--hunt-secondary-foreground);
+    --color-muted: var(--hunt-muted);
+    --color-muted-foreground: var(--hunt-muted-foreground);
+    --color-border: var(--hunt-border);
+    --radius-sm: var(--hunt-radius-small);
+    --radius-md: var(--hunt-radius-medium);
+    --radius-lg: var(--hunt-radius-large);
+  }
+  @layer base {
+    body { background: var(--hunt-background); color: var(--hunt-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body>
+  <main class="preview-page">
+    <div class="preview-shell">
+      <section class="hunt-panel intro-panel">
+        <div class="intro-copy">
+          <span class="hunt-chip">2.5D 关卡拼装对比稿</span>
+          <div class="section-heading">
+            <h1>关卡拼装预览 - 2.5D</h1>
+            <p>
+              这页不是素材清单，而是 2.5D 场景层级、遮挡逻辑和玩法窗口演示。
+              重点让策划和美术直接看懂：哪些素材放前景做误导，哪些放中景做掩体，哪些放后景承载目标与短暂暴露。
+            </p>
+          </div>
+        </div>
+        <div class="stats-grid" aria-label="2.5D 关卡拼装统计">
+          <article class="hunt-stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">前景层</div>
+          </article>
+          <article class="hunt-stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">中景掩体</div>
+          </article>
+          <article class="hunt-stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">后景目标</div>
+          </article>
+          <article class="hunt-stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">穿透窗口</div>
+          </article>
+          <article class="hunt-stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">行为状态</div>
+          </article>
+          <article class="hunt-stat">
+            <div class="stat-value">60+</div>
+            <div class="stat-label">可复用素材</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="hunt-panel section-block">
+        <div class="section-heading section-heading--split">
+          <div>
+            <h2>主关卡拼装区</h2>
+            <p>
+              用一张大样板同时说明正常遮挡、击穿透视和弱点窗口。前景草丛负责打断识别，中景墙体与木箱负责掩体关系，后景外星人负责目标可见性变化。
+            </p>
+          </div>
+          <div class="legend-card">
+            <div class="legend-item"><span class="legend-dot legend-dot--front"></span><span>前景遮挡</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--mid"></span><span>中景掩体</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--back"></span><span>后景目标</span></div>
+            <div class="legend-item"><span class="legend-dot legend-dot--window"></span><span>击穿窗口</span></div>
+          </div>
+        </div>
+
+        <article class="level-stage-card">
+          <div class="level-stage">
+            <div class="stage-sky"></div>
+            <div class="stage-ground"></div>
+
+            <div class="callout callout--left">
+              <h3>正常遮挡</h3>
+              <p>草丛先遮边缘，完整墙体再吃掉主体轮廓。</p>
+            </div>
+            <div class="callout callout--center">
+              <h3>被打穿后局部可见</h3>
+              <p>破口和贴花把后方头部与躯干透出来。</p>
+            </div>
+            <div class="callout callout--right">
+              <h3>玩法窗口</h3>
+              <p>弱点帧在侧后方露出，玩家可抓窗口射击。</p>
+            </div>
+
+            <img class="asset asset--back asset--alien-left" src="../assets/alien-side.svg" alt="躲在左侧掩体后的外星人">
+            <img class="asset asset--back asset--alien-center" src="../assets/alien-front.svg" alt="位于中部击穿掩体后的外星人">
+            <img class="asset asset--back asset--alien-right" src="../assets/weakpoint-soft-2.svg" alt="在右侧露出弱点的外星人">
+
+            <img class="asset asset--mid asset--wall-left" src="../assets/wall-cover-intact.svg" alt="左侧完整墙体">
+            <img class="asset asset--mid asset--wall-center" src="../assets/wall-cover-breached.svg" alt="中部缺口墙体">
+            <img class="asset asset--mid asset--crate-right" src="../assets/crate-wood-soft.svg" alt="右侧木箱掩体">
+            <img class="asset asset--mid asset--rock-right" src="../assets/rock-stack-soft.svg" alt="右侧岩石掩体">
+
+            <img class="asset asset--overlay asset--decal-center" src="../assets/wall-bullet-hole-cluster-soft.svg" alt="中部击穿贴花">
+            <img class="asset asset--overlay asset--decal-right" src="../assets/wall-crack-radial-soft.svg" alt="右侧裂损贴花">
+
+            <img class="asset asset--front asset--bush-left" src="../assets/shrub-layered-soft.svg" alt="左侧前景层叠灌木">
+            <img class="asset asset--front asset--grass-center" src="../assets/grass-clump-soft.svg" alt="中部前景草丛">
+            <img class="asset asset--front asset--bush-right" src="../assets/bush-rounded.svg" alt="右侧前景灌木">
+          </div>
+
+          <div class="stage-notes">
+            <article class="note-card">
+              <h3>读图顺序</h3>
+              <p>先看前景是否误导视线，再看中景是否形成掩体，最后判断后景目标的露出位置。</p>
+            </article>
+            <article class="note-card">
+              <h3>策划验证点</h3>
+              <p>同一张图上要同时读得出“藏住了”“打穿了”“有短暂弱点窗口”这三种结果。</p>
+            </article>
+            <article class="note-card">
+              <h3>美术落地建议</h3>
+              <p>破口贴花只负责强调命中区域，主体遮挡关系仍由完整掩体和前景层来完成。</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>玩法样板卡</h2>
+          <p>三个小样板分别对准识别、揭露和射击窗口，方便在画布里快速对比玩法语义。</p>
+        </div>
+        <div class="scenario-grid">
+          <article class="hunt-panel scenario-card">
+            <div class="scenario-card__header">
+              <div>
+                <h3>伪装观察点</h3>
+                <p>外星人藏在环境后，玩家需先识别轮廓。</p>
+              </div>
+              <span class="mode-tag">识别优先</span>
+            </div>
+            <div class="mini-scene mini-scene--observe">
+              <img class="mini-asset mini-asset--back mini-asset--observe-alien" src="../assets/patrol-soft-2.svg" alt="藏在环境后的巡逻外星人">
+              <img class="mini-asset mini-asset--mid mini-asset--observe-wall" src="../assets/wall-cover-intact.svg" alt="完整墙体">
+              <img class="mini-asset mini-asset--front mini-asset--observe-bush" src="../assets/bush-rounded.svg" alt="前景灌木">
+              <img class="mini-asset mini-asset--front mini-asset--observe-grass" src="../assets/grass-clump-soft.svg" alt="前景草丛">
+            </div>
+          </article>
+
+          <article class="hunt-panel scenario-card">
+            <div class="scenario-card__header">
+              <div>
+                <h3>穿透揭露点</h3>
+                <p>墙被击穿后，能透出后方目标。</p>
+              </div>
+              <span class="mode-tag">揭露优先</span>
+            </div>
+            <div class="mini-scene mini-scene--breach">
+              <img class="mini-asset mini-asset--back mini-asset--breach-alien" src="../assets/scan-soft-1.svg" alt="墙后扫描状态外星人">
+              <img class="mini-asset mini-asset--mid mini-asset--breach-wall" src="../assets/wall-cover-breached.svg" alt="被击穿的墙体">
+              <img class="mini-asset mini-asset--overlay mini-asset--breach-decal" src="../assets/wall-bullet-hole-soft.svg" alt="单点击穿贴花">
+              <img class="mini-asset mini-asset--front mini-asset--breach-shrub" src="../assets/shrub-layered-soft.svg" alt="前景层叠灌木">
+            </div>
+          </article>
+
+          <article class="hunt-panel scenario-card">
+            <div class="scenario-card__header">
+              <div>
+                <h3>弱点窗口点</h3>
+                <p>外星人短暂显露弱点，玩家可抓住窗口射击。</p>
+              </div>
+              <span class="mode-tag">输出优先</span>
+            </div>
+            <div class="mini-scene mini-scene--weakpoint">
+              <img class="mini-asset mini-asset--back mini-asset--weak-alien" src="../assets/weakpoint-soft-3.svg" alt="露出弱点的外星人">
+              <img class="mini-asset mini-asset--mid mini-asset--weak-rock" src="../assets/rock-stack-soft.svg" alt="岩石掩体">
+              <img class="mini-asset mini-asset--mid mini-asset--weak-crate" src="../assets/crate-wood-soft.svg" alt="木箱掩体">
+              <img class="mini-asset mini-asset--overlay mini-asset--weak-decal" src="../assets/wall-crack-corner-soft.svg" alt="边角裂损贴花">
+              <img class="mini-asset mini-asset--front mini-asset--weak-bush" src="../assets/bush-rounded.svg" alt="前景灌木">
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>分层说明区</h2>
+          <p>下面三条直接对应 2.5D 项目落地时的层级职责，帮助快速定义摆放规则和可见性节奏。</p>
+        </div>
+        <div class="layer-grid">
+          <article class="hunt-panel layer-card">
+            <div class="layer-card__tag">前景层</div>
+            <h3>遮挡与误导</h3>
+            <p>草丛、灌木这类形状柔软的素材放在最前面，用来截断轮廓，制造“像目标又看不全”的识别压力。</p>
+          </article>
+          <article class="hunt-panel layer-card">
+            <div class="layer-card__tag">中景层</div>
+            <h3>掩体与受击反馈</h3>
+            <p>墙体、木箱、岩石承担主要掩体职责；被命中时叠加破口与裂损贴花，把状态变化留在可读位置。</p>
+          </article>
+          <article class="hunt-panel layer-card">
+            <div class="layer-card__tag">后景层</div>
+            <h3>目标移动与弱点暴露</h3>
+            <p>外星人静态视角、巡逻帧、扫描帧和弱点帧都放在掩体之后，用露出面积来表达玩法窗口，而不是靠额外交互提示。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>推荐素材组合区</h2>
+          <p>每组组合都围绕一个明确关卡目的，方便快速拼成可验证的 2.5D 小房间或遭遇点。</p>
+        </div>
+        <div class="combo-grid">
+          <article class="hunt-panel combo-card">
+            <div class="combo-card__media">
+              <img src="../assets/wall-cover-breached.svg" alt="缺口墙体">
+              <img src="../assets/wall-bullet-hole-cluster-soft.svg" alt="连发破口贴花">
+              <img src="../assets/alien-side.svg" alt="侧面外星人">
+            </div>
+            <div class="combo-card__body">
+              <h3>墙体 + 穿透贴花 + 侧面外星人</h3>
+              <p>适合做“先听见动静，再从破口里看见侧身”的中距离掩体点。</p>
+            </div>
+          </article>
+
+          <article class="hunt-panel combo-card">
+            <div class="combo-card__media">
+              <img src="../assets/grass-clump-soft.svg" alt="草丛">
+              <img src="../assets/patrol-soft-3.svg" alt="巡逻动作帧">
+              <img src="../assets/weakpoint-soft-1.svg" alt="正面弱点帧">
+            </div>
+            <div class="combo-card__body">
+              <h3>草丛 + 巡逻帧 + 正面弱点序列</h3>
+              <p>适合做“先误判，再等目标抬头露点”的轻掩体路线。</p>
+            </div>
+          </article>
+
+          <article class="hunt-panel combo-card">
+            <div class="combo-card__media">
+              <img src="../assets/crate-wood-soft.svg" alt="木箱">
+              <img src="../assets/scan-soft-2.svg" alt="扫描动作帧">
+              <img src="../assets/wall-bullet-hole-soft.svg" alt="单点破损贴花">
+            </div>
+            <div class="combo-card__body">
+              <h3>木箱 + 扫描动作 + 连发破损贴花</h3>
+              <p>适合做短节奏遭遇点，让扫描动作和连续命中反馈在同一视窗里完成验证。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --hunt-background: #0f1620;
+      --hunt-foreground: #edf3ff;
+      --hunt-card: #16202c;
+      --hunt-card-foreground: #f7f9ff;
+      --hunt-muted: #1c2633;
+      --hunt-muted-foreground: #9aa9c1;
+      --hunt-primary: #71a8ff;
+      --hunt-primary-strong: #a4c7ff;
+      --hunt-primary-foreground: #0d1521;
+      --hunt-secondary: #1a2330;
+      --hunt-secondary-foreground: #c8d4e6;
+      --hunt-border: rgba(255, 255, 255, 0.08);
+      --hunt-radius-small: 4px;
+      --hunt-radius-medium: 8px;
+      --hunt-radius-large: 12px;
+      --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --hunt-scene-sky: color-mix(in srgb, var(--hunt-primary) 14%, var(--hunt-background));
+      --hunt-scene-ground: color-mix(in srgb, var(--hunt-secondary) 72%, var(--hunt-background));
+      --hunt-scene-strip: color-mix(in srgb, var(--hunt-primary) 22%, transparent);
+      --hunt-callout: color-mix(in srgb, var(--hunt-card) 90%, var(--hunt-secondary));
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--hunt-background);
+      color: var(--hunt-foreground);
+      font-family: var(--hunt-font-primary);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .preview-page {
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+      background:
+        radial-gradient(circle at top, color-mix(in srgb, var(--hunt-primary) 16%, transparent), transparent 30%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-background) 86%, var(--hunt-secondary) 14%), var(--hunt-background));
+    }
+
+    .preview-shell {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+
+    .hunt-panel {
+      background: var(--hunt-card);
+      color: var(--hunt-card-foreground);
+      border: 1px solid var(--hunt-border);
+      border-radius: var(--hunt-radius-large);
+      box-shadow: var(--hunt-shadow);
+    }
+
+    .intro-panel,
+    .section-block {
+      display: grid;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .intro-copy,
+    .section-heading,
+    .scenario-card,
+    .combo-card__body {
+      display: grid;
+      gap: 10px;
+    }
+
+    .section-heading h1,
+    .section-heading h2,
+    .callout h3,
+    .note-card h3,
+    .scenario-card h3,
+    .layer-card h3,
+    .combo-card h3 {
+      margin: 0;
+      color: var(--hunt-card-foreground);
+    }
+
+    .section-heading h1 {
+      font-size: clamp(2rem, 2.8vw, 2.9rem);
+      line-height: 1.12;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .section-heading p,
+    .callout p,
+    .note-card p,
+    .scenario-card p,
+    .layer-card p,
+    .combo-card p,
+    .stat-label,
+    .legend-item,
+    .layer-card__tag {
+      margin: 0;
+      color: var(--hunt-muted-foreground);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .hunt-chip,
+    .hunt-stat,
+    .legend-card,
+    .callout,
+    .note-card,
+    .mini-scene,
+    .layer-card,
+    .combo-card__media {
+      background: var(--hunt-muted);
+      border: 1px solid var(--hunt-border);
+      border-radius: var(--hunt-radius-medium);
+    }
+
+    .hunt-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-self: start;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .stats-grid,
+    .scenario-grid,
+    .layer-grid,
+    .combo-grid,
+    .stage-notes {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hunt-stat {
+      padding: 16px;
+    }
+
+    .stat-value {
+      margin-bottom: 4px;
+      font-size: clamp(1.75rem, 2vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .section-heading--split {
+      align-items: start;
+    }
+
+    .legend-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+
+    .legend-dot--front {
+      background: var(--hunt-primary-strong);
+    }
+
+    .legend-dot--mid {
+      background: color-mix(in srgb, var(--hunt-primary) 68%, var(--hunt-secondary));
+    }
+
+    .legend-dot--back {
+      background: color-mix(in srgb, var(--hunt-secondary-foreground) 76%, var(--hunt-primary));
+    }
+
+    .legend-dot--window {
+      background: color-mix(in srgb, var(--hunt-primary) 84%, white);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--hunt-primary) 24%, transparent);
+    }
+
+    .level-stage-card {
+      display: grid;
+      gap: 16px;
+    }
+
+    .level-stage {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: var(--hunt-radius-large);
+      border: 1px solid var(--hunt-border);
+      background:
+        radial-gradient(circle at 25% 10%, var(--hunt-scene-strip), transparent 32%),
+        radial-gradient(circle at 78% 12%, color-mix(in srgb, var(--hunt-primary) 18%, transparent), transparent 30%),
+        linear-gradient(180deg, var(--hunt-scene-sky), color-mix(in srgb, var(--hunt-scene-ground) 70%, var(--hunt-background)) 66%, var(--hunt-scene-ground));
+      box-shadow: inset 0 1px 0 color-mix(in srgb, white 10%, transparent);
+    }
+
+    .stage-sky,
+    .stage-ground {
+      position: absolute;
+      inset-inline: 0;
+    }
+
+    .stage-sky {
+      inset-block-start: 0;
+      height: 58%;
+      background:
+        radial-gradient(circle at 50% 12%, color-mix(in srgb, var(--hunt-primary) 18%, transparent), transparent 36%);
+      opacity: 0.8;
+    }
+
+    .stage-ground {
+      inset-block-end: 0;
+      height: 36%;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-secondary) 42%, transparent), transparent),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-primary) 5%, var(--hunt-scene-ground)), var(--hunt-scene-ground));
+      border-top: 1px solid color-mix(in srgb, var(--hunt-border) 88%, var(--hunt-primary));
+    }
+
+    .asset {
+      position: absolute;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.18));
+    }
+
+    .asset--back {
+      z-index: 1;
+    }
+
+    .asset--mid {
+      z-index: 2;
+    }
+
+    .asset--overlay {
+      z-index: 3;
+    }
+
+    .asset--front {
+      z-index: 4;
+    }
+
+    .asset--alien-left {
+      width: min(12.8vw, 168px);
+      min-width: 108px;
+      left: 12%;
+      bottom: 104px;
+    }
+
+    .asset--alien-center {
+      width: min(12.6vw, 162px);
+      min-width: 106px;
+      left: 45%;
+      bottom: 112px;
+    }
+
+    .asset--alien-right {
+      width: min(13vw, 160px);
+      min-width: 108px;
+      right: 11.4%;
+      bottom: 126px;
+    }
+
+    .asset--wall-left {
+      width: min(31vw, 390px);
+      min-width: 258px;
+      left: 0.5%;
+      bottom: 82px;
+    }
+
+    .asset--wall-center {
+      width: min(31vw, 394px);
+      min-width: 262px;
+      left: 31.2%;
+      bottom: 84px;
+    }
+
+    .asset--crate-right {
+      width: min(12vw, 160px);
+      min-width: 110px;
+      right: 18%;
+      bottom: 92px;
+    }
+
+    .asset--rock-right {
+      width: min(17vw, 214px);
+      min-width: 144px;
+      right: 2%;
+      bottom: 96px;
+    }
+
+    .asset--decal-center {
+      width: min(12.8vw, 150px);
+      min-width: 98px;
+      left: 45%;
+      bottom: 166px;
+      opacity: 0.96;
+    }
+
+    .asset--decal-right {
+      width: min(10vw, 112px);
+      min-width: 74px;
+      right: 19.4%;
+      bottom: 154px;
+      opacity: 0.94;
+    }
+
+    .asset--bush-left {
+      width: min(23vw, 278px);
+      min-width: 176px;
+      left: -1%;
+      bottom: 34px;
+    }
+
+    .asset--grass-center {
+      width: min(16vw, 196px);
+      min-width: 132px;
+      left: 48%;
+      bottom: 56px;
+      transform: translateX(-50%);
+    }
+
+    .asset--bush-right {
+      width: min(14vw, 168px);
+      min-width: 112px;
+      right: 8%;
+      bottom: 56px;
+    }
+
+    .callout {
+      position: absolute;
+      z-index: 5;
+      width: min(26vw, 260px);
+      padding: 14px;
+      background: var(--hunt-callout);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    .callout--left {
+      left: 3%;
+      top: 22px;
+    }
+
+    .callout--center {
+      left: 36%;
+      top: 28px;
+    }
+
+    .callout--right {
+      right: 3%;
+      top: 22px;
+    }
+
+    .stage-notes {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .note-card {
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .scenario-grid,
+    .layer-grid,
+    .combo-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .scenario-card,
+    .combo-card {
+      padding: 20px;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .scenario-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .mode-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: var(--hunt-radius-medium);
+      background: var(--hunt-muted);
+      border: 1px solid var(--hunt-border);
+      color: var(--hunt-primary-strong);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .mini-scene {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 0, color-mix(in srgb, var(--hunt-primary) 14%, transparent), transparent 38%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-secondary) 84%, var(--hunt-background)), var(--hunt-muted));
+    }
+
+    .mini-scene::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 30%;
+      background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--hunt-secondary) 42%, var(--hunt-background)));
+      border-top: 1px solid color-mix(in srgb, var(--hunt-border) 84%, var(--hunt-primary));
+    }
+
+    .mini-asset {
+      position: absolute;
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.18));
+    }
+
+    .mini-asset--back {
+      z-index: 1;
+    }
+
+    .mini-asset--mid {
+      z-index: 2;
+    }
+
+    .mini-asset--overlay {
+      z-index: 3;
+    }
+
+    .mini-asset--front {
+      z-index: 4;
+    }
+
+    .mini-asset--observe-alien {
+      width: 90px;
+      right: 34px;
+      bottom: 58px;
+    }
+
+    .mini-asset--observe-wall {
+      width: 220px;
+      left: 20px;
+      bottom: 28px;
+    }
+
+    .mini-asset--observe-bush {
+      width: 114px;
+      left: 12px;
+      bottom: 22px;
+    }
+
+    .mini-asset--observe-grass {
+      width: 116px;
+      right: 14px;
+      bottom: 18px;
+    }
+
+    .mini-asset--breach-alien {
+      width: 90px;
+      right: 44px;
+      bottom: 58px;
+    }
+
+    .mini-asset--breach-wall {
+      width: 224px;
+      left: 18px;
+      bottom: 28px;
+    }
+
+    .mini-asset--breach-decal {
+      width: 58px;
+      left: 136px;
+      bottom: 116px;
+    }
+
+    .mini-asset--breach-shrub {
+      width: 136px;
+      left: 0;
+      bottom: 18px;
+    }
+
+    .mini-asset--weak-alien {
+      width: 96px;
+      right: 46px;
+      bottom: 58px;
+    }
+
+    .mini-asset--weak-rock {
+      width: 142px;
+      right: 0;
+      bottom: 30px;
+    }
+
+    .mini-asset--weak-crate {
+      width: 126px;
+      left: 26px;
+      bottom: 40px;
+    }
+
+    .mini-asset--weak-decal {
+      width: 54px;
+      left: 120px;
+      bottom: 106px;
+    }
+
+    .mini-asset--weak-bush {
+      width: 112px;
+      left: 6px;
+      bottom: 16px;
+    }
+
+    .layer-card {
+      padding: 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .layer-card__tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--hunt-primary-strong);
+    }
+
+    .combo-card {
+      display: grid;
+      gap: 16px;
+    }
+
+    .combo-card__media {
+      min-height: 196px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      background:
+        radial-gradient(circle at top, color-mix(in srgb, var(--hunt-primary) 14%, transparent), transparent 34%),
+        linear-gradient(180deg, color-mix(in srgb, var(--hunt-muted) 84%, var(--hunt-secondary)), var(--hunt-card));
+    }
+
+    .combo-card__media img:nth-child(1) {
+      width: min(34%, 148px);
+    }
+
+    .combo-card__media img:nth-child(2) {
+      width: min(22%, 96px);
+      margin-bottom: 20px;
+    }
+
+    .combo-card__media img:nth-child(3) {
+      width: min(28%, 118px);
+    }
+
+    .combo-card__body {
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .preview-page {
+        padding: 24px 24px 56px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .section-heading--split {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .level-stage {
+        min-height: 700px;
+      }
+
+      .callout {
+        width: min(42vw, 260px);
+      }
+
+      .callout--left {
+        left: 16px;
+        top: 16px;
+      }
+
+      .callout--center {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 128px;
+      }
+
+      .callout--right {
+        right: 16px;
+        top: 16px;
+      }
+
+      .asset--wall-left {
+        left: 2%;
+        bottom: 132px;
+      }
+
+      .asset--alien-left {
+        left: 18%;
+        bottom: 150px;
+      }
+
+      .asset--wall-center {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 128px;
+      }
+
+      .asset--alien-center {
+        left: 52%;
+        transform: translateX(-50%);
+        bottom: 150px;
+      }
+
+      .asset--decal-center {
+        left: 52%;
+        transform: translateX(-50%);
+        bottom: 198px;
+      }
+
+      .asset--crate-right {
+        right: 17%;
+        bottom: 88px;
+      }
+
+      .asset--rock-right {
+        right: 1%;
+        bottom: 92px;
+      }
+
+      .asset--alien-right {
+        right: 11%;
+        bottom: 160px;
+      }
+
+      .asset--decal-right {
+        right: 20%;
+        bottom: 228px;
+      }
+
+      .asset--bush-left {
+        left: -2%;
+        bottom: 72px;
+      }
+
+      .asset--grass-center {
+        bottom: 96px;
+      }
+
+      .asset--bush-right {
+        bottom: 52px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .scenario-card__header {
+        flex-direction: column;
+      }
+
+      .level-stage {
+        min-height: 880px;
+      }
+
+      .callout {
+        width: calc(100% - 24px);
+        left: 12px;
+        right: 12px;
+        transform: none;
+      }
+
+      .callout--left {
+        top: 12px;
+      }
+
+      .callout--center {
+        top: 116px;
+      }
+
+      .callout--right {
+        top: 220px;
+      }
+
+      .asset--wall-left {
+        width: 272px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 448px;
+      }
+
+      .asset--alien-left {
+        width: 118px;
+        left: 50%;
+        transform: translateX(-84px);
+        bottom: 488px;
+      }
+
+      .asset--wall-center {
+        width: 278px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 254px;
+      }
+
+      .asset--alien-center {
+        width: 118px;
+        left: 50%;
+        transform: translateX(-10px);
+        bottom: 300px;
+      }
+
+      .asset--decal-center {
+        width: 108px;
+        left: 50%;
+        transform: translateX(2px);
+        bottom: 372px;
+      }
+
+      .asset--crate-right {
+        width: 132px;
+        left: 20px;
+        right: auto;
+        bottom: 90px;
+      }
+
+      .asset--rock-right {
+        width: 162px;
+        right: 10px;
+        bottom: 92px;
+      }
+
+      .asset--alien-right {
+        width: 116px;
+        right: 24px;
+        bottom: 182px;
+      }
+
+      .asset--decal-right {
+        width: 86px;
+        right: 50px;
+        bottom: 236px;
+      }
+
+      .asset--bush-left {
+        width: 186px;
+        left: -12px;
+        bottom: 404px;
+      }
+
+      .asset--grass-center {
+        width: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 236px;
+      }
+
+      .asset--bush-right {
+        width: 124px;
+        right: 14px;
+        bottom: 44px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .preview-page {
+        padding-inline: 12px;
+      }
+
+      .intro-panel,
+      .section-block,
+      .scenario-card,
+      .combo-card {
+        padding: 18px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mini-scene {
+        min-height: 188px;
+      }
+    }
+  </style>
+</body>
+</html>

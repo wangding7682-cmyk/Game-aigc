@@ -1,0 +1,17 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="shock" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(68)">
+      <stop stop-color="#FFF1F3" stop-opacity="0.72"/>
+      <stop offset="0.24" stop-color="#FF5F6F" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#FF5F6F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="128" r="28" fill="url(#shock)"/>
+  <path d="M128 93L136 121H120L128 93Z" fill="#FFF1F3"/>
+  <circle cx="128" cy="143" r="6" fill="#FFF1F3"/>
+  <circle cx="128" cy="128" r="42" stroke="#FF5F6F" stroke-width="5" stroke-opacity="0.44"/>
+  <path d="M95 95L106 106" stroke="#FFC0C7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M161 95L150 106" stroke="#FFC0C7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M95 161L106 150" stroke="#FFC0C7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M161 161L150 150" stroke="#FFC0C7" stroke-width="5" stroke-linecap="round"/>
+</svg>

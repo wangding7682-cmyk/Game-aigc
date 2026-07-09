@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主菜单</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="theme-dark bg-[var(--surface-bg)] text-[var(--text-primary)]">
+  <div class="menu-shell game-safe-shell">
+    <header class="relative z-10 space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-[0.32em] text-[var(--text-muted)]">主菜单</p>
+          <h1 class="font-title text-[28px] font-semibold tracking-[0.01em]">狙击大师：伪装潜行</h1>
+        </div>
+        <div class="game-chip font-number">UID 0742</div>
+      </div>
+
+      <section class="game-panel soft-card px-4 py-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[var(--text-muted)]">玩家档案</p>
+            <p class="mt-1 text-lg font-semibold">观察员·林默</p>
+            <p class="mt-1 text-sm text-[var(--text-secondary)]">城市伪装识别专精 Lv.18</p>
+          </div>
+          <div class="hero-badge rounded-[8px] px-3 py-2 text-right">
+            <p class="text-[10px] uppercase tracking-[0.28em] text-[#cfe1ff]">当前剧集</p>
+            <p class="font-number text-lg text-white">12-3</p>
+          </div>
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-2">
+          <div class="game-kpi">
+            <p class="text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">金币</p>
+            <p class="mt-1 font-number text-base text-[#f3d498]">12,840</p>
+          </div>
+          <div class="game-kpi">
+            <p class="text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">已解锁</p>
+            <p class="mt-1 font-number text-base">37 / 52</p>
+          </div>
+          <div class="game-kpi">
+            <p class="text-[10px] uppercase tracking-[0.24em] text-[var(--text-muted)]">识别率</p>
+            <p class="mt-1 font-number text-base text-[#9ac7ff]">91.4%</p>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main class="relative z-10 mt-4 space-y-4">
+      <section class="game-panel-strong hero-card soft-card overflow-hidden">
+        <img src="../assets/image_0_5cro49.jpg" alt="主菜单主视觉" class="h-56 w-full object-cover opacity-88" />
+        <div class="relative space-y-3 px-4 py-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.32em] text-[#bcd8ff]">软 3D 任务世界</p>
+              <h2 class="mt-1 text-[22px] font-semibold">旧港乐园区进入低噪潜行时段</h2>
+            </div>
+            <div class="hero-badge rounded-[8px] px-2.5 py-1 text-[11px] text-[#d7e8ff]">热区：旧港城区</div>
+          </div>
+          <p class="text-sm leading-6 text-[var(--text-secondary)]">
+            伪装体正在以检修员、摊位吉祥物与高台巡场员等身份混入人群。先观察轮廓和步频，再轻放大、再锁定，保持轻休闲但稳定的潜行节奏。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="game-chip chip-accent">软体掩体地图</span>
+            <span class="game-chip">轻扫描提示</span>
+            <span class="game-chip">伪装偏色追踪</span>
+            <span class="game-chip">成长芯片联动</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-1">
+            <button data-dom-id="cta-start-pve" class="game-btn-primary w-full">开始 PVE</button>
+            <button data-dom-id="shortcut-pvp-room" class="game-btn-secondary w-full">进入 PVP Mock</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-2 gap-3">
+        <article class="game-panel soft-card px-4 py-4">
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[var(--text-muted)]">模式入口</p>
+          <h3 class="mt-2 text-base font-semibold">剧情侦猎</h3>
+          <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">画面优先推进关卡，先观察再锁定，适合持续体验城市伪装故事线。</p>
+          <div class="mt-3 game-divider"></div>
+          <div class="mt-3 flex items-center justify-between text-sm">
+            <span class="text-[var(--text-secondary)]">推荐风格</span>
+            <span class="font-number text-[#dceaff]">静默观察</span>
+          </div>
+        </article>
+
+        <article class="game-panel soft-card px-4 py-4">
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[var(--text-muted)]">模式入口</p>
+          <h3 class="mt-2 text-base font-semibold">本地回合对抗</h3>
+          <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">保留对战板优先的空间表达，轮流提交射击方案并查看 mock 裁定结果。</p>
+          <div class="mt-3 game-divider"></div>
+          <div class="mt-3 flex items-center justify-between text-sm">
+            <span class="text-[var(--text-secondary)]">当前房间</span>
+            <span class="font-number text-[#dceaff]">ROOM 08</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="game-panel soft-card px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[var(--text-muted)]">潜行套件</p>
+            <h3 class="mt-1 text-base font-semibold">已装配模组</h3>
+          </div>
+          <div class="game-chip text-[#b9e8da]">装配 4 / 6</div>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <div class="kit-item px-3 py-3">
+            <p class="text-sm font-medium">轮廓校准</p>
+            <p class="mt-1 text-xs leading-5 text-[var(--text-secondary)]">让掩体边缘更柔和可读，远景伪装体更容易被辨识。</p>
+          </div>
+          <div class="kit-item px-3 py-3">
+            <p class="text-sm font-medium">轻锁定预测</p>
+            <p class="mt-1 text-xs leading-5 text-[var(--text-secondary)]">锁定后短暂给出更温和的可命中提示，不再强调硬核战术压迫感。</p>
+          </div>
+          <div class="kit-item px-3 py-3">
+            <p class="text-sm font-medium">节奏稳压</p>
+            <p class="mt-1 text-xs leading-5 text-[var(--text-secondary)]">连续命中时降低镜头躁动，让节奏更接近轻休闲潜行伪装体验。</p>
+          </div>
+          <div class="kit-item px-3 py-3">
+            <p class="text-sm font-medium">备用插槽</p>
+            <p class="mt-1 text-xs leading-5 text-[var(--text-secondary)]">完成旧港三幕即可解锁新的成长槽位与风格贴花。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-panel soft-card px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[var(--text-muted)]">操作手感</p>
+            <h3 class="mt-1 text-base font-semibold">移动端调校</h3>
+          </div>
+          <div class="game-chip">已同步</div>
+        </div>
+        <div class="mt-4 space-y-3 text-sm">
+          <div class="kit-item flex items-center justify-between px-3 py-3">
+            <span class="text-[var(--text-secondary)]">开镜灵敏度</span>
+            <span class="font-number text-white">0.82</span>
+          </div>
+          <div class="kit-item flex items-center justify-between px-3 py-3">
+            <span class="text-[var(--text-secondary)]">拖拽阻尼</span>
+            <span class="font-number text-white">中等</span>
+          </div>
+          <div class="kit-item flex items-center justify-between px-3 py-3">
+            <span class="text-[var(--text-secondary)]">提示风格</span>
+            <span class="text-[#a9cbff]">轻蓝扫描 / 软体准星 / 贴边信息条</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+    <style>
+      .menu-shell {
+        position: relative;
+        min-height: 100%;
+        height: 100%;
+        max-width: 430px;
+        margin: 0 auto;
+        padding: calc(16px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .menu-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(113, 168, 255, 0.16), transparent 26%),
+          linear-gradient(rgba(129, 161, 203, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(129, 161, 203, 0.05) 1px, transparent 1px);
+        background-size: auto, 32px 32px, 32px 32px;
+        pointer-events: none;
+      }
+      .soft-card {
+        position: relative;
+        overflow: hidden;
+      }
+      .soft-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        pointer-events: none;
+      }
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: auto 16px 16px 16px;
+        height: 92px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, rgba(113, 168, 255, 0), rgba(113, 168, 255, 0.14));
+        filter: blur(20px);
+        pointer-events: none;
+      }
+      .hero-badge {
+        border: 1px solid rgba(153, 195, 255, 0.24);
+        background: rgba(27, 41, 58, 0.82);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+      .kit-item {
+        border-radius: 10px;
+        border: 1px solid rgba(146, 175, 214, 0.14);
+        background: linear-gradient(180deg, rgba(35, 47, 62, 0.96), rgba(25, 35, 46, 0.94));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .chip-accent {
+        color: #d9e8ff;
+        background: linear-gradient(180deg, rgba(66, 89, 118, 0.94), rgba(34, 46, 61, 0.94));
+      }
+    </style>
+</body>
+</html>

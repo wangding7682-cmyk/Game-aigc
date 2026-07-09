@@ -1,0 +1,269 @@
+[gd_resource type="Resource" script_class="PveLevelConfig" load_steps=29 format=3]
+
+[ext_resource type="Script" path="res://scripts/pve/pve_level_config.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/pve/pve_spawn_entry.gd" id="2"]
+
+[sub_resource type="Resource" id="SpawnTarget01"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(649.2, 0.0)
+disguise_strength = 0.56
+clue_profile = PackedStringArray("头部外壳过紧", "肩袖连接偏硬")
+
+[sub_resource type="Resource" id="SpawnTarget02"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(575.2, 191.3)
+disguise_strength = 0.61
+clue_profile = PackedStringArray("头部外壳过紧", "肩袖连接偏硬")
+
+[sub_resource type="Resource" id="SpawnTarget03"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(636.4, 178.5)
+disguise_strength = 0.66
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 84.0
+move_speed = 0.3
+
+[sub_resource type="Resource" id="SpawnTarget04"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(371.6, 360.5)
+disguise_strength = 0.71
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 60.0
+move_speed = 0.26
+
+[sub_resource type="Resource" id="SpawnTarget05"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(447.8, 266.0)
+disguise_strength = 0.76
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 72.0
+move_speed = 0.28
+
+[sub_resource type="Resource" id="SpawnTarget06"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(21.1, 353.4)
+disguise_strength = 0.56
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 84.0
+move_speed = 0.3
+
+[sub_resource type="Resource" id="SpawnTarget07"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(82.4, 381.2)
+disguise_strength = 0.61
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 60.0
+move_speed = 0.26
+
+[sub_resource type="Resource" id="SpawnTarget08"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "moving"
+position = Vector2(-313.1, 373.0)
+disguise_strength = 0.66
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 72.0
+move_speed = 0.28
+
+[sub_resource type="Resource" id="SpawnTarget09"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "weakpoint"
+position = Vector2(-267.2, 302.2)
+disguise_strength = 0.71
+clue_profile = PackedStringArray("移动轨迹异常", "肩袖连接偏硬")
+move_range = 84.0
+move_speed = 0.3
+
+[sub_resource type="Resource" id="SpawnTarget10"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "weakpoint"
+position = Vector2(-633.8, 210.2)
+disguise_strength = 0.76
+clue_profile = PackedStringArray("胸口弱点闪动", "红眼脉冲")
+reveal_cycle_sec = 7.0
+reveal_window_sec = 1.7000000000000002
+
+[sub_resource type="Resource" id="SpawnTarget11"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "weakpoint"
+position = Vector2(-485.9, 254.6)
+disguise_strength = 0.56
+clue_profile = PackedStringArray("胸口弱点闪动", "红眼脉冲")
+reveal_cycle_sec = 6.5
+reveal_window_sec = 1.6
+
+[sub_resource type="Resource" id="SpawnTarget12"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "weakpoint"
+position = Vector2(-675.9, 63.3)
+disguise_strength = 0.61
+clue_profile = PackedStringArray("胸口弱点闪动", "红眼脉冲")
+reveal_cycle_sec = 7.0
+reveal_window_sec = 1.7000000000000002
+
+[sub_resource type="Resource" id="SpawnTarget13"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(-697.8, 77.4)
+disguise_strength = 0.66
+clue_profile = PackedStringArray("胸口弱点闪动", "红眼脉冲")
+reveal_cycle_sec = 6.5
+reveal_window_sec = 1.6
+
+[sub_resource type="Resource" id="SpawnTarget14"]
+script = ExtResource("2")
+actor_kind = "target"
+behavior_type = "static"
+position = Vector2(-712.8, -114.6)
+disguise_strength = 0.71
+clue_profile = PackedStringArray("胸口弱点闪动", "红眼脉冲")
+reveal_cycle_sec = 7.0
+reveal_window_sec = 1.7000000000000002
+
+[sub_resource type="Resource" id="SpawnCivilian01"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-765.4, -91.9)
+disguise_strength = 0.8
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="SpawnCivilian02"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-446.0, -301.1)
+disguise_strength = 0.82
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("围巾或衣领晃动")
+
+[sub_resource type="Resource" id="SpawnCivilian03"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-511.9, -214.3)
+disguise_strength = 0.84
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("胸针或拉链头反光")
+
+[sub_resource type="Resource" id="SpawnCivilian04"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-194.6, -340.4)
+disguise_strength = 0.86
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="SpawnCivilian05"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(-267.2, -359.1)
+disguise_strength = 0.8
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("围巾或衣领晃动")
+
+[sub_resource type="Resource" id="SpawnCivilian06"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(163.7, -405.4)
+disguise_strength = 0.82
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("胸针或拉链头反光")
+
+[sub_resource type="Resource" id="SpawnCivilian07"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(78.2, -320.9)
+disguise_strength = 0.84
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="SpawnCivilian08"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(436.7, -272.2)
+disguise_strength = 0.86
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("围巾或衣领晃动")
+
+[sub_resource type="Resource" id="SpawnCivilian09"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(408.3, -316.0)
+disguise_strength = 0.8
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("胸针或拉链头反光")
+
+[sub_resource type="Resource" id="SpawnCivilian10"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(695.5, -159.5)
+disguise_strength = 0.82
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("发卡或耳饰反光")
+
+[sub_resource type="Resource" id="SpawnCivilian11"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(698.0, -150.2)
+disguise_strength = 0.84
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("围巾或衣领晃动")
+
+[sub_resource type="Resource" id="SpawnCivilian12"]
+script = ExtResource("2")
+actor_kind = "civilian"
+behavior_type = "static"
+position = Vector2(646.6, 31.2)
+disguise_strength = 0.86
+clue_profile = PackedStringArray("肩线自然", "腰侧没有异常亮线")
+false_clue_profile = PackedStringArray("胸针或拉链头反光")
+
+[resource]
+script = ExtResource("1")
+level_id = 16
+display_name = "城市试炼 16"
+flavor_text = "扩展关卡：在已有规则下继续提高搜索、判断与资源管理压力。"
+time_limit_sec = 202.0
+required_targets = 12
+civilian_count = 11
+reward_gold = 384
+scan_count = 2
+time_extend_count = 2
+moving_targets = 6
+weakpoint_targets = 4
+world_size = Vector2(2760.0, 1480.0)
+target_radius = 22.0
+civilian_radius = 18.0
+spawn_entries = Array[Resource]([SubResource("SpawnTarget01"), SubResource("SpawnTarget02"), SubResource("SpawnTarget03"), SubResource("SpawnTarget04"), SubResource("SpawnTarget05"), SubResource("SpawnTarget06"), SubResource("SpawnTarget07"), SubResource("SpawnTarget08"), SubResource("SpawnTarget09"), SubResource("SpawnTarget10"), SubResource("SpawnTarget11"), SubResource("SpawnTarget12"), SubResource("SpawnCivilian01"), SubResource("SpawnCivilian02"), SubResource("SpawnCivilian03"), SubResource("SpawnCivilian04"), SubResource("SpawnCivilian05"), SubResource("SpawnCivilian06"), SubResource("SpawnCivilian07"), SubResource("SpawnCivilian08"), SubResource("SpawnCivilian09"), SubResource("SpawnCivilian10"), SubResource("SpawnCivilian11")])
+cover_budget_2d = 9
+cover_budget_3d = 14
+runtime_greenery_cover_budget = 6

@@ -1,0 +1,42 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-collapsed-title wall-collapsed-desc">
+  <title id="wall-collapsed-title">塌陷掩体墙</title>
+  <desc id="wall-collapsed-desc">同一堵掩体墙进一步塌陷后，仍保留较高侧墙和中央残段，只在中部形成可透视的攻击窗口。</desc>
+  <defs>
+    <linearGradient id="wallFrontGrad" x1="30" y1="56" x2="196" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3CF98"/>
+      <stop offset="0.54" stop-color="#D99D63"/>
+      <stop offset="1" stop-color="#8B5835"/>
+    </linearGradient>
+    <linearGradient id="wallTopGrad" x1="44" y1="48" x2="182" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1CC"/>
+      <stop offset="1" stop-color="#E2AC71"/>
+    </linearGradient>
+    <linearGradient id="rubbleGrad" x1="60" y1="122" x2="174" y2="152" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8B77E"/>
+      <stop offset="1" stop-color="#9A623B"/>
+    </linearGradient>
+    <filter id="shadow" x="12" y="30" width="196" height="132" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#3A250F" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="154" rx="72" ry="12" fill="#39220D" opacity="0.13"/>
+  <g filter="url(#shadow)">
+    <path d="M30 84C30 69 42 58 57 58H82C97 58 109 69 109 84V118C109 133 97 146 82 146H57C42 146 30 133 30 118V84Z" fill="url(#wallFrontGrad)"/>
+    <path d="M116 78C116 63 128 52 143 52H169C184 52 196 63 196 78V118C196 133 184 146 169 146H143C128 146 116 133 116 118V78Z" fill="url(#wallFrontGrad)"/>
+    <path d="M92 118C92 109 99 102 108 102H115C124 102 131 109 131 118V135C131 144 124 150 115 150H108C99 150 92 144 92 135V118Z" fill="url(#wallFrontGrad)" opacity="0.96"/>
+    <path d="M42 70C42 63 48 57 55 57H83C90 57 96 63 96 70V83H42V70Z" fill="url(#wallTopGrad)"/>
+    <path d="M128 64C128 57 134 51 141 51H170C177 51 183 57 183 64V77H128V64Z" fill="url(#wallTopGrad)"/>
+    <path d="M99 112C99 107 103 103 108 103H115C120 103 124 107 124 112V120H99V112Z" fill="url(#wallTopGrad)" opacity="0.86"/>
+    <path d="M48 79H91" stroke="#FFF4D8" stroke-width="8" stroke-linecap="round" opacity="0.68"/>
+    <path d="M134 72H176" stroke="#FFF4D8" stroke-width="8" stroke-linecap="round" opacity="0.68"/>
+    <path d="M45 103H90" stroke="#A97043" stroke-width="8" stroke-linecap="round" opacity="0.56"/>
+    <path d="M132 97H176" stroke="#A97043" stroke-width="8" stroke-linecap="round" opacity="0.56"/>
+    <path d="M96 89L109 98L104 113M123 86L137 95L132 109" stroke="#925B34" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M64 146L81 134L98 146L114 131L131 146L148 133L168 146H64Z" fill="url(#rubbleGrad)"/>
+    <path d="M54 146C67 136 84 132 97 136L104 139C110 141 116 141 122 139L130 136C145 131 163 135 176 146H54Z" fill="#6F4324" opacity="0.56"/>
+    <path d="M71 139L81 130L91 139" stroke="#8B5731" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M114 133L123 124L133 133" stroke="#8B5731" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="61" cy="78" r="4" fill="#FFF4D9" opacity="0.72"/>
+  </g>
+</svg>

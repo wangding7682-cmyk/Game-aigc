@@ -1,0 +1,33 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="scan2-title scan2-desc">
+  <title id="scan2-title">观察动作第二帧</title>
+  <desc id="scan2-desc">球衣版外星人正面站定，双眼集中观察前方。</desc>
+  <defs>
+    <linearGradient id="s2Head" x1="86" y1="36" x2="172" y2="186" gradientUnits="userSpaceOnUse"><stop stop-color="#D9FF8E"/><stop offset="0.52" stop-color="#87E85C"/><stop offset="1" stop-color="#48A53F"/></linearGradient>
+    <linearGradient id="s2Jersey" x1="98" y1="134" x2="160" y2="206" gradientUnits="userSpaceOnUse"><stop stop-color="#48A8FF"/><stop offset="1" stop-color="#1D62C8"/></linearGradient>
+    <linearGradient id="s2Shorts" x1="112" y1="180" x2="144" y2="214" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCEBFF"/></linearGradient>
+    <radialGradient id="s2Shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(106 74) rotate(38) scale(60 40)"><stop stop-color="white" stop-opacity="0.78"/><stop offset="1" stop-color="white" stop-opacity="0"/></radialGradient>
+    <filter id="s2Shadow" x="24" y="16" width="208" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17371F" flood-opacity="0.24"/></filter>
+  </defs>
+  <ellipse cx="128" cy="229" rx="46" ry="12" fill="#15351E" opacity="0.14"/>
+  <g filter="url(#s2Shadow)">
+    <path d="M108 45C113 31 128 28 128 28C128 28 143 31 148 45L154 60C156 67 162 73 168 77" stroke="#6BBE4D" stroke-width="9" stroke-linecap="round"/>
+    <path d="M148 45C143 31 128 28 128 28C128 28 113 31 108 45L102 60C100 67 94 73 88 77" stroke="#6BBE4D" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="174" cy="82" r="7" fill="#F15B5B"/><circle cx="82" cy="82" r="7" fill="#F15B5B"/>
+    <path d="M128 34C165 34 191 61 191 97C191 129 171 148 154 164C143 175 137 194 128 194C119 194 113 175 102 164C85 148 65 129 65 97C65 61 91 34 128 34Z" fill="url(#s2Head)"/>
+    <path d="M128 34C165 34 191 61 191 97C191 129 171 148 154 164C143 175 137 194 128 194C119 194 113 175 102 164C85 148 65 129 65 97C65 61 91 34 128 34Z" fill="url(#s2Shine)"/>
+    <ellipse cx="104" cy="104" rx="17" ry="25" fill="#111111"/><ellipse cx="152" cy="104" rx="17" ry="25" fill="#111111"/>
+    <ellipse cx="110" cy="95" rx="4.5" ry="6.5" fill="white" opacity="0.88"/><ellipse cx="158" cy="95" rx="4.5" ry="6.5" fill="white" opacity="0.88"/>
+    <path d="M119 140C123 143 133 143 137 140" stroke="#356229" stroke-width="5" stroke-linecap="round" opacity="0.75"/>
+    <path d="M98 148C98 136 107 128 119 128H137C149 128 158 136 158 148V180C158 193 147 204 134 204H122C109 204 98 193 98 180V148Z" fill="url(#s2Jersey)"/>
+    <path d="M113 136H143" stroke="#F4FAFF" stroke-width="7" stroke-linecap="round"/>
+    <text x="128" y="173" text-anchor="middle" font-size="28" font-weight="900" font-family="Arial, sans-serif" fill="#FFFFFF" stroke="#0E4AA7" stroke-width="3">10</text>
+    <path d="M98 156C89 163 84 174 82 190" stroke="#68BC54" stroke-width="10" stroke-linecap="round"/>
+    <path d="M158 156C167 163 172 174 174 190" stroke="#68BC54" stroke-width="10" stroke-linecap="round"/>
+    <path d="M112 180H144V194C144 202 137 209 129 209H127C119 209 112 202 112 194V180Z" fill="url(#s2Shorts)"/>
+    <path d="M120 209C116 217 113 227 112 236" stroke="#69BF55" stroke-width="10" stroke-linecap="round"/>
+    <path d="M136 209C140 217 143 227 144 236" stroke="#69BF55" stroke-width="10" stroke-linecap="round"/>
+    <path d="M117 209L116 226" stroke="#2562C4" stroke-width="9" stroke-linecap="round"/>
+    <path d="M139 209L140 226" stroke="#2562C4" stroke-width="9" stroke-linecap="round"/>
+    <ellipse cx="112" cy="238" rx="12" ry="7" fill="#111111"/><ellipse cx="144" cy="238" rx="12" ry="7" fill="#111111"/>
+  </g>
+</svg>

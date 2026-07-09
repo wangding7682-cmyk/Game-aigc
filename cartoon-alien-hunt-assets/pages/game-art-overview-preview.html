@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏内美术素材总览预览</title>
+    <style id="theme-vars">
+:root {
+  --hunt-background: #0f1620;
+  --hunt-foreground: #edf3ff;
+  --hunt-card: #16202c;
+  --hunt-card-foreground: #f7f9ff;
+  --hunt-muted: #1c2633;
+  --hunt-muted-foreground: #98a6bd;
+  --hunt-primary: #71a8ff;
+  --hunt-primary-foreground: #0d1521;
+  --hunt-secondary: #1a2330;
+  --hunt-secondary-foreground: #c8d4e6;
+  --hunt-border: rgba(255, 255, 255, 0.08);
+  --hunt-radius-small: 4px;
+  --hunt-radius-medium: 8px;
+  --hunt-radius-large: 12px;
+  --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--hunt-background);
+  color: var(--hunt-foreground);
+  font-family: var(--hunt-font-primary);
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--hunt-background);
+    --color-foreground: var(--hunt-foreground);
+    --color-card: var(--hunt-card);
+    --color-card-foreground: var(--hunt-card-foreground);
+    --color-primary: var(--hunt-primary);
+    --color-primary-foreground: var(--hunt-primary-foreground);
+    --color-secondary: var(--hunt-secondary);
+    --color-secondary-foreground: var(--hunt-secondary-foreground);
+    --color-muted: var(--hunt-muted);
+    --color-muted-foreground: var(--hunt-muted-foreground);
+    --color-border: var(--hunt-border);
+    --radius-sm: var(--hunt-radius-small);
+    --radius-md: var(--hunt-radius-medium);
+    --radius-lg: var(--hunt-radius-large);
+  }
+  @layer base {
+    body { background: var(--hunt-background); color: var(--hunt-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+    <main class="storyboard-page">
+      <div class="storyboard-shell">
+        <section class="hunt-panel section-intro">
+          <div class="section-intro__copy">
+            <div class="section-heading section-heading--hero">
+              <div class="section-heading__row">
+                <h1>素材总览</h1>
+                <span class="hunt-chip">项目现状</span>
+              </div>
+              <p>
+                《游戏内美术素材总览预览》基于当前游戏内已整理素材进行汇总，目标是让策划、美术和程序一眼读清角色识别、
+                掩体语义、反馈链、HUD 与界面套件已经覆盖到什么程度。首屏数字按当前目录汇总，下方分区展示代表性预览卡。
+              </p>
+            </div>
+            <div class="intro-note-grid">
+              <article class="storyboard-card intro-note-card">
+                <h3>识别面</h3>
+                <p>角色状态已经覆盖外星人伪装、弱点开启、扫描高亮、平民待机与假线索表达。</p>
+              </article>
+              <article class="storyboard-card intro-note-card">
+                <h3>反馈面</h3>
+                <p>命中确认、误伤警告、扫描脉冲与掩体命中已经形成完整战斗反馈链。</p>
+              </article>
+              <article class="storyboard-card intro-note-card">
+                <h3>界面面</h3>
+                <p>HUD、商店与武器库套件已具备评审展示粒度，适合继续做接入验证。</p>
+              </article>
+            </div>
+          </div>
+          <div class="stats-grid" aria-label="当前游戏内素材目录统计">
+            <article class="hunt-stat">
+              <div class="stat-value">4</div>
+              <div class="stat-label">武器预览</div>
+              <p class="stat-note">默认、精准、连发、电磁</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">6</div>
+              <div class="stat-label">角色状态</div>
+              <p class="stat-note">识别链已形成目录层级</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">4</div>
+              <div class="stat-label">掩体类型</div>
+              <p class="stat-note">读图遮挡语义已成组</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">20</div>
+              <div class="stat-label">反馈分帧</div>
+              <p class="stat-note">战斗结果链路已拆开</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">2</div>
+              <div class="stat-label">贴花占位</div>
+              <p class="stat-note">命中与破面已预留</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">5</div>
+              <div class="stat-label">材质覆盖</div>
+              <p class="stat-note">磨损、污渍与布料层</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">6</div>
+              <div class="stat-label">HUD图标</div>
+              <p class="stat-note">基础战斗表达已覆盖</p>
+            </article>
+            <article class="hunt-stat">
+              <div class="stat-value">15</div>
+              <div class="stat-label">界面套件</div>
+              <p class="stat-note">商店与武器库可汇报</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>武器预览</h2>
+            </div>
+            <p>四张武器预览卡把默认、精准、连发与电磁四种射击定位并排展开，方便快速说明使用差异与战斗职责。</p>
+          </div>
+          <div class="asset-grid asset-grid--weapon">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-weapon-preview-default.svg" alt="默认狙击预览图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">基础射击</div>
+                <h3>默认狙击</h3>
+                <p>作为基础版本使用，适合说明主武器的标准命中节奏与通用识别轮廓。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-weapon-preview-precision.svg" alt="精准狙击预览图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">精确打击</div>
+                <h3>精准狙击</h3>
+                <p>突出单发控制与弱点命中语义，适合搭配高价值目标与远距判读。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-weapon-preview-auto.svg" alt="连发狙击预览图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">压制火力</div>
+                <h3>连发狙击</h3>
+                <p>强调连续输出与区域压制，便于说明反馈密度与掩体命中频率。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-weapon-preview-plasma.svg" alt="电磁狙击预览图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">特效武器</div>
+                <h3>电磁狙击</h3>
+                <p>承担高辨识度重击角色，用来带出电磁质感和特殊命中反馈的差异。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>角色识别</h2>
+            </div>
+            <p>本区聚焦玩法识别语义，展示外星人与平民在待机、暴露、扫描和误导状态下的辨识差别。</p>
+          </div>
+          <div class="asset-grid asset-grid--character">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-alien-disguised-idle.svg" alt="外星人伪装待机图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">潜伏阶段</div>
+                <h3>伪装待机</h3>
+                <p>强调外星人未暴露时的平静姿态，是角色识别链的起点素材。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-alien-weakpoint-open.svg" alt="外星人弱点开启图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">暴露窗口</div>
+                <h3>弱点开启</h3>
+                <p>用于说明高价值命中时刻，让战斗判断不只停留在外观层。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-alien-scan-highlight.svg" alt="外星人扫描高亮图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">信息提示</div>
+                <h3>扫描高亮</h3>
+                <p>强化扫描后可见状态，便于策划和程序评估 HUD 与角色联动。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-civilian-calm-idle.svg" alt="平民冷静待机图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">安全目标</div>
+                <h3>平民待机</h3>
+                <p>保留平静日常态，帮助区分不可误伤对象的基础阅读语义。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media">
+                <img src="../assets/game-civilian-false-clue-glint.svg" alt="平民假线索闪点图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">误导提示</div>
+                <h3>假线索</h3>
+                <p>用于说明平民也会制造视线干扰，保证识别玩法有足够判断成本。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>掩体场景</h2>
+            </div>
+            <p>墙角、路灯、停放货车与广告牌共同构成常见遮挡语义，让读图与掩体判断更接近实际对局。</p>
+          </div>
+          <div class="asset-grid asset-grid--environment">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--environment">
+                <img src="../assets/game-env-wall-corner.svg" alt="墙角掩体图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">近距掩体</div>
+                <h3>墙角掩体</h3>
+                <p>适合说明高频边角遮挡，便于验证角色是否能在半遮挡里被读清。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--environment">
+                <img src="../assets/game-env-street-lamp.svg" alt="路灯掩体图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">细长遮挡</div>
+                <h3>路灯掩体</h3>
+                <p>用于说明细长体量也具备可识别的遮挡关系，不会只剩纯装饰作用。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--environment">
+                <img src="../assets/game-env-parked-van.svg" alt="停放货车掩体图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">大体量遮挡</div>
+                <h3>停放货车</h3>
+                <p>承担大面积视线阻隔，是角色扫描与绕后阅读的重要场景节点。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--environment">
+                <img src="../assets/game-env-billboard.svg" alt="广告牌掩体图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">高位遮挡</div>
+                <h3>广告牌</h3>
+                <p>适合说明上方遮挡与轮廓切割，让场景阅读不仅停留在平面墙体。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>反馈链</h2>
+            </div>
+            <p>这一组素材用于说明战斗结果如何被即时读到，从正向命中到误伤告警都已经具备明确反馈节点。</p>
+          </div>
+          <div class="asset-grid asset-grid--feedback">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--effect">
+                <img src="../assets/game-fx-hit-confirm.svg" alt="命中确认特效图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">正向确认</div>
+                <h3>命中确认</h3>
+                <p>用于明确击中有效目标的结果反馈，是战斗节奏最核心的一环。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--effect">
+                <img src="../assets/game-fx-wrong-hit-alert.svg" alt="误伤警告特效图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">负向提醒</div>
+                <h3>误伤警告</h3>
+                <p>帮助团队确认平民误击时的惩罚提示已经能被快速感知与区分。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--effect">
+                <img src="../assets/game-fx-scan-pulse.svg" alt="扫描脉冲特效图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">信息广播</div>
+                <h3>扫描脉冲</h3>
+                <p>连接角色识别与 HUD 扫描逻辑，让信息揭示不只停留在文案层。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--effect">
+                <img src="../assets/game-fx-cover-impact.svg" alt="掩体命中特效图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">遮挡反馈</div>
+                <h3>掩体命中</h3>
+                <p>用于说明子弹落在遮挡体上的结果，补齐读图与命中之间的反馈闭环。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>贴花材质</h2>
+            </div>
+            <p>两张贴花占位与三张材质覆盖卡说明工程化底层已经具备贴花、磨损和污渍层的接入条件。</p>
+          </div>
+          <div class="asset-grid asset-grid--surface">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--surface">
+                <img src="../assets/game-decal-bullet-hole-placeholder.svg" alt="子弹孔贴花图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">贴花占位</div>
+                <h3>子弹孔</h3>
+                <p>命中表面后的基础破面占位已经明确，可直接对接材质与特效层。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--surface">
+                <img src="../assets/game-decal-cover-impact-mark-placeholder.svg" alt="掩体命中贴花图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">贴花占位</div>
+                <h3>掩体印记</h3>
+                <p>强调掩体承伤后的局部标记，便于后续接入不同材质表面的命中差异。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--surface">
+                <img src="../assets/game-material-actor-fabric-breakup.svg" alt="角色布料肌理覆盖图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">角色材质</div>
+                <h3>布料覆盖</h3>
+                <p>说明角色表面已经具备可叠加的材质层，能支持更细的近景观感。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--surface">
+                <img src="../assets/game-material-environment-grime-overlay.svg" alt="环境污渍覆盖图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">环境材质</div>
+                <h3>污渍覆盖</h3>
+                <p>帮助场景从纯净建模过渡到更有使用痕迹的工程化展示状态。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--surface">
+                <img src="../assets/game-material-weapon-edge-wear-overlay.svg" alt="武器磨损覆盖图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">武器材质</div>
+                <h3>磨损覆盖</h3>
+                <p>用于说明武器表面已经具备磨边和消耗感，不再是单层干净材质。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>HUD与道具</h2>
+            </div>
+            <p>这一组素材确认了战斗 HUD 的基础表达，包括瞄准、生命、扫描与时间反馈的关键入口。</p>
+          </div>
+          <div class="asset-grid asset-grid--hud">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-hud-scope-frame.svg" alt="瞄准镜框 HUD 图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">瞄准表达</div>
+                <h3>瞄准镜框</h3>
+                <p>承担狙击核心视野框定，是武器玩法与 HUD 联动的第一入口。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-hud-health-bar.svg" alt="生命条 HUD 图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">生存表达</div>
+                <h3>生命条</h3>
+                <p>基础数值承载面已经齐备，可继续对接受击反馈与增减动画。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-icon-scan-radar.svg" alt="扫描雷达图标">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">侦测表达</div>
+                <h3>扫描雷达</h3>
+                <p>与扫描高亮和扫描脉冲形成联动，让识别玩法有独立的界面入口。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-icon-time-extend.svg" alt="加时图标">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">规则提示</div>
+                <h3>加时图标</h3>
+                <p>承接节奏奖励与任务延时提示，保证核心规则已经具备基础图标语义。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>商店套件</h2>
+            </div>
+            <p>外围界面已经不仅停留在概念层，商店与武器库的关键卡片、按钮和详情面板都已有整理结果。</p>
+          </div>
+          <div class="asset-grid asset-grid--store">
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-shop-weapon-card-owned.svg" alt="商店武器已拥有卡图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">商店卡片</div>
+                <h3>商店武器卡</h3>
+                <p>已拥有状态卡具备完整展示结构，便于说明商店内容密度和阅读顺序。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-shop-buy-button-enabled.svg" alt="商店购买按钮可用态图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">主操作件</div>
+                <h3>购买按钮</h3>
+                <p>主按钮样式已经具备可用态，能继续补齐禁用、反馈与扣费流程。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-armory-weapon-list-card-equipped.svg" alt="武器库武器已装备卡图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">武器库列表</div>
+                <h3>已装备卡</h3>
+                <p>装备态卡片已经明确，便于评审武器库信息层级与状态表达是否足够清晰。</p>
+              </div>
+            </article>
+            <article class="hunt-panel asset-card">
+              <div class="hunt-media asset-card__media asset-card__media--ui">
+                <img src="../assets/game-armory-detail-panel.svg" alt="武器库详情面板图">
+              </div>
+              <div class="asset-card__body">
+                <div class="card-role">详情面板</div>
+                <h3>详情面板</h3>
+                <p>详情信息容器已搭好，适合继续向数值、特性与升级内容接入。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div class="section-heading__row">
+              <h2>接入结论</h2>
+            </div>
+            <p>整体素材已从零散示意提升到可汇报的模块化状态，下一阶段可以围绕真实接入与联调验证继续推进。</p>
+          </div>
+          <div class="summary-grid">
+            <article class="storyboard-card summary-card">
+              <h3>角色链</h3>
+              <p>角色识别、假线索与扫描提示已经形成基本闭环，玩法判断语义可直接带入评审讨论。</p>
+            </article>
+            <article class="storyboard-card summary-card">
+              <h3>战斗链</h3>
+              <p>武器、命中反馈、掩体受击与 HUD 已能串成一条完整的战斗阅读路径。</p>
+            </article>
+            <article class="storyboard-card summary-card">
+              <h3>界面链</h3>
+              <p>商店与武器库关键套件已经具备展示板级别的结构，不再只是概念草图。</p>
+            </article>
+            <article class="storyboard-card summary-card">
+              <h3>下一步</h3>
+              <p>当前页更适合作为“可直接进入下一阶段接入验证”的项目现状总览，而不是工程清单。</p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="hunt-panel hunt-footer">
+          <div class="footer-copy">
+            <h2>汇报说明</h2>
+            <p>当前页用于项目汇报与跨职能评审，核心目的是帮助团队快速确认游戏内素材覆盖面与接入准备度。</p>
+          </div>
+          <div class="footer-meta">
+            <p>覆盖范围：角色、武器、掩体、反馈、贴花、材质、HUD、商店与武器库。</p>
+            <p>页面语气保持预览介绍，不拆成技术文档或文件清单。</p>
+          </div>
+        </footer>
+      </div>
+    </main>
+    <style>
+      .storyboard-page {
+        min-height: 100vh;
+        padding: 24px 16px 40px;
+        background:
+          radial-gradient(circle at top, color-mix(in srgb, var(--hunt-primary) 18%, transparent), transparent 34%),
+          linear-gradient(180deg, color-mix(in srgb, var(--hunt-background) 94%, var(--hunt-card) 6%), var(--hunt-background));
+      }
+
+      .storyboard-shell {
+        width: min(1280px, 100%);
+        margin: 0 auto;
+        display: grid;
+        gap: 24px;
+      }
+
+      .hunt-panel,
+      .storyboard-card {
+        background: color-mix(in srgb, var(--hunt-card) 96%, var(--hunt-background) 4%);
+        border: 1px solid var(--hunt-border);
+        border-radius: var(--hunt-radius-large);
+        box-shadow: var(--hunt-shadow);
+      }
+
+      .section-intro,
+      .section-block,
+      .hunt-footer {
+        padding: 24px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .section-intro {
+        align-items: start;
+      }
+
+      .section-intro__copy,
+      .section-heading,
+      .asset-card__body,
+      .summary-card,
+      .footer-copy,
+      .footer-meta {
+        display: grid;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .section-heading__row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .section-heading--hero .section-heading__row {
+        justify-content: flex-start;
+      }
+
+      .section-heading h1,
+      .section-heading h2,
+      .asset-card__body h3,
+      .intro-note-card h3,
+      .summary-card h3,
+      .hunt-footer h2 {
+        margin: 0;
+        color: var(--hunt-card-foreground);
+        text-wrap: balance;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+
+      .section-heading h1 {
+        font-size: clamp(2rem, 3.2vw, 3rem);
+        line-height: 1.12;
+      }
+
+      .section-heading h2,
+      .hunt-footer h2 {
+        font-size: clamp(1.45rem, 2vw, 1.95rem);
+        line-height: 1.2;
+      }
+
+      .asset-card__body h3,
+      .intro-note-card h3,
+      .summary-card h3 {
+        font-size: 1.125rem;
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .section-heading p,
+      .asset-card__body p,
+      .intro-note-card p,
+      .summary-card p,
+      .hunt-footer p,
+      .stat-note {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.68;
+        color: var(--hunt-muted-foreground);
+      }
+
+      .asset-card__body p,
+      .intro-note-card p,
+      .summary-card p,
+      .hunt-footer p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .hunt-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        padding: 6px 12px;
+        border-radius: var(--hunt-radius-medium);
+        border: 1px solid color-mix(in srgb, var(--hunt-primary) 24%, var(--hunt-border));
+        background: color-mix(in srgb, var(--hunt-primary) 12%, var(--hunt-muted));
+        color: var(--hunt-primary);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .intro-note-grid,
+      .stats-grid,
+      .asset-grid,
+      .summary-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .intro-note-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .intro-note-card,
+      .summary-card {
+        padding: 18px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hunt-stat {
+        display: grid;
+        gap: 8px;
+        min-width: 0;
+        padding: 16px;
+        background: color-mix(in srgb, var(--hunt-muted) 86%, var(--hunt-card) 14%);
+        border: 1px solid var(--hunt-border);
+        border-radius: var(--hunt-radius-medium);
+        transition: transform 160ms cubic-bezier(.2,.8,.2,1), border-color 160ms cubic-bezier(.2,.8,.2,1), background-color 160ms cubic-bezier(.2,.8,.2,1);
+      }
+
+      .stat-value {
+        font-size: clamp(1.9rem, 2.5vw, 2.6rem);
+        line-height: 1;
+        font-weight: 700;
+        color: var(--hunt-card-foreground);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--hunt-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .stat-note {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .asset-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .asset-card {
+        display: grid;
+        overflow: hidden;
+        transition: transform 160ms cubic-bezier(.2,.8,.2,1), border-color 160ms cubic-bezier(.2,.8,.2,1), background-color 160ms cubic-bezier(.2,.8,.2,1);
+      }
+
+      .hunt-media,
+      .asset-card__media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .asset-card__media {
+        min-height: 208px;
+        padding: 20px;
+        background:
+          radial-gradient(circle at 50% 16%, color-mix(in srgb, var(--hunt-primary) 12%, transparent), transparent 32%),
+          linear-gradient(180deg, color-mix(in srgb, var(--hunt-muted) 92%, var(--hunt-card) 8%), color-mix(in srgb, var(--hunt-background) 78%, var(--hunt-card) 22%));
+        border-bottom: 1px solid var(--hunt-border);
+      }
+
+      .asset-card__media--environment,
+      .asset-card__media--ui,
+      .asset-card__media--effect,
+      .asset-card__media--surface {
+        min-height: 192px;
+      }
+
+      .asset-card__media img {
+        width: auto;
+        max-height: 158px;
+        transition: transform 180ms cubic-bezier(.2,.8,.2,1);
+      }
+
+      .asset-card__media--environment img,
+      .asset-card__media--ui img {
+        max-height: 146px;
+      }
+
+      .asset-card__media--effect img,
+      .asset-card__media--surface img {
+        max-height: 132px;
+      }
+
+      .asset-card__body {
+        padding: 18px;
+      }
+
+      .card-role {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--hunt-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .hunt-footer {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        align-items: start;
+      }
+
+      @media (min-width: 1024px) {
+        .section-intro {
+          grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          align-content: start;
+        }
+      }
+
+      @media (hover: hover) {
+        .hunt-stat:hover,
+        .asset-card:hover,
+        .summary-card:hover,
+        .intro-note-card:hover {
+          transform: translateY(-2px);
+          border-color: color-mix(in srgb, var(--hunt-primary) 24%, var(--hunt-border));
+          background: color-mix(in srgb, var(--hunt-card) 98%, var(--hunt-primary) 2%);
+        }
+
+        .asset-card:hover .asset-card__media img {
+          transform: translateY(-2px) scale(1.01);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .storyboard-page {
+          padding: 16px 12px 32px;
+        }
+
+        .section-intro,
+        .section-block,
+        .hunt-footer {
+          padding: 18px;
+        }
+
+        .section-heading__row {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hunt-stat,
+        .asset-card,
+        .summary-card,
+        .intro-note-card,
+        .asset-card__media img {
+          transition-duration: 0.01ms;
+        }
+      }
+    </style>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

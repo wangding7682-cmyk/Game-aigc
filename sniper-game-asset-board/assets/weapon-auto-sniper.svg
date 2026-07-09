@@ -1,0 +1,52 @@
+<svg width="512" height="256" viewBox="0 0 512 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">连发狙击枪</title>
+  <desc id="desc">软3D卡通风格的烈焰红连发狙击枪，厚重且攻击性更强，适合商店卡片展示。</desc>
+  <defs>
+    <linearGradient id="bodyGrad" x1="60" y1="78" x2="396" y2="182" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9C8D"/>
+      <stop offset="0.46" stop-color="#E55346"/>
+      <stop offset="1" stop-color="#7B201F"/>
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="139" y1="117" x2="287" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5A2524"/>
+      <stop offset="1" stop-color="#261112"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="159" y1="58" x2="311" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD4D0"/>
+      <stop offset="1" stop-color="#8F3734"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="347" y1="109" x2="488" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFCCBE"/>
+      <stop offset="1" stop-color="#A7302A"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(177 88) rotate(20) scale(116 58)">
+      <stop stop-color="white" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="28" y="40" width="472" height="180" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#130406" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <ellipse cx="266" cy="208" rx="172" ry="14" fill="#1C070A" opacity="0.15"/>
+  <g filter="url(#shadow)">
+    <path d="M80 114C80 96 95 81 113 81H306C320 81 333 86 343 94L373 118C382 126 394 130 406 130H424C442 130 456 144 456 162C456 180 442 194 424 194H399C388 194 378 198 369 204L340 223C331 229 320 232 309 232H219C198 232 180 219 175 199L166 170C162 158 152 149 140 146L98 137C87 135 80 126 80 114Z" fill="url(#bodyGrad)"/>
+    <path d="M120 84H296C311 84 325 89 334 96L350 109H125C111 109 100 100 100 91C100 87 106 84 120 84Z" fill="#FFF0EF" opacity="0.38"/>
+    <rect x="169" y="58" width="144" height="27" rx="13.5" fill="url(#scopeGrad)"/>
+    <rect x="205" y="45" width="68" height="15" rx="7.5" fill="#9A3E3B"/>
+    <rect x="192" y="84" width="17" height="24" rx="8.5" fill="#6B2424"/>
+    <rect x="278" y="84" width="17" height="24" rx="8.5" fill="#6B2424"/>
+    <path d="M347 131H488" stroke="url(#barrelGrad)" stroke-width="20" stroke-linecap="round"/>
+    <path d="M434 131H488" stroke="#FFF2E8" stroke-width="6" stroke-linecap="round" opacity="0.82"/>
+    <path d="M347 146H470" stroke="#FF7D52" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M166 178L148 231" stroke="url(#darkGrad)" stroke-width="28" stroke-linecap="round"/>
+    <path d="M145 231H184" stroke="#FFE2DB" stroke-width="10" stroke-linecap="round" opacity="0.88"/>
+    <path d="M208 137C208 123 219 112 233 112H287C302 112 315 125 315 140V158C315 173 303 185 288 185H233C219 185 208 174 208 160V137Z" fill="#3C1616" opacity="0.9"/>
+    <path d="M291 153L261 214C256 225 245 232 233 232H201C186 232 176 217 181 202L192 171C197 158 208 152 222 152L291 153Z" fill="url(#darkGrad)"/>
+    <path d="M240 113L325 113" stroke="#FFD5CA" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+    <path d="M230 121L314 121" stroke="#FF704F" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+    <path d="M138 144C138 131 149 121 162 121H222C231 121 240 124 247 131L263 146C270 152 278 155 287 155H314C327 155 338 166 338 179C338 192 327 203 314 203H296C287 203 278 207 271 213L253 226C246 231 236 232 228 232H205C191 232 178 223 174 210L167 190C164 181 157 175 147 173L140 171C138 170 138 168 138 166V144Z" fill="url(#shine)" opacity="0.48"/>
+    <circle cx="258" cy="128" r="12" fill="#FFB23B"/>
+    <circle cx="258" cy="128" r="5" fill="#FFF5D6"/>
+    <path d="M97 111C120 99 150 96 186 101" stroke="#FFF5F2" stroke-width="7" stroke-linecap="round" opacity="0.38"/>
+  </g>
+</svg>

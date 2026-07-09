@@ -1,0 +1,101 @@
+{
+  "level_id": "pve_level_city_02",
+  "display_name": "城市观察 02",
+  "scene_id": "pve_battle_main",
+  "stage_theme": "city_day",
+  "order": 2,
+  "time_limit_sec": 120,
+  "max_wrong_hits": 3,
+  "target_goal": 5,
+  "reward": {
+    "base_coins": 110,
+    "time_bonus_formula": "floor(survive_time_sec * (1.0 + wrong_hit_count * -0.15))",
+    "time_bonus_floor_ratio": 0.3
+  },
+  "rating_rule": {
+    "3_star": "0误伤 + 剩余时间 > 30秒",
+    "2_star": "误伤≤1 + 剩余时间 > 10秒",
+    "1_star": "通关即可"
+  },
+  "available_items": [
+    "scan"
+  ],
+  "tutorial_focus": "让玩家感受到移动目标带来的节奏压力",
+  "success_condition": {
+    "type": "eliminate_targets",
+    "required_target_count": 5
+  },
+  "failure_condition": {
+    "type": "timer_or_wrong_hits",
+    "wrong_hit_limit": 3
+  },
+  "target_groups": [
+    {
+      "behavior_type": "static_camouflage",
+      "count": 2,
+      "spawn_points": [
+        "crosswalk_signal",
+        "news_stand_corner"
+      ],
+      "camouflage_intensity": 0.6,
+      "weakpoint_window_sec": 0
+    },
+    {
+      "behavior_type": "slow_patrol",
+      "count": 3,
+      "spawn_points": [
+        "right_balcony_path",
+        "taxi_lane_edge",
+        "upper_slow_patrol_lane"
+      ],
+      "camouflage_intensity": 0.7,
+      "move_speed_ratio": 0.5,
+      "patrol_distance_m": 0.6
+    }
+  ],
+  "civilian_groups": [
+    {
+      "count": 5,
+      "spawn_points": [
+        "street_corner_left",
+        "street_corner_right",
+        "coffee_queue",
+        "left_far_corner",
+        "right_far_corner"
+      ]
+    }
+  ],
+  "playtest_focus": [
+    "玩家是否能明显感受到第2关比第1关更紧张",
+    "移动目标是否可预判而不是纯靠运气",
+    "失败原因是否主要集中在时间压力或误判压力"
+  ],
+  "analytics_plan": {
+    "core_question": "玩家在已经理解基础操作后，能不能处理移动目标带来的节奏压力",
+    "watch_events": [
+      "level_entered",
+      "shot_fired",
+      "first_hit_recorded",
+      "level_checkpoint",
+      "battle_finished",
+      "first_failure_recorded"
+    ],
+    "watch_metrics": [
+      "midgame_reached_rate",
+      "miss_rate",
+      "time_out_failure_rate",
+      "first_hit_elapsed_sec",
+      "star_distribution"
+    ],
+    "success_signals": [
+      "玩家能明显感受到紧张感提升但不至于突变",
+      "多数玩家能稳定打到 midgame",
+      "移动目标失败主要来自跟枪压力而不是完全看不见"
+    ],
+    "review_questions": [
+      "如果大量玩家在 midgame 前失败，是识别问题还是节奏问题",
+      "如果 miss 比例过高，是移动路径过飘还是命中窗口太苛刻",
+      "如果超时失败明显增加，是时限过紧还是移动目标出现太早"
+    ]
+  }
+}

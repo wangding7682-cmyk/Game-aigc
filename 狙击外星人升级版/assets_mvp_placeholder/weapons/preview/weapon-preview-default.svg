@@ -1,0 +1,80 @@
+<svg width="512" height="288" viewBox="0 0 512 288" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">标准狙击枪</title>
+  <desc id="desc">软3D卡通风格的标准灰色狙击枪，适合商店卡片展示。</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="22" y1="16" x2="486" y2="270" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E1926"/>
+      <stop offset="1" stop-color="#152435"/>
+    </linearGradient>
+    <linearGradient id="panelEdge" x1="34" y1="34" x2="477" y2="255" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#87B0D9"/>
+      <stop offset="1" stop-color="#4D6A87"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="58" y1="76" x2="382" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CDD5E0"/>
+      <stop offset="0.48" stop-color="#8A96A6"/>
+      <stop offset="1" stop-color="#58616E"/>
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="96" y1="106" x2="281" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4E5561"/>
+      <stop offset="1" stop-color="#2B3139"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="150" y1="58" x2="296" y2="103" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8EDF4"/>
+      <stop offset="1" stop-color="#687384"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="334" y1="98" x2="470" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A8B4C4"/>
+      <stop offset="1" stop-color="#5A6472"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 90) rotate(21) scale(114 56)">
+      <stop stop-color="white" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="24" y="38" width="464" height="180" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#02070E" flood-opacity="0.26"/>
+    </filter>
+    <pattern id="grid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0V14" stroke="#D9EBFF" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#cardBg)"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" stroke="url(#panelEdge)" stroke-opacity="0.58" stroke-width="2"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#grid)"/>
+  <path d="M32 216C115 162 224 122 466 84" stroke="#87B3E2" stroke-opacity="0.12" stroke-width="22" stroke-linecap="round"/>
+  <path d="M30 224C138 176 260 146 472 112" stroke="#CBE1FF" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="6 8"/>
+  <circle cx="393" cy="94" r="68" fill="#7BA7D4" fill-opacity="0.08"/>
+  <circle cx="393" cy="94" r="42" stroke="#B9D8FF" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="28" y="24" width="118" height="28" rx="14" fill="#132232" stroke="#5D7E9E" stroke-opacity="0.62"/>
+  <text x="87" y="42" text-anchor="middle" fill="#E4F0FF" font-size="13" font-family="Segoe UI, Microsoft YaHei, sans-serif">COMMON / MK-I</text>
+  <text x="30" y="236" fill="#EEF4FF" font-size="29" font-weight="700" font-family="Segoe UI, Microsoft YaHei, sans-serif">Balanced Starter</text>
+  <text x="30" y="258" fill="#90A8C3" font-size="14" font-family="Segoe UI, Microsoft YaHei, sans-serif">标准镜组 · 经典枪托 · 稳定易读</text>
+  <rect x="334" y="228" width="68" height="26" rx="13" fill="#101C29" stroke="#5E7C99" stroke-opacity="0.56"/>
+  <rect x="408" y="228" width="74" height="26" rx="13" fill="#101C29" stroke="#5E7C99" stroke-opacity="0.56"/>
+  <text x="368" y="245" text-anchor="middle" fill="#DCEBFF" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">2.2x</text>
+  <text x="445" y="245" text-anchor="middle" fill="#DCEBFF" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">Stable</text>
+  <text x="31" y="74" fill="#89A7C4" font-size="12" font-family="Consolas, monospace">SERIAL 01-DF / ENTRY PLATFORM</text>
+  <text x="336" y="74" fill="#F4E2B8" font-size="11" font-family="Segoe UI, Microsoft YaHei, sans-serif">SAFE AIM / CITY TRIAL ISSUE</text>
+  <path d="M329 66H479" stroke="#F1D39E" stroke-opacity="0.38" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g transform="translate(6 12)">
+  <ellipse cx="251" cy="208" rx="168" ry="15" fill="#0D1522" opacity="0.14"/>
+  <g filter="url(#shadow)">
+    <path d="M74 111C74 93 89 78 107 78H297C308 78 319 82 327 89L360 117C367 123 376 126 385 126H414C431 126 444 139 444 156C444 173 431 186 414 186H389C378 186 368 190 359 197L331 220C323 226 312 229 301 229H213C193 229 175 216 170 197L159 163C155 151 145 141 133 138L95 131C83 129 74 121 74 111Z" fill="url(#bodyGrad)"/>
+    <path d="M117 81H289C302 81 314 85 322 92L340 106H124C108 106 95 97 95 86C95 83 101 81 117 81Z" fill="#F7FAFF" opacity="0.46"/>
+    <rect x="164" y="58" width="134" height="28" rx="14" fill="url(#scopeGrad)"/>
+    <rect x="200" y="45" width="56" height="17" rx="8.5" fill="#7D8794"/>
+    <rect x="188" y="86" width="18" height="22" rx="8" fill="#606B78"/>
+    <rect x="257" y="86" width="18" height="22" rx="8" fill="#606B78"/>
+    <path d="M336 127H481" stroke="url(#barrelGrad)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M430 126H481" stroke="#E9EEF7" stroke-width="6" stroke-linecap="round" opacity="0.72"/>
+    <path d="M163 164L148 228" stroke="url(#darkGrad)" stroke-width="30" stroke-linecap="round"/>
+    <path d="M146 228H182" stroke="#C4CED9" stroke-width="10" stroke-linecap="round" opacity="0.88"/>
+    <path d="M214 132C214 120 224 110 236 110H273C287 110 298 121 298 135V152C298 167 286 179 271 179H236C224 179 214 169 214 157V132Z" fill="#3E454F" opacity="0.9"/>
+    <path d="M280 145L260 206C256 220 243 229 229 229H205C191 229 181 216 185 203L194 172C197 158 209 148 223 148L280 145Z" fill="url(#darkGrad)"/>
+    <path d="M126 145C126 130 138 118 153 118H215C224 118 232 122 238 128L255 146C261 152 269 155 277 155H304C316 155 326 165 326 177C326 189 316 199 304 199H285C276 199 267 202 260 208L246 219C239 225 230 229 221 229H198C185 229 173 221 169 209L162 190C159 182 152 176 144 174L130 171C127 170 126 169 126 165V145Z" fill="url(#shine)" opacity="0.55"/>
+    <circle cx="246" cy="125" r="12" fill="#E94D62"/>
+    <circle cx="246" cy="125" r="5" fill="#FFD8E2"/>
+    <path d="M92 109C109 95 142 90 177 95" stroke="#F6FBFF" stroke-width="7" stroke-linecap="round" opacity="0.46"/>
+  </g>
+  </g>
+</svg>

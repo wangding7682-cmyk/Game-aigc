@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程序可接入总板</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="relative isolate overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute inset-0 game-grid-line opacity-50"></div>
+            <div class="absolute inset-x-0 top-0 h-80 bg-[var(--surface-panel-soft)] blur-3xl opacity-70"></div>
+            <div class="absolute right-0 top-32 h-72 w-72 rounded-full bg-[var(--brand-primary-soft)] blur-3xl opacity-50"></div>
+        </div>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+                <div class="grid gap-6 xl:grid-cols-[minmax(0,1.12fr),minmax(360px,0.88fr)]">
+                    <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                                桌面端
+                            </span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                                程序视角
+                            </span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-error)]">
+                                37 资源
+                            </span>
+                        </div>
+                        <h1 class="mt-4 max-w-[8ch] font-title text-[clamp(32px,5vw,52px)] font-semibold tracking-[-0.04em] text-[var(--text-primary)]" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                            程序可接入总板
+                        </h1>
+                        <p class="mt-4 max-w-[72ch] text-base leading-7 text-[var(--text-secondary)] lg:text-lg">
+                            延续界面接入版的夜战底色与移动端 HUD 语义，把第三批角色、商店、武器库与分帧反馈推进到“可直接挂脚本、可直接写枚举、可直接做替换”的总控语境。页面重点不是单纯陈列，而是明确资源名、挂载位置、触发时机与可替换逻辑。
+                        </p>
+
+                        <article class="game-panel-strong relative mt-6 overflow-hidden rounded-xl p-5 lg:p-6">
+                            <div class="grid gap-4 lg:grid-cols-2">
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[320px]">
+                                    <img src="../assets/menu-key-art.jpg" alt="主菜单主视觉" class="absolute inset-0 h-full w-full object-cover opacity-60">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-70"></div>
+                                    <div class="relative z-10 flex h-full flex-col justify-between p-5">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                                主菜单
+                                            </span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">
+                                                入口总线
+                                            </span>
+                                        </div>
+                                        <div class="grid gap-3">
+                                            <div class="grid gap-3 sm:grid-cols-2">
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">主视觉挂载</p>
+                                                    <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">../assets/menu-key-art.jpg</p>
+                                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">推荐挂在 MenuRoot / SceneBackdrop，登录完成后常驻。</p>
+                                                </div>
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">入口映射</p>
+                                                    <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">主菜单继续向商店、武器库与 PVE 战斗板分发状态，作为本页挂载地图的起点。</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-wrap items-center gap-3">
+                                                <img src="../assets/alien-disguised-idle.svg" alt="伪装外星人角色" class="h-20 w-20 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                                <img src="../assets/civilian-calm-idle.svg" alt="平民常态角色" class="h-20 w-20 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                                <div class="min-w-0 flex-1 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">入口覆盖</p>
+                                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">人物预告卡可直接复用到活动栏与悬赏面板，角色状态链路从大厅预告一路接入战斗识别。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[320px]">
+                                    <img src="../assets/loading-scope-art.jpg" alt="战斗瞄准主视觉" class="absolute inset-0 h-full w-full object-cover opacity-60">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-78"></div>
+                                    <img src="../assets/hud-scope-frame.svg" alt="瞄准镜框" class="pointer-events-none absolute inset-[9%] h-[82%] w-[82%] object-contain opacity-80">
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框" class="pointer-events-none absolute left-[58%] top-[40%] h-20 w-20 object-contain opacity-90">
+                                    <img src="../assets/alien-scan-highlight.svg" alt="扫描高亮外星人" class="pointer-events-none absolute bottom-8 right-8 h-40 w-40 object-contain opacity-95">
+                                    <div class="relative z-10 flex h-full flex-col justify-between p-5">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                                战斗层
+                                            </span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">
+                                                HUD 叠加
+                                            </span>
+                                        </div>
+                                        <div class="grid gap-3">
+                                            <div class="grid gap-3 sm:grid-cols-2">
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发时机</p>
+                                                    <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">进入瞄准态后依次启用镜框、锁定框、扫描环与角色高亮，命中前只开放单一焦点。</p>
+                                                </div>
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">替换策略</p>
+                                                    <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">同一挂点允许切换扫描帧、命中帧与误伤帧，不改容器结构，只切资源与状态枚举。</p>
+                                                </div>
+                                            </div>
+                                            <div class="grid gap-3 sm:grid-cols-4">
+                                                <img src="../assets/hud-health-bar.svg" alt="血量条素材" class="h-14 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                                <img src="../assets/hud-time-bar.svg" alt="时间条素材" class="h-14 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                                <img src="../assets/icon-scan-radar.svg" alt="扫描雷达图标" class="h-14 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                                <img src="../assets/icon-locator.svg" alt="定位图标" class="h-14 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 grid gap-4 lg:grid-cols-3">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">接入范围</h2>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">覆盖主菜单、战斗 HUD、角色识别、商店、武器库与命中反馈五类前端界面。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">状态入口</h2>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">推荐把 scan、highlight、weakpoint、hitConfirm、wrongHit 视作可订阅状态，不让素材直接分散在页面逻辑里。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">命名映射</h2>
+                                    <p class="mt-3 line-clamp-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">建议直接沿用 assets 文件名做资源键，界面层只维护挂点与枚举，不再二次重命名。</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="grid gap-4">
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">用途说明</h2>
+                            <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                本页用于程序、美术、策划三方对齐同一套资源接入关系：先看挂载，再看状态，再看分帧，不回退到单素材浏览。
+                            </p>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">接入范围概览</h2>
+                            <div class="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">挂载地图</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">把背景、HUD、商店、武器库和角色状态放进统一层级。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">角色链路</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">把外星人与平民的扫描、假线索、弱点打开前后明确区分。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">套件接入</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">商店与武器库资产不再孤立摆放，而是放入真实移动端框架。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">反馈分帧</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">三组五帧按顺序铺开，对应扫描、命中与误伤触发。</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">触发时机</h2>
+                            <div class="mt-4 grid gap-3">
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">进入大厅</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">加载主视觉与入口板件，预挂活动角色与武器推荐位。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">进入瞄准</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">启用镜框、锁定框、扫描图标与角色状态链路。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">打开商店</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">装配货币栏、标签页、卡片与购买按钮，支持换包不换壳。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">进入武器库</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">列表、详情与装备按钮共用一套装备态与锁定态逻辑。</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">资源约束</h2>
+                            <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                全页只引用当前项目 <span class="font-number">../assets/</span> 内资源。对程序侧更友好的做法是：一个挂点对应一组可替换素材，素材切换不改变容器结构与事件绑定。
+                            </p>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">挂载地图</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            这一段不是做文档表，而是把资源真实落到页面层级。每个节点都同时给出资源名、推荐挂载位置、触发条件与可替换逻辑。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            5 节点
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                            层级优先
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-4 xl:grid-cols-5">
+                    <article class="game-panel rounded-xl p-4 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">主菜单</h3>
+                        <div class="relative mt-4 overflow-hidden rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)]">
+                            <img src="../assets/menu-key-art.jpg" alt="主菜单背景图" class="h-40 w-full object-cover opacity-80">
+                            <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-35"></div>
+                        </div>
+                        <div class="mt-4 grid gap-3">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">资源名</p>
+                                <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">menu-key-art.jpg</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">挂载位置</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">MenuRoot / SceneBackdrop / KeyArtSlot</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发与替换</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">登录完成后显示；赛季换皮只替换图，不改入口按钮与面板布局。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-4 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">战斗层</h3>
+                        <div class="relative mt-4 overflow-hidden rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)]">
+                            <img src="../assets/loading-scope-art.jpg" alt="战斗背景图" class="h-40 w-full object-cover opacity-78">
+                            <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-45"></div>
+                            <img src="../assets/hud-scope-frame.svg" alt="HUD 镜框" class="pointer-events-none absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] object-contain opacity-80">
+                            <img src="../assets/hud-health-bar.svg" alt="HUD 血量条" class="pointer-events-none absolute left-3 top-3 h-8 w-32 object-contain opacity-90">
+                            <img src="../assets/hud-time-bar.svg" alt="HUD 时间条" class="pointer-events-none absolute right-3 top-3 h-8 w-32 object-contain opacity-90">
+                        </div>
+                        <div class="mt-4 grid gap-3">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">资源组</p>
+                                <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">loading-scope-art.jpg / hud-scope-frame.svg / hud-target-lock-frame.svg</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">挂载位置</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">BattleRoot / CameraFrame / TopHud / LockOverlay</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发与替换</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">进入瞄准态后启用；战斗皮肤可以替换底图，但 HUD 容器保持不变。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-4 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">角色层</h3>
+                        <div class="mt-4 grid gap-3">
+                            <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <img src="../assets/alien-disguised-idle.svg" alt="外星人伪装待机" class="h-16 w-16 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">外星人链路</p>
+                                    <p class="break-all font-number text-xs leading-5 text-[var(--text-secondary)]">alien-disguised-idle.svg</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <img src="../assets/civilian-calm-idle.svg" alt="平民常态待机" class="h-16 w-16 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">平民链路</p>
+                                    <p class="break-all font-number text-xs leading-5 text-[var(--text-secondary)]">civilian-calm-idle.svg</p>
+                                </div>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">挂载位置</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">NpcRoot / SuspicionLayer / ScanOverlay；扫描与锁定只订阅状态，不直接耦合资源路径。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-4 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店层</h3>
+                        <div class="mt-4 grid gap-3">
+                            <img src="../assets/shop-header-currency-bar.svg" alt="商店货币栏" class="h-16 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-2 object-contain">
+                            <img src="../assets/shop-weapon-card-owned.svg" alt="商店武器卡片" class="h-28 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-2 object-contain">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">挂载与替换</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">ShopRoot / Header / GoodsList / ActionBar；上架不同商品时只替换卡面与按钮状态。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-4 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transition-none">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器库</h3>
+                        <div class="mt-4 grid gap-3">
+                            <img src="../assets/armory-weapon-list-card-equipped.svg" alt="武器库装备卡片" class="h-24 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-2 object-contain">
+                            <img src="../assets/armory-detail-panel.svg" alt="武器库详情面板" class="h-24 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-2 object-contain">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发与替换</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">ArmoryRoot / WeaponList / DetailPanel / EquipButton；切枪皮或装备态时只切列表卡状态与详情面板数据。</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">角色状态链路</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            同样是站在镜框中的角色，外星人与平民必须在状态机里给出完全不同的程序出口。下面把常态、假线索、扫描、高亮、弱点打开与命中前处理拆开显示。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                            扫描
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                            命中
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-error)]">
+                            误伤
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-6 xl:grid-cols-2">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">外星人链</h3>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                                可命中
+                            </span>
+                        </div>
+                        <div class="mt-5 grid gap-4 md:grid-cols-5">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">常态</p>
+                                <div class="mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/alien-disguised-idle.svg" alt="外星人伪装常态" class="mx-auto h-28 w-full object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">alien-disguised-idle.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">挂在 NpcRoot / IdleState。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">移动态</p>
+                                <div class="mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/alien-moving-profile.svg" alt="外星人移动侧身" class="mx-auto h-28 w-full object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">alien-moving-profile.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">移动巡游时切换，仍未暴露弱点。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">扫描</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/alien-scan-highlight.svg" alt="外星人扫描高亮" class="mx-auto h-28 w-full object-contain">
+                                    <img src="../assets/icon-scan-radar.svg" alt="扫描雷达图标" class="pointer-events-none absolute right-3 top-3 h-8 w-8 object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">alien-scan-highlight.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">订阅 scanPulse 完成后的高亮状态。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">高亮</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/alien-scan-highlight.svg" alt="外星人锁定高亮" class="mx-auto h-28 w-full object-contain">
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框" class="pointer-events-none absolute inset-5 h-[calc(100%-2.5rem)] w-[calc(100%-2.5rem)] object-contain opacity-85">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">hud-target-lock-frame.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">锁定框进入 BattleRoot / LockOverlay。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">命中前</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/alien-weakpoint-open.svg" alt="外星人弱点打开" class="mx-auto h-28 w-full object-contain">
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框" class="pointer-events-none absolute inset-5 h-[calc(100%-2.5rem)] w-[calc(100%-2.5rem)] object-contain opacity-90">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">alien-weakpoint-open.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">weakpointOpen 为唯一允许开火的出口。</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">推荐枚举</p>
+                            <p class="mt-2 break-all font-number text-xs leading-6 text-[var(--text-secondary)]">AlienState = disguisedIdle → movingProfile → scanHighlight → targetLocked → weakpointOpen</p>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">平民链路</h3>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-error)]">
+                                需拦截
+                            </span>
+                        </div>
+                        <div class="mt-5 grid gap-4 md:grid-cols-5">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">常态</p>
+                                <div class="mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/civilian-calm-idle.svg" alt="平民常态待机" class="mx-auto h-28 w-full object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">civilian-calm-idle.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">默认挂在 NpcRoot / CivilianIdle。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">假线索</p>
+                                <div class="mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/civilian-false-clue-glint.svg" alt="平民假线索闪点" class="mx-auto h-28 w-full object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">civilian-false-clue-glint.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">只提示“可疑”，不进入可命中链路。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">扫描</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/civilian-calm-idle.svg" alt="平民扫描复核" class="mx-auto h-28 w-full object-contain">
+                                    <img src="../assets/icon-scan-radar.svg" alt="扫描雷达图标" class="pointer-events-none absolute right-3 top-3 h-8 w-8 object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">icon-scan-radar.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">复核时保留中性态，不开弱点。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">高亮</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/civilian-false-clue-glint.svg" alt="平民高亮误导" class="mx-auto h-28 w-full object-contain">
+                                    <img src="../assets/icon-locator.svg" alt="定位图标" class="pointer-events-none absolute right-3 top-3 h-8 w-8 object-contain">
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">icon-locator.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">高亮只用于提示复核，不代表可射击。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">命中前</p>
+                                <div class="relative mt-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-3">
+                                    <img src="../assets/civilian-moving-passerby.svg" alt="平民移动经过" class="mx-auto h-28 w-full object-contain">
+                                    <span class="absolute bottom-3 left-3 inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] px-2.5 text-xs text-[var(--state-error)]">
+                                        拒绝锁定
+                                    </span>
+                                </div>
+                                <p class="mt-3 break-all font-number text-[11px] leading-5 text-[var(--text-secondary)]">civilian-moving-passerby.svg</p>
+                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">命中前强制切到阻断逻辑，准备误伤提示。</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">推荐枚举</p>
+                            <p class="mt-2 break-all font-number text-xs leading-6 text-[var(--text-secondary)]">CivilianState = calmIdle → falseClueGlint → scanCheck → locatorWarn → rejectLock</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">商店与武器库套件</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            这一段故意放进更真实的移动端界面框，而不是把 SVG 一张张平铺。程序看到的应当是“哪块挂在头部，哪块进列表，哪块接按钮状态”，而不是素材墙。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        移动端 HUD 语义
+                    </span>
+                </div>
+
+                <div class="mt-6 grid gap-6 xl:grid-cols-2">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-6 xl:grid-cols-[minmax(0,420px),minmax(0,1fr)] xl:items-start">
+                            <div class="mx-auto w-full max-w-[430px] rounded-xl border border-[var(--surface-border-strong)] bg-[var(--surface-panel)] p-4 shadow-[var(--glow-primary)]">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">夜战商店</h3>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">
+                                            在售
+                                        </span>
+                                    </div>
+                                    <img src="../assets/shop-header-currency-bar.svg" alt="商店货币栏" class="mt-4 h-12 w-full object-contain">
+                                    <div class="mt-4 grid grid-cols-3 gap-2">
+                                        <img src="../assets/shop-tab-weapon-active.svg" alt="武器页签激活态" class="h-12 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1 object-contain">
+                                        <img src="../assets/shop-tab-skin-active.svg" alt="皮肤页签激活态" class="h-12 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1 object-contain">
+                                        <img src="../assets/shop-tab-item-active.svg" alt="道具页签激活态" class="h-12 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-1 object-contain">
+                                    </div>
+                                    <div class="mt-4 grid gap-3">
+                                        <img src="../assets/shop-weapon-card-owned.svg" alt="商店武器拥有态卡片" class="h-36 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/shop-skin-card-locked.svg" alt="商店皮肤锁定态卡片" class="h-36 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/shop-item-card-buyable.svg" alt="商店道具可购买卡片" class="h-36 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    </div>
+                                    <div class="mt-4 grid grid-cols-2 gap-3">
+                                        <img src="../assets/shop-buy-button-enabled.svg" alt="商店购买按钮可用态" class="h-16 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/shop-buy-button-disabled.svg" alt="商店购买按钮禁用态" class="h-16 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">挂载位置</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">ShopRoot / Header / TabBar / GoodsList / PurchaseBar。货币栏、页签、商品卡和按钮全部分层挂载，方便单独刷新。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">触发条件</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">打开商店页时加载头部与标签；切换分类只替换列表卡；库存不足时切 disabled 按钮，不改下方容器。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">资源映射</h3>
+                                    <p class="mt-3 break-all font-number text-xs leading-6 text-[var(--text-secondary)]">shop-header-currency-bar.svg / shop-weapon-card-owned.svg / shop-skin-card-locked.svg / shop-item-card-buyable.svg / shop-buy-button-enabled.svg</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">可替换逻辑</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">商品换包、价格刷新、库存态切换都应建立在同一 GoodsCard 数据协议上，资源只做外观态切换。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-6 xl:grid-cols-[minmax(0,420px),minmax(0,1fr)] xl:items-start">
+                            <div class="mx-auto w-full max-w-[430px] rounded-xl border border-[var(--surface-border-strong)] bg-[var(--surface-panel)] p-4 shadow-[var(--glow-panel)]">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">前线武器库</h3>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">
+                                            已装备
+                                        </span>
+                                    </div>
+                                    <div class="mt-4 grid gap-3">
+                                        <img src="../assets/armory-weapon-list-card-equipped.svg" alt="武器列表装备态卡片" class="h-28 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/armory-weapon-list-card-unlocked.svg" alt="武器列表已解锁卡片" class="h-28 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/armory-skin-list-card-equipped.svg" alt="皮肤列表装备态卡片" class="h-28 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                        <img src="../assets/armory-skin-list-card-locked.svg" alt="皮肤列表锁定态卡片" class="h-28 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    </div>
+                                    <img src="../assets/armory-detail-panel.svg" alt="武器库详情面板" class="mt-4 h-40 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    <img src="../assets/armory-equip-button.svg" alt="武器库装备按钮" class="mt-4 h-16 w-full rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                </div>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">挂载位置</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">ArmoryRoot / WeaponList / SkinList / DetailPanel / ActionBar。列表和详情强绑定，但按钮状态独立刷新。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">触发条件</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">切武器时替换 WeaponList 与 DetailPanel；切皮肤只更新 SkinList 与按钮文案，避免全页重绘。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">资源映射</h3>
+                                    <p class="mt-3 break-all font-number text-xs leading-6 text-[var(--text-secondary)]">armory-weapon-list-card-equipped.svg / armory-detail-panel.svg / armory-equip-button.svg</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">可替换逻辑</h3>
+                                    <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">同一列表项允许 equipped、unlocked、locked 多态切换；详情面板只接收当前选中 ID，不直接依赖缩略图位置。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">反馈分帧序列</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            三组反馈全部按五帧展开。程序侧只需关心进入哪一组、在哪个挂点播放、播放结束后回到哪个默认态，页面则直接给出资源顺序与触发说明。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        3 组 15 帧
+                    </span>
+                </div>
+
+                <div class="mt-6 grid gap-5">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">扫描脉冲</h3>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">推荐挂载</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">BattleRoot / ScanOverlay / PulsePlayer</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发条件</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">玩家主动扫描或目标进入可疑阈值时播放。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">可替换逻辑</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">保留播放器，按等级替换帧组即可，不改触发口。</p>
+                                </div>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/scan-pulse-frame-01.svg" alt="扫描脉冲第 1 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/scan-pulse-frame-02.svg" alt="扫描脉冲第 2 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/scan-pulse-frame-03.svg" alt="扫描脉冲第 3 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/scan-pulse-frame-04.svg" alt="扫描脉冲第 4 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/scan-pulse-frame-05.svg" alt="扫描脉冲第 5 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">命中确认</h3>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">推荐挂载</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">BattleRoot / ResultOverlay / HitConfirmPlayer</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发条件</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">当 weakpointOpen 目标被正确命中后立刻播放。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">可替换逻辑</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">战斗模式可替换色感与帧组，但继续复用同一成功反馈事件。</p>
+                                </div>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/hit-confirm-frame-01.svg" alt="命中确认第 1 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/hit-confirm-frame-02.svg" alt="命中确认第 2 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/hit-confirm-frame-03.svg" alt="命中确认第 3 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/hit-confirm-frame-04.svg" alt="命中确认第 4 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/hit-confirm-frame-05.svg" alt="命中确认第 5 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">误伤警报</h3>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">推荐挂载</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">BattleRoot / ResultOverlay / WrongHitPlayer</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">触发条件</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">CivilianState 进入 rejectLock 后仍被击发时播放。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">可替换逻辑</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">误伤仅替换警示帧组和文案，不与成功反馈共用样式资源。</p>
+                                </div>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/wrong-hit-alert-frame-01.svg" alt="误伤警报第 1 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/wrong-hit-alert-frame-02.svg" alt="误伤警报第 2 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/wrong-hit-alert-frame-03.svg" alt="误伤警报第 3 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/wrong-hit-alert-frame-04.svg" alt="误伤警报第 4 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/wrong-hit-alert-frame-05.svg" alt="误伤警报第 5 帧" class="h-28 w-full object-contain">
+                                    <p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="relative border-t border-[var(--surface-border)] bg-[var(--surface-panel-soft)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">接入清单</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            最后保留一段程序侧的落地摘要，方便把页面直接转成实现任务：资源键怎么起、层级怎么排、状态怎么切、替换怎么收口。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                        实装摘要
+                    </span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">命名规则</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">资源键建议直接沿用文件名，界面层统一从 assets 清单索引，不做二次别名。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">挂载顺序</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">背景底板 → HUD 容器 → 角色状态 → 结果反馈。容器固定，资源可替换。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">触发枚举</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">建议统一收敛到 sceneReady、scanPulse、targetLocked、weakpointOpen、hitConfirm、wrongHit。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">替换约定</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">只替换图片与状态，不替换容器结构；这样同一套脚本即可覆盖新赛季资源包。</p>
+                    </article>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "use_platform_adapter": false,
+  "provider": "local_proxy",
+  "proxy_base": "http://127.0.0.1:5000/api/llm",
+  "chat_path": "/chat",
+  "api_base": "https://ark.cn-beijing.volces.com/api/v3",
+  "model": "ep-20260430103756-7wgz4",
+  "api_key": "ark-1294be0f-9756-4458-b8bd-8e75d904b722-74c65",
+  "timeout_ms": 30000,
+  "max_tokens": 600,
+  "temperature": 0.7,
+  "fallback_on_error": true,
+  "debug_log": true
+}

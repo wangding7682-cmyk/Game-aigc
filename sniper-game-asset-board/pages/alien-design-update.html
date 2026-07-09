@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外星人设计补充版</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="relative isolate overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute inset-0 game-grid-line opacity-45"></div>
+            <div class="absolute inset-x-0 top-0 h-80 bg-[var(--surface-panel-soft)] blur-3xl opacity-70"></div>
+            <div class="absolute left-[-4rem] top-24 h-72 w-72 rounded-full bg-[var(--brand-primary-soft)] blur-3xl opacity-35"></div>
+            <div class="absolute right-[-2rem] top-[32rem] h-80 w-80 rounded-full bg-[var(--brand-primary-soft)] blur-3xl opacity-25"></div>
+        </div>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+                <div class="grid gap-6 xl:grid-cols-[minmax(0,1.14fr),minmax(340px,0.86fr)]">
+                    <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                                角色深化
+                            </span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                                都市伪装
+                            </span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                                识别玩法
+                            </span>
+                        </div>
+                        <h1 class="mt-4 max-w-[8ch] font-title text-[clamp(32px,5vw,52px)] font-semibold tracking-[-0.04em] text-[var(--text-primary)]" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                            外星人设计补充版
+                        </h1>
+                        <p class="mt-4 max-w-[72ch] text-base leading-7 text-[var(--text-secondary)] lg:text-lg">
+                            这张页把新上传的参考图并入现有外星人设计方向，不直接照搬第三行服装角色，而是吸收其中更强的服装层、较大的头部比例、集中的眼部识别和都市潜伏者气质，让外星人更像伪装在城市中的可疑个体，同时保留红眼、肩线异常和弱点开启这些核心玩法特征。
+                        </p>
+
+                        <article class="game-panel-strong relative mt-6 overflow-hidden rounded-xl p-5 lg:p-6">
+                            <div class="grid gap-4 lg:grid-cols-[minmax(0,1.15fr),minmax(280px,0.85fr)]">
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[340px]">
+                                    <img src="../assets/loading-scope-art.jpg" alt="夜战瞄准场景" class="absolute inset-0 h-full w-full object-cover opacity-58">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-76"></div>
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="锁定框" class="pointer-events-none absolute left-[8%] top-[12%] h-[76%] w-[76%] object-contain opacity-70">
+                                    <img src="../assets/alien-target-card.svg" alt="外星人目标卡" class="pointer-events-none absolute right-5 top-5 h-28 w-28 object-contain opacity-95">
+                                    <img src="../assets/alien-scan-highlight.svg" alt="外星人扫描高亮" class="pointer-events-none absolute bottom-6 left-6 h-44 w-44 object-contain opacity-90">
+                                    <div class="relative z-10 flex h-full flex-col justify-between p-5">
+                                        <div class="flex flex-wrap items-center gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">
+                                                源页语境
+                                            </span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-error)]">
+                                                不改源页
+                                            </span>
+                                        </div>
+                                        <div class="grid gap-3 sm:grid-cols-3">
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">服装化</p>
+                                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">从裸露怪物，推进到有外套、帽子、背包与层次件的伪装姿态。</p>
+                                            </div>
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">大头比</p>
+                                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">头部更大、眼部更聚焦，远景扫描时更容易一眼认出异常。</p>
+                                            </div>
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">潜伏感</p>
+                                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">整体像城市里的可疑住民，而不是独立展示的科幻怪物。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <aside class="grid gap-4">
+                                    <article class="game-panel rounded-xl p-5">
+                                        <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">吸收原则</h2>
+                                        <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                            参考图只提供轮廓方向、服装层次和人物气质，不直接搬用具体造型、配色或单个角色设定。
+                                        </p>
+                                    </article>
+                                    <article class="game-panel rounded-xl p-5">
+                                        <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">第三行价值</h2>
+                                        <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                            第三行“有服装的外星人”把伪装、社会化穿着和可疑个体感结合起来，是最适合本项目玩法深化的吸收源。
+                                        </p>
+                                    </article>
+                                    <article class="game-panel rounded-xl p-5">
+                                        <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">玩法保留</h2>
+                                        <div class="mt-4 grid gap-3">
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">红眼外露</p>
+                                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">眼部不能被帽檐、墨镜或发量完全遮住。</p>
+                                            </div>
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">肩线异常</p>
+                                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">服装应当强化轮廓，而不是把怪异肩线抹平。</p>
+                                            </div>
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">弱点开启</p>
+                                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">胸腹或侧腰仍要保留可翻露的异常结构。</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </aside>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="grid gap-4">
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">改造目标</h2>
+                            <div class="mt-4 grid gap-3">
+                                <div class="game-kpi">
+                                    <p class="truncate text-xs text-[var(--text-secondary)]">角色气质</p>
+                                    <p class="mt-2 text-2xl font-semibold text-[var(--text-primary)]">都市潜伏</p>
+                                </div>
+                                <div class="game-kpi">
+                                    <p class="truncate text-xs text-[var(--text-secondary)]">识别方式</p>
+                                    <p class="mt-2 text-2xl font-semibold text-[var(--text-primary)]">远景锁定</p>
+                                </div>
+                                <div class="game-kpi">
+                                    <p class="truncate text-xs text-[var(--text-secondary)]">建模方向</p>
+                                    <p class="mt-2 text-2xl font-semibold text-[var(--text-primary)]">服装分层</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">本页输出</h2>
+                            <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                先吸收参考图，再回看现有状态资产，最后给出融合结论与 MVP 3D 占位建议，帮助角色、美术、UI 与程序统一认知。
+                            </p>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">参考吸收</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            重点吸收第三行有服装的外星人方向：让角色具备更明确的服装层和社会化伪装，但仍保留远景识别与弱点暴露的战斗语言。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            参考图 1 张
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-warning)]">
+                            第三行重点
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-[minmax(0,1.18fr),minmax(320px,0.82fr)]">
+                    <article class="game-panel-strong overflow-hidden rounded-xl p-4 lg:p-5">
+                        <div class="reference-frame relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)]">
+                            <img src="../assets/alien-costume-reference-board.png" alt="外星人服装化参考集合图" class="h-full w-full object-cover">
+                            <div class="third-row-box absolute inset-x-4 bottom-4 top-[68%] rounded-xl border border-[var(--state-warning)]"></div>
+                            <div class="absolute bottom-7 left-7 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border-strong)] bg-[var(--overlay-scrim)] px-3 text-xs font-semibold text-[var(--state-warning)]">
+                                重点吸收第三行服装外星人
+                            </div>
+                        </div>
+                        <div class="mt-4 grid gap-3 lg:grid-cols-3">
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">服装层</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">帽子、外套、背包、鞋履会带来更可信的人类社会伪装感。</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">头身比</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">更大的头部比例让眼部、天线和表情更容易被镜头捕捉。</p>
+                            </div>
+                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">都市感</p>
+                                <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">参考图的校园、街头、运动等服装方向，适合转译为城市场景中的潜伏者。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="grid gap-4">
+                        <article class="game-panel rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">吸收边界</h3>
+                            <div class="mt-4 grid gap-3">
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">不照搬</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">不直接复刻具体服装和人物脸型，只抽取方向与结构。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">不遮关键</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">眼部、肩线、弱点区域始终要保留战斗可读性。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">不偏怪物</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">目标是可疑人类伪装，而不是更加外放的怪物化夸张。</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">转译方向</h3>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">城市住民</span>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">可疑配件</span>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">异常肩线</span>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">红眼焦点</span>
+                                <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">弱点开合</span>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">现有方案</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            现有资源已经建立了伪装待机、移动、扫描高亮和弱点开启四个关键状态，新方向需要在不破坏这组状态链的前提下增强服装化伪装。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            4 状态
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">
+                            保留链路
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-[minmax(0,1.08fr),minmax(320px,0.92fr)]">
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <article class="signal-card game-panel rounded-xl p-4">
+                            <span class="scan-sweep"></span>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <img src="../assets/alien-disguised-idle.svg" alt="外星人伪装待机状态" class="h-56 w-full object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">伪装待机</h3>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">当前待机态已经建立“像人类但又不完全对劲”的基底，新方向要在这层之上增加服装线索。</p>
+                            </div>
+                        </article>
+                        <article class="signal-card game-panel rounded-xl p-4">
+                            <span class="scan-sweep"></span>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <img src="../assets/alien-moving-profile.svg" alt="外星人移动侧身状态" class="h-56 w-full object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">移动轮廓</h3>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">侧身和移动态负责暴露肩线、步态和比例异常，是服装轮廓变化最直接的承载位。</p>
+                            </div>
+                        </article>
+                        <article class="signal-card game-panel rounded-xl p-4">
+                            <span class="scan-sweep"></span>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <img src="../assets/alien-scan-highlight.svg" alt="外星人扫描高亮状态" class="h-56 w-full object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">扫描高亮</h3>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">扫描态负责把眼部、骨架和外层服装之间的冲突瞬间放大，是识别节奏的核心抓手。</p>
+                            </div>
+                        </article>
+                        <article class="signal-card game-panel rounded-xl p-4">
+                            <span class="scan-sweep"></span>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <img src="../assets/alien-weakpoint-open.svg" alt="外星人弱点开启状态" class="h-56 w-full object-contain">
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">弱点开启</h3>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">弱点态说明服装不能做成封死的一体壳，而要为翻露与材质切换预留结构窗口。</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="grid gap-4">
+                        <article class="game-panel-strong rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">识别锚点</h3>
+                            <div class="mt-4 grid gap-4">
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <img src="../assets/alien-target-card.svg" alt="外星人目标识别卡" class="absolute right-4 top-4 h-20 w-20 object-contain opacity-85">
+                                    <img src="../assets/icon-scan-radar.svg" alt="扫描雷达图标" class="absolute left-4 top-4 h-10 w-10 object-contain opacity-75">
+                                    <div class="pr-24">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">远景先看头眼</p>
+                                        <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">头部比例和红眼位置必须在远景镜头中先于服装细节被识别。</p>
+                                    </div>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">中景再看肩线</p>
+                                    <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">外套、披肩、帽绳等可以增加变化，但肩部轮廓仍要保留异样外扩。</p>
+                                </div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">近景打开弱点</p>
+                                    <p class="mt-2 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">服装外层负责日常伪装，战斗触发时再让异常结构从缝隙或翻片中显露。</p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-panel rounded-xl p-5">
+                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">平民对照</h3>
+                            <div class="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                                <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/civilian-calm-idle.svg" alt="平民安静待机状态" class="h-16 w-16 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">平民常态</p>
+                                        <p class="mt-1 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">服装正常、肩线常规、眼部没有过度聚焦。</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <img src="../assets/civilian-false-clue-glint.svg" alt="平民误导性反光状态" class="h-16 w-16 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] p-2 object-contain">
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-semibold text-[var(--text-primary)]">假线索</p>
+                                        <p class="mt-1 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">允许配件发亮，但不能拥有外星人级别的眼部与骨架异常。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">融合结论</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            结论不是把参考图搬进项目，而是把“服装化伪装外星人”转译为适合狙击识别玩法的角色方向：更像都市住民，更容易远景锁定，更便于做扫描与弱点切换。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            原方案
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-warning)]">
+                            参考特征
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                            融合方向
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-4 lg:grid-cols-3">
+                    <article class="signal-card game-panel rounded-xl p-5">
+                        <span class="scan-sweep"></span>
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">原方案</h3>
+                        <ul class="mt-4 grid gap-3 text-sm leading-6 text-[var(--text-secondary)]">
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">裸露感更强，伪装感够用但社会化穿着层较少。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">眼部和弱点很清楚，但远景轮廓变化还不够丰富。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">更偏标准科幻外星人，而不是混入人群的都市潜伏者。</li>
+                        </ul>
+                    </article>
+                    <article class="signal-card game-panel rounded-xl p-5">
+                        <span class="scan-sweep"></span>
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">参考特征</h3>
+                        <ul class="mt-4 grid gap-3 text-sm leading-6 text-[var(--text-secondary)]">
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">第三行人物拥有外套、帽子、裙摆、鞋履等明显服装层。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">头部更大，眼部更集中，适合远景识别与表情夸张。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">气质更接近校园、街头、运动等现代都市生活角色。</li>
+                        </ul>
+                    </article>
+                    <article class="signal-card game-panel-strong rounded-xl p-5">
+                        <span class="scan-sweep"></span>
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">融合方向</h3>
+                        <ul class="mt-4 grid gap-3 text-sm leading-6 text-[var(--text-secondary)]">
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">服装层负责把角色拉回人类社会语境，但要给红眼和肩线留出口。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">头部比例整体上提，眼区成为扫描与锁定的第一视觉锚点。</li>
+                            <li class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">弱点与材质切换隐藏在服装缝隙内，保证战斗触发时有明显翻露反馈。</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <article class="game-panel-strong mt-6 overflow-hidden rounded-xl p-5 lg:p-6">
+                    <div class="grid gap-6 lg:grid-cols-[minmax(260px,0.8fr),minmax(0,1.2fr)]">
+                        <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <img src="../assets/alien-weakpoint-open.svg" alt="弱点开启外星人" class="h-[320px] w-full object-contain">
+                            <img src="../assets/hud-target-lock-frame.svg" alt="外星人锁定框" class="pointer-events-none absolute inset-5 h-[calc(100%-2.5rem)] w-[calc(100%-2.5rem)] object-contain opacity-70">
+                            <div class="absolute right-4 top-4 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border-strong)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-error)]">
+                                保留可锁定区
+                            </div>
+                        </div>
+                        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <h3 class="truncate text-base font-semibold text-[var(--text-primary)]">服装层</h3>
+                                <p class="mt-2 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">优先采用外套、连帽、围巾、单肩包等可拆分外层，让伪装更像真实住民。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <h3 class="truncate text-base font-semibold text-[var(--text-primary)]">肩线</h3>
+                                <p class="mt-2 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">服装只负责包裹，不负责抹平；异常肩宽和上肢角度仍要从外轮廓读得出来。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <h3 class="truncate text-base font-semibold text-[var(--text-primary)]">眼部</h3>
+                                <p class="mt-2 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">保持集中而偏大的眼区，允许帽檐和头发参与构图，但不能遮掉红眼识别。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <h3 class="truncate text-base font-semibold text-[var(--text-primary)]">弱点</h3>
+                                <p class="mt-2 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">弱点建议放在胸腹、肋侧或衣料开片位置，触发时可以做翻片或材质裂开。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <h3 class="truncate text-base font-semibold text-[var(--text-primary)]">配件</h3>
+                                <p class="mt-2 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">配件优先服务轮廓差异与误导性，不让它们抢走眼部和弱点的主视觉优先级。</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="relative">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">落地建议</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            这个方向会直接影响后续 MVP 3D 占位角色：从建模层级、材质切换到扫描反馈，都要先假设“外层是人类服装，内层才是外星人异常结构”。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">
+                            MVP 占位
+                        </span>
+                        <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-success)]">
+                            材质切换
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-[minmax(0,1.02fr),minmax(0,0.98fr)]">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">MVP 指南</h3>
+                        <div class="mt-4 grid gap-4">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">共享骨架</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">先用统一骨架承接平民态与伪装态，只替换头部比例、肩线外形与服装外层，保证动作复用。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">外层模块</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">把帽子、外套、裙摆、包袋做成可增减模块，让同一只外星人可以换成不同都市身份伪装。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">材质分轨</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">常态使用普通布料与塑胶材质，扫描态抬高眼部、自发光与弱点区域，命中态再切到开启材质。</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">落地节奏</h3>
+                        <div class="mt-4 grid gap-4 md:grid-cols-2">
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">第一步</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">先确认 2 到 3 套服装化伪装原型，不急着细化花纹，先看远景轮廓能否区分。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">第二步</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">用扫描高亮状态验证眼部、肩线和弱点位置是否仍然一眼可读。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">第三步</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">为服装层预留翻片、开缝或材质裂解节点，让弱点开启不会像贴图硬切。</p>
+                            </div>
+                            <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">第四步</p>
+                                <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">把可疑轮廓、扫描识别和命中反馈放进同一占位角色测试，确保玩法链路完整。</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">项目提示</p>
+                            <p class="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+                                源页面维持程序挂载说明用途，本页只负责外星人角色方向深化。后续若做第三行服装化版本的 3D 占位，应优先验证“都市伪装成立”与“识别玩法未被削弱”这两个条件。
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="border-t border-[var(--surface-border)]">
+            <div class="mx-auto flex max-w-[1480px] flex-col gap-3 px-4 py-6 text-sm text-[var(--text-secondary)] sm:px-6 lg:px-8 lg:flex-row lg:items-center lg:justify-between">
+                <p>外星人设计补充版用于角色、美术、UI、程序统一对齐服装化伪装方向。</p>
+                <p class="font-number text-xs text-[var(--text-muted)]">仅新增对比页，不修改源页面。</p>
+            </div>
+        </footer>
+    </main>
+    <style>
+      .signal-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 160ms cubic-bezier(.2,.8,.2,1), border-color 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms cubic-bezier(.2,.8,.2,1);
+      }
+      .signal-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--surface-border-strong);
+      }
+      .signal-card:hover .scan-sweep {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .scan-sweep {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 42%;
+        transform: translateX(-110%);
+        opacity: 0;
+        background: linear-gradient(90deg, transparent 0%, var(--brand-primary-soft) 52%, transparent 100%);
+        transition: transform 220ms cubic-bezier(.3,0,0,1), opacity 220ms cubic-bezier(.3,0,0,1);
+      }
+      .reference-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 0%, transparent 58%, var(--overlay-scrim) 100%);
+        pointer-events: none;
+      }
+      .third-row-box {
+        box-shadow: inset 0 0 0 1px var(--surface-border-strong), 0 0 0 1px var(--surface-border);
+        background: linear-gradient(180deg, transparent 0%, transparent 35%, var(--overlay-scrim) 100%);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .signal-card,
+        .scan-sweep {
+          transition-duration: 0.01ms !important;
+        }
+        .signal-card:hover {
+          transform: none;
+        }
+        .signal-card:hover .scan-sweep {
+          transform: translateX(-110%);
+          opacity: 0;
+        }
+      }
+    </style>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

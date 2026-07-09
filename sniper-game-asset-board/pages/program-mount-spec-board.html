@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程序挂载说明版</title>
+    <style id="theme-vars">
+:root {
+  color-scheme: dark;
+  --brand-prefix: game;
+  --brand-primary: #71a8ff;
+  --brand-primary-strong: #9bc4ff;
+  --brand-primary-soft: rgba(113, 168, 255, 0.18);
+  --surface-bg: #0f1620;
+  --surface-panel: rgba(22, 32, 44, 0.94);
+  --surface-panel-strong: rgba(26, 38, 53, 0.98);
+  --surface-panel-soft: rgba(20, 30, 42, 0.76);
+  --surface-card: rgba(28, 38, 51, 0.88);
+  --surface-card-soft: rgba(24, 34, 46, 0.72);
+  --surface-muted: #1c2633;
+  --surface-border: rgba(135, 164, 206, 0.2);
+  --surface-border-strong: rgba(113, 168, 255, 0.32);
+  --text-primary: #edf3ff;
+  --text-secondary: #98a6bd;
+  --text-muted: #728098;
+  --text-inverse: #0f1620;
+  --state-success: #66d2b5;
+  --state-warning: #f3c168;
+  --state-error: #ff727f;
+  --state-info: #8bc3ff;
+  --overlay-scrim: rgba(7, 10, 15, 0.68);
+  --glow-primary: 0 1px 0 rgba(255, 255, 255, 0.14) inset, 0 10px 24px rgba(12, 19, 30, 0.22);
+  --glow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 22px rgba(8, 12, 20, 0.26);
+  --shadow-floating: 0 16px 36px rgba(3, 7, 14, 0.28);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --page-frame-width: 430px;
+  --page-frame-height: 932px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --font-title: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-number: "Consolas", "SFMono-Regular", "Roboto Mono", monospace;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -6%, rgba(113, 168, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 50% 16%, rgba(166, 214, 255, 0.12), transparent 34%),
+    linear-gradient(180deg, #121a25 0%, #101721 44%, #0d141d 100%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-number {
+  font-family: var(--font-number);
+}
+
+.game-safe-shell {
+  position: relative;
+  width: min(100%, var(--page-frame-width));
+  max-width: var(--page-frame-width);
+  height: var(--page-frame-height);
+  min-height: var(--page-frame-height);
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(126, 187, 255, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(18, 26, 37, 0.96) 0%, rgba(15, 22, 32, 0.98) 100%);
+  border-left: 1px solid rgba(128, 156, 196, 0.14);
+  border-right: 1px solid rgba(128, 156, 196, 0.14);
+  box-shadow: 0 0 0 1px rgba(128, 156, 196, 0.08), 0 22px 56px rgba(4, 7, 13, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-panel {
+  background:
+    linear-gradient(180deg, rgba(30, 41, 56, 0.92), rgba(22, 32, 44, 0.96));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-panel);
+}
+
+.game-panel-strong {
+  background:
+    linear-gradient(180deg, rgba(38, 54, 73, 0.96), rgba(24, 35, 48, 0.98));
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-primary);
+}
+
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(151, 182, 228, 0.16);
+  background:
+    linear-gradient(180deg, rgba(39, 53, 70, 0.92), rgba(26, 36, 49, 0.92));
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary,
+.game-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.game-btn-primary {
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(182, 216, 255, 0.34);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, #8bc3ff 0%, #71a8ff 52%, #5f93ec 100%);
+  color: #0f1b2c;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 20px rgba(36, 70, 123, 0.26);
+}
+
+.game-btn-secondary {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(143, 173, 214, 0.18);
+  background:
+    linear-gradient(180deg, rgba(45, 58, 75, 0.9), rgba(28, 39, 52, 0.94));
+  color: var(--text-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.game-btn-primary:hover,
+.game-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.game-grid-line {
+  background-image:
+    linear-gradient(rgba(129, 161, 203, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 161, 203, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.game-kpi {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(146, 175, 214, 0.14);
+  background:
+    linear-gradient(180deg, rgba(31, 42, 56, 0.9), rgba(24, 33, 45, 0.9));
+  padding: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.game-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(136, 167, 208, 0.28) 50%, transparent 100%);
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--brand-primary);
+  }
+  @layer base {
+    body { background: var(--brand-background); color: var(--brand-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="relative isolate overflow-hidden">
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+            <div class="absolute inset-0 game-grid-line opacity-45"></div>
+            <div class="absolute inset-x-0 top-0 h-96 bg-[var(--surface-panel-soft)] blur-3xl opacity-70"></div>
+            <div class="absolute left-[-8rem] top-40 h-72 w-72 rounded-full bg-[var(--brand-primary-soft)] blur-3xl opacity-50"></div>
+            <div class="absolute bottom-16 right-[-6rem] h-80 w-80 rounded-full bg-[var(--brand-primary-soft)] blur-3xl opacity-35"></div>
+        </div>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+                <div class="grid gap-6 xl:grid-cols-[minmax(0,1.08fr),minmax(360px,0.92fr)]">
+                    <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">桌面端</span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-info)]">程序接入</span>
+                            <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--state-warning)]">对比新页</span>
+                        </div>
+                        <h1 class="mt-4 max-w-[8ch] font-title text-[clamp(32px,5vw,52px)] font-semibold tracking-[-0.04em] text-[var(--text-primary)]" style="text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+                            程序挂载说明版
+                        </h1>
+                        <p class="mt-4 max-w-[72ch] text-base leading-7 text-[var(--text-secondary)] lg:text-lg">
+                            这页不是素材陈列页，而是给程序直接照着接的挂载说明板。延续上一张“程序可接入总板”的夜战基底、玻璃暗面板与移动端 HUD 插板感，但把说明重心压到推荐节点位置、触发枚举、替换顺序与兜底策略。
+                        </p>
+
+                        <div class="mt-6 grid gap-4 md:grid-cols-3">
+                            <article class="game-panel rounded-xl p-4 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">节点位置</h2>
+                                <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">把 <span class="font-number">root / top_bar / feedback_label / bottom_bar / content_panel / detail_panel</span> 直接放进可视化挂点地图。</p>
+                            </article>
+                            <article class="game-panel rounded-xl p-4 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">触发枚举</h2>
+                                <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">把 <span class="font-number">fire_pressed</span>、<span class="font-number">shot_result</span>、<span class="font-number">tab</span> 等入口收成统一的程序枚举块。</p>
+                            </article>
+                            <article class="game-panel rounded-xl p-4 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transform-none motion-reduce:transition-none">
+                                <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">替换顺序</h2>
+                                <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">先底板与静态壳，再按钮、状态、反馈分帧，最后才替角色态与回放态，避免脚本接法反复返工。</p>
+                            </article>
+                        </div>
+
+                        <article class="game-panel-strong relative mt-6 overflow-hidden rounded-xl p-5 lg:p-6">
+                            <div class="grid gap-4 xl:grid-cols-2">
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[360px]">
+                                    <img src="../assets/loading-scope-art.jpg" alt="战斗挂载主视觉" class="absolute inset-0 h-full w-full object-cover opacity-60">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-78"></div>
+                                    <img src="../assets/hud-scope-frame.svg" alt="瞄准镜框素材" class="pointer-events-none absolute inset-[10%] h-[80%] w-[80%] object-contain opacity-80">
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="目标锁定框素材" class="pointer-events-none absolute left-[58%] top-[40%] h-20 w-20 object-contain opacity-90">
+                                    <img src="../assets/hud-time-bar.svg" alt="时间条素材" class="pointer-events-none absolute left-6 top-5 h-12 w-40 object-contain opacity-95">
+                                    <img src="../assets/hud-health-bar.svg" alt="血量条素材" class="pointer-events-none absolute right-6 top-5 h-12 w-36 object-contain opacity-95">
+                                    <img src="../assets/alien-disguised-idle.svg" alt="伪装外星人挂载示意" class="pointer-events-none absolute bottom-10 right-6 h-40 w-40 object-contain opacity-95">
+                                    <div class="relative z-10 flex h-full flex-col justify-between p-5">
+                                        <div class="grid gap-2">
+                                            <span class="inline-flex h-7 w-fit items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">战斗主挂点</span>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] px-2.5 text-xs text-[var(--state-info)]">top_bar</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] px-2.5 text-xs text-[var(--state-warning)]">feedback_label</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] px-2.5 text-xs text-[var(--text-primary)]">crosshair_label</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] px-2.5 text-xs text-[var(--state-success)]">scope_hint_label</span>
+                                            </div>
+                                        </div>
+                                        <div class="grid gap-3 sm:grid-cols-2">
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">镜框入口</p>
+                                                <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">scope_overlay / scope_draw_layer</p>
+                                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">推荐先把镜框、锁定框与时间血量接进全屏根节点，事件只驱动显示与隐藏。</p>
+                                            </div>
+                                            <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <p class="truncate text-sm font-semibold text-[var(--text-primary)]">底栏按钮</p>
+                                                <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">scan_button / time_button / fire_button / zoom</p>
+                                                <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">底栏按钮保持固定容器，替换素材时不改信号绑定。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[360px]">
+                                    <img src="../assets/menu-key-art.jpg" alt="商店与武器库挂载主视觉" class="absolute inset-0 h-full w-full object-cover opacity-55">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-82"></div>
+                                    <div class="relative z-10 grid h-full gap-4 p-5 md:grid-cols-2">
+                                        <div class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-4">
+                                            <div class="flex items-center justify-between gap-3">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">商店节点</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">content_panel</span>
+                                            </div>
+                                            <img src="../assets/shop-header-currency-bar.svg" alt="商店货币栏素材" class="mt-4 h-12 w-full object-contain">
+                                            <img src="../assets/shop-weapon-card-owned.svg" alt="商店武器卡已拥有素材" class="mt-4 h-24 w-full object-contain">
+                                            <img src="../assets/shop-skin-card-locked.svg" alt="商店皮肤卡锁定素材" class="mt-3 h-24 w-full object-contain">
+                                            <img src="../assets/shop-buy-button-enabled.svg" alt="商店购买按钮素材" class="mt-3 h-12 w-full object-contain">
+                                        </div>
+                                        <div class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-4">
+                                            <div class="flex items-center justify-between gap-3">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">武器库</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">detail_panel</span>
+                                            </div>
+                                            <img src="../assets/armory-weapon-list-card-equipped.svg" alt="武器库列表已装备素材" class="mt-4 h-24 w-full object-contain">
+                                            <img src="../assets/armory-detail-panel.svg" alt="武器库详情面板素材" class="mt-3 h-28 w-full object-contain">
+                                            <img src="../assets/armory-equip-button.svg" alt="武器库装备按钮素材" class="mt-3 h-12 w-full object-contain">
+                                            <div class="mt-3 flex flex-wrap gap-2">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">weapon_tab</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">skin_tab</span>
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">equip_button</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <aside class="grid gap-4">
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">用途说明</h2>
+                            <p class="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+                                面向程序接入，不再从“素材能不能看”出发，而是从“节点放哪、信号从哪来、替换先后怎么排”出发。
+                            </p>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">关键脚本</h2>
+                            <div class="mt-4 grid gap-3">
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">战斗层</p>
+                                    <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">ui_hud_pve.gd / pve_battle_controller_3d.gd</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">商店层</p>
+                                    <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">ui_panel_shop.gd</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">武器库</p>
+                                    <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">ui_panel_weapon_library.gd</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="game-panel rounded-xl p-5">
+                            <h2 class="truncate text-lg font-semibold text-[var(--text-primary)]">接入收口</h2>
+                            <div class="mt-4 grid gap-3">
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">容器固定</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">推荐保持节点层级不动，只替换资源与文案枚举。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">事件收敛</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">把输入信号、shot_result 与 tab 统一映射成可订阅状态。</p>
+                                </div>
+                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3">
+                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">兜底优先</p>
+                                    <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">资源缺失时保留旧容器与默认文案，不让按钮、栏位和结果层消失。</p>
+                                </div>
+                            </div>
+                        </article>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">节点地图</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            先把资源挂点摆正，再谈状态切换。左侧直接把全屏战斗 HUD 与移动端商店/武器库的推荐节点落到真实位置，右侧用程序字段解释推荐节点、触发条件、替换时机与兜底方案。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">挂点可视化</span>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-[minmax(0,1.1fr),minmax(340px,0.9fr)]">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 lg:grid-cols-[minmax(0,1.15fr),minmax(280px,0.85fr)]">
+                            <div class="grid gap-4">
+                                <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[430px] p-5">
+                                    <img src="../assets/loading-scope-art.jpg" alt="战斗节点地图背景" class="absolute inset-0 h-full w-full object-cover opacity-35">
+                                    <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-55"></div>
+                                    <img src="../assets/hud-scope-frame.svg" alt="战斗镜框节点地图" class="pointer-events-none absolute inset-[14%] h-[72%] w-[72%] object-contain opacity-75">
+                                    <img src="../assets/hud-target-lock-frame.svg" alt="战斗锁定节点地图" class="pointer-events-none absolute left-[56%] top-[40%] h-24 w-24 object-contain opacity-90">
+                                    <img src="../assets/icon-scan-radar.svg" alt="扫描图标节点地图" class="pointer-events-none absolute left-[10%] bottom-[12%] h-14 w-14 object-contain opacity-95">
+                                    <img src="../assets/icon-locator.svg" alt="定位图标节点地图" class="pointer-events-none absolute right-[10%] bottom-[14%] h-14 w-14 object-contain opacity-95">
+                                    <div class="relative z-10 grid h-full gap-3">
+                                        <div class="flex flex-wrap items-center justify-between gap-3">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">HudLayer / root</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">scope_overlay + scope_draw_layer</span>
+                                        </div>
+                                        <div class="grid gap-3">
+                                            <div class="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-primary)]">top_bar</span>
+                                                <span class="font-number text-xs text-[var(--text-secondary)]">remaining_time / killed_targets / total_targets / lives</span>
+                                            </div>
+                                            <div class="grid gap-3 sm:grid-cols-3">
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3 text-center">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">feedback_label</p>
+                                                    <p class="mt-2 text-xs leading-5 text-[var(--text-secondary)]">中央反馈</p>
+                                                </div>
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3 text-center">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">crosshair_label</p>
+                                                    <p class="mt-2 text-xs leading-5 text-[var(--text-secondary)]">中心准星</p>
+                                                </div>
+                                                <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3 text-center">
+                                                    <p class="truncate text-sm font-semibold text-[var(--text-primary)]">scope_hint_label</p>
+                                                    <p class="mt-2 text-xs leading-5 text-[var(--text-secondary)]">准镜提示</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                                <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-primary)]">bottom_bar</span>
+                                                <span class="font-number text-xs text-[var(--text-secondary)]">scan_button / time_button / fire_button / zoom_in_button / zoom_out_button / menu_button</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid gap-4 lg:grid-cols-2">
+                                    <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店挂点</h3>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">content_panel</span>
+                                        </div>
+                                        <img src="../assets/shop-header-currency-bar.svg" alt="商店节点地图货币栏" class="mt-4 h-12 w-full object-contain">
+                                        <div class="mt-4 flex flex-wrap gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">weapon_tab</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">skin_tab</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">item_tab</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">feedback_label</span>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                        <div class="flex items-center justify-between gap-3">
+                                            <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器库挂点</h3>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">detail_panel</span>
+                                        </div>
+                                        <div class="mt-4 flex flex-wrap gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">weapon_list</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">skin_list</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">equip_button</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">back_button</span>
+                                        </div>
+                                        <img src="../assets/armory-detail-panel.svg" alt="武器库详情面板节点地图" class="mt-4 h-28 w-full object-contain">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">战斗节点</h3>
+                                    <dl class="mt-4 grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">hud-scope-frame.svg / hud-target-lock-frame.svg / hud-health-bar.svg / hud-time-bar.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">root → scope_overlay / scope_draw_layer / top_bar / bottom_bar</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd>进入瞄准态后开启 <span class="font-number">scope_visible</span>，顶部状态与底部按钮同步更新。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>先接静态镜框与栏位，再接中央反馈与结果态，不要反过来。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>镜框层资源缺失时保留文字反馈与准星字符，战斗仍可用。</dd>
+                                    </dl>
+                                </article>
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店节点</h3>
+                                    <dl class="mt-4 grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">shop-header-currency-bar.svg / shop-weapon-card-owned.svg / shop-skin-card-locked.svg / shop-buy-button-enabled.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">content_panel / weapon_tab / skin_tab / item_tab / feedback_label</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd>打开商店后根据 <span class="font-number">tab</span> 枚举只切内容容器，不重建整页外壳。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>先货币栏与 tab，再卡片与购买按钮，最后补反馈文案。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>卡片缺失时回退为文字卡与按钮状态，不让购买流程断链。</dd>
+                                    </dl>
+                                </article>
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器库节点</h3>
+                                    <dl class="mt-4 grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">armory-weapon-list-card-equipped.svg / armory-detail-panel.svg / armory-equip-button.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">weapon_list / skin_list / detail_panel / equip_button / back_button</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd>选中武器或皮肤后只更新详情与装备按钮文案，不改列表节点。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>先列表位，再详情面板，再装备按钮；列表状态跟随解锁与装备态切换。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>详情图缺失时保留当前装备文本与按钮状态，列表仍能切换。</dd>
+                                    </dl>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">触发枚举</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            这里把程序更容易关心的触发入口收成块，不写成长表格。每块都说明入口来自哪里、驱动哪个层、推荐何时替换以及没有素材时怎么保底。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">输入与状态</span>
+                </div>
+
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="game-panel rounded-xl p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">主操作</h3>
+                        <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                            <dt class="text-[var(--text-muted)]">资源名</dt>
+                            <dd class="break-all font-number">icon-scan-radar.svg / icon-locator.svg / hud-feedback-panel.svg</dd>
+                            <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                            <dd class="break-all font-number">bottom_bar / feedback_label</dd>
+                            <dt class="text-[var(--text-muted)]">触发条件</dt>
+                            <dd class="break-all font-number">fire_pressed / scan_pressed / time_extend_pressed</dd>
+                            <dt class="text-[var(--text-muted)]">替换时机</dt>
+                            <dd>先接按钮图标，再接反馈面板与中央文字。</dd>
+                            <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                            <dd>缺图时保留按钮文字与中央消息，不让输入被遮断。</dd>
+                        </dl>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">镜头操作</h3>
+                        <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                            <dt class="text-[var(--text-muted)]">资源名</dt>
+                            <dd class="break-all font-number">hud-scope-frame.svg / hud-target-lock-frame.svg</dd>
+                            <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                            <dd class="break-all font-number">scope_overlay / scope_draw_layer / menu_button</dd>
+                            <dt class="text-[var(--text-muted)]">触发条件</dt>
+                            <dd class="break-all font-number">zoom_in_pressed / zoom_out_pressed / back_pressed</dd>
+                            <dt class="text-[var(--text-muted)]">替换时机</dt>
+                            <dd>镜头类枚举只更新缩放、返回和准星颜色，不重建 HUD 外层。</dd>
+                            <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                            <dd>镜框失效时保留 <span class="font-number">crosshair_label</span> 与提示文字。</dd>
+                        </dl>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">命中结果</h3>
+                        <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                            <dt class="text-[var(--text-muted)]">资源名</dt>
+                            <dd class="break-all font-number">hit / wrong_hit / cover / miss</dd>
+                            <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                            <dd class="break-all font-number">feedback_label / result_overlay / replay_layer</dd>
+                            <dt class="text-[var(--text-muted)]">触发条件</dt>
+                            <dd class="break-all font-number">shot_result(hit / wrong_hit / cover / miss)</dd>
+                            <dt class="text-[var(--text-muted)]">替换时机</dt>
+                            <dd><span class="font-number">hit</span> 进入成功帧组，<span class="font-number">wrong_hit</span> 进入误伤帧组，<span class="font-number">cover / miss</span> 保留中性反馈。</dd>
+                            <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                            <dd>没有分帧时仍保留文本反馈和颜色切换。</dd>
+                        </dl>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店标签</h3>
+                        <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                            <dt class="text-[var(--text-muted)]">资源名</dt>
+                            <dd class="break-all font-number">weapon / skin / item</dd>
+                            <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                            <dd class="break-all font-number">weapon_tab / skin_tab / item_tab / content_panel</dd>
+                            <dt class="text-[var(--text-muted)]">触发条件</dt>
+                            <dd class="break-all font-number">tab(weapon / skin / item)</dd>
+                            <dt class="text-[var(--text-muted)]">替换时机</dt>
+                            <dd>先切 tab 激活，再切卡片资源与购买按钮状态。</dd>
+                            <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                            <dd>tab 资源失效时保留文字标签；购买态继续沿用“已拥有 / 免费 / %d 金币 / 需解锁武器 / 禁用”。</dd>
+                        </dl>
+                    </article>
+                </div>
+
+                <div class="mt-4 grid gap-4 xl:grid-cols-3">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">状态镜像</h3>
+                        <p class="mt-3 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">
+                            <span class="font-number">top_bar</span> 推荐镜像 <span class="font-number">remaining_time / killed_targets / total_targets / lives</span>；<span class="font-number">bottom_bar</span> 推荐镜像 <span class="font-number">zoom / scan_count / time_extend_count / hold_ratio</span>。
+                        </p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">准星反馈</h3>
+                        <p class="mt-3 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">
+                            <span class="font-number">crosshair_label</span> 与 <span class="font-number">crosshair_style / crosshair_color / aim_screen_position / scope_visible</span> 一起驱动，避免把准星样式散落在多个 UI 节点里。
+                        </p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">回放链路</h3>
+                        <p class="mt-3 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">
+                            <span class="font-number">post_shot_recover → slowmo → killcam → misjudgment_review</span> 推荐挂到独立结果层，结合 <span class="font-number">search_hint_text / recognition_bonus_gold / wrong_identification_time_penalty / identification_replay_text</span> 输出。
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">替换顺序</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            推荐按“底板 → 静件 → 按钮 → 状态卡 → 反馈分帧 → 角色状态”推进。这样脚本先拿到稳定容器，再逐层挂资源，不会因为后续加动效而返工根节点。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">先壳后态</span>
+                </div>
+
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+                    <article class="game-panel-strong rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">01</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">底板</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">menu-key-art.jpg / loading-scope-art.jpg</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">先把主菜单与战斗背景底板挂到入口场景与 PVE 根场景。</p>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">02</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">静件</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">hud-scope-frame.svg / hud-target-lock-frame.svg / hud-health-bar.svg / hud-time-bar.svg</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">镜框、锁定框、顶部血量与时间条先接静态位。</p>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">03</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">按钮</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">scan_button / time_button / fire_button / zoom / back_button</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">底栏与返回逻辑接好后，再挂扫描和定位类图标。</p>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">04</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">状态</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">alien-disguised-idle.svg / alien-weakpoint-open.svg / civilian-false-clue-glint.svg</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">角色常态、弱点态与假线索态最后绑定到统一状态机。</p>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">05</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">反馈</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">scan-pulse-frame-* / hit-confirm-frame-* / wrong-hit-alert-frame-*</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">分帧反馈晚于容器接入，只切播放器资源，不拆结构。</p>
+                    </article>
+                    <article class="game-panel rounded-xl p-4">
+                        <p class="font-number text-sm text-[var(--state-info)]">06</p>
+                        <h3 class="mt-3 truncate text-lg font-semibold text-[var(--text-primary)]">复核</h3>
+                        <p class="mt-3 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">post_shot_recover / slowmo / killcam / misjudgment_review</p>
+                        <p class="mt-3 line-clamp-3 text-xs leading-5 text-[var(--text-secondary)]">最后补慢动作、回放与误判复核，保证主流程先通再加戏。</p>
+                    </article>
+                </div>
+
+                <div class="mt-4 grid gap-4 lg:grid-cols-2">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">替换原则</h3>
+                        <p class="mt-3 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">
+                            一组资源对应一个稳定容器和一个稳定枚举。程序只改素材引用与状态值，不改节点名、不改层级、不改按钮信号，这样 UI 包切换不会拖累逻辑层。
+                        </p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">顺序提醒</h3>
+                        <p class="mt-3 line-clamp-4 text-sm leading-6 text-[var(--text-secondary)]">
+                            商店和武器库也同理：先 <span class="font-number">content_panel / detail_panel</span>，再卡片，再按钮，再状态文案。不要先接按钮态再回补容器，否则禁用态与已拥有态很容易对不上。
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">战斗挂载</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            用战斗主视觉把镜框层、提示层、结果层与回放层讲清楚。这里直接说明资源挂在哪一层、由谁触发，以及三组反馈分帧应该怎样接入。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">镜框到回放</span>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-[minmax(0,1.05fr),minmax(320px,0.95fr)]">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 lg:grid-cols-[minmax(0,1.15fr),minmax(260px,0.85fr)]">
+                            <div class="relative overflow-hidden rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] min-h-[460px]">
+                                <img src="../assets/loading-scope-art.jpg" alt="战斗挂载示意背景" class="absolute inset-0 h-full w-full object-cover opacity-60">
+                                <div class="absolute inset-0 bg-[var(--overlay-scrim)] opacity-80"></div>
+                                <img src="../assets/hud-scope-frame.svg" alt="镜框层素材" class="pointer-events-none absolute inset-[11%] h-[78%] w-[78%] object-contain opacity-82">
+                                <img src="../assets/hud-target-lock-frame.svg" alt="结果层锁定框素材" class="pointer-events-none absolute left-[54%] top-[34%] h-24 w-24 object-contain opacity-95">
+                                <img src="../assets/hud-health-bar.svg" alt="顶部血量素材" class="pointer-events-none absolute right-5 top-5 h-14 w-40 object-contain opacity-95">
+                                <img src="../assets/hud-time-bar.svg" alt="顶部时间素材" class="pointer-events-none absolute left-5 top-5 h-14 w-44 object-contain opacity-95">
+                                <img src="../assets/alien-weakpoint-open.svg" alt="弱点打开角色素材" class="pointer-events-none absolute bottom-10 right-10 h-48 w-48 object-contain opacity-95">
+                                <img src="../assets/civilian-false-clue-glint.svg" alt="误判平民素材" class="pointer-events-none absolute bottom-12 left-10 h-36 w-36 object-contain opacity-90">
+                                <div class="relative z-10 flex h-full flex-col justify-between p-5">
+                                    <div class="grid gap-2">
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">镜框层</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">提示层</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">结果层</span>
+                                            <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-error)]">回放层</span>
+                                        </div>
+                                        <p class="max-w-[56ch] text-sm leading-6 text-[var(--text-secondary)]">推荐保持战斗背景与 HUD 外壳持续存在，扫描、命中、误伤与回放都只在上层覆盖播放。</p>
+                                    </div>
+                                    <div class="grid gap-3 sm:grid-cols-2">
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">镜框层</p>
+                                            <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">loading-scope-art.jpg / hud-scope-frame.svg / hud-health-bar.svg / hud-time-bar.svg</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">提示层</p>
+                                            <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">feedback_label / icon-scan-radar.svg / icon-locator.svg / search_hint_text</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">结果层</p>
+                                            <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">shot_result / hit-confirm-frame-* / wrong-hit-alert-frame-* / crosshair_color</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">回放层</p>
+                                            <p class="mt-2 break-all font-number text-xs leading-5 text-[var(--text-secondary)]">slowmo_active / killcam_active / identification_replay_text / misjudgment_review</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid gap-4">
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">战斗规则</h3>
+                                    <dl class="mt-4 grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">alien-disguised-idle.svg / alien-weakpoint-open.svg / civilian-false-clue-glint.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">actor_state_layer / result_overlay / replay_overlay</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd><span class="font-number">_use_scan()</span> 负责高亮与定位；<span class="font-number">_apply_actor_hit()</span> 中 <span class="font-number">civilian → wrong_hit</span>，<span class="font-number">target → hit</span>。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>人物常态先就位，弱点打开与误判亮点只在扫描或命中后切换。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>角色态资源未到位时保留文本提示与锁定框，不让判定失真。</dd>
+                                    </dl>
+                                </article>
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">结果路由</h3>
+                                    <div class="mt-4 grid gap-3">
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">hit</p>
+                                            <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">进入命中帧组，叠加奖励与确认文案。</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">wrong_hit</p>
+                                            <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">进入误伤帧组，显示扣时与误判复核。</p>
+                                        </div>
+                                        <div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-3">
+                                            <p class="truncate text-sm font-semibold text-[var(--text-primary)]">cover / miss</p>
+                                            <p class="mt-2 line-clamp-2 text-xs leading-5 text-[var(--text-secondary)]">保留中性反馈，不切结果帧组，只更新提示色与中心文本。</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="mt-6 grid gap-5">
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">扫描分帧</h3>
+                                <dl class="grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                    <dt class="text-[var(--text-muted)]">资源名</dt>
+                                    <dd class="break-all font-number">scan-pulse-frame-01.svg ~ scan-pulse-frame-05.svg</dd>
+                                    <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                    <dd class="break-all font-number">scope_overlay / ScanPulsePlayer</dd>
+                                    <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                    <dd class="break-all font-number">scan_pressed / _use_scan()</dd>
+                                    <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                    <dd>扫描反馈优先于命中反馈播放，结束后回到准镜默认态。</dd>
+                                    <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                    <dd>没有帧组时改用 <span class="font-number">icon-scan-radar.svg</span> 与提示文案。</dd>
+                                </dl>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/scan-pulse-frame-01.svg" alt="扫描脉冲第 1 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/scan-pulse-frame-02.svg" alt="扫描脉冲第 2 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/scan-pulse-frame-03.svg" alt="扫描脉冲第 3 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/scan-pulse-frame-04.svg" alt="扫描脉冲第 4 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/scan-pulse-frame-05.svg" alt="扫描脉冲第 5 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">命中分帧</h3>
+                                <dl class="grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                    <dt class="text-[var(--text-muted)]">资源名</dt>
+                                    <dd class="break-all font-number">hit-confirm-frame-01.svg ~ hit-confirm-frame-05.svg</dd>
+                                    <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                    <dd class="break-all font-number">result_overlay / HitConfirmPlayer</dd>
+                                    <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                    <dd class="break-all font-number">shot_result = hit</dd>
+                                    <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                    <dd>命中帧组在确认目标后立刻播放，再进入慢动作或回收态。</dd>
+                                    <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                    <dd>帧组不可用时改用成功色、中央文本与奖励数字。</dd>
+                                </dl>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/hit-confirm-frame-01.svg" alt="命中确认第 1 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/hit-confirm-frame-02.svg" alt="命中确认第 2 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/hit-confirm-frame-03.svg" alt="命中确认第 3 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/hit-confirm-frame-04.svg" alt="命中确认第 4 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/hit-confirm-frame-05.svg" alt="命中确认第 5 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[300px,minmax(0,1fr)]">
+                            <div class="grid gap-3">
+                                <h3 class="truncate text-xl font-semibold text-[var(--text-primary)]">误伤分帧</h3>
+                                <dl class="grid grid-cols-[72px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                    <dt class="text-[var(--text-muted)]">资源名</dt>
+                                    <dd class="break-all font-number">wrong-hit-alert-frame-01.svg ~ wrong-hit-alert-frame-05.svg</dd>
+                                    <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                    <dd class="break-all font-number">result_overlay / WrongHitPlayer / misjudgment_review</dd>
+                                    <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                    <dd class="break-all font-number">shot_result = wrong_hit</dd>
+                                    <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                    <dd>误伤帧组晚于判定文本，但早于回放复核，避免误伤惩罚延迟。</dd>
+                                    <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                    <dd>帧组缺失时至少保留警示色、扣时文案与复核提示。</dd>
+                                </dl>
+                            </div>
+                            <div class="grid gap-3 sm:grid-cols-5">
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/wrong-hit-alert-frame-01.svg" alt="误伤警报第 1 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">01</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/wrong-hit-alert-frame-02.svg" alt="误伤警报第 2 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">02</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/wrong-hit-alert-frame-03.svg" alt="误伤警报第 3 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">03</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/wrong-hit-alert-frame-04.svg" alt="误伤警报第 4 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">04</p></div>
+                                <div class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-3"><img src="../assets/wrong-hit-alert-frame-05.svg" alt="误伤警报第 5 帧" class="h-28 w-full object-contain"><p class="mt-3 text-center font-number text-xs text-[var(--text-secondary)]">05</p></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative border-b border-[var(--surface-border)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">商店武器库</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)] lg:text-base">
+                            商店与武器库继续保持移动端 HUD 插板语义，但更偏程序挂载说明。重点是 tab、卡片、详情面板与装备按钮怎样接到固定节点，而不是把整套界面重新拼一次。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">移动端壳</span>
+                </div>
+
+                <div class="mt-6 grid gap-5 xl:grid-cols-2">
+                    <article class="game-panel-strong rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[minmax(0,1.05fr),280px]">
+                            <div class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <div class="flex items-center justify-between gap-3">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店挂载</h3>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-info)]">content_panel</span>
+                                </div>
+                                <div class="mt-4 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-4">
+                                    <div class="flex items-center justify-between gap-3">
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">back_button</span>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">feedback_label</span>
+                                    </div>
+                                    <img src="../assets/shop-header-currency-bar.svg" alt="商店货币栏挂载示意" class="mt-4 h-12 w-full object-contain">
+                                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                                        <img src="../assets/shop-tab-weapon-active.svg" alt="商店武器标签示意" class="h-10 w-full object-contain">
+                                        <img src="../assets/shop-tab-skin-active.svg" alt="商店皮肤标签示意" class="h-10 w-full object-contain">
+                                        <img src="../assets/shop-tab-item-active.svg" alt="商店道具标签示意" class="h-10 w-full object-contain">
+                                    </div>
+                                    <div class="mt-4 grid gap-3 md:grid-cols-2">
+                                        <img src="../assets/shop-weapon-card-owned.svg" alt="商店武器卡已拥有挂载示意" class="h-28 w-full object-contain">
+                                        <img src="../assets/shop-skin-card-locked.svg" alt="商店皮肤卡锁定挂载示意" class="h-28 w-full object-contain">
+                                    </div>
+                                    <img src="../assets/shop-buy-button-enabled.svg" alt="商店购买按钮挂载示意" class="mt-4 h-12 w-full object-contain">
+                                </div>
+                            </div>
+                            <div class="grid gap-4">
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">商店规则</h3>
+                                    <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">shop-header-currency-bar.svg / shop-weapon-card-owned.svg / shop-skin-card-locked.svg / shop-buy-button-enabled.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">content_panel / weapon_tab / skin_tab / item_tab / feedback_label</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd><span class="font-number">tab = weapon / skin / item</span>，购买按钮根据“已拥有 / 免费 / %d 金币 / 需解锁武器 / 禁用”切换。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>货币栏、标签页先于商品卡与购买按钮接入。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>按钮图缺失时保留文字按钮，禁用态仍可由样式表达。</dd>
+                                    </dl>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="game-panel rounded-xl p-5 lg:p-6">
+                        <div class="grid gap-5 xl:grid-cols-[minmax(0,1.05fr),280px]">
+                            <div class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                <div class="flex items-center justify-between gap-3">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器库挂载</h3>
+                                    <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-success)]">detail_panel</span>
+                                </div>
+                                <div class="mt-4 rounded-2xl border border-[var(--surface-border)] bg-[var(--surface-panel-soft)] p-4">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">weapon_list</span>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--text-secondary)]">skin_list</span>
+                                        <span class="inline-flex h-7 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-2.5 text-xs text-[var(--state-warning)]">back_button</span>
+                                    </div>
+                                    <img src="../assets/armory-weapon-list-card-equipped.svg" alt="武器库武器列表已装备挂载示意" class="mt-4 h-28 w-full object-contain">
+                                    <img src="../assets/armory-detail-panel.svg" alt="武器库详情面板挂载示意" class="mt-4 h-32 w-full object-contain">
+                                    <img src="../assets/armory-equip-button.svg" alt="武器库装备按钮挂载示意" class="mt-4 h-12 w-full object-contain">
+                                </div>
+                            </div>
+                            <div class="grid gap-4">
+                                <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card-soft)] p-4">
+                                    <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">武器库规则</h3>
+                                    <dl class="mt-4 grid grid-cols-[70px,minmax(0,1fr)] gap-x-3 gap-y-2 text-xs leading-5 text-[var(--text-secondary)]">
+                                        <dt class="text-[var(--text-muted)]">资源名</dt>
+                                        <dd class="break-all font-number">armory-weapon-list-card-equipped.svg / armory-detail-panel.svg / armory-equip-button.svg</dd>
+                                        <dt class="text-[var(--text-muted)]">推荐节点</dt>
+                                        <dd class="break-all font-number">weapon_list / skin_list / detail_panel / equip_button / back_button</dd>
+                                        <dt class="text-[var(--text-muted)]">触发条件</dt>
+                                        <dd>装备态与列表态跟随“已解锁 / 已装备 / 未解锁”切换；按钮文案在“装备武器 / 装备皮肤”间切换。</dd>
+                                        <dt class="text-[var(--text-muted)]">替换时机</dt>
+                                        <dd>先列表卡，再详情面板，最后装备按钮与回退节点。</dd>
+                                        <dt class="text-[var(--text-muted)]">兜底方案</dt>
+                                        <dd>详情资源缺失时保留列表选中态与装备按钮文本。</dd>
+                                    </dl>
+                                </article>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="relative border-t border-[var(--surface-border)] bg-[var(--surface-panel-soft)]">
+            <div class="mx-auto max-w-[1480px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="min-w-0">
+                        <h2 class="truncate font-title text-2xl font-semibold text-[var(--text-primary)]">接入摘要</h2>
+                        <p class="mt-3 max-w-[72ch] text-sm leading-6 text-[var(--text-secondary)]">
+                            页面最后保留一段程序落地摘要，方便把这张板直接拆成开发任务：先固定节点，再收敛枚举，再按顺序替换，最后用兜底策略守住流程。
+                        </p>
+                    </div>
+                    <span class="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-lg border border-[var(--surface-border)] bg-[var(--surface-panel)] px-3 text-xs font-semibold text-[var(--text-secondary)]">开发清单</span>
+                </div>
+                <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">节点规则</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">优先使用 <span class="font-number">root / top_bar / feedback_label / bottom_bar / content_panel / detail_panel</span> 这些稳定节点名。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">枚举规则</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">输入信号收敛到按钮 signal，结果态收敛到 <span class="font-number">shot_result</span>，商店切页收敛到 <span class="font-number">tab</span>。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">顺序规则</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">底板与静件先接，反馈与角色态后接；先让流程跑通，再补镜框上的精细反馈。</p>
+                    </article>
+                    <article class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-panel)] p-4">
+                        <h3 class="truncate text-lg font-semibold text-[var(--text-primary)]">兜底规则</h3>
+                        <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-secondary)]">任何素材缺失都不应让节点和交互消失，至少保留文字、颜色与默认态容器。</p>
+                    </article>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

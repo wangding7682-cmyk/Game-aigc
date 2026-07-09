@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PveWeaponTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/pve/pve_weapon_tuning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+zoom_default = 1.0
+zoom_min = 0.9
+zoom_max = 2.4
+zoom_step = 0.15
+camera_pan_speed = 300.0
+spread_idle = 34.0
+spread_hold = 10.0
+hold_stabilize_sec = 1.0
+aim_recover_sec = 0.35
+hit_tolerance_radius = 26.0
+scan_highlight_sec = 3.0
+time_extend_sec = 15.0

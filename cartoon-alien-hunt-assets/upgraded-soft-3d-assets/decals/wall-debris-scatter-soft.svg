@@ -1,0 +1,43 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-debris-scatter-soft-title wall-debris-scatter-soft-desc">
+  <title id="wall-debris-scatter-soft-title">软3D卡通墙体碎屑穿透贴花</title>
+  <desc id="wall-debris-scatter-soft-desc">透明背景的碎屑穿透贴花，以悬浮碎块、碎边和透明间隙表达墙面崩裂，不形成整块遮挡。</desc>
+  <defs>
+    <linearGradient id="debris-light-grad" x1="56" y1="66" x2="150" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7DEB2"/>
+      <stop offset="0.56" stop-color="#D79A62"/>
+      <stop offset="1" stop-color="#8F5832"/>
+    </linearGradient>
+    <linearGradient id="debris-dark-grad" x1="62" y1="74" x2="152" y2="126" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B77947"/>
+      <stop offset="1" stop-color="#5F381E"/>
+    </linearGradient>
+    <radialGradient id="debris-sheen-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(107 80) rotate(26) scale(56 24)">
+      <stop stop-color="white" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="debris-soft-shadow" x="24" y="40" width="172" height="116" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#452710" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#debris-soft-shadow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M76 79L92 74L104 83L101 99L85 103L73 94L76 79ZM86 84L92 86L94 92L90 96L84 95L81 90L86 84Z" fill="url(#debris-light-grad)"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M109 68L125 63L137 73L133 90L118 94L106 84L109 68ZM117 73L124 76L126 83L121 88L114 87L111 80L117 73Z" fill="url(#debris-light-grad)"/>
+    <path d="M131 92L148 88L159 99L154 116L137 121L126 109L131 92Z" fill="url(#debris-dark-grad)"/>
+    <path d="M62 101L73 97L82 105L79 117L67 120L58 112L62 101Z" fill="url(#debris-dark-grad)"/>
+    <path d="M91 110L104 106L114 114L111 127L98 131L89 122L91 110Z" fill="url(#debris-light-grad)"/>
+    <path d="M76 79L92 74L104 83L101 99L85 103L73 94L76 79Z" fill="url(#debris-sheen-grad)" opacity="0.65"/>
+    <path d="M109 68L125 63L137 73L133 90L118 94L106 84L109 68Z" fill="url(#debris-sheen-grad)" opacity="0.6"/>
+    <path d="M77 136C96 128 116 126 136 131" stroke="#A96F45" stroke-width="6" stroke-linecap="round"/>
+    <path d="M83 146C99 141 120 141 139 146" stroke="#C58958" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+    <path d="M150 84L163 78" stroke="#BC7E4D" stroke-width="5" stroke-linecap="round"/>
+    <path d="M48 121L58 126" stroke="#9A623A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M116 54L121 44" stroke="#DCA774" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="147" cy="134" r="5" fill="#E4B587"/>
+    <circle cx="65" cy="134" r="4" fill="#CA8854"/>
+    <circle cx="160" cy="108" r="4" fill="#B06F42"/>
+    <circle cx="88" cy="61" r="4" fill="#E1B383"/>
+    <circle cx="118" cy="140" r="3" fill="#EFC9A0"/>
+    <circle cx="103" cy="58" r="3" fill="#C98955"/>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="狙击外星人升级版"
+run/main_scene="res://scenes/core/core_game_root.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+CoreEventBus="*res://scripts/core/core_event_bus.gd"
+AudioService="*res://scripts/audio/audio_service.gd"
+CoreSaveService="*res://scripts/platform/save_service.gd"
+PlatformService="*res://scripts/platform/platform_service.gd"
+WeaponManager="*res://scripts/core/weapon_manager.gd"
+InventoryService="*res://scripts/core/inventory_service.gd"
+ShopService="*res://scripts/core/shop_service.gd"
+CoreGameState="*res://scripts/core/core_game_state.gd"
+AnalyticsService="*res://scripts/analytics/analytics_service.gd"
+RouteGuard="*res://scripts/core/core_route_guard.gd"
+NetworkManager="*res://scripts/network/network_manager.gd"
+LLMService="*res://scripts/core/llm_service.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

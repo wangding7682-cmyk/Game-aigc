@@ -1,0 +1,50 @@
+<svg width="320" height="420" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skin" x1="109" y1="55" x2="214" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#758A92"/>
+      <stop offset="1" stop-color="#2A343C"/>
+    </linearGradient>
+    <linearGradient id="body" x1="100" y1="160" x2="213" y2="353" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4A5A62"/>
+      <stop offset="1" stop-color="#1E262D"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 226) rotate(90) scale(56 48)">
+      <stop stop-color="#7CFFF0"/>
+      <stop offset="0.55" stop-color="#3BD7C3"/>
+      <stop offset="1" stop-color="#3BD7C3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="redEye" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(184 136) rotate(90) scale(26 34)">
+      <stop stop-color="#FF7A84"/>
+      <stop offset="1" stop-color="#B01125" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="54" y="41" width="212" height="336" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#000000" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="160" cy="372" rx="68" ry="16" fill="#061019" fill-opacity="0.42"/>
+    <path d="M111 121C113 84 133 58 160 58C189 58 209 83 209 119C209 136 204 151 195 161C186 171 175 176 160 176C145 176 133 170 124 159C115 148 110 135 111 121Z" fill="url(#skin)"/>
+    <path d="M129 118C129 95 142 80 160 80C178 80 190 94 190 117C190 129 186 140 179 146C173 152 167 154 160 154C152 154 146 151 140 145C133 139 129 129 129 118Z" fill="#1E252B"/>
+    <path d="M122 156L97 205L114 329C115 340 124 349 136 349H189C201 349 211 340 212 328L221 216L201 159C193 162 185 167 178 172C172 176 166 178 160 178C147 178 136 173 129 165L122 156Z" fill="url(#body)"/>
+    <path d="M116 168L87 210C81 218 82 231 89 238L111 255L123 238L111 220L129 190L116 168Z" fill="#43515A"/>
+    <path d="M205 159L239 198C247 207 247 221 237 230L214 248L201 232L214 214L194 183L205 159Z" fill="#253038"/>
+    <path d="M137 186L129 228L148 210L154 256H166L172 210L191 228L183 186C176 178 169 175 160 175C152 175 145 178 137 186Z" fill="#2B353C"/>
+    <path d="M138 188L126 232L144 223L154 280H166L176 223L194 232L182 188C175 183 168 181 160 181C152 181 145 184 138 188Z" fill="#1C252B"/>
+    <path d="M147 204L160 218L173 204V254H147V204Z" fill="#1F272E"/>
+    <path d="M149 197L160 184L171 197L176 222L160 241L144 222L149 197Z" fill="#43D4C5"/>
+    <path d="M149 197L160 184L171 197L176 222L160 241L144 222L149 197Z" fill="url(#coreGlow)"/>
+    <circle cx="160" cy="213" r="10" fill="#C8FFF8"/>
+    <path d="M141 252L135 339H112L105 260C117 251 126 248 141 252Z" fill="#263139"/>
+    <path d="M179 252L185 339H208L215 260C203 251 194 248 179 252Z" fill="#344049"/>
+    <path d="M142 334L141 362C141 370 135 376 128 376H114C106 376 99 370 100 361L102 338L142 334Z" fill="#121A20"/>
+    <path d="M178 334L179 362C179 370 185 376 192 376H206C214 376 221 370 220 361L218 338L178 334Z" fill="#151E25"/>
+    <path d="M125 118C139 111 149 109 161 109C174 109 184 113 194 121" stroke="#83959D" stroke-width="9" stroke-linecap="round" stroke-opacity="0.6"/>
+    <path d="M110 188C122 182 131 178 140 176" stroke="#91A3AA" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+    <path d="M207 184C221 174 228 174 239 181" stroke="#6E7E85" stroke-width="8" stroke-linecap="round" stroke-opacity="0.98"/>
+    <path d="M180 123C191 123 199 129 199 137C199 145 191 150 180 150C170 150 162 145 162 137C162 129 170 123 180 123Z" fill="url(#redEye)"/>
+    <ellipse cx="181" cy="137" rx="9.5" ry="5.5" fill="#F34C5A"/>
+    <path d="M136 138C145 133 152 132 159 132" stroke="#53656D" stroke-width="6" stroke-linecap="round"/>
+    <path d="M144 98C152 92 162 90 171 92C164 99 156 104 147 105L144 98Z" fill="#83969E" fill-opacity="0.76"/>
+  </g>
+</svg>

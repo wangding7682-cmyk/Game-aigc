@@ -1,0 +1,40 @@
+:root {
+  --hunt-background: #0f1620;
+  --hunt-foreground: #edf3ff;
+  --hunt-card: #16202c;
+  --hunt-card-foreground: #f7f9ff;
+  --hunt-muted: #1c2633;
+  --hunt-muted-foreground: #98a6bd;
+  --hunt-primary: #71a8ff;
+  --hunt-primary-foreground: #0d1521;
+  --hunt-secondary: #1a2330;
+  --hunt-secondary-foreground: #c8d4e6;
+  --hunt-border: rgba(255, 255, 255, 0.08);
+  --hunt-radius-small: 4px;
+  --hunt-radius-medium: 8px;
+  --hunt-radius-large: 12px;
+  --hunt-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+  --hunt-font-primary: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--hunt-background);
+  color: var(--hunt-foreground);
+  font-family: var(--hunt-font-primary);
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

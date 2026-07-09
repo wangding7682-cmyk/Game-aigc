@@ -1,0 +1,46 @@
+<svg width="320" height="240" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body" x1="52" y1="92" x2="238" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3E7EE"/>
+      <stop offset="0.58" stop-color="#B8C0CD"/>
+      <stop offset="1" stop-color="#707B8F"/>
+    </linearGradient>
+    <linearGradient id="cabin" x1="176" y1="96" x2="266" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7FF"/>
+      <stop offset="1" stop-color="#9AA6B9"/>
+    </linearGradient>
+    <linearGradient id="trim" x1="70" y1="118" x2="256" y2="194" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#384354"/>
+      <stop offset="1" stop-color="#161C28"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="170" y1="102" x2="238" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9FD9FF"/>
+      <stop offset="1" stop-color="#2A425B"/>
+    </linearGradient>
+    <linearGradient id="streetGlow" x1="104" y1="118" x2="212" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7FE3FF" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#FFD788" stop-opacity="0.18"/>
+    </linearGradient>
+    <filter id="shadow" x="32" y="54" width="256" height="168" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#030711" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+  <ellipse cx="162" cy="206" rx="110" ry="16" fill="#01050B" opacity="0.34"/>
+  <g filter="url(#shadow)">
+    <path d="M63 109C63 92 77 79 94 79H175C188 79 201 84 209 93L241 126C248 133 252 142 252 152V167C252 184 238 198 221 198H97C78 198 63 183 63 164V109Z" fill="url(#body)"/>
+    <path d="M172 90H203C213 90 223 94 230 101L248 120C254 127 258 136 258 145V165C258 184 243 198 224 198H172V90Z" fill="url(#cabin)"/>
+    <path d="M78 109H225" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.34"/>
+    <path d="M83 136H220" stroke="#59657A" stroke-width="12" stroke-linecap="round" opacity="0.34"/>
+    <path d="M85 164H205" stroke="#2E3747" stroke-width="13" stroke-linecap="round" opacity="0.42"/>
+    <path d="M183 101C197 101 210 106 218 116L231 131C236 137 236 146 231 152C228 156 223 158 218 158H178C168 158 160 150 160 140V122C160 110 170 101 183 101Z" fill="url(#glass)"/>
+    <path d="M95 123C112 110 133 104 156 104C179 104 201 111 219 124" stroke="url(#streetGlow)" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M103 118L117 107L132 118L148 107L165 118L181 107L198 119L214 108" stroke="#7FC5FF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.42"/>
+    <rect x="84" y="167" width="145" height="15" rx="7.5" fill="url(#trim)"/>
+    <circle cx="109" cy="187" r="19" fill="#1B212D"/>
+    <circle cx="109" cy="187" r="11" fill="#6B768B"/>
+    <circle cx="211" cy="187" r="19" fill="#1B212D"/>
+    <circle cx="211" cy="187" r="11" fill="#6B768B"/>
+    <path d="M80 102C95 93 115 88 138 88" stroke="#FDFEFF" stroke-width="7" stroke-linecap="round" opacity="0.36"/>
+    <rect x="240" y="142" width="18" height="20" rx="7" fill="#FFB05A"/>
+  </g>
+</svg>

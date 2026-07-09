@@ -1,0 +1,68 @@
+{
+  "root": {
+    "nodeId": "gen-page-asset-overview",
+    "kind": "page-leaf",
+    "pageIds": [
+      "page-asset-overview"
+    ],
+    "output": "pages/asset-overview.html",
+    "sharedRegions": [],
+    "privateRegions": [
+      "single-page integrated overview canvas"
+    ],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": [
+      "gen-page-program-integration-board"
+    ]
+  },
+  "gen-page-program-integration-board": {
+    "nodeId": "gen-page-program-integration-board",
+    "kind": "page-leaf",
+    "pageIds": [
+      "page-program-integration-board"
+    ],
+    "output": "pages/program-integration-board.html",
+    "sharedRegions": [],
+    "privateRegions": [
+      "program-ready integration board"
+    ],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": [
+      "gen-page-program-mount-spec-board"
+    ]
+  },
+  "gen-page-program-mount-spec-board": {
+    "nodeId": "gen-page-program-mount-spec-board",
+    "kind": "page-leaf",
+    "pageIds": [
+      "page-program-mount-spec-board"
+    ],
+    "output": "pages/program-mount-spec-board.html",
+    "sharedRegions": [],
+    "privateRegions": [
+      "program mount specification board"
+    ],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": [
+      "gen-page-alien-design-update"
+    ]
+  },
+  "gen-page-alien-design-update": {
+    "nodeId": "gen-page-alien-design-update",
+    "kind": "page-leaf",
+    "pageIds": [
+      "page-alien-design-update"
+    ],
+    "output": "pages/alien-design-update.html",
+    "sharedRegions": [],
+    "privateRegions": [
+      "alien design refinement board"
+    ],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": []
+  }
+}

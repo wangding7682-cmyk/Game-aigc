@@ -1,0 +1,41 @@
+<div class="game-safe-shell relative overflow-hidden px-4 pb-[calc(24px+env(safe-area-inset-bottom))] pt-[calc(18px+env(safe-area-inset-top))]">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(99,214,255,0.14),transparent_62%)]"></div>
+    <div class="game-grid-line absolute inset-0 opacity-35"></div>
+    <div class="absolute inset-x-10 top-24 h-px bg-gradient-to-r from-transparent via-sky-300/40 to-transparent"></div>
+  </div>
+
+  <header class="relative z-10 flex items-center justify-between pb-4">
+    <div>
+      <p class="text-[11px] uppercase tracking-[0.32em] text-slate-400">战术环境</p>
+      <h1 class="font-title text-xl font-semibold text-slate-50">移动端安全区壳结构</h1>
+    </div>
+    <div class="game-chip font-number">SAFE 430</div>
+  </header>
+
+  <main class="relative z-10 space-y-4">
+    <section class="game-panel px-4 py-4">
+      <p class="text-xs uppercase tracking-[0.28em] text-sky-300/70">顶部环境辉光</p>
+      <p class="mt-2 text-sm leading-6 text-slate-300">
+        用于承载各页面头部信息、任务提示与战术广播，顶部保持冷蓝辉光，避免页面上沿过暗。
+      </p>
+    </section>
+
+    <section class="game-panel px-4 py-4">
+      <p class="text-xs uppercase tracking-[0.28em] text-slate-400">全局背景网格</p>
+      <p class="mt-2 text-sm leading-6 text-slate-300">
+        页面主体始终覆盖轻量战术网格与低对比度描边，作为城市侦察、扫描圈层与锁定 UI 的统一底座。
+      </p>
+    </section>
+
+    <section class="rounded-[14px] border border-dashed border-slate-500/30 bg-slate-950/20 px-4 py-6 text-center text-sm text-slate-400">
+      业务页面内容区插入点
+    </section>
+  </main>
+
+  <div class="relative z-10 mt-6 h-8 rounded-t-[14px] border border-b-0 border-slate-700/30 bg-slate-900/30">
+    <div class="flex h-full items-center justify-center text-[11px] uppercase tracking-[0.3em] text-slate-500">
+      底部安全区留白
+    </div>
+  </div>
+</div>

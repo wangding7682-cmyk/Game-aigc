@@ -1,0 +1,48 @@
+<svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wall-crack-radial-soft-title wall-crack-radial-soft-desc">
+  <title id="wall-crack-radial-soft-title">软3D卡通墙体放射穿透裂损贴花</title>
+  <desc id="wall-crack-radial-soft-desc">透明背景的放射穿透裂损贴花，中心是真实透明破口，裂纹从破口向外扩散。</desc>
+  <defs>
+    <linearGradient id="radial-rim-grad" x1="76" y1="58" x2="150" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7DEB2"/>
+      <stop offset="0.57" stop-color="#D79B61"/>
+      <stop offset="1" stop-color="#8F5832"/>
+    </linearGradient>
+    <linearGradient id="radial-inner-grad" x1="96" y1="70" x2="130" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFDDB4"/>
+      <stop offset="0.52" stop-color="#BB7E49"/>
+      <stop offset="1" stop-color="#55311A"/>
+    </linearGradient>
+    <radialGradient id="radial-sheen-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(96 76) rotate(28) scale(46 20)">
+      <stop stop-color="white" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="radial-crack-grad" x1="72" y1="61" x2="153" y2="123" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CA8A55"/>
+      <stop offset="1" stop-color="#704628"/>
+    </linearGradient>
+    <filter id="radial-soft-shadow" x="28" y="26" width="170" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#4B2B14" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#radial-soft-shadow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M110 56L123 64L138 66L147 77L149 91L155 102L147 113L134 117L124 127L109 125L97 130L86 122L74 118L68 107L70 95L63 84L72 73L84 68L94 59L110 56ZM111 74L119 77L125 84L125 93L121 100L113 104L104 102L98 96L97 87L101 79L111 74Z" fill="url(#radial-rim-grad)"/>
+    <path d="M110 56L123 64L138 66L147 77L149 91L155 102L147 113L134 117L124 127L109 125L97 130L86 122L74 118L68 107L70 95L63 84L72 73L84 68L94 59L110 56Z" fill="url(#radial-sheen-grad)" opacity="0.82"/>
+    <path d="M101 80C106 74 116 73 122 78C128 82 129 92 125 98C121 104 112 107 105 104C98 102 95 95 97 88C98 85 99 82 101 80Z" stroke="url(#radial-inner-grad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M111 56L111 40" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L145 58" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L160 85" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L149 120" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L111 140" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L75 119" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L58 92" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 88L78 58" stroke="url(#radial-crack-grad)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 59L116 49" stroke="#E1B07E" stroke-width="4" stroke-linecap="round"/>
+    <path d="M147 58L155 50" stroke="#CB905A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M149 121L160 128" stroke="#B57647" stroke-width="4" stroke-linecap="round"/>
+    <path d="M75 120L68 128" stroke="#B57647" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="90" cy="54" r="4" fill="#E1B283"/>
+    <circle cx="152" cy="84" r="4" fill="#CE8A55"/>
+    <circle cx="128" cy="133" r="5" fill="#AF6D42"/>
+  </g>
+</svg>

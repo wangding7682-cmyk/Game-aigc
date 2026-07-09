@@ -1,0 +1,66 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="alien-back-title alien-back-desc">
+  <title id="alien-back-title">升级版外星人背面</title>
+  <desc id="alien-back-desc">背面视角的软3D卡通外星人，背部是角色身体本体，背包正面朝向观者并覆盖在身后。</desc>
+  <defs>
+    <linearGradient id="headGrad" x1="72" y1="38" x2="184" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C7FF93"/>
+      <stop offset="0.5" stop-color="#7DDB5D"/>
+      <stop offset="1" stop-color="#448F49"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="96" y1="142" x2="164" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#73DEE1"/>
+      <stop offset="1" stop-color="#287D8A"/>
+    </linearGradient>
+    <linearGradient id="packFrontGrad" x1="92" y1="122" x2="164" y2="208" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7BE2E5"/>
+      <stop offset="1" stop-color="#276C79"/>
+    </linearGradient>
+    <linearGradient id="packSideGrad" x1="84" y1="130" x2="171" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21535F"/>
+      <stop offset="1" stop-color="#173B45"/>
+    </linearGradient>
+    <radialGradient id="headShine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 78) rotate(42) scale(60 38)">
+      <stop stop-color="white" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="18" y="16" width="220" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#17371F" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="128" cy="228" rx="46" ry="12" fill="#1E3D2C" opacity="0.14"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M111 44C118 25 138 25 145 44L149 57C151 65 156 71 163 75L175 82C181 85 183 92 180 97C176 102 169 104 162 102L153 99" stroke="#62B95A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M145 44C138 25 118 25 111 44L107 57C105 65 100 71 93 75L81 82C75 85 73 92 76 97C80 102 87 104 94 102L103 99" stroke="#62B95A" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="80" cy="83" r="7" fill="#EE635D"/>
+    <circle cx="176" cy="83" r="7" fill="#EE635D"/>
+
+    <path d="M128 35C170 35 197 69 190 111C185 140 162 152 149 169C141 180 136 196 128 196C120 196 115 180 107 169C94 152 71 140 66 111C59 69 86 35 128 35Z" fill="url(#headGrad)"/>
+    <path d="M84 82C95 63 116 52 144 50" stroke="#E2FFC0" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+    <path d="M128 35C170 35 197 69 190 111C185 140 162 152 149 169C141 180 136 196 128 196C120 196 115 180 107 169C94 152 71 140 66 111C59 69 86 35 128 35Z" fill="url(#headShine)"/>
+    <path d="M104 123C118 131 138 131 152 123" stroke="#4B954C" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+
+    <path d="M100 150C100 138 109 128 121 128H135C147 128 156 138 156 150V176C156 191 144 203 129 203H127C112 203 100 191 100 176V150Z" fill="url(#bodyGrad)"/>
+    <path d="M111 145C118 151 138 151 145 145" stroke="#D5FBFC" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M113 160C119 165 137 165 143 160" stroke="#AEEBEF" stroke-width="3.5" stroke-linecap="round" opacity="0.36"/>
+
+    <path d="M95 136C95 127 102 120 111 120H145C154 120 161 127 161 136V192C161 201 154 208 145 208H111C102 208 95 201 95 192V136Z" fill="url(#packSideGrad)"/>
+    <path d="M101 130C101 121 109 114 118 114H138C148 114 156 122 156 132V190C156 201 147 210 136 210H118C109 210 101 202 101 193V130Z" fill="url(#packFrontGrad)"/>
+    <path d="M114 128H143" stroke="#D0FBFF" stroke-width="6" stroke-linecap="round" opacity="0.74"/>
+    <path d="M112 152H145" stroke="#A8EBF0" stroke-width="4.5" stroke-linecap="round" opacity="0.44"/>
+    <circle cx="128" cy="171" r="8" fill="#6AD0D7" opacity="0.58"/>
+    <circle cx="128" cy="171" r="3" fill="#D9FCFF" opacity="0.82"/>
+    <path d="M108 119C109 132 112 145 118 157" stroke="#204B56" stroke-width="8" stroke-linecap="round"/>
+    <path d="M148 119C147 132 144 145 138 157" stroke="#204B56" stroke-width="8" stroke-linecap="round"/>
+
+    <path d="M96 156C84 164 80 176 78 192" stroke="#67BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M160 156C172 164 176 176 178 192" stroke="#67BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M119 205C114 214 112 224 111 235" stroke="#67BC62" stroke-width="10" stroke-linecap="round"/>
+    <path d="M137 205C142 214 144 224 145 235" stroke="#67BC62" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="75" cy="195" rx="10" ry="6" fill="#67BC62"/>
+    <ellipse cx="181" cy="195" rx="10" ry="6" fill="#67BC62"/>
+    <ellipse cx="108" cy="237" rx="12" ry="7" fill="#67BC62"/>
+    <ellipse cx="148" cy="237" rx="12" ry="7" fill="#67BC62"/>
+  </g>
+</svg>

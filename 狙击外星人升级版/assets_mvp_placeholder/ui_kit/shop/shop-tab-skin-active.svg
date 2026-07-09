@@ -1,0 +1,18 @@
+<svg width="256" height="92" viewBox="0 0 256 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fill" x1="20" y1="12" x2="230" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E2A45"/>
+      <stop offset="1" stop-color="#0B1621"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="28" y1="58" x2="226" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B78AFF"/>
+      <stop offset="1" stop-color="#6FD9FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="10" width="228" height="72" rx="24" fill="url(#fill)" stroke="#8BD8FF" stroke-width="2"/>
+  <rect x="28" y="56" width="200" height="10" rx="5" fill="url(#accent)"/>
+  <rect x="34" y="24" width="34" height="26" rx="9" fill="#182433" stroke="#B78AFF" stroke-opacity="0.52"/>
+  <path d="M41 37C41 31 46 27 51.5 27C57.5 27 61 30.5 61 35.5C61 40.5 57.5 44 51.5 44H41V37Z" fill="#C7A5FF"/>
+  <circle cx="61" cy="45" r="4" fill="#6FD9FF"/>
+  <text x="87" y="48" fill="#EEF6FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700" letter-spacing="2">SKIN</text>
+</svg>

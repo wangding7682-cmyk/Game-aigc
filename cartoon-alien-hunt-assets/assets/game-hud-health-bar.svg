@@ -1,0 +1,19 @@
+<svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="healthFill" x1="32" y1="36" x2="244" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6CF0AB"/>
+      <stop offset="1" stop-color="#2FBF86"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="18" y1="14" x2="302" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6A7F9A"/>
+      <stop offset="1" stop-color="#233244"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="14" width="296" height="44" rx="18" fill="#07111B" opacity="0.94" stroke="url(#frame)" stroke-width="2"/>
+  <rect x="24" y="26" width="272" height="20" rx="10" fill="#152433"/>
+  <rect x="24" y="26" width="220" height="20" rx="10" fill="url(#healthFill)"/>
+  <path d="M42 36H222" stroke="#D8FFF0" stroke-width="6" stroke-linecap="round" opacity="0.24"/>
+  <path d="M40 20L48 14" stroke="#7CE9B1" stroke-width="4" stroke-linecap="round" opacity="0.54"/>
+  <path d="M280 52L288 58" stroke="#8AA4BF" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+  <rect x="246" y="26" width="50" height="20" rx="10" fill="#0E1823" opacity="0.96"/>
+</svg>

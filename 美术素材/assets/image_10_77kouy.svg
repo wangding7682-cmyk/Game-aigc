@@ -1,0 +1,48 @@
+<svg width="300" height="360" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">平民识别卡</title>
+  <desc id="desc">都市路人风格的冷蓝灰平民形象，肩线自然，姿态放松，可作为识别对照卡。</desc>
+  <defs>
+    <linearGradient id="headGrad" x1="98" y1="57" x2="206" y2="182" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9E7F7"/>
+      <stop offset="0.48" stop-color="#91A8C6"/>
+      <stop offset="1" stop-color="#52667C"/>
+    </linearGradient>
+    <linearGradient id="coatGrad" x1="103" y1="154" x2="197" y2="292" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7FA4C7"/>
+      <stop offset="0.55" stop-color="#4A6F97"/>
+      <stop offset="1" stop-color="#263D57"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="129" y1="176" x2="172" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7F5FF"/>
+      <stop offset="1" stop-color="#9EB8D4"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(132 92) rotate(48) scale(62 40)">
+      <stop stop-color="white" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="34" y="34" width="232" height="302" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#07111C" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <ellipse cx="150" cy="324" rx="54" ry="14" fill="#0E1522" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <path d="M150 53C184 53 208 80 208 113C208 140 194 157 178 168C169 174 163 184 160 194H140C137 184 131 174 122 168C106 157 92 140 92 113C92 80 116 53 150 53Z" fill="url(#headGrad)"/>
+    <path d="M150 53C184 53 208 80 208 113C208 140 194 157 178 168C169 174 163 184 160 194H140C137 184 131 174 122 168C106 157 92 140 92 113C92 80 116 53 150 53Z" fill="url(#shine)"/>
+    <path d="M113 105C120 88 134 79 150 79C166 79 180 88 187 105" stroke="#6A7890" stroke-width="8" stroke-linecap="round" opacity="0.46"/>
+    <path d="M123 142C131 149 145 151 150 151C155 151 169 149 177 142" stroke="#5A6778" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="130" cy="114" r="9" fill="#394657"/>
+    <circle cx="170" cy="114" r="9" fill="#394657"/>
+    <circle cx="133" cy="110" r="2.8" fill="white" opacity="0.86"/>
+    <circle cx="173" cy="110" r="2.8" fill="white" opacity="0.86"/>
+    <path d="M98 187C98 170 112 156 129 156H171C188 156 202 170 202 187V220C202 244 183 263 159 263H141C117 263 98 244 98 220V187Z" fill="url(#coatGrad)"/>
+    <path d="M118 175C125 168 137 163 150 163C163 163 175 168 182 175V225C182 237 173 247 161 248H139C127 247 118 237 118 225V175Z" fill="url(#shirtGrad)"/>
+    <path d="M116 171C124 167 135 165 150 165C165 165 176 167 184 171" stroke="#D9ECFF" stroke-width="4" stroke-linecap="round" opacity="0.64"/>
+    <path d="M98 188C89 190 81 196 76 206" stroke="#7790AD" stroke-width="12" stroke-linecap="round"/>
+    <path d="M202 188C211 190 219 196 224 206" stroke="#7790AD" stroke-width="12" stroke-linecap="round"/>
+    <path d="M133 263C128 277 126 289 126 302" stroke="#7790AD" stroke-width="12" stroke-linecap="round"/>
+    <path d="M167 263C172 277 174 289 174 302" stroke="#7790AD" stroke-width="12" stroke-linecap="round"/>
+    <path d="M108 165C121 158 135 156 150 156C165 156 179 158 192 165" stroke="#AFC5DF" stroke-width="6" stroke-linecap="round" opacity="0.76"/>
+    <path d="M118 207C128 213 138 216 150 216C162 216 172 213 182 207" stroke="#C7DBEF" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M112 95C121 79 135 71 150 71C165 71 179 79 188 95" stroke="#EEF7FF" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  </g>
+</svg>

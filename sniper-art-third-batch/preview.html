@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>狙击外星人第三批资产预览</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">第三批真实接入导向资产 / 状态变体 × UI 套件 × 动画帧</div>
+        <h1>狙击外星人第三批游戏美术资产预览</h1>
+        <p>
+          这一批不再以单张概念卡为主，而是更明确地为 Godot 当前项目补齐三条真实接入链路：角色状态变体、商店与武器库 UI 套件、扫描/命中/误伤的分帧反馈。整体仍然延续软 3D 卡通体块、暗色移动端狙击 HUD 与冷蓝辅助信息，但在视觉组织上更偏“系统状态、组件化、序列感”。
+        </p>
+      </div>
+
+      <div class="hero-panel">
+        <div class="radar-stage" aria-hidden="true">
+          <div class="radar-ring ring-a"></div>
+          <div class="radar-ring ring-b"></div>
+          <div class="radar-ring ring-c"></div>
+          <div class="radar-core"></div>
+          <div class="radar-reticle">
+            <span class="line vertical"></span>
+            <span class="line horizontal"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="hud-card card-a">SCAN</div>
+          <div class="hud-card card-b">HIT</div>
+          <div class="hud-card card-c">ALERT</div>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <strong>7</strong>
+            <span>角色状态变体</span>
+          </div>
+          <div class="metric-card">
+            <strong>15</strong>
+            <span>动画分帧</span>
+          </div>
+          <div class="metric-card">
+            <strong>15</strong>
+            <span>UI 套件组件</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section summary">
+      <div class="section-header">
+        <div>
+          <h2>这一批更偏“状态 / 套件 / 动画帧”</h2>
+          <p>相较前两批，本页更强调切换关系与接入逻辑，而不是单张插画展示。你可以把这一批理解为“给程序直接接状态”和“给 UI 直接接底板”的资产集合。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip chip-scan">扫描青蓝</span>
+          <span class="chip chip-hit">命中绿色</span>
+          <span class="chip chip-alert">误伤红色</span>
+          <span class="chip">移动端游戏 UI</span>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card">
+          <h3>角色状态变体</h3>
+          <p>服务于目标识别、扫描高亮、弱点开启、平民假线索与移动状态，不是简单换色，而是明显状态差分。</p>
+        </article>
+        <article class="summary-card">
+          <h3>商店 / 武器库 UI 套件</h3>
+          <p>对应商店 tab、购买按钮、拥有/锁定/可购买、武器库列表卡、详情区与装备按钮，更适合直接挂到 Godot 控件上。</p>
+        </article>
+        <article class="summary-card">
+          <h3>动画分帧素材</h3>
+          <p>扫描脉冲、命中确认、误伤警告都按帧序列展示，方便直接做 HUD 动效原型或图集切片参考。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>角色状态变体</h2>
+          <p>这一组直接对齐目标脚本语义：外星人保留红眼脉冲、肩线异常、伪装感；平民保持冷蓝灰、自然姿态，并允许出现短暂假线索。moving 版本则通过身体重心和迈步方向强化运动感。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip chip-alert">target</span>
+          <span class="chip chip-scan">scan highlight</span>
+          <span class="chip chip-hit">weakpoint open</span>
+          <span class="chip">false clue</span>
+        </div>
+      </div>
+
+      <div class="asset-grid characters-grid">
+        <article class="asset-card state-card alien">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/alien-disguised-idle.svg" alt="伪装外星人待机状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>伪装外星人 · 待机</h3>
+            <p>外表接近都市行人，但肩线略歪、眼部泛红、体态略僵，适合作为常态目标底图。</p>
+            <div class="file-path">assets/characters/alien-disguised-idle.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card alien">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/alien-weakpoint-open.svg" alt="外星人弱点开启状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>外星人 · 弱点开启</h3>
+            <p>胸前能量瓣片打开，适合与 weakpoint 周期开启逻辑配合，强调“当前是可击中窗口”。</p>
+            <div class="file-path">assets/characters/alien-weakpoint-open.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card alien">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/alien-moving-profile.svg" alt="外星人移动侧身状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>外星人 · 移动侧身</h3>
+            <p>身体前倾、单肩上抬、脚步明显偏移，强化 moving 目标在镜头中的识别倾向。</p>
+            <div class="file-path">assets/characters/alien-moving-profile.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card alien">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/alien-scan-highlight.svg" alt="外星人扫描高亮状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>外星人 · 扫描高亮</h3>
+            <p>叠加青蓝轮廓、信息条和高亮环，让玩家一眼知道扫描已经锁住可疑目标。</p>
+            <div class="file-path">assets/characters/alien-scan-highlight.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card civilian">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/civilian-calm-idle.svg" alt="平民平静待机状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>平民 · 平静待机</h3>
+            <p>冷蓝灰服装、肩线自然、呼吸平稳，适合作为“普通人”的稳定参照状态。</p>
+            <div class="file-path">assets/characters/civilian-calm-idle.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card civilian">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/civilian-false-clue-glint.svg" alt="平民假线索闪点状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>平民 · 假线索闪点</h3>
+            <p>加入短暂琥珀色反光与衣领闪点，但整体依旧更像普通市民，避免误读成真正外星人。</p>
+            <div class="file-path">assets/characters/civilian-false-clue-glint.svg</div>
+          </div>
+        </article>
+
+        <article class="asset-card state-card civilian">
+          <div class="asset-visual tall">
+            <img src="./assets/characters/civilian-moving-passerby.svg" alt="平民路人移动状态" />
+          </div>
+          <div class="asset-meta">
+            <h3>平民 · 路人移动</h3>
+            <p>更自然的迈步、摆臂和衣摆，让玩家能快速体会“普通路人移动”与目标移动的不同气质。</p>
+            <div class="file-path">assets/characters/civilian-moving-passerby.svg</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>商店 UI 套件</h2>
+          <p>这组素材对齐 <code>ui_panel_shop.gd</code> 的真实界面逻辑：货币栏、三个 tab、商品卡与购买按钮状态。重点不是装饰，而是让 owned / locked / buyable / enabled / disabled 一眼可分。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip">weapon</span>
+          <span class="chip">skin</span>
+          <span class="chip">item</span>
+          <span class="chip chip-alert">locked</span>
+        </div>
+      </div>
+
+      <div class="asset-grid ui-grid shop-grid">
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-header-currency-bar.svg" alt="商店货币栏" />
+          </div>
+          <div class="asset-meta"><h3>货币栏</h3><div class="file-path">assets/ui-kit/shop/shop-header-currency-bar.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-tab-weapon-active.svg" alt="武器 Tab 激活态" />
+          </div>
+          <div class="asset-meta"><h3>武器 Tab 激活</h3><div class="file-path">assets/ui-kit/shop/shop-tab-weapon-active.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-tab-skin-active.svg" alt="皮肤 Tab 激活态" />
+          </div>
+          <div class="asset-meta"><h3>皮肤 Tab 激活</h3><div class="file-path">assets/ui-kit/shop/shop-tab-skin-active.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-tab-item-active.svg" alt="道具 Tab 激活态" />
+          </div>
+          <div class="asset-meta"><h3>道具 Tab 激活</h3><div class="file-path">assets/ui-kit/shop/shop-tab-item-active.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-weapon-card-owned.svg" alt="武器已拥有卡片" />
+          </div>
+          <div class="asset-meta"><h3>武器卡 · 已拥有</h3><div class="file-path">assets/ui-kit/shop/shop-weapon-card-owned.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-skin-card-locked.svg" alt="皮肤锁定卡片" />
+          </div>
+          <div class="asset-meta"><h3>皮肤卡 · 锁定</h3><div class="file-path">assets/ui-kit/shop/shop-skin-card-locked.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-item-card-buyable.svg" alt="道具可购买卡片" />
+          </div>
+          <div class="asset-meta"><h3>道具卡 · 可购买</h3><div class="file-path">assets/ui-kit/shop/shop-item-card-buyable.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-buy-button-enabled.svg" alt="购买按钮可用态" />
+          </div>
+          <div class="asset-meta"><h3>购买按钮 · 可用</h3><div class="file-path">assets/ui-kit/shop/shop-buy-button-enabled.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide">
+            <img src="./assets/ui-kit/shop/shop-buy-button-disabled.svg" alt="购买按钮禁用态" />
+          </div>
+          <div class="asset-meta"><h3>购买按钮 · 禁用</h3><div class="file-path">assets/ui-kit/shop/shop-buy-button-disabled.svg</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>武器库 UI 套件</h2>
+          <p>这一组对应 <code>ui_panel_weapon_library.gd</code> 的武器列表、皮肤列表、详情区与装备按钮。重点是装备态要足够明确，锁定态要足够收敛，详情区要像承载数据的装备页组件。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip chip-hit">equipped</span>
+          <span class="chip">unlocked</span>
+          <span class="chip chip-alert">locked</span>
+          <span class="chip">detail</span>
+        </div>
+      </div>
+
+      <div class="asset-grid ui-grid armory-grid">
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-weapon-list-card-equipped.svg" alt="武器已装备卡" /></div>
+          <div class="asset-meta"><h3>武器列表卡 · 已装备</h3><div class="file-path">assets/ui-kit/armory/armory-weapon-list-card-equipped.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-weapon-list-card-unlocked.svg" alt="武器已解锁卡" /></div>
+          <div class="asset-meta"><h3>武器列表卡 · 已解锁</h3><div class="file-path">assets/ui-kit/armory/armory-weapon-list-card-unlocked.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-skin-list-card-equipped.svg" alt="皮肤已装备卡" /></div>
+          <div class="asset-meta"><h3>皮肤列表卡 · 已装备</h3><div class="file-path">assets/ui-kit/armory/armory-skin-list-card-equipped.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-skin-list-card-locked.svg" alt="皮肤锁定卡" /></div>
+          <div class="asset-meta"><h3>皮肤列表卡 · 锁定</h3><div class="file-path">assets/ui-kit/armory/armory-skin-list-card-locked.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-detail-panel.svg" alt="武器库详情面板" /></div>
+          <div class="asset-meta"><h3>详情面板</h3><div class="file-path">assets/ui-kit/armory/armory-detail-panel.svg</div></div>
+        </article>
+        <article class="asset-card">
+          <div class="asset-visual wide"><img src="./assets/ui-kit/armory/armory-equip-button.svg" alt="装备按钮" /></div>
+          <div class="asset-meta"><h3>装备按钮</h3><div class="file-path">assets/ui-kit/armory/armory-equip-button.svg</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>动画分帧展示</h2>
+          <p>本页将三组分帧按序列展示。建议实际接入时先按照 1→5 顺序播放，验证信息传达是否成立，再决定是否进入图集、粒子或 shader 方案。</p>
+        </div>
+        <div class="chip-row">
+          <span class="chip chip-scan">扫描从聚焦到扩散</span>
+          <span class="chip chip-hit">命中从闪烁到确认</span>
+          <span class="chip chip-alert">误伤从震出到告警收束</span>
+        </div>
+      </div>
+
+      <div class="sequence-section">
+        <h3>扫描脉冲序列</h3>
+        <div class="frame-sequence">
+          <article class="frame-card"><span class="frame-index">01</span><img src="./assets/anim/scan-pulse/frame-01.svg" alt="扫描脉冲第 1 帧" /></article>
+          <article class="frame-card"><span class="frame-index">02</span><img src="./assets/anim/scan-pulse/frame-02.svg" alt="扫描脉冲第 2 帧" /></article>
+          <article class="frame-card"><span class="frame-index">03</span><img src="./assets/anim/scan-pulse/frame-03.svg" alt="扫描脉冲第 3 帧" /></article>
+          <article class="frame-card"><span class="frame-index">04</span><img src="./assets/anim/scan-pulse/frame-04.svg" alt="扫描脉冲第 4 帧" /></article>
+          <article class="frame-card"><span class="frame-index">05</span><img src="./assets/anim/scan-pulse/frame-05.svg" alt="扫描脉冲第 5 帧" /></article>
+        </div>
+      </div>
+
+      <div class="sequence-section">
+        <h3>命中确认序列</h3>
+        <div class="frame-sequence">
+          <article class="frame-card"><span class="frame-index">01</span><img src="./assets/anim/hit-confirm/frame-01.svg" alt="命中确认第 1 帧" /></article>
+          <article class="frame-card"><span class="frame-index">02</span><img src="./assets/anim/hit-confirm/frame-02.svg" alt="命中确认第 2 帧" /></article>
+          <article class="frame-card"><span class="frame-index">03</span><img src="./assets/anim/hit-confirm/frame-03.svg" alt="命中确认第 3 帧" /></article>
+          <article class="frame-card"><span class="frame-index">04</span><img src="./assets/anim/hit-confirm/frame-04.svg" alt="命中确认第 4 帧" /></article>
+          <article class="frame-card"><span class="frame-index">05</span><img src="./assets/anim/hit-confirm/frame-05.svg" alt="命中确认第 5 帧" /></article>
+        </div>
+      </div>
+
+      <div class="sequence-section">
+        <h3>误伤警告序列</h3>
+        <div class="frame-sequence">
+          <article class="frame-card"><span class="frame-index">01</span><img src="./assets/anim/wrong-hit-alert/frame-01.svg" alt="误伤警告第 1 帧" /></article>
+          <article class="frame-card"><span class="frame-index">02</span><img src="./assets/anim/wrong-hit-alert/frame-02.svg" alt="误伤警告第 2 帧" /></article>
+          <article class="frame-card"><span class="frame-index">03</span><img src="./assets/anim/wrong-hit-alert/frame-03.svg" alt="误伤警告第 3 帧" /></article>
+          <article class="frame-card"><span class="frame-index">04</span><img src="./assets/anim/wrong-hit-alert/frame-04.svg" alt="误伤警告第 4 帧" /></article>
+          <article class="frame-card"><span class="frame-index">05</span><img src="./assets/anim/wrong-hit-alert/frame-05.svg" alt="误伤警告第 5 帧" /></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>贴近业务的接入提示</h2>
+          <p>第三批建议直接拿去做小范围原型测试，而不是只停留在静态展示：切商店 tab、切武器库装备态、触发扫描、命中目标、误伤平民，都能快速判断这批素材是否真正服务业务。</p>
+        </div>
+      </div>
+
+      <div class="notes">
+        <article class="note-card">
+          <h3>建议优先验证</h3>
+          <ul>
+            <li>商店中切换 weapon / skin / item 三个 tab</li>
+            <li>扫描开启后在 HUD 中叠加 alien-scan-highlight 与 scan-pulse 序列</li>
+            <li>命中目标后叠加 hit-confirm 序列到成功提示或 killcam</li>
+          </ul>
+        </article>
+        <article class="note-card">
+          <h3>误判相关验证</h3>
+          <ul>
+            <li>对比 civilian-calm-idle 与 civilian-false-clue-glint</li>
+            <li>误伤平民时播放 wrong-hit-alert 序列</li>
+            <li>检查玩家是否会把假线索版本误读为真正外星人</li>
+          </ul>
+        </article>
+        <article class="note-card">
+          <h3>装备页相关验证</h3>
+          <ul>
+            <li>切换武器列表卡的 equipped / unlocked</li>
+            <li>切换皮肤列表卡的 equipped / locked</li>
+            <li>装备后检查 detail panel 与 equip button 是否形成完整操作闭环</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">sniper-art-third-batch / 软 3D 状态资产 × 系统型 UI 套件 × HUD 分帧预览页</div>
+  </main>
+</body>
+</html>

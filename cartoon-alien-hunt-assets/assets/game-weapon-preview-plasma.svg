@@ -1,0 +1,102 @@
+<svg width="512" height="288" viewBox="0 0 512 288" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">电磁狙击枪</title>
+  <desc id="desc">软3D卡通风格的等离子绿色电磁狙击枪，具备发光能量核心和轻科幻结构，适合商店卡片展示。</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="14" y1="16" x2="492" y2="274" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081619"/>
+      <stop offset="1" stop-color="#113137"/>
+    </linearGradient>
+    <linearGradient id="panelEdge" x1="30" y1="24" x2="476" y2="262" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CF0D0"/>
+      <stop offset="1" stop-color="#35B590"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="64" y1="76" x2="399" y2="181" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A7FFD5"/>
+      <stop offset="0.42" stop-color="#41C99B"/>
+      <stop offset="1" stop-color="#176559"/>
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="136" y1="115" x2="286" y2="219" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#174E49"/>
+      <stop offset="1" stop-color="#0A2527"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="171" y1="55" x2="322" y2="98" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3FFF4"/>
+      <stop offset="1" stop-color="#4A8D86"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="350" y1="110" x2="489" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5FFF7"/>
+      <stop offset="1" stop-color="#33C598"/>
+    </linearGradient>
+    <linearGradient id="coilGrad" x1="264" y1="89" x2="360" y2="148" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E6FF9D"/>
+      <stop offset="1" stop-color="#52F6D4"/>
+    </linearGradient>
+    <radialGradient id="energyGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(360 129) rotate(90) scale(44 55)">
+      <stop stop-color="#D2FFFF" stop-opacity="0.95"/>
+      <stop offset="0.42" stop-color="#79FFE9" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#37C89E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(183 87) rotate(19) scale(116 58)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="28" y="36" width="472" height="184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#031314" flood-opacity="0.28"/>
+    </filter>
+    <filter id="glow" x="301" y="69" width="118" height="121" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0.85  0 0 1 0 0.75  0 0 0 0.9 0"/>
+    </filter>
+    <pattern id="grid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0V14" stroke="#DEFFF6" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#cardBg)"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" stroke="url(#panelEdge)" stroke-opacity="0.62" stroke-width="2"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#grid)"/>
+  <path d="M28 214C132 162 250 124 466 88" stroke="#67F1D0" stroke-opacity="0.12" stroke-width="22" stroke-linecap="round"/>
+  <path d="M36 222C148 176 268 142 458 102" stroke="#C5FFF4" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="4 8"/>
+  <circle cx="394" cy="94" r="74" fill="#4FF6D3" fill-opacity="0.08"/>
+  <circle cx="394" cy="94" r="46" stroke="#B7FFF5" stroke-opacity="0.24" stroke-width="2"/>
+  <circle cx="394" cy="94" r="20" stroke="#ECFFFA" stroke-opacity="0.46" stroke-width="2"/>
+  <rect x="28" y="24" width="130" height="28" rx="14" fill="#10292D" stroke="#74E8CA" stroke-opacity="0.7"/>
+  <text x="93" y="42" text-anchor="middle" fill="#E7FFF8" font-size="13" font-family="Segoe UI, Microsoft YaHei, sans-serif">EPIC / PX-04</text>
+  <text x="30" y="236" fill="#EBFFF9" font-size="29" font-weight="700" font-family="Segoe UI, Microsoft YaHei, sans-serif">Arc Vanguard</text>
+  <text x="30" y="258" fill="#93D2C3" font-size="14" font-family="Segoe UI, Microsoft YaHei, sans-serif">能量导轨 · 发光核心 · 科技远程语义</text>
+  <rect x="328" y="228" width="66" height="26" rx="13" fill="#10272A" stroke="#6AD9BC" stroke-opacity="0.6"/>
+  <rect x="400" y="228" width="82" height="26" rx="13" fill="#10272A" stroke="#6AD9BC" stroke-opacity="0.6"/>
+  <text x="361" y="245" text-anchor="middle" fill="#EAFFF8" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">3.0x</text>
+  <text x="441" y="245" text-anchor="middle" fill="#EAFFF8" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">Energy Rail</text>
+  <text x="31" y="74" fill="#97D5C8" font-size="12" font-family="Consolas, monospace">SERIAL 04-PL / ARC CORE SYSTEM</text>
+  <text x="334" y="74" fill="#B8FFF0" font-size="11" font-family="Segoe UI, Microsoft YaHei, sans-serif">PLASMA CORE / HIGH VOLTAGE FIELD ACTIVE</text>
+  <path d="M331 66H482" stroke="#B8FFF0" stroke-opacity="0.36" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g transform="translate(0 12)">
+  <ellipse cx="268" cy="210" rx="173" ry="14" fill="#041518" opacity="0.16"/>
+  <g filter="url(#shadow)">
+    <path d="M82 115C82 96 98 81 117 81H305C319 81 332 86 342 95L366 116C377 125 391 130 406 130H423C441 130 456 145 456 163C456 181 441 196 423 196H399C388 196 378 200 369 207L338 227C329 232 318 235 307 235H218C197 235 178 221 173 201L165 171C161 159 151 149 138 147L100 141C89 139 82 128 82 115Z" fill="url(#bodyGrad)"/>
+    <path d="M118 83H297C311 83 323 88 332 95L347 108H126C112 108 101 99 101 90C101 86 106 83 118 83Z" fill="#F1FFF9" opacity="0.42"/>
+    <rect x="176" y="55" width="148" height="26" rx="13" fill="url(#scopeGrad)"/>
+    <rect x="213" y="42" width="69" height="15" rx="7.5" fill="#478D81"/>
+    <rect x="198" y="81" width="16" height="25" rx="8" fill="#235E59"/>
+    <rect x="284" y="81" width="16" height="25" rx="8" fill="#235E59"/>
+    <path d="M344 130H488" stroke="url(#barrelGrad)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M424 129H488" stroke="#EFFFFB" stroke-width="5" stroke-linecap="round" opacity="0.84"/>
+    <path d="M316 104H366C378 104 388 114 388 126C388 138 378 148 366 148H316C304 148 294 138 294 126C294 114 304 104 316 104Z" fill="url(#coilGrad)"/>
+    <g filter="url(#glow)">
+      <ellipse cx="360" cy="129" rx="28" ry="34" fill="url(#energyGlow)"/>
+    </g>
+    <ellipse cx="359" cy="128" rx="20" ry="24" fill="url(#energyGlow)"/>
+    <circle cx="359" cy="127" r="8" fill="#F8FFFF"/>
+    <path d="M324 116L394 116" stroke="#BFFFF0" stroke-width="4" stroke-linecap="round" opacity="0.76"/>
+    <path d="M328 138L390 138" stroke="#72FFD7" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+    <path d="M164 178L147 233" stroke="url(#darkGrad)" stroke-width="28" stroke-linecap="round"/>
+    <path d="M145 233H184" stroke="#D5FFF5" stroke-width="10" stroke-linecap="round" opacity="0.88"/>
+    <path d="M207 139C207 124 219 113 234 113H282C296 113 308 125 308 139V157C308 171 296 183 282 183H234C219 183 207 171 207 156V139Z" fill="#123C3D" opacity="0.92"/>
+    <path d="M287 154L260 217C255 228 244 235 232 235H203C188 235 178 219 183 204L193 173C198 160 209 154 223 154H287Z" fill="url(#darkGrad)"/>
+    <path d="M139 145C139 131 150 121 164 121H222C232 121 242 126 249 133L261 146C268 153 277 156 287 156H315C328 156 339 167 339 180C339 193 328 204 315 204H297C288 204 279 208 272 214L253 229C246 234 237 235 229 235H205C191 235 179 226 175 213L168 193C165 184 157 177 148 175L141 173C139 172 139 170 139 168V145Z" fill="url(#shine)" opacity="0.48"/>
+    <circle cx="255" cy="128" r="11" fill="#52F6D4"/>
+    <circle cx="255" cy="128" r="4.5" fill="#F7FFFF"/>
+    <path d="M100 111C122 98 151 94 185 99" stroke="#ECFFF9" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+  </g>
+  </g>
+</svg>

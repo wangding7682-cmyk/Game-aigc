@@ -1,0 +1,19 @@
+<svg width="256" height="92" viewBox="0 0 256 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fill" x1="20" y1="12" x2="230" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#163142"/>
+      <stop offset="1" stop-color="#0A1520"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="28" y1="58" x2="226" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5AD5FF"/>
+      <stop offset="1" stop-color="#78FFC7"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="10" width="228" height="72" rx="24" fill="url(#fill)" stroke="#75E6D2" stroke-width="2"/>
+  <rect x="28" y="56" width="200" height="10" rx="5" fill="url(#accent)"/>
+  <rect x="34" y="24" width="36" height="28" rx="9" fill="#122534" stroke="#78FFC7" stroke-opacity="0.48"/>
+  <path d="M41 31H62" stroke="#78FFC7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M46 39H57" stroke="#78FFC7" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="51.5" cy="27.5" r="3.5" fill="#5AD5FF"/>
+  <text x="87" y="48" fill="#EEF8FF" font-family="Segoe UI, Arial" font-size="24" font-weight="700" letter-spacing="2">ITEM</text>
+</svg>

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SkinConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/skin_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+skin_id = "skin_plasma"
+display_name = "等离子绿"
+description = "冷青色能量涂装，强调导轨供能与未来科技感"
+weapon_id = "plasma_sniper"
+rarity = "epic"
+price_gold = 800
+price_diamond = 0
+primary_color = Color(0.3, 0.8, 0.6, 1.0)
+secondary_color = Color(0.15, 0.5, 0.4, 1.0)
+accent_color = Color(0.65, 1.0, 0.88, 1.0)
+glow_color = Color(0.35, 1.0, 0.88, 1.0)
+barrel_length_scale = 1.0
+stock_width_scale = 0.95
+scope_size_scale = 1.05
+has_glow = true
+glow_intensity = 0.55

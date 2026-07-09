@@ -1,0 +1,28 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lockFrame" x1="28" y1="38" x2="194" y2="190" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#AEEBFF"/>
+      <stop offset="1" stop-color="#4E8EC4"/>
+    </linearGradient>
+    <radialGradient id="lockGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110 110) rotate(90) scale(78 78)">
+      <stop stop-color="#6DE4FF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6DE4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path d="M60 38H88" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 60V88" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M160 38H132" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M182 60V88" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M60 182H88" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 160V132" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M160 182H132" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M182 160V132" stroke="url(#lockFrame)" stroke-width="6" stroke-linecap="round"/>
+  <rect x="64" y="64" width="92" height="92" rx="26" stroke="#E2F8FF" stroke-width="2.5" opacity="0.5"/>
+  <circle cx="110" cy="110" r="26" stroke="#EAF8FF" stroke-width="2.5" opacity="0.64"/>
+  <circle cx="110" cy="110" r="7" fill="#F4FCFF" opacity="0.9"/>
+  <path d="M110 30V48" stroke="#C8EDFF" stroke-width="3.5" stroke-linecap="round" opacity="0.56"/>
+  <path d="M110 172V190" stroke="#C8EDFF" stroke-width="3.5" stroke-linecap="round" opacity="0.56"/>
+  <path d="M30 110H48" stroke="#C8EDFF" stroke-width="3.5" stroke-linecap="round" opacity="0.56"/>
+  <path d="M172 110H190" stroke="#C8EDFF" stroke-width="3.5" stroke-linecap="round" opacity="0.56"/>
+  <circle cx="110" cy="110" r="78" fill="url(#lockGlow)"/>
+</svg>

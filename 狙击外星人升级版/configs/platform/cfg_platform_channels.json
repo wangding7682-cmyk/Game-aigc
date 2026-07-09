@@ -1,0 +1,23 @@
+{
+  "runtime_target": "auto",
+  "storage_key": "sniper_alien_profile_v1",
+  "wechat": {
+    "app_id": "",
+    "rewarded_ad_unit_id": "",
+    "share_title": "狙击外星人升级版",
+    "share_image_url": "",
+    "share_query": "from=wechat_share",
+    "enable_share_timeline": true,
+    "login_timeout_ms": 5000
+  },
+  "douyin": {
+    "app_id": "",
+    "rewarded_ad_unit_id": "",
+    "share_title": "狙击外星人升级版",
+    "share_image_url": "",
+    "share_query": "from=douyin_share",
+    "share_channel": "invite",
+    "share_template_id": "",
+    "login_force": false
+  }
+}

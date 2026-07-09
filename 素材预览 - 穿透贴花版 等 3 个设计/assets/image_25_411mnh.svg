@@ -1,0 +1,21 @@
+<svg width="220" height="160" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grassGrad" x1="56" y1="33" x2="143" y2="135" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BFFF8D"/>
+      <stop offset="0.55" stop-color="#67CA58"/>
+      <stop offset="1" stop-color="#377B41"/>
+    </linearGradient>
+    <filter id="shadow" x="28" y="28" width="164" height="108" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#17311E" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="110" cy="125" rx="46" ry="9" fill="#17311E" opacity="0.12"/>
+  <g filter="url(#shadow)">
+    <path d="M40 121C51 109 58 89 58 64C67 73 73 88 76 103C82 74 95 51 113 35C113 65 119 87 126 104C134 80 149 58 169 46C167 76 169 100 180 121H40Z" fill="url(#grassGrad)"/>
+    <path d="M59 111C66 92 79 73 93 61" stroke="#E5FFC8" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+    <path d="M114 106C119 82 129 67 147 54" stroke="#E5FFC8" stroke-width="6" stroke-linecap="round" opacity="0.45"/>
+    <path d="M80 120C86 113 93 109 102 107" stroke="#4A9048" stroke-width="8" stroke-linecap="round"/>
+    <path d="M122 120C129 112 137 109 147 107" stroke="#4A9048" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>

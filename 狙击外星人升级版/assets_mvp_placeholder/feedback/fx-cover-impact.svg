@@ -1,0 +1,20 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coverGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(80 80) rotate(90) scale(58 58)">
+      <stop stop-color="#C5ECFF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#6FBFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="18" fill="#E6F8FF" opacity="0.84"/>
+  <circle cx="80" cy="80" r="32" stroke="#A6D8FF" stroke-width="4" opacity="0.5"/>
+  <path d="M80 28V48" stroke="#7FC2FF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M80 112V132" stroke="#7FC2FF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M28 80H48" stroke="#7FC2FF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M112 80H132" stroke="#7FC2FF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M48 48L60 60" stroke="#7FC2FF" stroke-width="5" stroke-linecap="round" opacity="0.88"/>
+  <path d="M112 48L100 60" stroke="#7FC2FF" stroke-width="5" stroke-linecap="round" opacity="0.88"/>
+  <path d="M48 112L60 100" stroke="#7FC2FF" stroke-width="5" stroke-linecap="round" opacity="0.88"/>
+  <path d="M112 112L100 100" stroke="#7FC2FF" stroke-width="5" stroke-linecap="round" opacity="0.88"/>
+  <path d="M64 80C69 71 75 66 80 66C85 66 91 71 96 80C91 89 85 94 80 94C75 94 69 89 64 80Z" fill="#7EC8FF" opacity="0.4"/>
+  <circle cx="80" cy="80" r="58" fill="url(#coverGlow)"/>
+</svg>

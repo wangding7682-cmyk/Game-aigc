@@ -1,0 +1,50 @@
+<svg width="512" height="256" viewBox="0 0 512 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">精准狙击枪</title>
+  <desc id="desc">软3D卡通风格的战术蓝精准狙击枪，细长且稳定，适合商店卡片展示。</desc>
+  <defs>
+    <linearGradient id="bodyGrad" x1="62" y1="70" x2="396" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#95D4FF"/>
+      <stop offset="0.45" stop-color="#4A91D0"/>
+      <stop offset="1" stop-color="#22476E"/>
+    </linearGradient>
+    <linearGradient id="steelGrad" x1="129" y1="110" x2="274" y2="211" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#31455C"/>
+      <stop offset="1" stop-color="#172432"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="164" y1="52" x2="314" y2="98" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7F0FF"/>
+      <stop offset="1" stop-color="#4B6D93"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="356" y1="107" x2="488" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CBE9FF"/>
+      <stop offset="1" stop-color="#4570A2"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(182 86) rotate(20) scale(120 58)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="28" y="34" width="472" height="184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#030B14" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <ellipse cx="268" cy="208" rx="170" ry="14" fill="#08111D" opacity="0.14"/>
+  <g filter="url(#shadow)">
+    <path d="M78 114C78 95 93 80 112 80H311C322 80 333 84 342 91L371 115C380 123 391 127 402 127H422C440 127 454 141 454 159C454 177 440 191 422 191H397C386 191 376 195 367 201L342 219C333 226 322 230 311 230H228C207 230 189 216 184 196L174 162C170 150 160 141 148 138L98 128C87 125 78 121 78 114Z" fill="url(#bodyGrad)"/>
+    <path d="M121 82H304C315 82 326 86 334 92L349 104H126C112 104 101 96 101 88C101 84 107 82 121 82Z" fill="#F0FBFF" opacity="0.45"/>
+    <rect x="175" y="52" width="142" height="26" rx="13" fill="url(#scopeGrad)"/>
+    <rect x="212" y="39" width="68" height="15" rx="7.5" fill="#56789B"/>
+    <rect x="199" y="78" width="15" height="24" rx="7.5" fill="#325E87"/>
+    <rect x="275" y="78" width="15" height="24" rx="7.5" fill="#325E87"/>
+    <path d="M356 127H489" stroke="url(#barrelGrad)" stroke-width="14" stroke-linecap="round"/>
+    <path d="M421 126H489" stroke="#EDF9FF" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+    <path d="M170 170L152 230" stroke="url(#steelGrad)" stroke-width="26" stroke-linecap="round"/>
+    <path d="M149 230H185" stroke="#DDF4FF" stroke-width="9" stroke-linecap="round" opacity="0.86"/>
+    <path d="M211 138C211 126 220 117 232 117H281C293 117 303 127 303 139V152C303 166 292 176 278 176H233C221 176 211 167 211 155V138Z" fill="#203649" opacity="0.92"/>
+    <path d="M284 150L257 212C253 223 242 230 230 230H203C188 230 178 214 183 199L193 171C197 158 208 150 222 150H284Z" fill="url(#steelGrad)"/>
+    <path d="M246 111L319 111" stroke="#E0F5FF" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M135 137C135 125 145 116 157 116H221C230 116 238 120 244 126L258 140C265 147 274 151 284 151H309C321 151 331 161 331 173C331 185 321 195 309 195H291C282 195 274 198 267 204L251 219C244 226 234 230 224 230H204C191 230 179 223 174 211L169 194C166 184 158 177 149 174L137 171C135 170 135 168 135 166V137Z" fill="url(#shine)" opacity="0.54"/>
+    <circle cx="255" cy="131" r="11" fill="#6CE3FF"/>
+    <circle cx="255" cy="131" r="4.5" fill="#F4FFFF"/>
+    <path d="M98 108C119 97 149 91 185 94" stroke="#E9FBFF" stroke-width="7" stroke-linecap="round" opacity="0.42"/>
+  </g>
+</svg>

@@ -1,0 +1,82 @@
+<svg width="512" height="288" viewBox="0 0 512 288" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">精准狙击枪</title>
+  <desc id="desc">软3D卡通风格的战术蓝精准狙击枪，细长且稳定，适合商店卡片展示。</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="18" y1="10" x2="492" y2="274" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09131D"/>
+      <stop offset="1" stop-color="#12324D"/>
+    </linearGradient>
+    <linearGradient id="panelEdge" x1="30" y1="32" x2="480" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#76CBFF"/>
+      <stop offset="1" stop-color="#356E9A"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="62" y1="70" x2="396" y2="186" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#95D4FF"/>
+      <stop offset="0.45" stop-color="#4A91D0"/>
+      <stop offset="1" stop-color="#22476E"/>
+    </linearGradient>
+    <linearGradient id="steelGrad" x1="129" y1="110" x2="274" y2="211" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#31455C"/>
+      <stop offset="1" stop-color="#172432"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="164" y1="52" x2="314" y2="98" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7F0FF"/>
+      <stop offset="1" stop-color="#4B6D93"/>
+    </linearGradient>
+    <linearGradient id="barrelGrad" x1="356" y1="107" x2="488" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CBE9FF"/>
+      <stop offset="1" stop-color="#4570A2"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(182 86) rotate(20) scale(120 58)">
+      <stop stop-color="white" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="28" y="34" width="472" height="184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#030B14" flood-opacity="0.28"/>
+    </filter>
+    <pattern id="grid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0V14" stroke="#D5F0FF" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#cardBg)"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" stroke="url(#panelEdge)" stroke-opacity="0.6" stroke-width="2"/>
+  <rect x="8" y="8" width="496" height="272" rx="28" fill="url(#grid)"/>
+  <path d="M36 214C150 182 270 142 470 84" stroke="#7EC9FF" stroke-opacity="0.14" stroke-width="20" stroke-linecap="round"/>
+  <path d="M34 222C155 180 280 146 474 105" stroke="#D8F4FF" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="5 7"/>
+  <circle cx="396" cy="94" r="72" fill="#49A9F8" fill-opacity="0.09"/>
+  <circle cx="396" cy="94" r="46" stroke="#A5E0FF" stroke-opacity="0.24" stroke-width="2"/>
+  <circle cx="396" cy="94" r="18" stroke="#E5F8FF" stroke-opacity="0.46" stroke-width="2"/>
+  <rect x="28" y="24" width="142" height="28" rx="14" fill="#11263D" stroke="#61BEEE" stroke-opacity="0.7"/>
+  <text x="99" y="42" text-anchor="middle" fill="#E5F7FF" font-size="13" font-family="Segoe UI, Microsoft YaHei, sans-serif">UNCOMMON / PS-02</text>
+  <text x="30" y="236" fill="#EDF8FF" font-size="29" font-weight="700" font-family="Segoe UI, Microsoft YaHei, sans-serif">Precision Focus</text>
+  <text x="30" y="258" fill="#91B8D5" font-size="14" font-family="Segoe UI, Microsoft YaHei, sans-serif">长镜组 · 延长枪管 · 远距压缩误差</text>
+  <rect x="330" y="228" width="68" height="26" rx="13" fill="#102339" stroke="#5FA7D6" stroke-opacity="0.58"/>
+  <rect x="404" y="228" width="78" height="26" rx="13" fill="#102339" stroke="#5FA7D6" stroke-opacity="0.58"/>
+  <text x="364" y="245" text-anchor="middle" fill="#DDF4FF" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">2.8x</text>
+  <text x="443" y="245" text-anchor="middle" fill="#DDF4FF" font-size="12" font-family="Segoe UI, Microsoft YaHei, sans-serif">Scoped</text>
+  <text x="31" y="74" fill="#8FBAD7" font-size="12" font-family="Consolas, monospace">SERIAL 02-PR / LONG RANGE PLATFORM</text>
+  <text x="336" y="74" fill="#BDEBFF" font-size="11" font-family="Segoe UI, Microsoft YaHei, sans-serif">BREATH HOLD CALIBRATED / RANGE READY</text>
+  <path d="M331 66H482" stroke="#BCEBFF" stroke-opacity="0.34" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g transform="translate(2 12)">
+  <ellipse cx="268" cy="208" rx="170" ry="14" fill="#08111D" opacity="0.14"/>
+  <g filter="url(#shadow)">
+    <path d="M78 114C78 95 93 80 112 80H311C322 80 333 84 342 91L371 115C380 123 391 127 402 127H422C440 127 454 141 454 159C454 177 440 191 422 191H397C386 191 376 195 367 201L342 219C333 226 322 230 311 230H228C207 230 189 216 184 196L174 162C170 150 160 141 148 138L98 128C87 125 78 121 78 114Z" fill="url(#bodyGrad)"/>
+    <path d="M121 82H304C315 82 326 86 334 92L349 104H126C112 104 101 96 101 88C101 84 107 82 121 82Z" fill="#F0FBFF" opacity="0.45"/>
+    <rect x="175" y="52" width="142" height="26" rx="13" fill="url(#scopeGrad)"/>
+    <rect x="212" y="39" width="68" height="15" rx="7.5" fill="#56789B"/>
+    <rect x="199" y="78" width="15" height="24" rx="7.5" fill="#325E87"/>
+    <rect x="275" y="78" width="15" height="24" rx="7.5" fill="#325E87"/>
+    <path d="M356 127H489" stroke="url(#barrelGrad)" stroke-width="14" stroke-linecap="round"/>
+    <path d="M421 126H489" stroke="#EDF9FF" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+    <path d="M170 170L152 230" stroke="url(#steelGrad)" stroke-width="26" stroke-linecap="round"/>
+    <path d="M149 230H185" stroke="#DDF4FF" stroke-width="9" stroke-linecap="round" opacity="0.86"/>
+    <path d="M211 138C211 126 220 117 232 117H281C293 117 303 127 303 139V152C303 166 292 176 278 176H233C221 176 211 167 211 155V138Z" fill="#203649" opacity="0.92"/>
+    <path d="M284 150L257 212C253 223 242 230 230 230H203C188 230 178 214 183 199L193 171C197 158 208 150 222 150H284Z" fill="url(#steelGrad)"/>
+    <path d="M246 111L319 111" stroke="#E0F5FF" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M135 137C135 125 145 116 157 116H221C230 116 238 120 244 126L258 140C265 147 274 151 284 151H309C321 151 331 161 331 173C331 185 321 195 309 195H291C282 195 274 198 267 204L251 219C244 226 234 230 224 230H204C191 230 179 223 174 211L169 194C166 184 158 177 149 174L137 171C135 170 135 168 135 166V137Z" fill="url(#shine)" opacity="0.54"/>
+    <circle cx="255" cy="131" r="11" fill="#6CE3FF"/>
+    <circle cx="255" cy="131" r="4.5" fill="#F4FFFF"/>
+    <path d="M98 108C119 97 149 91 185 94" stroke="#E9FBFF" stroke-width="7" stroke-linecap="round" opacity="0.42"/>
+  </g>
+  </g>
+</svg>
