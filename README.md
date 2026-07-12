@@ -10,10 +10,6 @@
 
 下面是当前仓库里已经存在的预览图（用于 GitHub 展示）。如果你希望更“产品化”，建议后续把关键截图统一收敛到根目录的 `assets/screenshots/` 再替换这里的链接。
 
-| 场景 | 预览 |
-|---|---|
-| 主菜单（UI 方向） | ![](sniper-game-asset-board/assets/menu-key-art.jpg) |
-| 关卡加载（UI 方向） | ![](sniper-game-asset-board/assets/loading-scope-art.jpg) |
 
 ## 项目现在做到哪里
 
