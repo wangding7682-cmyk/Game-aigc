@@ -18,10 +18,9 @@ Godot 4.x 开发，3D 场景 + 2.5D 搜索镜头，当前主模式为 PVE 三关
 
 ## 项目截图
 
-| 场景 | 预览 |
-|---|---|
-| 主菜单 UI | ![](sniper-game-asset-board/assets/menu-key-art.jpg) |
-| 关卡加载 UI | ![](sniper-game-asset-board/assets/loading-scope-art.jpg) |
+| 角色模型 | 角色变体 | 武器 |
+|---|---|---|
+| ![](狙击外星人升级版/assets_mvp_3d/alien_master_idle_blockout_render.png) | ![](狙击外星人升级版/assets_mvp_3d/alien_row3_character_variant_render.png) | ![](狙击外星人升级版/assets_mvp_placeholder/weapons/preview/weapon-preview-default.png) |
 
 ## 技术栈
 
